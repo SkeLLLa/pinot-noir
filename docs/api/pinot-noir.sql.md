@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-sql: (strings: readonly string[], ...values: readonly unknown[]) => Sql;
+sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql;
 ```
 
 ## Parameters
@@ -42,7 +42,7 @@ values
 
 </td><td>
 
-readonly unknown\[\]
+readonly RawValue\[\]
 
 </td><td>
 

@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.6...v1.0.7) (2024-07-16)
+
+### 🛠 Fixes
+
+* sql tag ([fb84788](https://github.com/SkeLLLa/pinot-noir/commit/fb847885db47b87797bd67f65471cc706f2b12bd))
+
 ## [1.0.6](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.5...v1.0.6) (2024-07-16)
 
 ### 🛠 Fixes
