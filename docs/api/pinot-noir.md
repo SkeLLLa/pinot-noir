@@ -17,7 +17,34 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[PinotClient](./pinot-noir.pinotclient.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [SqlFormat](./pinot-noir.sqlformat.md)
+
+</td><td>
+
+</td></tr>
+</tbody></table>
+
+## Interfaces
+
+<table><thead><tr><th>
+
+Interface
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[IPinotClient](./pinot-noir.ipinotclient.md)
 
 </td><td>
 
