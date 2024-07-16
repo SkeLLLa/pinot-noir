@@ -1,3 +1,9 @@
+## [1.3.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.1...v1.3.2) (2024-07-16)
+
+### 🛠 Fixes
+
+* remove esm ([4247337](https://github.com/SkeLLLa/pinot-noir/commit/424733743ce80b272ec2fab9776b788bd0c7b0b1))
+
 ## [1.3.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.0...v1.3.1) (2024-07-16)
 
 ### 🛠 Fixes
