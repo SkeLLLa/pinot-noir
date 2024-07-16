@@ -19,7 +19,8 @@
   },
   "license": "MIT",
   "author": "m03geek",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
     "lib": "src",
     "doc": "docs",
