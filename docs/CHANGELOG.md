@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.1.0...v1.1.1) (2024-07-16)
+
+### 🛠 Fixes
+
+* expose compiled sql in error ([dd02015](https://github.com/SkeLLLa/pinot-noir/commit/dd020151bf79a6b6365100c355e8d8eb33c255c8))
+
 ## [1.1.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.7...v1.1.0) (2024-07-16)
 
 ### 🚀 Features
