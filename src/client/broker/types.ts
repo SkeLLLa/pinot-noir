@@ -1,5 +1,5 @@
-import type { Sql } from 'sql-template-tag';
 import type PoolStats from 'undici/types/pool-stats';
+import type { Sql } from '../../utils/tag';
 
 export interface IPinotPoolStats extends PoolStats {
   //

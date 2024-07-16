@@ -1,4 +1,4 @@
-import { RawValue, Sql } from 'sql-template-tag';
+import { Sql, type RawValue } from '@taylorgoolsby/sql-template-tag';
 
 export {
   bulk,
@@ -7,7 +7,7 @@ export {
   raw,
   type RawValue,
   type Sql,
-} from 'sql-template-tag';
+} from '@taylorgoolsby/sql-template-tag';
 export const sql = (
   strings: readonly string[],
   ...values: readonly RawValue[]

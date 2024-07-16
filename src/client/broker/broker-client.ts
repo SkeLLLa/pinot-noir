@@ -1,5 +1,5 @@
-import type { Sql } from 'sql-template-tag';
 import { SqlFormat } from '../../utils/format';
+import type { Sql } from '../../utils/tag';
 import { EPinotErrorType, PinotError } from '../errors/pinot';
 import type { IPinotBrokerTransport } from './transport/types';
 import {

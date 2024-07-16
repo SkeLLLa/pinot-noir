@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      sql-template-tag:
-        specifier: ^5.2.1
-        version: 5.2.1
+      '@taylorgoolsby/sql-template-tag':
+        specifier: ^5.2.0
+        version: 5.2.0
       undici:
         specifier: ^6.19.2
         version: 6.19.2
@@ -581,6 +581,10 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@taylorgoolsby/sql-template-tag@5.2.0':
+    resolution: {integrity: sha512-5/D4Ey471I7qorYcHE84tUIQ8lJgY5GKr2tstBScBwqqZMO5kCLufc/VWutriSsqiW6XoeK++mi05ptdJnTeBA==}
+    engines: {node: '>=14'}
 
   '@tsconfig/node-lts@20.1.3':
     resolution: {integrity: sha512-m3b7EP2U+h5tNSpaBMfcTuHmHn04wrgRPQQrfKt75YIPq6kPs2153/KfPHdqkEWGx5pEBvS6rnvToT+yTtC1iw==}
@@ -2484,10 +2488,6 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  sql-template-tag@5.2.1:
-    resolution: {integrity: sha512-lFdvXCOqWhV40A7w4oQVDyuaNFb5yO+dhsHStZzOdtDJWCBWYv4+hhATK5nPpY5v/T1OMVcLMPeN4519qIyb9Q==}
-    engines: {node: '>=14'}
-
   stream-combiner2@1.1.1:
     resolution: {integrity: sha512-3PnJbYgS56AeWgtKF5jtJRT6uFJe56Z0Hc5Ngg/6sI6rIt8iiMBTa9cvdyFfpMQjaVHr8dusbNeFGIIonxOvKw==}
 
@@ -3375,6 +3375,8 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@taylorgoolsby/sql-template-tag@5.2.0': {}
 
   '@tsconfig/node-lts@20.1.3': {}
 
@@ -5423,8 +5425,6 @@ snapshots:
       through2: 2.0.5
 
   sprintf-js@1.0.3: {}
-
-  sql-template-tag@5.2.1: {}
 
   stream-combiner2@1.1.1:
     dependencies:

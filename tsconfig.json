@@ -8,7 +8,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "noEmit": true,
-    "target": "ES6"
+    "target": "ES2019"
   },
   "exclude": ["dist/**/*", "coverage/**/*", "node_modules/**/*"],
   "extends": [
