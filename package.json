@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json.schemastore.org/package.json",
+  "name": "pinot-noir",
+  "version": "1.0.0",
+  "description": "Unofficial client for Apache Pinot.",
+  "keywords": [
+    "pinot",
+    "apache pinot",
+    "sql",
+    "template tag"
+  ],
+  "homepage": "https://github.com/SkeLLLa/pinot-noir/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/SkeLLLa/pinot-noir/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SkeLLLa/pinot-noir.git"
+  },
+  "license": "MIT",
+  "author": "m03geek",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "src",
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run build:node && pnpm run build:docs",
+    "build:clean": "rm -rf dist",
+    "build:docs": "api-extractor run -l && api-documenter markdown -i ./temp -o ./docs/api && pretty-quick",
+    "build:node": "tsc -p tsconfig.build.json",
+    "lint": "pnpm run lint:types && pnpm run lint:codestyle && pnpm run lint:packages",
+    "lint:codestyle": "eslint . --ext js,jsx,ts,tsx",
+    "lint:packages": "pnpm audit --prod --audit-level=high",
+    "lint:types": "tsc -p tsconfig.json",
+    "release": "semantic-release",
+    "test": "pnpm run lint && pnpm run test:unit",
+    "test:unit": "globstar --node -- node --no-warnings --import tsx --test \"test/**/*.spec.ts\""
+  },
+  "dependencies": {
+    "sql-template-tag": "^5.2.1",
+    "undici": "^6.19.2"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@microsoft/api-documenter": "^7.25.4",
+    "@microsoft/api-extractor": "^7.47.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.1.0",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@tsconfig/node-lts": "^20.1.3",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-tsdoc": "^0.3.0",
+    "globstar": "^1.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-jsdoc": "^1.3.0",
+    "prettier-plugin-packagejson": "^2.5.0",
+    "prettier-plugin-sh": "^0.14.0",
+    "prettier-plugin-sort-json": "^4.0.0",
+    "pretty-quick": "^4.0.0",
+    "semantic-release": "^24.0.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  },
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "provenance": true,
+    "typings": "dist/index.d.ts"
+  }
+}

@@ -1,0 +1,6 @@
+.release
+.github
+.vscode
+src
+**/*.xxx.*
+.*
