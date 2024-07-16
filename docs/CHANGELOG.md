@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.3...v1.0.4) (2024-07-16)
+
+### 🛠 Fixes
+
+* add error export ([21e0235](https://github.com/SkeLLLa/pinot-noir/commit/21e0235ce33b0887b537b3348b16a4b047e6673f))
+
 ## [1.0.3](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.2...v1.0.3) (2024-07-16)
 
 ### 🛠 Fixes

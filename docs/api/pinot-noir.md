@@ -31,6 +31,13 @@ Description
 </td></tr>
 <tr><td>
 
+[PinotError](./pinot-noir.pinoterror.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [SqlFormat](./pinot-noir.sqlformat.md)
 
 </td><td>
@@ -59,6 +66,20 @@ Description
 <tr><td>
 
 [EBrokerTransportErrorCode](./pinot-noir.ebrokertransporterrorcode.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[EPinotErrorType](./pinot-noir.epinoterrortype.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[ERROR_CODES](./pinot-noir.error_codes.md)
 
 </td><td>
 
@@ -120,7 +141,21 @@ Description
 </td></tr>
 <tr><td>
 
+[IPinotErrorConstructorArgs](./pinot-noir.ipinoterrorconstructorargs.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IPinotSqlException](./pinot-noir.ipinotsqlexception.md)
 
 </td><td>
 
