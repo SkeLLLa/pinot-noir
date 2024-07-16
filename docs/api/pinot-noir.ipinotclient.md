@@ -57,7 +57,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[select(query)](./pinot-noir.ipinotclient.select.md)
+[select(query, options, trace)](./pinot-noir.ipinotclient.select.md)
 
 </td><td>
 

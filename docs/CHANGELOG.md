@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.0...v1.3.1) (2024-07-16)
+
+### 🛠 Fixes
+
+* select types ([674bef2](https://github.com/SkeLLLa/pinot-noir/commit/674bef21e85bccebbe396084133ab45037711737))
+
 ## [1.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.2.0...v1.3.0) (2024-07-16)
 
 ### 🚀 Features

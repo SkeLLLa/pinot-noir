@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
+select<TResult>(query: Sql, options?: IPinotQueryOptions, trace?: boolean): Promise<IQueryResult<TResult[]>>;
 ```
 
 ## Parameters
@@ -34,6 +34,32 @@ query
 Sql
 
 </td><td>
+
+</td></tr>
+<tr><td>
+
+options
+
+</td><td>
+
+[IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
+
+</td><td>
+
+_(Optional)_
+
+</td></tr>
+<tr><td>
+
+trace
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_
 
 </td></tr>
 </tbody></table>
