@@ -1,6 +1,6 @@
 import { Pool, type Dispatcher } from 'undici';
-import PoolStats from 'undici/types/pool-stats';
 import { EPinotErrorType, PinotError } from '../../../errors/pinot';
+import { IPinotPoolStats } from '../../types';
 import {
   EBrokerTransportErrorCode,
   type IBrokerTransportConfig,
@@ -106,7 +106,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     return this.pool.close();
   }
 
-  get stats(): PoolStats {
+  get stats(): IPinotPoolStats {
     return this.pool.stats;
   }
 }

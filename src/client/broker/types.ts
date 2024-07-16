@@ -1,6 +1,10 @@
 import type { Sql } from 'sql-template-tag';
 import type PoolStats from 'undici/types/pool-stats';
 
+export interface IPinotPoolStats extends PoolStats {
+  //
+}
+
 export interface IResponseSchema {
   columnDataTypes: string[];
   columnNames: string[];
@@ -155,5 +159,5 @@ export interface IPinotQueryOptions {
 
 export interface IPinotClient {
   select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
-  transportStats: PoolStats;
+  transportStats: IPinotPoolStats;
 }

@@ -1,11 +1,11 @@
 import type { Sql } from 'sql-template-tag';
-import type PoolStats from 'undici/types/pool-stats';
 import { SqlFormat } from '../../utils/format';
 import { EPinotErrorType, PinotError } from '../errors/pinot';
 import type { IPinotBrokerTransport } from './transport/types';
 import {
   EBrokerErrorCode,
   IPinotClient,
+  IPinotPoolStats,
   type IBrokerResponse,
   type IPinotQueryOptions,
   type IQueryResult,
@@ -20,7 +20,7 @@ export class PinotClient implements IPinotClient {
 
   private static ENDPOINTS = { sql: '/query/sql' };
 
-  public get transportStats(): PoolStats {
+  public get transportStats(): IPinotPoolStats {
     return this.deps.transport.stats;
   }
 

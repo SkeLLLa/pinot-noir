@@ -1,5 +1,5 @@
 import { Dispatcher } from 'undici';
-import PoolStats from 'undici/types/pool-stats';
+import { IPinotPoolStats } from '../types';
 
 export interface IBrokerTransportConfig {
   brokerUrl: URL | string;
@@ -28,7 +28,7 @@ export interface IPinotBrokerTransport {
     query,
   }: IBrokerTransportRequestOptions): Promise<TResponse>;
   close(): Promise<void>;
-  stats: PoolStats;
+  stats: IPinotPoolStats;
 }
 
 export const enum EBrokerTransportErrorCode {
