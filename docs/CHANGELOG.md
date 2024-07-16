@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.2...v1.0.3) (2024-07-16)
+
+### 🛠 Fixes
+
+* main ([afb0986](https://github.com/SkeLLLa/pinot-noir/commit/afb09862c439537854df4a65c21e9c8ba039f1c3))
+
 ## [1.0.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.1...v1.0.2) (2024-07-16)
 
 ### 🛠 Fixes
