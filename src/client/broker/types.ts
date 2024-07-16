@@ -159,6 +159,10 @@ export interface IPinotQueryOptions {
 }
 
 export interface IPinotClient {
-  select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
+  select<TResult>(
+    query: Sql,
+    options?: IPinotQueryOptions,
+    trace?: boolean,
+  ): Promise<IQueryResult<TResult[]>>;
   transportStats: IPinotPoolStats;
 }
