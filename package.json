@@ -85,6 +85,7 @@
     "pnpm": ">=9"
   },
   "publishConfig": {
+    "access": "public",
     "main": "dist/index.js",
     "provenance": true,
     "typings": "dist/index.d.ts"
