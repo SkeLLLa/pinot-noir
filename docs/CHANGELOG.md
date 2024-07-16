@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.2...v1.4.0) (2024-07-16)
+
+### 🚀 Features
+
+* use proper sql template tag ([345b8ca](https://github.com/SkeLLLa/pinot-noir/commit/345b8ca1ee5bae335fb5b2c30266d6613554bb3c))
+
 ## [1.3.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.1...v1.3.2) (2024-07-16)
 
 ### 🛠 Fixes
