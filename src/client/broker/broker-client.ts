@@ -85,6 +85,7 @@ export class PinotClient implements IPinotClient {
       });
 
       return {
+        sql,
         rows: data,
         stats: {
           traceInfo,
@@ -116,6 +117,7 @@ export class PinotClient implements IPinotClient {
         type: EPinotErrorType.PARSE,
         cause: error as Error,
         data: {
+          sql,
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
         },

@@ -94,6 +94,7 @@ export interface IQueryStats {
 export interface IQueryResult<TRows = unknown> {
   rows: TRows;
   stats: IQueryStats;
+  sql: string;
 }
 
 // TODO: add some codes
