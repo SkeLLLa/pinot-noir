@@ -1,10 +1,10 @@
-import { Sql } from 'sql-template-tag';
+import { RawValue, Sql } from 'sql-template-tag';
 
 export * from 'sql-template-tag';
 
 export const sql = (
   strings: readonly string[],
-  ...values: readonly unknown[]
+  ...values: readonly RawValue[]
 ) => {
   return new Sql(strings, values);
 };
