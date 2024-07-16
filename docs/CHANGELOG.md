@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.0...v1.0.1) (2024-07-16)
+
+### 🛠 Fixes
+
+* provenance ([5839e60](https://github.com/SkeLLLa/pinot-noir/commit/5839e60c4a9c6efec618fbc1a2eeea07231973f6))
+* repo url ([7e1a120](https://github.com/SkeLLLa/pinot-noir/commit/7e1a120363bcceb5dde26012e87f5cb30254c2b5))
+
 ## 1.0.0 (2024-07-16)
 
 ### 🛠 Fixes
