@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.1.1...v1.2.0) (2024-07-16)
+
+### 🚀 Features
+
+* add pinot query options ([39fb791](https://github.com/SkeLLLa/pinot-noir/commit/39fb791c18f0b6d6ecd07917f31c103170e1b216))
+
 ## [1.1.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.1.0...v1.1.1) (2024-07-16)
 
 ### 🛠 Fixes
