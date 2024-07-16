@@ -20,6 +20,18 @@ export class PinotClient implements IPinotClient {
 
   private static ENDPOINTS = { sql: '/query/sql' };
 
+  private static stringifyOptions(
+    options?: IPinotQueryOptions,
+  ): string | undefined {
+    return options
+      ? Object.entries(options)
+          .map((kv) => {
+            return kv.join('=');
+          })
+          .join(';')
+      : undefined;
+  }
+
   public get transportStats(): IPinotPoolStats {
     return this.deps.transport.stats;
   }
@@ -35,7 +47,11 @@ export class PinotClient implements IPinotClient {
     const response = await transport.request<IBrokerResponse>({
       method: 'POST',
       path: PinotClient.ENDPOINTS.sql,
-      body: JSON.stringify({ sql, options, trace }),
+      body: JSON.stringify({
+        sql,
+        options: PinotClient.stringifyOptions(options),
+        trace,
+      }),
     });
 
     if ((response.exceptions?.length ?? 0) > 0) {
@@ -48,6 +64,7 @@ export class PinotClient implements IPinotClient {
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
           sql,
+          options,
         },
       });
     }
@@ -118,6 +135,7 @@ export class PinotClient implements IPinotClient {
         cause: error as Error,
         data: {
           sql,
+          options,
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
         },
