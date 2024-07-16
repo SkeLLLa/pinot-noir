@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.5...v1.0.6) (2024-07-16)
+
+### 🛠 Fixes
+
+* sql tag export ([e461b33](https://github.com/SkeLLLa/pinot-noir/commit/e461b333fc6793d2ed04ee7a43c92c00ba8dbe67))
+
 ## [1.0.5](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.4...v1.0.5) (2024-07-16)
 
 ### 🛠 Fixes
