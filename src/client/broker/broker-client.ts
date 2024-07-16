@@ -1,19 +1,15 @@
-import { Sql } from 'sql-template-tag';
-import PoolStats from 'undici/types/pool-stats';
+import type { Sql } from 'sql-template-tag';
+import type PoolStats from 'undici/types/pool-stats';
 import { SqlFormat } from '../../utils/format';
 import { EPinotErrorType, PinotError } from '../errors/pinot';
 import type { IPinotBrokerTransport } from './transport/types';
 import {
   EBrokerErrorCode,
+  IPinotClient,
   type IBrokerResponse,
   type IPinotQueryOptions,
   type IQueryResult,
 } from './types';
-
-export interface IPinotClient {
-  select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
-  transportStats: PoolStats;
-}
 
 export class PinotClient implements IPinotClient {
   constructor(

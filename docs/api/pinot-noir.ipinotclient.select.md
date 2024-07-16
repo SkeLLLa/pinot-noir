@@ -39,4 +39,4 @@ Sql
 </tbody></table>
 **Returns:**
 
-Promise&lt;IQueryResult&lt;TResult\[\]&gt;&gt;
+Promise&lt;[IQueryResult](./pinot-noir.iqueryresult.md)<!-- -->&lt;TResult\[\]&gt;&gt;

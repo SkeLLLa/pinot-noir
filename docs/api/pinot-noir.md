@@ -17,7 +17,14 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[PinotClient](./pinot-noir.pinotclient.md)
+[PinotBrokerClient](./pinot-noir.pinotbrokerclient.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[PinotBrokerJSONTransport](./pinot-noir.pinotbrokerjsontransport.md)
 
 </td><td>
 
@@ -25,6 +32,33 @@ Description
 <tr><td>
 
 [SqlFormat](./pinot-noir.sqlformat.md)
+
+</td><td>
+
+</td></tr>
+</tbody></table>
+
+## Enumerations
+
+<table><thead><tr><th>
+
+Enumeration
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[EBrokerErrorCode](./pinot-noir.ebrokererrorcode.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[EBrokerTransportErrorCode](./pinot-noir.ebrokertransporterrorcode.md)
 
 </td><td>
 
@@ -44,7 +78,97 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[IBrokerResponse](./pinot-noir.ibrokerresponse.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IBrokerTransportConfig](./pinot-noir.ibrokertransportconfig.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IBrokerTransportRequestOptions](./pinot-noir.ibrokertransportrequestoptions.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IPinoException](./pinot-noir.ipinoexception.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IPinotBrokerTransport](./pinot-noir.ipinotbrokertransport.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [IPinotClient](./pinot-noir.ipinotclient.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IQueryResult](./pinot-noir.iqueryresult.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IQueryStats](./pinot-noir.iquerystats.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IResponseSchema](./pinot-noir.iresponseschema.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[IResultTable](./pinot-noir.iresulttable.md)
+
+</td><td>
+
+</td></tr>
+</tbody></table>
+
+## Type Aliases
+
+<table><thead><tr><th>
+
+Type Alias
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[TPinotDataType](./pinot-noir.tpinotdatatype.md)
 
 </td><td>
 

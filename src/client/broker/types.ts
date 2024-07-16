@@ -1,3 +1,6 @@
+import type { Sql } from 'sql-template-tag';
+import type PoolStats from 'undici/types/pool-stats';
+
 export interface IResponseSchema {
   columnDataTypes: string[];
   columnNames: string[];
@@ -148,4 +151,9 @@ export interface IPinotQueryOptions {
 
   /** Maximum serialized response size across all servers for a query. */
   maxQueryResponseSizeBytes?: number;
+}
+
+export interface IPinotClient {
+  select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
+  transportStats: PoolStats;
 }
