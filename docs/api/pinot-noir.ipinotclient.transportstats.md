@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-transportStats: PoolStats;
+transportStats: IPinotPoolStats;
 ```

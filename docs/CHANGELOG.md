@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.4...v1.0.5) (2024-07-16)
+
+### 🛠 Fixes
+
+* add PoolStats type ([ceeb3f9](https://github.com/SkeLLLa/pinot-noir/commit/ceeb3f96213229e32ef3c935576ac99a1c7a87e6))
+
 ## [1.0.4](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.3...v1.0.4) (2024-07-16)
 
 ### 🛠 Fixes

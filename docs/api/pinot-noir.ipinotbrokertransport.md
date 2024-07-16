@@ -37,7 +37,7 @@ Description
 
 </td><td>
 
-PoolStats
+[IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
 </td><td>
 

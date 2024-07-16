@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-get stats(): PoolStats;
+get stats(): IPinotPoolStats;
 ```

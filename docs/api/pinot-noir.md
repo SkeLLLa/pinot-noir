@@ -148,6 +148,13 @@ Description
 </td></tr>
 <tr><td>
 
+[IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
 
 </td><td>
