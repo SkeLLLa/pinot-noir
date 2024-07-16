@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.7...v1.1.0) (2024-07-16)
+
+### 🚀 Features
+
+* return compiled sql query ([bb35aef](https://github.com/SkeLLLa/pinot-noir/commit/bb35aef37b7fbfa6f635d4c1436584bf88226c0c))
+
 ## [1.0.7](https://github.com/SkeLLLa/pinot-noir/compare/v1.0.6...v1.0.7) (2024-07-16)
 
 ### 🛠 Fixes

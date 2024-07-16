@@ -44,6 +44,19 @@ TRows
 </td></tr>
 <tr><td>
 
+[sql](./pinot-noir.iqueryresult.sql.md)
+
+</td><td>
+
+</td><td>
+
+string
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 [stats](./pinot-noir.iqueryresult.stats.md)
 
 </td><td>
