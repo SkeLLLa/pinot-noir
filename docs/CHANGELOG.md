@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.2.0...v1.3.0) (2024-07-16)
+
+### 🚀 Features
+
+* commonjs module ([4738c6b](https://github.com/SkeLLLa/pinot-noir/commit/4738c6bc1c149bd0569bb560b6212a82bdea2221))
+
 ## [1.2.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.1.1...v1.2.0) (2024-07-16)
 
 ### 🚀 Features
