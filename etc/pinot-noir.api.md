@@ -4,11 +4,17 @@
 
 ```ts
 
+import { bulk } from 'sql-template-tag';
 import { Dispatcher } from 'undici';
+import { empty } from 'sql-template-tag';
+import { join } from 'sql-template-tag';
 import { Pool } from 'undici';
 import type PoolStats from 'undici/types/pool-stats';
+import { raw } from 'sql-template-tag';
 import { RawValue } from 'sql-template-tag';
 import { Sql } from 'sql-template-tag';
+
+export { bulk }
 
 // @public (undocumented)
 export const enum EBrokerErrorCode {
@@ -23,6 +29,8 @@ export const enum EBrokerTransportErrorCode {
     // (undocumented)
     UNKNOWN = 0
 }
+
+export { empty }
 
 // @public (undocumented)
 export enum EPinotErrorType {
@@ -177,7 +185,7 @@ export interface IPinotBrokerTransport {
 // @public (undocumented)
 export interface IPinotClient {
     // (undocumented)
-    select<TResult>(query: Sql): Promise<IQueryResult<TResult[]>>;
+    select<TResult>(query: Sql, options?: IPinotQueryOptions, trace?: boolean): Promise<IQueryResult<TResult[]>>;
     // (undocumented)
     transportStats: IPinotPoolStats;
 }
@@ -290,6 +298,8 @@ export interface IResultTable {
     rows: (number | string)[][];
 }
 
+export { join }
+
 // @public (undocumented)
 export class PinotBrokerClient implements IPinotClient {
     constructor(deps: {
@@ -333,6 +343,12 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
     readonly type: EPinotErrorType;
 }
 
+export { raw }
+
+export { RawValue }
+
+export { Sql }
+
 // @public (undocumented)
 export const sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql;
 
@@ -364,9 +380,6 @@ export class SqlFormat {
 
 // @public (undocumented)
 export type TPinotDataType = 'INT' | 'LONG' | 'FLOAT' | 'DOUBLE' | 'BIG_DECIMAL' | 'BOOLEAN' | 'TIMESTAMP' | 'STRING' | 'JSON' | 'BYTES';
-
-
-export * from "sql-template-tag";
 
 // (No @packageDocumentation comment for this package)
 
