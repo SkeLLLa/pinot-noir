@@ -20,7 +20,7 @@ export class PinotClient implements IPinotClient {
 
   private static ENDPOINTS = { sql: '/query/sql' };
 
-  private static stringifyOptions(
+  private static toQueryOptions(
     options?: IPinotQueryOptions,
   ): string | undefined {
     return options
@@ -49,7 +49,7 @@ export class PinotClient implements IPinotClient {
       path: PinotClient.ENDPOINTS.sql,
       body: JSON.stringify({
         sql,
-        options: PinotClient.stringifyOptions(options),
+        queryOptions: PinotClient.toQueryOptions(options),
         trace,
       }),
     });
@@ -64,7 +64,7 @@ export class PinotClient implements IPinotClient {
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
           sql,
-          options,
+          queryOptions: PinotClient.toQueryOptions(options),
         },
       });
     }
@@ -135,7 +135,7 @@ export class PinotClient implements IPinotClient {
         cause: error as Error,
         data: {
           sql,
-          options,
+          queryOptions: PinotClient.toQueryOptions(options),
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
         },
