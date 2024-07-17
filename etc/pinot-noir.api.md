@@ -4,15 +4,15 @@
 
 ```ts
 
-import { bulk } from '@taylorgoolsby/sql-template-tag';
+import { bulk } from '@no-esm/sql-template-tag';
 import { Dispatcher } from 'undici';
-import { empty } from '@taylorgoolsby/sql-template-tag';
-import { join } from '@taylorgoolsby/sql-template-tag';
+import { empty } from '@no-esm/sql-template-tag';
+import { join } from '@no-esm/sql-template-tag';
 import { Pool } from 'undici';
 import type PoolStats from 'undici/types/pool-stats';
-import { raw } from '@taylorgoolsby/sql-template-tag';
-import { RawValue } from '@taylorgoolsby/sql-template-tag';
-import { Sql } from '@taylorgoolsby/sql-template-tag';
+import { raw } from '@no-esm/sql-template-tag';
+import { RawValue } from '@no-esm/sql-template-tag';
+import { Sql } from '@no-esm/sql-template-tag';
 
 export { bulk }
 
