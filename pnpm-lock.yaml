@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@no-esm/sql-template-tag':
-        specifier: ^5.2.1
-        version: 5.2.1
+        specifier: ^5.2.2
+        version: 5.2.2
       undici:
         specifier: ^6.19.2
         version: 6.19.2
@@ -419,8 +419,8 @@ packages:
   '@microsoft/tsdoc@0.15.0':
     resolution: {integrity: sha512-HZpPoABogPvjeJOdzCOSJsXeL/SMCBgBZMVC3X3d7YYp2gf31MfxhUoYUNwf1ERPJOnQc0wkFn9trqI6ZEdZuA==}
 
-  '@no-esm/sql-template-tag@5.2.1':
-    resolution: {integrity: sha512-hZdnkcznjt3WyuFLVhkuR77asKZDz6dCZ7kUmt/QfXfXDWfipYEBEcok1bGAIlddfTdBX0zPX1/buEDxRgcKrA==}
+  '@no-esm/sql-template-tag@5.2.2':
+    resolution: {integrity: sha512-PaSMUjTFaLZfrXNjFbtfgy+kYY/nH8Lwq6yvr2cc68d77UUTpXo9XqpfveTqdUqVE4K3r66qCr5kcAAIWEZnXA==}
     engines: {node: '>=14'}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -3143,7 +3143,7 @@ snapshots:
 
   '@microsoft/tsdoc@0.15.0': {}
 
-  '@no-esm/sql-template-tag@5.2.1': {}
+  '@no-esm/sql-template-tag@5.2.2': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

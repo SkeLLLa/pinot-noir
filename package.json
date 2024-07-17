@@ -44,7 +44,7 @@
     "test:unit": "globstar --node -- node --no-warnings --import tsx --test \"test/**/*.spec.ts\""
   },
   "dependencies": {
-    "@no-esm/sql-template-tag": "^5.2.1",
+    "@no-esm/sql-template-tag": "^5.2.2",
     "undici": "^6.19.2"
   },
   "devDependencies": {
