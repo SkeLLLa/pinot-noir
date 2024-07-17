@@ -31,6 +31,21 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[queryOptions?](./pinot-noir.iqueryresult.queryoptions.md)
+
+</td><td>
+
+</td><td>
+
+string \| undefined
+
+</td><td>
+
+_(Optional)_
+
+</td></tr>
+<tr><td>
+
 [rows](./pinot-noir.iqueryresult.rows.md)
 
 </td><td>

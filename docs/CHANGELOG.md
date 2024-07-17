@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.2...v1.5.3) (2024-07-17)
+
+### 🛠 Fixes
+
+* add broker client tests ([d3fa452](https://github.com/SkeLLLa/pinot-noir/commit/d3fa4528404b5f8faf0d4ed5ddccb627090a5d20))
+
 ## [1.5.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.1...v1.5.2) (2024-07-17)
 
 ### 🛠 Fixes

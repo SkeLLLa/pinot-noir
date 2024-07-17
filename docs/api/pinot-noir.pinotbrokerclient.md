@@ -117,4 +117,15 @@ Description
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[toQueryOptions(options)](./pinot-noir.pinotbrokerclient.toqueryoptions.md)
+
+</td><td>
+
+`static`
+
+</td><td>
+
+</td></tr>
 </tbody></table>
