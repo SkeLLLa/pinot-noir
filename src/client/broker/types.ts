@@ -95,6 +95,7 @@ export interface IQueryResult<TRows = unknown> {
   rows: TRows;
   stats: IQueryStats;
   sql: string;
+  queryOptions?: string | undefined;
 }
 
 // TODO: add some codes

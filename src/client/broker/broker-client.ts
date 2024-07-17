@@ -20,7 +20,7 @@ export class PinotClient implements IPinotClient {
 
   private static ENDPOINTS = { sql: '/query/sql' };
 
-  private static toQueryOptions(
+  public static toQueryOptions(
     options?: IPinotQueryOptions,
   ): string | undefined {
     return options
@@ -43,13 +43,14 @@ export class PinotClient implements IPinotClient {
   ): Promise<IQueryResult<TResult[]>> {
     const { transport } = this.deps;
     const sql = SqlFormat.format(query.sql, query.values);
+    const queryOptions = PinotClient.toQueryOptions(options);
 
     const response = await transport.request<IBrokerResponse>({
       method: 'POST',
       path: PinotClient.ENDPOINTS.sql,
       body: JSON.stringify({
         sql,
-        queryOptions: PinotClient.toQueryOptions(options),
+        queryOptions,
         trace,
       }),
     });
@@ -103,6 +104,7 @@ export class PinotClient implements IPinotClient {
 
       return {
         sql,
+        queryOptions,
         rows: data,
         stats: {
           traceInfo,
@@ -135,7 +137,7 @@ export class PinotClient implements IPinotClient {
         cause: error as Error,
         data: {
           sql,
-          queryOptions: PinotClient.toQueryOptions(options),
+          queryOptions,
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
         },
