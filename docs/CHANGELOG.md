@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.4.0...v1.5.0) (2024-07-17)
+
+### 🚀 Features
+
+* use esm-free packages ([b4c8947](https://github.com/SkeLLLa/pinot-noir/commit/b4c89471f1bd9c9cead871aa8c7fb7cb3021a6c3))
+
 ## [1.4.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.3.2...v1.4.0) (2024-07-16)
 
 ### 🚀 Features
