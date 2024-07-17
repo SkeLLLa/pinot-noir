@@ -1,3 +1,9 @@
+## [1.5.4](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.3...v1.5.4) (2024-07-17)
+
+### 🛠 Fixes
+
+* include body in error ([72d41aa](https://github.com/SkeLLLa/pinot-noir/commit/72d41aa27f50a2e2049c7771b54cb421946863ca))
+
 ## [1.5.3](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.2...v1.5.3) (2024-07-17)
 
 ### 🛠 Fixes
