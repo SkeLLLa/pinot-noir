@@ -52,6 +52,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
 
     const response = await this.pool.request(reqOptions).catch((err: Error) => {
       throw new PinotError({
+        data: { body },
         message: `Pinot transport error: ${err.message}`,
         type: EPinotErrorType.TRANSPORT,
         cause: err,

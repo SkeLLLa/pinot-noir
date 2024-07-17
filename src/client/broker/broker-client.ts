@@ -65,7 +65,7 @@ export class PinotClient implements IPinotClient {
           first: response.resultTable?.rows?.slice(0, 3),
           last: response.resultTable?.rows?.slice(-3),
           sql,
-          queryOptions: PinotClient.toQueryOptions(options),
+          queryOptions,
         },
       });
     }
