@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.0...v1.5.1) (2024-07-17)
+
+### 🛠 Fixes
+
+* esm once again ([b6428da](https://github.com/SkeLLLa/pinot-noir/commit/b6428da2d4d196c94a865b0f389b169b6e099e40))
+
 ## [1.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.4.0...v1.5.0) (2024-07-17)
 
 ### 🚀 Features
