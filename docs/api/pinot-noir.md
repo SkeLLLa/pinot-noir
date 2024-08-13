@@ -43,6 +43,13 @@ Description
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[SqlUtils](./pinot-noir.sqlutils.md)
+
+</td><td>
+
+</td></tr>
 </tbody></table>
 
 ## Enumerations

@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.4...v1.6.0) (2024-08-13)
+
+### 🚀 Features
+
+* stringify sql with options ([ca1d8a0](https://github.com/SkeLLLa/pinot-noir/commit/ca1d8a092e5651ddd08f10c8cd09c2a85b767f06))
+
 ## [1.5.4](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.3...v1.5.4) (2024-07-17)
 
 ### 🛠 Fixes
