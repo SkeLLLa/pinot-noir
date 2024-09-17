@@ -37,7 +37,7 @@
     "build:node": "tsc -p tsconfig.build.json",
     "examples": "tsx examples/index.ts",
     "lint": "pnpm run lint:types && pnpm run lint:codestyle && pnpm run lint:packages",
-    "lint:codestyle": "eslint --fix",
+    "lint:codestyle": "eslint",
     "lint:packages": "pnpm audit --prod --audit-level=high",
     "lint:types": "tsc -p tsconfig.json",
     "release": "semantic-release",

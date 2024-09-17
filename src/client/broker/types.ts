@@ -305,9 +305,9 @@ export interface IPinotClient {
    * Execute pinot sql query
    *
    * @public
-   * @param query Sql query body
-   * @param options Query options
-   * @param trace Pass trace parameter to pinot
+   * @param query - Sql query body
+   * @param options - Query options
+   * @param trace - Pass trace parameter to pinot
    * @returns Result rows with stats
    */
   select<TResult>(
