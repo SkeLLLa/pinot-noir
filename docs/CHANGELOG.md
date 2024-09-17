@@ -1,3 +1,18 @@
+## [1.7.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.6.0...v1.7.0) (2024-09-17)
+
+### 🛠 Fixes
+
+* lint docs ([d5a7409](https://github.com/SkeLLLa/pinot-noir/commit/d5a74097db4f7bed514c9148dfb68cd1bf5facc5))
+* reduce bundle size ([092a9ab](https://github.com/SkeLLLa/pinot-noir/commit/092a9abf1d4429dca2d34159049508ffaa2a7caf))
+
+### 📔 Docs
+
+* add badges ([43b7270](https://github.com/SkeLLLa/pinot-noir/commit/43b7270cade720fab3da94b80ddb78513a1026d5))
+
+### 🚀 Features
+
+* add docs and eslint upgrade ([74ecd6c](https://github.com/SkeLLLa/pinot-noir/commit/74ecd6c3663fd7ddac3f47489d7840a3590bc279))
+
 ## [1.6.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.5.4...v1.6.0) (2024-08-13)
 
 ### 🚀 Features
