@@ -4,6 +4,8 @@
 
 ## IBrokerTransportRequestOptions interface
 
+Pinot broker HTTP request options
+
 **Signature:**
 
 ```typescript

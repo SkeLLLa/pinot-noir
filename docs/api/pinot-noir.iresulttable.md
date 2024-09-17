@@ -4,6 +4,8 @@
 
 ## IResultTable interface
 
+Pinot result table
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ Description
 
 </td><td>
 
+Schema that describes the schema of the response
+
 </td></tr>
 <tr><td>
 
@@ -53,6 +57,8 @@ Description
 (number \| string)\[\]\[\]
 
 </td><td>
+
+Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames
 
 </td></tr>
 </tbody></table>

@@ -4,6 +4,8 @@
 
 ## IPinotSqlException interface
 
+Apache Pinot exception
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ number
 
 </td><td>
 
+Error code
+
 </td></tr>
 <tr><td>
 
@@ -53,6 +57,8 @@ number
 string
 
 </td><td>
+
+Error message
 
 </td></tr>
 </tbody></table>

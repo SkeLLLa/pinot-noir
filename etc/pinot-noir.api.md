@@ -16,23 +16,20 @@ import { Sql } from '@no-esm/sql-template-tag';
 
 export { bulk }
 
-// @public (undocumented)
+// @public
 export const enum EBrokerErrorCode {
-    // (undocumented)
     UNKNOWN = 0
 }
 
-// @public (undocumented)
+// @public
 export const enum EBrokerTransportErrorCode {
-    // (undocumented)
     INVALID_RESPONSE = 1,
-    // (undocumented)
     UNKNOWN = 0
 }
 
 export { empty }
 
-// @public (undocumented)
+// @public
 export enum EPinotErrorType {
     // (undocumented)
     PARSE = 3,
@@ -44,7 +41,7 @@ export enum EPinotErrorType {
     UNKNOWN = 0
 }
 
-// @public (undocumented)
+// @public
 export enum ERROR_CODES {
     // (undocumented)
     ACCESS_DENIED_ERROR_CODE = 180,
@@ -114,79 +111,57 @@ export enum ERROR_CODES {
     UNKNOWN_ERROR_CODE = 1000
 }
 
-// @public (undocumented)
+// @public
 export interface IBrokerResponse {
     exceptions?: IPinoException[];
     // (undocumented)
     minConsumingFreshnessTimeMs: number;
     // (undocumented)
     numConsumingSegmentsQueried: number;
-    // (undocumented)
     numDocsScanned: number;
     numEntriesScannedPostFilter: number;
     numGroupsLimitReached: boolean;
-    // (undocumented)
     numSegmentsMatched: number;
-    // (undocumented)
     numSegmentsProcessed: number;
-    // (undocumented)
     numSegmentsQueried: number;
-    // (undocumented)
     numServersQueries: number;
-    // (undocumented)
     numServersResponded: number;
-    // (undocumented)
     resultTable: IResultTable;
-    // (undocumented)
     timeUsedMs: number;
-    // (undocumented)
     totalDocs: number;
-    // (undocumented)
     traceInfo: Record<string, string>;
 }
 
-// @public (undocumented)
+// @public
 export interface IBrokerTransportConfig {
-    // (undocumented)
     bodyTimeout?: number;
-    // (undocumented)
     brokerUrl: URL | string;
     connections?: number;
-    // (undocumented)
     keepAliveMaxTimeout?: number;
-    // (undocumented)
     keepAliveTimeout?: number;
-    // (undocumented)
     token: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query'> {
 }
 
-// @public (undocumented)
+// @public
 export interface IPinoException {
-    // (undocumented)
     errorCode: number;
-    // (undocumented)
     message: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IPinotBrokerTransport {
-    // (undocumented)
     close(): Promise<void>;
-    // (undocumented)
     request<TResponse = unknown>({ method, headers, path, body, query, }: IBrokerTransportRequestOptions): Promise<TResponse>;
-    // (undocumented)
     stats: IPinotPoolStats;
 }
 
-// @public (undocumented)
+// @public
 export interface IPinotClient {
-    // (undocumented)
     select<TResult>(query: Sql, options?: IPinotQueryOptions, trace?: boolean): Promise<IQueryResult<TResult[]>>;
-    // (undocumented)
     transportStats: IPinotPoolStats;
 }
 
@@ -206,11 +181,11 @@ export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>> {
     type?: EPinotErrorType;
 }
 
-// @public (undocumented)
+// @public
 export interface IPinotPoolStats extends PoolStats {
 }
 
-// @public (undocumented)
+// @public
 export interface IPinotQueryOptions {
     andScanReordering?: boolean;
     enableNullHandling?: boolean;
@@ -231,27 +206,22 @@ export interface IPinotQueryOptions {
     useStarTree?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export interface IPinotSqlException {
-    // (undocumented)
     errorCode: number;
-    // (undocumented)
     message: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IQueryResult<TRows = unknown> {
-    // (undocumented)
+    queryOptions?: string | undefined;
     rows: TRows;
-    // (undocumented)
     sql: string;
-    // (undocumented)
     stats: IQueryStats;
 }
 
-// @public (undocumented)
+// @public
 export interface IQueryStats {
-    // (undocumented)
     docs: {
         scanned: number;
         returned: number;
@@ -265,42 +235,34 @@ export interface IQueryStats {
     numEntriesScannedPostFilter: number;
     // (undocumented)
     numGroupsLimitReached: boolean;
-    // (undocumented)
     segments: {
         queried: number;
         processed: number;
         matched: number;
     };
-    // (undocumented)
     server: {
         queries: number;
         responded: number;
     };
-    // (undocumented)
     totalTimeMs: number;
-    // (undocumented)
     traceInfo: Record<string, string>;
 }
 
-// @public (undocumented)
+// @public
 export interface IResponseSchema {
-    // (undocumented)
     columnDataTypes: string[];
-    // (undocumented)
     columnNames: string[];
 }
 
-// @public (undocumented)
+// @public
 export interface IResultTable {
-    // (undocumented)
     dataSchema: IResponseSchema;
-    // (undocumented)
     rows: (number | string)[][];
 }
 
 export { join }
 
-// @public (undocumented)
+// @public
 export class PinotBrokerClient implements IPinotClient {
     constructor(deps: {
         transport: IPinotBrokerTransport;
@@ -309,22 +271,18 @@ export class PinotBrokerClient implements IPinotClient {
     protected readonly deps: {
         transport: IPinotBrokerTransport;
     };
-    // (undocumented)
     select<TResult>(query: Sql, options?: IPinotQueryOptions, trace?: boolean): Promise<IQueryResult<TResult[]>>;
-    // (undocumented)
+    static toQueryOptions(options?: IPinotQueryOptions): string | undefined;
     get transportStats(): IPinotPoolStats;
 }
 
-// @public (undocumented)
+// @public
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     constructor({ brokerUrl, token, bodyTimeout, connections, keepAliveMaxTimeout, }: IBrokerTransportConfig);
-    // (undocumented)
     close(): Promise<void>;
     // (undocumented)
     protected readonly pool: Pool;
-    // (undocumented)
     request<TResponse = unknown>({ method, headers, path, body, query, }: IBrokerTransportRequestOptions): Promise<TResponse>;
-    // (undocumented)
     get stats(): IPinotPoolStats;
     // (undocumented)
     protected readonly token: string;
@@ -349,7 +307,7 @@ export { RawValue }
 
 export { Sql }
 
-// @public (undocumented)
+// @public
 export const sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql;
 
 // @public (undocumented)
@@ -367,9 +325,7 @@ export class SqlFormat {
     // (undocumented)
     static format(sql: string, values: unknown[] | null | undefined, stringifyObjects?: boolean, timeZone?: string): string;
     // (undocumented)
-    static objectToValues(object: {
-        [key: string]: unknown;
-    }, timeZone?: string): string;
+    static objectToValues(object: Record<string, unknown>, timeZone?: string): string;
     // (undocumented)
     static raw(sql: string): {
         toSqlFormat: () => string;
@@ -378,7 +334,13 @@ export class SqlFormat {
     static zeroPad(number: number, length: number): string;
 }
 
-// @public (undocumented)
+// @public
+export class SqlUtils {
+    static formatOptions(options?: IPinotQueryOptions): string;
+    static stringifyQuery(query: Sql, options?: IPinotQueryOptions): string;
+}
+
+// @public
 export type TPinotDataType = 'INT' | 'LONG' | 'FLOAT' | 'DOUBLE' | 'BIG_DECIMAL' | 'BOOLEAN' | 'TIMESTAMP' | 'STRING' | 'JSON' | 'BYTES';
 
 // (No @packageDocumentation comment for this package)

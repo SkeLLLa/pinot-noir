@@ -4,6 +4,12 @@
 
 ## IBrokerResponse.numSegmentsQueried property
 
+The total number of segmentsQueried for a query. May be less than the total number of segments if the broker applies optimizations.
+
+The broker decides how many segments to query on each server, based on broker pruning logic. The server decides how many of these segments to actually look at, based on server pruning logic. After processing segments for a query, fewer may have the matching records.
+
+In general, `numSegmentsQueried >= numSegmentsProcessed >= numSegmentsMatched`<!-- -->.
+
 **Signature:**
 
 ```typescript

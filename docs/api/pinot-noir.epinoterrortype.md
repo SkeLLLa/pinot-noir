@@ -4,6 +4,8 @@
 
 ## EPinotErrorType enum
 
+Pinot error types
+
 **Signature:**
 
 ```typescript

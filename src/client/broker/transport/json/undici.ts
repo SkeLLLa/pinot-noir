@@ -8,6 +8,11 @@ import {
   type IPinotBrokerTransport,
 } from '../types';
 
+/**
+ * Pinot broker JSON transport based on "undici" http client.
+ *
+ * @public
+ */
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   protected readonly pool: Pool;
   protected readonly token: string;
@@ -28,6 +33,14 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     });
     this.token = token;
   }
+
+  /**
+   * Perform HTTP request to pinot
+   *
+   * @public
+   * @param param0 - Request options
+   * @returns Pinot response
+   */
 
   async request<TResponse = unknown>({
     method = 'POST',
@@ -64,8 +77,9 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       let body: string | undefined;
       try {
         body = await response.body.text();
-      } catch (error) {
-        // do nothing
+      } catch {
+        // failed to parse body
+        body = undefined;
       }
 
       throw new PinotError({
@@ -103,10 +117,16 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     }
   }
 
+  /**
+   * Closes connection to pinot broker
+   */
   async close(): Promise<void> {
     return this.pool.close();
   }
 
+  /**
+   * HTTP pool statitstics
+   */
   get stats(): IPinotPoolStats {
     return this.pool.stats;
   }

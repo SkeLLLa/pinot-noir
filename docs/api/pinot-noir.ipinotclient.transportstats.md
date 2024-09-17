@@ -4,6 +4,8 @@
 
 ## IPinotClient.transportStats property
 
+Transport stats.
+
 **Signature:**
 
 ```typescript

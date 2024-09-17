@@ -4,6 +4,8 @@
 
 ## IBrokerTransportConfig.bodyTimeout property
 
+The timeout after which a request will time out, in milliseconds
+
 **Signature:**
 
 ```typescript

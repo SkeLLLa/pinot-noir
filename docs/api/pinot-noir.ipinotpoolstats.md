@@ -4,6 +4,8 @@
 
 ## IPinotPoolStats interface
 
+Pinot transport pool statistics
+
 **Signature:**
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## IQueryStats.traceInfo property
 
+Tracing info
+
 **Signature:**
 
 ```typescript

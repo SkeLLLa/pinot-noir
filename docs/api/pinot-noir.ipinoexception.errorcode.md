@@ -4,6 +4,8 @@
 
 ## IPinoException.errorCode property
 
+Pinot error code
+
 **Signature:**
 
 ```typescript

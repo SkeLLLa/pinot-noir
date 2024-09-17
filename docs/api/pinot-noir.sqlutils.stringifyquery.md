@@ -4,6 +4,8 @@
 
 ## SqlUtils.stringifyQuery() method
 
+Compile and transform sql query with options into string. Might be helpful for logging and copy-paste debugging.
+
 **Signature:**
 
 ```typescript
@@ -35,6 +37,8 @@ Sql
 
 </td><td>
 
+Pinot sql query
+
 </td></tr>
 <tr><td>
 
@@ -46,10 +50,12 @@ options
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Pinot query options
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
 string
+
+Serialized query string

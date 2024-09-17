@@ -4,6 +4,8 @@
 
 ## IQueryResult.rows property
 
+Data rows
+
 **Signature:**
 
 ```typescript

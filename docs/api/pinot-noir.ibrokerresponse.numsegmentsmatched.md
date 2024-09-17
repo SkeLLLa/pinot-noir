@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.numSegmentsMatched property
 
+The number of segments processed with at least one document matched in the query response.
+
 **Signature:**
 
 ```typescript

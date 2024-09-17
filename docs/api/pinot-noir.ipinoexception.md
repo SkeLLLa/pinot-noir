@@ -4,6 +4,8 @@
 
 ## IPinoException interface
 
+Pinot exception
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ number
 
 </td><td>
 
+Pinot error code
+
 </td></tr>
 <tr><td>
 
@@ -53,6 +57,8 @@ number
 string
 
 </td><td>
+
+Error message
 
 </td></tr>
 </tbody></table>

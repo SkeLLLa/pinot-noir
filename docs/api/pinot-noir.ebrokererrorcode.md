@@ -4,6 +4,8 @@
 
 ## EBrokerErrorCode enum
 
+Broker error codes
+
 **Signature:**
 
 ```typescript
@@ -34,6 +36,8 @@ UNKNOWN
 `0`
 
 </td><td>
+
+Unknown
 
 </td></tr>
 </tbody></table>

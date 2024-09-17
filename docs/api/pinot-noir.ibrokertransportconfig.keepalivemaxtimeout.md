@@ -4,6 +4,8 @@
 
 ## IBrokerTransportConfig.keepAliveMaxTimeout property
 
+The maximum allowed `keepAliveTimeout`
+
 **Signature:**
 
 ```typescript

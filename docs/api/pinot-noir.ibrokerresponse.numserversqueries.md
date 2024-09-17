@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.numServersQueries property
 
+Represents the number of servers queried by the broker (may be less than the total number of servers since the broker can apply some optimizations to minimize the number of servers).
+
 **Signature:**
 
 ```typescript

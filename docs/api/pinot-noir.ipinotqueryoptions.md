@@ -4,6 +4,8 @@
 
 ## IPinotQueryOptions interface
 
+Query options
+
 **Signature:**
 
 ```typescript

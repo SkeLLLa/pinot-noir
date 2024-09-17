@@ -4,7 +4,7 @@
 
 ## IBrokerResponse.exceptions property
 
-Will contain the stack trace if there is any exception processing the query.
+Query exceptions. Will contain the stack trace if there is any exception processing the query.
 
 **Signature:**
 

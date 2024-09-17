@@ -4,6 +4,8 @@
 
 ## IResponseSchema.columnDataTypes property
 
+Type for each column. Can be used for proper data parsing.
+
 **Signature:**
 
 ```typescript

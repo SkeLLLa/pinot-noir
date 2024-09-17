@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.numDocsScanned property
 
+Total number of docs scanned
+
 **Signature:**
 
 ```typescript

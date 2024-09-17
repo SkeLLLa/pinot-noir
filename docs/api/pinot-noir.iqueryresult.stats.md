@@ -4,6 +4,8 @@
 
 ## IQueryResult.stats property
 
+Query stats
+
 **Signature:**
 
 ```typescript

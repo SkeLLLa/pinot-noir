@@ -4,6 +4,8 @@
 
 ## IPinotBrokerTransport.stats property
 
+Pool statitstics (number of in-flight requests and so on)
+
 **Signature:**
 
 ```typescript

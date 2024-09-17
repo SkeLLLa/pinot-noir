@@ -4,6 +4,8 @@
 
 ## IQueryStats.segments property
 
+Segment stats
+
 **Signature:**
 
 ```typescript

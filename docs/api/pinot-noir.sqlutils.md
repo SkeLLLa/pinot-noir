@@ -4,6 +4,8 @@
 
 ## SqlUtils class
 
+Sql utils class.
+
 **Signature:**
 
 ```typescript
@@ -35,6 +37,8 @@ Description
 
 </td><td>
 
+Format pinot options to make them embeddable into query.
+
 </td></tr>
 <tr><td>
 
@@ -45,6 +49,8 @@ Description
 `static`
 
 </td><td>
+
+Compile and transform sql query with options into string. Might be helpful for logging and copy-paste debugging.
 
 </td></tr>
 </tbody></table>

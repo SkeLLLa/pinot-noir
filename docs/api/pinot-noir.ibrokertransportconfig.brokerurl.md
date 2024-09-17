@@ -4,6 +4,8 @@
 
 ## IBrokerTransportConfig.brokerUrl property
 
+Broker URL
+
 **Signature:**
 
 ```typescript

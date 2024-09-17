@@ -4,6 +4,8 @@
 
 ## IPinotBrokerTransport interface
 
+Pinot broker transport interface. Implement it create your own.
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ Description
 
 </td><td>
 
+Pool statitstics (number of in-flight requests and so on)
+
 </td></tr>
 </tbody></table>
 
@@ -61,12 +65,16 @@ Description
 
 </td><td>
 
+Closes connection to pinot broker
+
 </td></tr>
 <tr><td>
 
 [request({ method, headers, path, body, query, })](./pinot-noir.ipinotbrokertransport.request.md)
 
 </td><td>
+
+Perform HTTP request to pinot
 
 </td></tr>
 </tbody></table>
