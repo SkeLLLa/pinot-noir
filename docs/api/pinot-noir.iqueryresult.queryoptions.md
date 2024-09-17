@@ -4,6 +4,8 @@
 
 ## IQueryResult.queryOptions property
 
+Query options
+
 **Signature:**
 
 ```typescript

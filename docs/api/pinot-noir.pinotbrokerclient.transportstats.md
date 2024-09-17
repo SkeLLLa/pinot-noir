@@ -4,6 +4,8 @@
 
 ## PinotBrokerClient.transportStats property
 
+Transport stats.
+
 **Signature:**
 
 ```typescript

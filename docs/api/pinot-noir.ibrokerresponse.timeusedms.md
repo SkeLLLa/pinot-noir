@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.timeUsedMs property
 
+Total time taken as seen by the broker before sending the response back to the client.
+
 **Signature:**
 
 ```typescript

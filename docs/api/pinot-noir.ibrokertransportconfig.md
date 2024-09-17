@@ -4,6 +4,8 @@
 
 ## IBrokerTransportConfig interface
 
+Pinot broker transport config options
+
 **Signature:**
 
 ```typescript
@@ -41,7 +43,7 @@ number
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ The timeout after which a request will time out, in milliseconds
 
 </td></tr>
 <tr><td>
@@ -55,6 +57,8 @@ _(Optional)_
 URL \| string
 
 </td><td>
+
+Broker URL
 
 </td></tr>
 <tr><td>
@@ -84,7 +88,7 @@ number
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ The maximum allowed `keepAliveTimeout`
 
 </td></tr>
 <tr><td>
@@ -99,7 +103,7 @@ number
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Connection keep-alive timeout
 
 </td></tr>
 <tr><td>
@@ -113,6 +117,8 @@ _(Optional)_
 string
 
 </td><td>
+
+Pinot API access token
 
 </td></tr>
 </tbody></table>

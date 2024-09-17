@@ -4,6 +4,8 @@
 
 ## TPinotDataType type
 
+Available Pinot data types
+
 **Signature:**
 
 ```typescript

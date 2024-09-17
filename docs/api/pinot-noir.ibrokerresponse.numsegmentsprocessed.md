@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.numSegmentsProcessed property
 
+The number of segment operators used to process segments. Indicates the effectiveness of the pruning logic. For more information, see
+
 **Signature:**
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## sql() function
 
+SQL template tag
+
 **Signature:**
 
 ```typescript
@@ -35,6 +37,8 @@ readonly string\[\]
 
 </td><td>
 
+sql template
+
 </td></tr>
 <tr><td>
 
@@ -46,8 +50,12 @@ readonly RawValue\[\]
 
 </td><td>
 
+template values
+
 </td></tr>
 </tbody></table>
 **Returns:**
 
 Sql
+
+SQL statement

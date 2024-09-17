@@ -4,6 +4,8 @@
 
 ## IQueryResult interface
 
+Query result
+
 **Signature:**
 
 ```typescript
@@ -41,7 +43,7 @@ string \| undefined
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Query options
 
 </td></tr>
 <tr><td>
@@ -56,6 +58,8 @@ TRows
 
 </td><td>
 
+Data rows
+
 </td></tr>
 <tr><td>
 
@@ -69,6 +73,8 @@ string
 
 </td><td>
 
+Compiled SQL query
+
 </td></tr>
 <tr><td>
 
@@ -81,6 +87,8 @@ string
 [IQueryStats](./pinot-noir.iquerystats.md)
 
 </td><td>
+
+Query stats
 
 </td></tr>
 </tbody></table>

@@ -4,6 +4,8 @@
 
 ## ERROR_CODES enum
 
+Pinot error codes
+
 **Signature:**
 
 ```typescript

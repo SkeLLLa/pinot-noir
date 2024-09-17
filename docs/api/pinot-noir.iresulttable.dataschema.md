@@ -4,6 +4,8 @@
 
 ## IResultTable.dataSchema property
 
+Schema that describes the schema of the response
+
 **Signature:**
 
 ```typescript

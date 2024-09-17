@@ -4,6 +4,8 @@
 
 ## IQueryStats.docs property
 
+Docs stats
+
 **Signature:**
 
 ```typescript

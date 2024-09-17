@@ -4,6 +4,8 @@
 
 ## PinotBrokerJSONTransport.stats property
 
+HTTP pool statitstics
+
 **Signature:**
 
 ```typescript

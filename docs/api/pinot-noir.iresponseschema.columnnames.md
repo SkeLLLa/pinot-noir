@@ -4,6 +4,8 @@
 
 ## IResponseSchema.columnNames property
 
+Result column names
+
 **Signature:**
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.totalDocs property
 
+Number of documents/records in the table.
+
 **Signature:**
 
 ```typescript

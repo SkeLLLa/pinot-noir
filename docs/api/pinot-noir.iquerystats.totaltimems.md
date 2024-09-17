@@ -4,6 +4,8 @@
 
 ## IQueryStats.totalTimeMs property
 
+Query time in ms
+
 **Signature:**
 
 ```typescript

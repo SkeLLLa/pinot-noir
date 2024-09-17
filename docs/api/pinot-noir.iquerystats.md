@@ -4,6 +4,8 @@
 
 ## IQueryStats interface
 
+Pinot query statistics. Just converted and categorized pinot response stats
+
 **Signature:**
 
 ```typescript
@@ -40,6 +42,8 @@ Description
 { scanned: number; returned: number; total: number; }
 
 </td><td>
+
+Docs stats
 
 </td></tr>
 <tr><td>
@@ -106,6 +110,8 @@ boolean
 
 </td><td>
 
+Segment stats
+
 </td></tr>
 <tr><td>
 
@@ -118,6 +124,8 @@ boolean
 { queries: number; responded: number; }
 
 </td><td>
+
+Server stats
 
 </td></tr>
 <tr><td>
@@ -132,6 +140,8 @@ number
 
 </td><td>
 
+Query time in ms
+
 </td></tr>
 <tr><td>
 
@@ -144,6 +154,8 @@ number
 Record&lt;string, string&gt;
 
 </td><td>
+
+Tracing info
 
 </td></tr>
 </tbody></table>

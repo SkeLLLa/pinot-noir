@@ -4,6 +4,8 @@
 
 ## SqlUtils.formatOptions() method
 
+Format pinot options to make them embeddable into query.
+
 **Signature:**
 
 ```typescript
@@ -35,10 +37,12 @@ options
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Pinot query options
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
 string
+
+Serialized options

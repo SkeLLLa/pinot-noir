@@ -4,6 +4,8 @@
 
 ## PinotBrokerJSONTransport class
 
+Pinot broker JSON transport based on "undici" http client.
+
 **Signature:**
 
 ```typescript
@@ -90,6 +92,8 @@ Pool
 
 </td><td>
 
+HTTP pool statitstics
+
 </td></tr>
 <tr><td>
 
@@ -133,6 +137,8 @@ Description
 
 </td><td>
 
+Closes connection to pinot broker
+
 </td></tr>
 <tr><td>
 
@@ -141,6 +147,8 @@ Description
 </td><td>
 
 </td><td>
+
+Perform HTTP request to pinot
 
 </td></tr>
 </tbody></table>

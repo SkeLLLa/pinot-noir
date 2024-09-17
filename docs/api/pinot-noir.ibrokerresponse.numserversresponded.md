@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.numServersResponded property
 
+This should be equal to the numServersQueried. If this is not the same, then one of more servers might have timed out. If numServersQueried != numServersResponded, the results can be considered partial and clients can retry the query with exponential back off.
+
 **Signature:**
 
 ```typescript

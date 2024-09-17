@@ -8,6 +8,14 @@ export {
   type RawValue,
   type Sql,
 } from '@no-esm/sql-template-tag';
+
+/**
+ * SQL template tag
+ *
+ * @param strings - sql template
+ * @param values - template values
+ * @returns SQL statement
+ */
 export const sql = (
   strings: readonly string[],
   ...values: readonly RawValue[]

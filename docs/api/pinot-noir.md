@@ -21,12 +21,16 @@ Description
 
 </td><td>
 
+Pinot DB client.
+
 </td></tr>
 <tr><td>
 
 [PinotBrokerJSONTransport](./pinot-noir.pinotbrokerjsontransport.md)
 
 </td><td>
+
+Pinot broker JSON transport based on "undici" http client.
 
 </td></tr>
 <tr><td>
@@ -49,6 +53,8 @@ Description
 
 </td><td>
 
+Sql utils class.
+
 </td></tr>
 </tbody></table>
 
@@ -69,12 +75,16 @@ Description
 
 </td><td>
 
+Broker error codes
+
 </td></tr>
 <tr><td>
 
 [EBrokerTransportErrorCode](./pinot-noir.ebrokertransporterrorcode.md)
 
 </td><td>
+
+Broker error codes
 
 </td></tr>
 <tr><td>
@@ -83,12 +93,16 @@ Description
 
 </td><td>
 
+Pinot error types
+
 </td></tr>
 <tr><td>
 
 [ERROR_CODES](./pinot-noir.error_codes.md)
 
 </td><td>
+
+Pinot error codes
 
 </td></tr>
 </tbody></table>
@@ -110,6 +124,8 @@ Description
 
 </td><td>
 
+SQL template tag
+
 </td></tr>
 </tbody></table>
 
@@ -130,12 +146,16 @@ Description
 
 </td><td>
 
+Pinot broker response
+
 </td></tr>
 <tr><td>
 
 [IBrokerTransportConfig](./pinot-noir.ibrokertransportconfig.md)
 
 </td><td>
+
+Pinot broker transport config options
 
 </td></tr>
 <tr><td>
@@ -144,12 +164,16 @@ Description
 
 </td><td>
 
+Pinot broker HTTP request options
+
 </td></tr>
 <tr><td>
 
 [IPinoException](./pinot-noir.ipinoexception.md)
 
 </td><td>
+
+Pinot exception
 
 </td></tr>
 <tr><td>
@@ -158,12 +182,16 @@ Description
 
 </td><td>
 
+Pinot broker transport interface. Implement it create your own.
+
 </td></tr>
 <tr><td>
 
 [IPinotClient](./pinot-noir.ipinotclient.md)
 
 </td><td>
+
+Pinot client interface.
 
 </td></tr>
 <tr><td>
@@ -179,12 +207,16 @@ Description
 
 </td><td>
 
+Pinot transport pool statistics
+
 </td></tr>
 <tr><td>
 
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
 
 </td><td>
+
+Query options
 
 </td></tr>
 <tr><td>
@@ -193,12 +225,16 @@ Description
 
 </td><td>
 
+Apache Pinot exception
+
 </td></tr>
 <tr><td>
 
 [IQueryResult](./pinot-noir.iqueryresult.md)
 
 </td><td>
+
+Query result
 
 </td></tr>
 <tr><td>
@@ -207,6 +243,8 @@ Description
 
 </td><td>
 
+Pinot query statistics. Just converted and categorized pinot response stats
+
 </td></tr>
 <tr><td>
 
@@ -214,12 +252,16 @@ Description
 
 </td><td>
 
+Response data schema
+
 </td></tr>
 <tr><td>
 
 [IResultTable](./pinot-noir.iresulttable.md)
 
 </td><td>
+
+Pinot result table
 
 </td></tr>
 </tbody></table>
@@ -240,6 +282,8 @@ Description
 [TPinotDataType](./pinot-noir.tpinotdatatype.md)
 
 </td><td>
+
+Available Pinot data types
 
 </td></tr>
 </tbody></table>

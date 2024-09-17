@@ -4,6 +4,8 @@
 
 ## IQueryResult.sql property
 
+Compiled SQL query
+
 **Signature:**
 
 ```typescript

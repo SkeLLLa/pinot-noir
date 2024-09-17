@@ -4,6 +4,8 @@
 
 ## IBrokerResponse.resultTable property
 
+Result table
+
 **Signature:**
 
 ```typescript

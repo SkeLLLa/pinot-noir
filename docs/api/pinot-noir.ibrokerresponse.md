@@ -4,6 +4,8 @@
 
 ## IBrokerResponse interface
 
+Pinot broker response
+
 **Signature:**
 
 ```typescript
@@ -41,7 +43,7 @@ Description
 
 </td><td>
 
-_(Optional)_ Will contain the stack trace if there is any exception processing the query.
+_(Optional)_ Query exceptions. Will contain the stack trace if there is any exception processing the query.
 
 </td></tr>
 <tr><td>
@@ -81,6 +83,8 @@ number
 number
 
 </td><td>
+
+Total number of docs scanned
 
 </td></tr>
 <tr><td>
@@ -125,6 +129,8 @@ number
 
 </td><td>
 
+The number of segments processed with at least one document matched in the query response.
+
 </td></tr>
 <tr><td>
 
@@ -137,6 +143,8 @@ number
 number
 
 </td><td>
+
+The number of segment operators used to process segments. Indicates the effectiveness of the pruning logic. For more information, see
 
 </td></tr>
 <tr><td>
@@ -151,6 +159,12 @@ number
 
 </td><td>
 
+The total number of segmentsQueried for a query. May be less than the total number of segments if the broker applies optimizations.
+
+The broker decides how many segments to query on each server, based on broker pruning logic. The server decides how many of these segments to actually look at, based on server pruning logic. After processing segments for a query, fewer may have the matching records.
+
+In general, `numSegmentsQueried >= numSegmentsProcessed >= numSegmentsMatched`<!-- -->.
+
 </td></tr>
 <tr><td>
 
@@ -163,6 +177,8 @@ number
 number
 
 </td><td>
+
+Represents the number of servers queried by the broker (may be less than the total number of servers since the broker can apply some optimizations to minimize the number of servers).
 
 </td></tr>
 <tr><td>
@@ -177,6 +193,8 @@ number
 
 </td><td>
 
+This should be equal to the numServersQueried. If this is not the same, then one of more servers might have timed out. If numServersQueried != numServersResponded, the results can be considered partial and clients can retry the query with exponential back off.
+
 </td></tr>
 <tr><td>
 
@@ -189,6 +207,8 @@ number
 [IResultTable](./pinot-noir.iresulttable.md)
 
 </td><td>
+
+Result table
 
 </td></tr>
 <tr><td>
@@ -203,6 +223,8 @@ number
 
 </td><td>
 
+Total time taken as seen by the broker before sending the response back to the client.
+
 </td></tr>
 <tr><td>
 
@@ -216,6 +238,8 @@ number
 
 </td><td>
 
+Number of documents/records in the table.
+
 </td></tr>
 <tr><td>
 
@@ -228,6 +252,8 @@ number
 Record&lt;string, string&gt;
 
 </td><td>
+
+Query trace, if the query was executed with `trace`
 
 </td></tr>
 </tbody></table>

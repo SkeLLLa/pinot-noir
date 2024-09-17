@@ -7,9 +7,7 @@
 **Signature:**
 
 ```typescript
-static objectToValues(object: {
-        [key: string]: unknown;
-    }, timeZone?: string): string;
+static objectToValues(object: Record<string, unknown>, timeZone?: string): string;
 ```
 
 ## Parameters
@@ -33,7 +31,7 @@ object
 
 </td><td>
 
-{ \[key: string\]: unknown; }
+Record&lt;string, unknown&gt;
 
 </td><td>
 

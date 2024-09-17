@@ -11,6 +11,11 @@ import {
   type IQueryResult,
 } from './types';
 
+/**
+ * Pinot DB client.
+ *
+ * @public
+ */
 export class PinotClient implements IPinotClient {
   constructor(
     protected readonly deps: {
@@ -18,8 +23,22 @@ export class PinotClient implements IPinotClient {
     },
   ) {}
 
+  /**
+   * Standard pinot sql endpoint
+   *
+   * @private
+   */
   private static ENDPOINTS = { sql: '/query/sql' };
 
+  /**
+   * Converts and serializes query options to pinot supported fromat
+   *
+   * @public
+   * @static
+   *
+   * @param options - Query options
+   * @returns Seriialized options
+   */
   public static toQueryOptions(
     options?: IPinotQueryOptions,
   ): string | undefined {
@@ -32,10 +51,22 @@ export class PinotClient implements IPinotClient {
       : undefined;
   }
 
+  /**
+   * Transport stats.
+   */
   public get transportStats(): IPinotPoolStats {
     return this.deps.transport.stats;
   }
 
+  /**
+   * Execute pinot sql query
+   *
+   * @public
+   * @param query - Sql query body
+   * @param options - Query options
+   * @param trace - Pass trace parameter to pinot
+   * @returns Result rows with stats
+   */
   public async select<TResult>(
     query: Sql,
     options?: IPinotQueryOptions,

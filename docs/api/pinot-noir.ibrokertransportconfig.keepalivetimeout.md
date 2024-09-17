@@ -4,6 +4,8 @@
 
 ## IBrokerTransportConfig.keepAliveTimeout property
 
+Connection keep-alive timeout
+
 **Signature:**
 
 ```typescript

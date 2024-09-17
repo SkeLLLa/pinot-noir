@@ -4,6 +4,8 @@
 
 ## IResponseSchema interface
 
+Response data schema
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ string\[\]
 
 </td><td>
 
+Type for each column. Can be used for proper data parsing.
+
 </td></tr>
 <tr><td>
 
@@ -53,6 +57,8 @@ string\[\]
 string\[\]
 
 </td><td>
+
+Result column names
 
 </td></tr>
 </tbody></table>

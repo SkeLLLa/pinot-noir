@@ -1,3 +1,6 @@
+/**
+ * Pinot error types
+ */
 export enum EPinotErrorType {
   UNKNOWN,
   TRANSPORT,
@@ -5,6 +8,9 @@ export enum EPinotErrorType {
   PARSE,
 }
 
+/**
+ * Pinot error codes
+ */
 export enum ERROR_CODES {
   JSON_PARSING_ERROR_CODE = 100,
   JSON_COMPILATION_ERROR_CODE = 101,
@@ -50,8 +56,17 @@ export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>> {
   data?: TData;
 }
 
+/**
+ * Apache Pinot exception
+ */
 export interface IPinotSqlException {
+  /**
+   * Error message
+   */
   message: string;
+  /**
+   * Error code
+   */
   errorCode: number;
 }
 
@@ -74,7 +89,9 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
     this.type = type;
     this.code =
       type * 1000 +
-      (exceptions?.length === 1 && !code ? exceptions[0]!.errorCode : code);
+      (exceptions?.length === 1 && exceptions[0] && !code
+        ? exceptions[0].errorCode
+        : code);
     this.cause = cause;
     this.exceptions = exceptions;
     this.data = data;

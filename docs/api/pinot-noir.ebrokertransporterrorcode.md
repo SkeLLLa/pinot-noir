@@ -4,6 +4,8 @@
 
 ## EBrokerTransportErrorCode enum
 
+Broker error codes
+
 **Signature:**
 
 ```typescript
@@ -35,6 +37,8 @@ INVALID_RESPONSE
 
 </td><td>
 
+Invalid response from pinot
+
 </td></tr>
 <tr><td>
 
@@ -45,6 +49,8 @@ UNKNOWN
 `0`
 
 </td><td>
+
+Unknown code
 
 </td></tr>
 </tbody></table>

@@ -3,7 +3,7 @@ export class SqlFormat {
   private static QUAL_GLOBAL_REGEXP = /\./g;
   // eslint-disable-next-line no-control-regex
   private static CHARS_GLOBAL_REGEXP = /[\0\b\t\n\r\x1a"'\\]/g;
-  private static CHARS_ESCAPE_MAP: { [key: string]: string } = {
+  private static CHARS_ESCAPE_MAP: Record<string, string> = {
     '\0': '\\0',
     '\b': '\\b',
     '\t': '\\t',
@@ -56,7 +56,7 @@ export class SqlFormat {
           return SqlFormat.escapeString(val.toString());
         } else {
           return SqlFormat.objectToValues(
-            val as { [key: string]: unknown },
+            val as Record<string, unknown>,
             timeZone,
           );
         }
@@ -181,7 +181,7 @@ export class SqlFormat {
   }
 
   static objectToValues(
-    object: { [key: string]: unknown },
+    object: Record<string, unknown>,
     timeZone?: string,
   ): string {
     return Object.keys(object)
@@ -243,7 +243,7 @@ export class SqlFormat {
     const match = tz.match(/([+\-\s])(\d{2}):?(\d{2})?/);
     if (match) {
       const sign = match[1] === '-' ? -1 : 1;
-      const hours = parseInt(match[2]!, 10);
+      const hours = parseInt(match[2] ?? '0', 10);
       const minutes = match[3] ? parseInt(match[3], 10) : 0;
       return sign * (hours + minutes / 60) * 60;
     }

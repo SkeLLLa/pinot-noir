@@ -4,6 +4,8 @@
 
 ## IPinotSqlException.errorCode property
 
+Error code
+
 **Signature:**
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## PinotBrokerClient class
 
+Pinot DB client.
+
 **Signature:**
 
 ```typescript
@@ -90,6 +92,8 @@ Description
 
 </td><td>
 
+Transport stats.
+
 </td></tr>
 </tbody></table>
 
@@ -116,6 +120,8 @@ Description
 
 </td><td>
 
+Execute pinot sql query
+
 </td></tr>
 <tr><td>
 
@@ -126,6 +132,8 @@ Description
 `static`
 
 </td><td>
+
+Converts and serializes query options to pinot supported fromat
 
 </td></tr>
 </tbody></table>

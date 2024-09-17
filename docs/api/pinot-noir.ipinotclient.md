@@ -4,6 +4,8 @@
 
 ## IPinotClient interface
 
+Pinot client interface.
+
 **Signature:**
 
 ```typescript
@@ -41,6 +43,8 @@ Description
 
 </td><td>
 
+Transport stats.
+
 </td></tr>
 </tbody></table>
 
@@ -60,6 +64,8 @@ Description
 [select(query, options, trace)](./pinot-noir.ipinotclient.select.md)
 
 </td><td>
+
+Execute pinot sql query
 
 </td></tr>
 </tbody></table>

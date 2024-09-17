@@ -1,25 +1,70 @@
 import type PoolStats from 'undici/types/pool-stats';
 import type { Sql } from '../../utils/tag';
 
+/**
+ * Pinot transport pool statistics
+ *
+ * @public
+ */
 export interface IPinotPoolStats extends PoolStats {
   //
 }
 
+/**
+ * Response data schema
+ *
+ * @public
+ */
+
 export interface IResponseSchema {
+  /**
+   * Type for each column. Can be used for proper data parsing.
+   */
   columnDataTypes: string[];
+  /**
+   * Result column names
+   **/
   columnNames: string[];
 }
 
+/**
+ * Pinot result table
+ *
+ * @public
+ */
 export interface IResultTable {
+  /**
+   * Schema that describes the schema of the response
+   */
   dataSchema: IResponseSchema;
+  /**
+   * Actual content with values.
+   * This is an array of arrays.
+   * The number of rows depends on the limit value in the query.
+   * The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames
+   */
   rows: (number | string)[][];
 }
 
+/**
+ * Pinot exception
+ *
+ * @public
+ */
 export interface IPinoException {
+  /**
+   * Pinot error code
+   */
   errorCode: number;
+  /**
+   * Error message
+   */
   message: string;
 }
 
+/**
+ * Available Pinot data types
+ */
 export type TPinotDataType =
   | 'INT'
   | 'LONG'
@@ -32,19 +77,62 @@ export type TPinotDataType =
   | 'JSON'
   | 'BYTES';
 
+/**
+ * Pinot broker response
+ *
+ * @public
+ * @see {@link https://docs.pinot.apache.org/users/api/querying-pinot-using-standard-sql/response-format | pinot response format docs} for detailed description
+ */
 export interface IBrokerResponse {
+  /**
+   * Result table
+   */
   resultTable: IResultTable;
   /**
+   * Query exceptions.
    * Will contain the stack trace if there is any exception processing the query.
    */
   exceptions?: IPinoException[];
+  /**
+   * Query trace, if the query was executed with `trace`
+   */
   traceInfo: Record<string, string>;
+  /**
+   * Represents the number of servers queried by the broker (may be less than the total number of servers since the broker can apply some optimizations to minimize the number of servers).
+   */
   numServersQueries: number;
+  /**
+   * This should be equal to the numServersQueried. If this is not the same, then one of more servers might have timed out.
+   * If numServersQueried != numServersResponded, the results can be considered partial and clients can retry the query with exponential back off.
+   */
   numServersResponded: number;
+  /**
+   * The total number of segmentsQueried for a query.
+   * May be less than the total number of segments if the broker applies optimizations.
+   *
+   * The broker decides how many segments to query on each server, based on broker pruning logic.
+   * The server decides how many of these segments to actually look at, based on server pruning logic.
+   * After processing segments for a query, fewer may have the matching records.
+   *
+   * In general, `numSegmentsQueried >= numSegmentsProcessed >= numSegmentsMatched`.
+   */
   numSegmentsQueried: number;
+  /**
+   * The number of segment operators used to process segments.
+   * Indicates the effectiveness of the pruning logic. For more information, see
+   *
+   * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-syntax/explain-plan | Single-stage query engine} for more info
+   * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-syntax/explain-plan-multi-stage | Multi-stage query engine} for more info
+   */
   numSegmentsProcessed: number;
+  /**
+   * The number of segments processed with at least one document matched in the query response.
+   */
   numSegmentsMatched: number;
   numConsumingSegmentsQueried: number;
+  /**
+   * Total number of docs scanned
+   */
   numDocsScanned: number;
 
   /**
@@ -61,28 +149,52 @@ export interface IBrokerResponse {
    * The default value for numGroupsLimit is 100k, and should be sufficient for most use cases.
    */
   numGroupsLimitReached: boolean;
+  /**
+   * Number of documents/records in the table.
+   */
   totalDocs: number;
+  /**
+   * Total time taken as seen by the broker before sending the response back to the client.
+   */
   timeUsedMs: number;
   minConsumingFreshnessTimeMs: number;
 }
 
+/**
+ * Pinot query statistics.
+ * Just converted and categorized pinot response stats
+ */
 export interface IQueryStats {
+  /**
+   * Tracing info
+   */
   traceInfo: Record<string, string>;
-
+  /**
+   * Segment stats
+   */
   segments: {
     queried: number;
     processed: number;
     matched: number;
   };
+  /**
+   * Server stats
+   */
   server: {
     queries: number;
     responded: number;
   };
+  /**
+   * Docs stats
+   */
   docs: {
     scanned: number;
     returned: number;
     total: number;
   };
+  /**
+   * Query time in ms
+   */
   totalTimeMs: number;
 
   minConsumingFreshnessTimeMs: number;
@@ -91,18 +203,44 @@ export interface IQueryStats {
   numGroupsLimitReached: boolean;
 }
 
+/**
+ * Query result
+ */
 export interface IQueryResult<TRows = unknown> {
+  /**
+   * Data rows
+   */
   rows: TRows;
+  /**
+   * Query stats
+   */
   stats: IQueryStats;
+  /**
+   * Compiled SQL query
+   */
   sql: string;
+  /**
+   * Query options
+   */
   queryOptions?: string | undefined;
 }
 
 // TODO: add some codes
+/**
+ * Broker error codes
+ */
 export const enum EBrokerErrorCode {
+  /**
+   * Unknown
+   */
   UNKNOWN,
 }
 
+/**
+ * Query options
+ *
+ * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-options | Pinot query options} for actual info
+ */
 export interface IPinotQueryOptions {
   /** Timeout of the query in milliseconds. */
   timeoutMs?: number;
@@ -159,11 +297,27 @@ export interface IPinotQueryOptions {
   maxQueryResponseSizeBytes?: number;
 }
 
+/**
+ * Pinot client interface.
+ */
 export interface IPinotClient {
+  /**
+   * Execute pinot sql query
+   *
+   * @public
+   * @param query Sql query body
+   * @param options Query options
+   * @param trace Pass trace parameter to pinot
+   * @returns Result rows with stats
+   */
   select<TResult>(
     query: Sql,
     options?: IPinotQueryOptions,
     trace?: boolean,
   ): Promise<IQueryResult<TResult[]>>;
+
+  /**
+   * Transport stats.
+   */
   transportStats: IPinotPoolStats;
 }
