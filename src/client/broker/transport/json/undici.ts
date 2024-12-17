@@ -1,4 +1,4 @@
-import { Pool, type Dispatcher } from 'undici';
+import { errors, Pool, type Dispatcher } from 'undici';
 import { EPinotErrorType, PinotError } from '../../../errors/pinot';
 import { IPinotPoolStats } from '../../types';
 import {
@@ -18,18 +18,24 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   protected readonly token: string;
 
   constructor({
-    brokerUrl,
-    token,
     bodyTimeout = 60000,
-    connections = 1024,
+    brokerUrl,
+    connections = undefined,
+    connectTimeout = 1000,
+    headersTimeout = 60000,
     keepAliveMaxTimeout = 60000,
+    token,
   }: IBrokerTransportConfig) {
     this.pool = new Pool(brokerUrl, {
-      connections,
+      connections: connections ?? null,
       bodyTimeout,
       pipelining: 1,
       keepAliveMaxTimeout,
       keepAliveTimeoutThreshold: 5000,
+      headersTimeout,
+      connect: {
+        timeout: connectTimeout,
+      },
     });
     this.token = token;
   }
@@ -43,10 +49,10 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
    */
 
   async request<TResponse = unknown>({
-    method = 'POST',
-    headers,
-    path,
     body,
+    headers,
+    method = 'POST',
+    path,
     query,
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
     const reqOptions: Dispatcher.RequestOptions = {
@@ -64,6 +70,19 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     };
 
     const response = await this.pool.request(reqOptions).catch((err: Error) => {
+      if (
+        err instanceof errors.BodyTimeoutError ||
+        err instanceof errors.ConnectTimeoutError ||
+        err instanceof errors.ConnectTimeoutError
+      ) {
+        throw new PinotError({
+          data: { body },
+          message: `Pinot transport error: Timeout: ${err.message}`,
+          type: EPinotErrorType.TRANSPORT,
+          cause: err,
+          code: EBrokerTransportErrorCode.TIMEOUT,
+        });
+      }
       throw new PinotError({
         data: { body },
         message: `Pinot transport error: ${err.message}`,

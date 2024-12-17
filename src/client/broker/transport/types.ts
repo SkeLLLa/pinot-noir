@@ -16,7 +16,9 @@ export interface IBrokerTransportConfig {
    */
   token: string;
   /**
-   * The timeout after which a request will time out, in milliseconds
+   * The timeout after which a request will time out (in ms)
+   *
+   * @defaultValue 60000
    */
   bodyTimeout?: number;
   /**
@@ -30,9 +32,23 @@ export interface IBrokerTransportConfig {
    */
   connections?: number;
   /**
-   * The maximum allowed `keepAliveTimeout`
+   * The maximum allowed `keepAliveTimeout` (in ms)
+   *
+   * @defaultValue 60000
    */
   keepAliveMaxTimeout?: number;
+  /**
+   * TCP connect timeout (in ms)
+   *
+   * @defaultValue 1000
+   */
+  connectTimeout?: number;
+  /**
+   * Headers timeout (in ms)
+   *
+   * @defaultValue 1000
+   */
+  headersTimeout?: number;
 }
 
 /**
@@ -88,4 +104,8 @@ export const enum EBrokerTransportErrorCode {
    * Invalid response from pinot
    */
   INVALID_RESPONSE,
+  /**
+   * Timeout
+   */
+  TIMEOUT,
 }
