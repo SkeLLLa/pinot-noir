@@ -31,7 +31,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ brokerUrl, token, bodyTimeout, connections, keepAliveMaxTimeout, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
+[(constructor)({ bodyTimeout, brokerUrl, connections, connectTimeout, headersTimeout, keepAliveMaxTimeout, token, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
 
 </td><td>
 
@@ -142,7 +142,7 @@ Closes connection to pinot broker
 </td></tr>
 <tr><td>
 
-[request({ method, headers, path, body, query, })](./pinot-noir.pinotbrokerjsontransport.request.md)
+[request({ body, headers, method, path, query, })](./pinot-noir.pinotbrokerjsontransport.request.md)
 
 </td><td>
 

@@ -1,3 +1,14 @@
+## [1.8.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.7.0...v1.8.0) (2024-12-17)
+
+### 🚀 Features
+
+* add header and connect timeouts ([6183474](https://github.com/SkeLLLa/pinot-noir/commit/6183474786c3c516651f176392725c9462b8bbe9))
+* undici v7 ([4c5f2de](https://github.com/SkeLLLa/pinot-noir/commit/4c5f2dee72e714c0a224564a8f687cafef439520))
+
+### 📔 Docs
+
+* fix badge ([e6b831a](https://github.com/SkeLLLa/pinot-noir/commit/e6b831ac76d692143b0808a0c944fad0b59b2840))
+
 ## [1.7.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.6.0...v1.7.0) (2024-09-17)
 
 ### 🛠 Fixes

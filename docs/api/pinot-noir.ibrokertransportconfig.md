@@ -43,7 +43,7 @@ number
 
 </td><td>
 
-_(Optional)_ The timeout after which a request will time out, in milliseconds
+_(Optional)_ The timeout after which a request will time out (in ms)
 
 </td></tr>
 <tr><td>
@@ -78,6 +78,36 @@ _(Optional)_ Max pool connections. `undefined` = unlimited.
 </td></tr>
 <tr><td>
 
+[connectTimeout?](./pinot-noir.ibrokertransportconfig.connecttimeout.md)
+
+</td><td>
+
+</td><td>
+
+number
+
+</td><td>
+
+_(Optional)_ TCP connect timeout (in ms)
+
+</td></tr>
+<tr><td>
+
+[headersTimeout?](./pinot-noir.ibrokertransportconfig.headerstimeout.md)
+
+</td><td>
+
+</td><td>
+
+number
+
+</td><td>
+
+_(Optional)_ Headers timeout (in ms)
+
+</td></tr>
+<tr><td>
+
 [keepAliveMaxTimeout?](./pinot-noir.ibrokertransportconfig.keepalivemaxtimeout.md)
 
 </td><td>
@@ -88,7 +118,7 @@ number
 
 </td><td>
 
-_(Optional)_ The maximum allowed `keepAliveTimeout`
+_(Optional)_ The maximum allowed `keepAliveTimeout` (in ms)
 
 </td></tr>
 <tr><td>

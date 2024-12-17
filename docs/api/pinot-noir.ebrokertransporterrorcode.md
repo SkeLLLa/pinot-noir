@@ -42,6 +42,19 @@ Invalid response from pinot
 </td></tr>
 <tr><td>
 
+TIMEOUT
+
+</td><td>
+
+`2`
+
+</td><td>
+
+Timeout
+
+</td></tr>
+<tr><td>
+
 UNKNOWN
 
 </td><td>
