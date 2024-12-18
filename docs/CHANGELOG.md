@@ -1,3 +1,13 @@
+## [1.9.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.0...v1.9.1) (2024-12-18)
+
+### 🛠 Fixes
+
+* disable connect timeout ([e4769b8](https://github.com/SkeLLLa/pinot-noir/commit/e4769b8fce30306ce00d25640bae73e9ead2fd13))
+
+### 🧾 Other
+
+* **docs:** add timout notes [skip-ci] ([c8116b4](https://github.com/SkeLLLa/pinot-noir/commit/c8116b454a8f7964038f77ddb548b7ce4f05ee5a))
+
 ## [1.9.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.8.0...v1.9.0) (2024-12-18)
 
 ### 🚀 Features
