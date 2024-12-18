@@ -28,6 +28,7 @@ Unofficial node.js [Apache Pnot](https://pinot.apache.org/) client. Uses [undici
 ## Features
 
 - Fast http queries using "Undici"
+- Simple interface for bringing and using other http client libraries
 - Built-in `sql` template tag and safe escaping of values
 - Support of `raw` and `join` for complex queries
 - Typescript support
@@ -108,6 +109,8 @@ console.table(result.rows);
 console.log('== Stats ==');
 console.log(result.stats);
 ```
+
+While using query options like `timeoutMs` they are passed to http request timeouts as well, so they shouldn't run longer than you expect the query should run.
 
 ### Utilities
 
