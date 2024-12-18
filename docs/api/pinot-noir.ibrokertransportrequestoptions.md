@@ -9,7 +9,7 @@ Pinot broker HTTP request options
 **Signature:**
 
 ```typescript
-export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query'>
+export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query' | 'bodyTimeout' | 'headersTimeout'>
 ```
 
-**Extends:** Pick&lt;Dispatcher.RequestOptions, 'method' \| 'headers' \| 'path' \| 'body' \| 'query'&gt;
+**Extends:** Pick&lt;Dispatcher.RequestOptions, 'method' \| 'headers' \| 'path' \| 'body' \| 'query' \| 'bodyTimeout' \| 'headersTimeout'&gt;

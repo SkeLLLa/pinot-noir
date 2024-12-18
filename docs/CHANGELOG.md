@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.8.0...v1.9.0) (2024-12-18)
+
+### 🚀 Features
+
+* configurable query http timeouts ([2a19552](https://github.com/SkeLLLa/pinot-noir/commit/2a19552b538cb558ef823c74b8ada13bc55b08d8))
+
 ## [1.8.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.7.0...v1.8.0) (2024-12-17)
 
 ### 🚀 Features
