@@ -21,7 +21,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     bodyTimeout = 60000,
     brokerUrl,
     connections = undefined,
-    connectTimeout = 1000,
+    // connectTimeout = 1000,
     headersTimeout = 60000,
     keepAliveMaxTimeout = 60000,
     token,
@@ -33,9 +33,9 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       keepAliveMaxTimeout,
       keepAliveTimeoutThreshold: 5000,
       headersTimeout,
-      connect: {
-        timeout: connectTimeout,
-      },
+      // connect: {
+      //   timeout: connectTimeout,
+      // },
     });
     this.token = token;
   }
