@@ -73,7 +73,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       if (
         err instanceof errors.BodyTimeoutError ||
         err instanceof errors.ConnectTimeoutError ||
-        err instanceof errors.ConnectTimeoutError
+        err instanceof errors.HeadersTimeoutError
       ) {
         throw new PinotError({
           data: { body },

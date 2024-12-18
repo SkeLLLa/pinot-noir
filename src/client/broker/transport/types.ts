@@ -59,7 +59,13 @@ export interface IBrokerTransportConfig {
 export interface IBrokerTransportRequestOptions
   extends Pick<
     Dispatcher.RequestOptions,
-    'method' | 'headers' | 'path' | 'body' | 'query'
+    | 'method'
+    | 'headers'
+    | 'path'
+    | 'body'
+    | 'query'
+    | 'bodyTimeout'
+    | 'headersTimeout'
   > {}
 
 /**

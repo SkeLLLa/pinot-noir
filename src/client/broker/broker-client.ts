@@ -51,6 +51,18 @@ export class PinotClient implements IPinotClient {
       : undefined;
   }
 
+  private static getTimeouts(queryTimeoutMs?: number): {
+    bodyTimeout?: number;
+    headersTimeout?: number;
+  } {
+    return queryTimeoutMs
+      ? {
+          bodyTimeout: queryTimeoutMs * 1.2 * 0.5,
+          headersTimeout: queryTimeoutMs * 1.2 * 0.5,
+        }
+      : {};
+  }
+
   /**
    * Transport stats.
    */
@@ -79,6 +91,7 @@ export class PinotClient implements IPinotClient {
     const response = await transport.request<IBrokerResponse>({
       method: 'POST',
       path: PinotClient.ENDPOINTS.sql,
+      ...PinotClient.getTimeouts(options?.timeoutMs),
       body: JSON.stringify({
         sql,
         queryOptions,
