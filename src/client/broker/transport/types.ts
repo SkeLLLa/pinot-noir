@@ -49,6 +49,13 @@ export interface IBrokerTransportConfig {
    * @defaultValue 1000
    */
   headersTimeout?: number;
+  /**
+   * Max pool queue size. If undefined or 0, queue is infinite.
+   * If a request comes and queue is already at maximum size it will be discarded with LIMIT_EXCEEDED error.
+   *
+   * @defaultValue value undefined
+   */
+  maxQueueSize?: number;
 }
 
 /**
@@ -114,4 +121,8 @@ export const enum EBrokerTransportErrorCode {
    * Timeout
    */
   TIMEOUT,
+  /**
+   * Limit exceded
+   */
+  LIMIT_EXCEEDED,
 }

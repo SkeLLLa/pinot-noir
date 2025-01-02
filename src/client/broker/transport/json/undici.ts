@@ -16,6 +16,7 @@ import {
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   protected readonly pool: Pool;
   protected readonly token: string;
+  protected readonly maxQueueSize: number | undefined;
 
   constructor({
     bodyTimeout = 60000,
@@ -25,6 +26,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     headersTimeout = 60000,
     keepAliveMaxTimeout = 60000,
     token,
+    maxQueueSize,
   }: IBrokerTransportConfig) {
     this.pool = new Pool(brokerUrl, {
       connections: connections ?? null,
@@ -38,6 +40,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       // },
     });
     this.token = token;
+    this.maxQueueSize = maxQueueSize;
   }
 
   /**
@@ -55,6 +58,16 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     path,
     query,
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
+    if (this.maxQueueSize && this.pool.stats.queued >= this.maxQueueSize) {
+      // Throw error
+      throw new PinotError({
+        data: { body },
+        message: `Pinot transport error: Max queue size reached`,
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.LIMIT_EXCEEDED,
+      });
+    }
+
     const reqOptions: Dispatcher.RequestOptions = {
       method,
       headers: {
