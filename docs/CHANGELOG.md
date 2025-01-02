@@ -1,3 +1,9 @@
+## [1.9.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.1...v1.9.2) (2025-01-02)
+
+### 🛠 Fixes
+
+* error handling ([7678412](https://github.com/SkeLLLa/pinot-noir/commit/76784121a1c9f361b5e95b9fcd2a5e2cffe63502))
+
 ## [1.9.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.0...v1.9.1) (2024-12-18)
 
 ### 🛠 Fixes
