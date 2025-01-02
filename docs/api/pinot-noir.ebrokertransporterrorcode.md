@@ -42,6 +42,19 @@ Invalid response from pinot
 </td></tr>
 <tr><td>
 
+LIMIT_EXCEEDED
+
+</td><td>
+
+`3`
+
+</td><td>
+
+Limit exceded
+
+</td></tr>
+<tr><td>
+
 TIMEOUT
 
 </td><td>

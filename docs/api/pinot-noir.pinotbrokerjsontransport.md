@@ -31,7 +31,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
+[(constructor)({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
 
 </td><td>
 
@@ -62,6 +62,23 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[maxQueueSize](./pinot-noir.pinotbrokerjsontransport.maxqueuesize.md)
+
+</td><td>
+
+`protected`
+
+`readonly`
+
+</td><td>
+
+number \| undefined
+
+</td><td>
+
+</td></tr>
+<tr><td>
 
 [pool](./pinot-noir.pinotbrokerjsontransport.pool.md)
 

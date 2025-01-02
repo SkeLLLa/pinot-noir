@@ -9,7 +9,7 @@ Constructs a new instance of the `PinotBrokerJSONTransport` class
 **Signature:**
 
 ```typescript
-constructor({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, }: IBrokerTransportConfig);
+constructor({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }: IBrokerTransportConfig);
 ```
 
 ## Parameters
@@ -29,7 +29,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, }
+{ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }
 
 </td><td>
 

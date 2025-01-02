@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.2...v1.10.0) (2025-01-02)
+
+### 🚀 Features
+
+* max queue size for pool ([2987196](https://github.com/SkeLLLa/pinot-noir/commit/2987196dcad7b865f19b7106cb3463291c125211))
+
 ## [1.9.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.1...v1.9.2) (2025-01-02)
 
 ### 🛠 Fixes

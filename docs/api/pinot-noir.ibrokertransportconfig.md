@@ -138,6 +138,21 @@ _(Optional)_ Connection keep-alive timeout
 </td></tr>
 <tr><td>
 
+[maxQueueSize?](./pinot-noir.ibrokertransportconfig.maxqueuesize.md)
+
+</td><td>
+
+</td><td>
+
+number
+
+</td><td>
+
+_(Optional)_ Max pool queue size. If undefined or 0, queue is infinite. If a request comes and queue is already at maximum size it will be discarded with LIMIT_EXCEEDED error.
+
+</td></tr>
+<tr><td>
+
 [token](./pinot-noir.ibrokertransportconfig.token.md)
 
 </td><td>
