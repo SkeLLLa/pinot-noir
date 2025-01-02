@@ -4,6 +4,8 @@ const pinotTransport = new PinotBrokerJSONTransport({
   brokerUrl: 'http://127.0.0.1:8000', // replace with your broker url if needed
   token: '',
   connections: 32,
+  bodyTimeout: 5000,
+  headersTimeout: 5000,
 });
 
 const pinotClient = new PinotBrokerClient({ transport: pinotTransport });

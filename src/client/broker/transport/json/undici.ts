@@ -65,8 +65,6 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       path,
       body: body ?? null,
       query: query ?? {},
-      // To handle status codes manually
-      throwOnError: false,
     };
 
     const response = await this.pool.request(reqOptions).catch((err: Error) => {
@@ -83,6 +81,18 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
           code: EBrokerTransportErrorCode.TIMEOUT,
         });
       }
+      if (err instanceof errors.ResponseStatusCodeError) {
+        throw new PinotError({
+          message: `Pinot transport error: response code ${err.statusCode}`,
+          type: EPinotErrorType.TRANSPORT,
+          code: err.statusCode,
+          data: {
+            headers: response.headers,
+            body: err.body,
+            statusCode: err.statusCode,
+          },
+        });
+      }
       throw new PinotError({
         data: { body },
         message: `Pinot transport error: ${err.message}`,
@@ -91,26 +101,6 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
         code: EBrokerTransportErrorCode.UNKNOWN,
       });
     });
-
-    if (response.statusCode !== 200) {
-      let body: string | undefined;
-      try {
-        body = await response.body.text();
-      } catch {
-        // failed to parse body
-        body = undefined;
-      }
-
-      throw new PinotError({
-        message: `Pinot transport error: response code ${response.statusCode}`,
-        type: EPinotErrorType.TRANSPORT,
-        code: response.statusCode,
-        data: {
-          headers: response.headers,
-          body,
-        },
-      });
-    }
 
     try {
       const raw = (await response.body.json()) as TResponse;
