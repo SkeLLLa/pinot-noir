@@ -72,8 +72,8 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     const maxQueueTolerance =
       this.maxQueueSize && options?.queueTolerance !== undefined
         ? this.maxQueueSize * options.queueTolerance
-        : 1;
-    if (queueSize >= maxQueueTolerance) {
+        : this.maxQueueSize;
+    if (maxQueueTolerance && queueSize >= maxQueueTolerance) {
       // Throw error
       throw new PinotError({
         data: { body, maxQueueTolerance, queueSize },
