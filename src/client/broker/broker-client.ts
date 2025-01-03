@@ -6,6 +6,7 @@ import {
   EBrokerErrorCode,
   IPinotClient,
   IPinotPoolStats,
+  NON_PINOT_OPTIONS,
   type IBrokerResponse,
   type IPinotQueryOptions,
   type IQueryResult,
@@ -44,6 +45,9 @@ export class PinotClient implements IPinotClient {
   ): string | undefined {
     return options
       ? Object.entries(options)
+          .filter(([k]) => {
+            return !NON_PINOT_OPTIONS.includes(k as keyof IPinotQueryOptions);
+          })
           .map((kv) => {
             return kv.join('=');
           })
@@ -92,6 +96,7 @@ export class PinotClient implements IPinotClient {
       method: 'POST',
       path: PinotClient.ENDPOINTS.sql,
       ...PinotClient.getTimeouts(options?.timeoutMs),
+      options,
       body: JSON.stringify({
         sql,
         queryOptions,

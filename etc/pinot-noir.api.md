@@ -24,6 +24,8 @@ export const enum EBrokerErrorCode {
 // @public
 export const enum EBrokerTransportErrorCode {
     INVALID_RESPONSE = 1,
+    QUEUE_TOLERANCE_LIMIT = 3,
+    TIMEOUT = 2,
     UNKNOWN = 0
 }
 
@@ -137,13 +139,20 @@ export interface IBrokerTransportConfig {
     bodyTimeout?: number;
     brokerUrl: URL | string;
     connections?: number;
+    connectTimeout?: number;
+    headersTimeout?: number;
     keepAliveMaxTimeout?: number;
     keepAliveTimeout?: number;
+    maxQueueSize?: number;
     token: string;
 }
 
 // @public
-export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query'> {
+export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query' | 'bodyTimeout' | 'headersTimeout'> {
+    // (undocumented)
+    options?: {
+        queueTolerance?: number | undefined;
+    } | undefined;
 }
 
 // @public
@@ -199,6 +208,8 @@ export interface IPinotQueryOptions {
     minSegmentGroupTrimSize?: number;
     minServerGroupTrimSize?: number;
     numReplicaGroupsToQuery?: number;
+    // Warning: (ae-forgotten-export) The symbol "QueueTolerancePredefined" needs to be exported by the entry point index.d.ts
+    queueTolerance?: QueueTolerancePredefined | number;
     skipIndexes?: string;
     skipUpsert?: boolean;
     timeoutMs?: number;
@@ -263,6 +274,9 @@ export interface IResultTable {
 export { join }
 
 // @public
+export const NON_PINOT_OPTIONS: readonly (keyof IPinotQueryOptions)[];
+
+// @public
 export class PinotBrokerClient implements IPinotClient {
     constructor(deps: {
         transport: IPinotBrokerTransport;
@@ -278,13 +292,12 @@ export class PinotBrokerClient implements IPinotClient {
 
 // @public
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
-    constructor({ brokerUrl, token, bodyTimeout, connections, keepAliveMaxTimeout, }: IBrokerTransportConfig);
+    constructor({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }: IBrokerTransportConfig);
     close(): Promise<void>;
-    // (undocumented)
+    protected readonly maxQueueSize: number | undefined;
     protected readonly pool: Pool;
-    request<TResponse = unknown>({ method, headers, path, body, query, }: IBrokerTransportRequestOptions): Promise<TResponse>;
+    request<TResponse = unknown>({ body, headers, method, path, query, options, }: IBrokerTransportRequestOptions): Promise<TResponse>;
     get stats(): IPinotPoolStats;
-    // (undocumented)
     protected readonly token: string;
 }
 

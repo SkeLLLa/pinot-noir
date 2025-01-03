@@ -73,7 +73,13 @@ export interface IBrokerTransportRequestOptions
     | 'query'
     | 'bodyTimeout'
     | 'headersTimeout'
-  > {}
+  > {
+  options?:
+    | {
+        queueTolerance?: number | undefined;
+      }
+    | undefined;
+}
 
 /**
  * Pinot broker transport interface. Implement it create your own.
@@ -122,7 +128,7 @@ export const enum EBrokerTransportErrorCode {
    */
   TIMEOUT,
   /**
-   * Limit exceded
+   * Queue tolerance limit exceded
    */
-  LIMIT_EXCEEDED,
+  QUEUE_TOLERANCE_LIMIT,
 }

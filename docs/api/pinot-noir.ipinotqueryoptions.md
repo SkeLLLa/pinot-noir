@@ -213,6 +213,21 @@ _(Optional)_ Number of replica groups to query when replica-group based routing 
 </td></tr>
 <tr><td>
 
+[queueTolerance?](./pinot-noir.ipinotqueryoptions.queuetolerance.md)
+
+</td><td>
+
+</td><td>
+
+QueueTolerancePredefined \| number
+
+</td><td>
+
+_(Optional)_ Queue tolerance in percent of `maxQueueSize`<!-- -->. If maxQueueSize \* queueTolerance &lt;<!-- -->= queue size the request is discarded.
+
+</td></tr>
+<tr><td>
+
 [skipIndexes?](./pinot-noir.ipinotqueryoptions.skipindexes.md)
 
 </td><td>

@@ -14,8 +14,17 @@ import {
  * @public
  */
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
+  /**
+   * HTTP client pool.
+   */
   protected readonly pool: Pool;
+  /**
+   * Pinot broker auth token.
+   */
   protected readonly token: string;
+  /**
+   * Maximum query queue size.
+   */
   protected readonly maxQueueSize: number | undefined;
 
   constructor({
@@ -57,14 +66,20 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     method = 'POST',
     path,
     query,
+    options,
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
-    if (this.maxQueueSize && this.pool.stats.queued >= this.maxQueueSize) {
+    const queueSize = this.pool.stats.queued;
+    const maxQueueTolerance =
+      this.maxQueueSize && typeof options?.queueTolerance !== 'undefined'
+        ? this.maxQueueSize * options.queueTolerance
+        : 1;
+    if (queueSize >= maxQueueTolerance) {
       // Throw error
       throw new PinotError({
-        data: { body },
+        data: { body, maxQueueTolerance, queueSize },
         message: `Pinot transport error: Max queue size reached`,
         type: EPinotErrorType.TRANSPORT,
-        code: EBrokerTransportErrorCode.LIMIT_EXCEEDED,
+        code: EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT,
       });
     }
 
@@ -98,7 +113,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
         throw new PinotError({
           message: `Pinot transport error: response code ${err.statusCode}`,
           type: EPinotErrorType.TRANSPORT,
-          code: err.statusCode,
+          code: EBrokerTransportErrorCode.INVALID_RESPONSE,
           data: {
             headers: response.headers,
             body: err.body,

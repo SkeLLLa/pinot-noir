@@ -1,5 +1,5 @@
 import { Sql } from '@no-esm/sql-template-tag';
-import { IPinotQueryOptions } from '../client/clients';
+import { IPinotQueryOptions, NON_PINOT_OPTIONS } from '../client/clients';
 import { SqlFormat } from './format';
 
 /**
@@ -19,6 +19,9 @@ export class SqlUtils {
       return '';
     }
     return Object.entries(options)
+      .filter(([k]) => {
+        return !NON_PINOT_OPTIONS.includes(k as keyof IPinotQueryOptions);
+      })
       .map(([key, value]) => {
         switch (typeof value) {
           case 'string':

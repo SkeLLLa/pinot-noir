@@ -13,3 +13,39 @@ export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestO
 ```
 
 **Extends:** Pick&lt;Dispatcher.RequestOptions, 'method' \| 'headers' \| 'path' \| 'body' \| 'query' \| 'bodyTimeout' \| 'headersTimeout'&gt;
+
+## Properties
+
+<table><thead><tr><th>
+
+Property
+
+</th><th>
+
+Modifiers
+
+</th><th>
+
+Type
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[options?](./pinot-noir.ibrokertransportrequestoptions.options.md)
+
+</td><td>
+
+</td><td>
+
+{ queueTolerance?: number \| undefined; } \| undefined
+
+</td><td>
+
+_(Optional)_
+
+</td></tr>
+</tbody></table>

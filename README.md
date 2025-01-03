@@ -19,6 +19,9 @@ Unofficial node.js [Apache Pnot](https://pinot.apache.org/) client. Uses [undici
     - [Transport](#transport)
     - [Broker client](#broker-client)
     - [Constructing and performing queries](#constructing-and-performing-queries)
+    - [Pools and queues](#pools-and-queues)
+      - [Queue size](#queue-size)
+      - [Queue tolerance](#queue-tolerance)
     - [Utilities](#utilities)
       - [SqlUtils](#sqlutils)
         - [stringifyQuery](#stringifyquery)
@@ -111,6 +114,63 @@ console.log(result.stats);
 ```
 
 While using query options like `timeoutMs` they are passed to http request timeouts as well, so they shouldn't run longer than you expect the query should run.
+
+### Pools and queues
+
+#### Queue size
+
+By default pinot transport requests are made via HTTP connection pool with maximum concurrency.
+If requests rate exceeds max concurrency value, the requests are queued.
+By default the queue is not limited, but it's strongly recommended to set it to prevent high memory consumption.
+
+```typescript
+import { PinotBrokerJSONTransport } from 'pinot-noir';
+
+const pinotTransport = new PinotBrokerJSONTransport({
+  ...
+  maxQueueSize: 1024,
+});
+```
+
+#### Queue tolerance
+
+Since pinot can contain different data some of requests may not tolerate queuing.
+For addressing that issue in query you may specify queue tolerance.
+It's a value that represents percent of max queue size that this request could tolerate.
+
+For example if `maxQueueSize` is `1000` and `queueTolerance` is `0.1`, then the query will be performed only if current queue is less than `1000 * 0.1 = 100`.
+Otherwise `QUEUE_TOLERANCE_LIMIT` error will be thrown.
+For real-time data you can specify `queueTolerance` as `0`, then the requests will be discarded if there's a queue.
+
+```typescript
+import { PinotBrokerJSONTransport, PinotBrokerClient, PinotError, EPinotErrorType, EBrokerTransportErrorCode} from 'pinot-noir';
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT,
+
+const pinotTransport = new PinotBrokerJSONTransport({
+  ...
+  maxQueueSize: 1000,
+});
+
+const pinotClient = new PinotBrokerClient({ transport: pinotTransport });
+
+const year = 2010;
+const query = sql`
+  select sum(hits) as hits, sum(homeRuns) as homeRuns, sum(numberOfGames) as gamesCount
+  from baseballStats
+  where yearID > ${year}`;
+try {
+  const result = await pinotClient.select<IResult>(query, { timeoutMs: 1000, queueTolerance: 0.1 });
+  // Do something with result
+} catch (err) {
+  if (err instanceof PinotError) {
+    if (err.type === EPinotErrorType.TRANSPORT && err.code === EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT) {
+      // Request skipped due to queue size
+    }
+  }
+  throw err
+}
+```
 
 ### Utilities
 

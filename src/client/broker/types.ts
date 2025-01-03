@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import type PoolStats from 'undici/types/pool-stats';
 import type { Sql } from '../../utils/tag';
 
@@ -236,6 +237,19 @@ export const enum EBrokerErrorCode {
   UNKNOWN,
 }
 
+type QueueTolerancePredefined =
+  | 0
+  | 0.1
+  | 0.2
+  | 0.3
+  | 0.4
+  | 0.5
+  | 0.6
+  | 0.7
+  | 0.8
+  | 0.9
+  | 1;
+
 /**
  * Query options
  *
@@ -295,6 +309,13 @@ export interface IPinotQueryOptions {
 
   /** Maximum serialized response size across all servers for a query. */
   maxQueryResponseSizeBytes?: number;
+  /**
+   * Queue tolerance in percent of `maxQueueSize`.
+   * If maxQueueSize * queueTolerance \<= queue size the request is discarded.
+   *
+   * @defaultValue 1
+   */
+  queueTolerance?: QueueTolerancePredefined | number;
 }
 
 /**
@@ -321,3 +342,11 @@ export interface IPinotClient {
    */
   transportStats: IPinotPoolStats;
 }
+
+/**
+ * Non pinot options list.
+ * @private
+ */
+export const NON_PINOT_OPTIONS: readonly (keyof IPinotQueryOptions)[] = [
+  'queueTolerance',
+];

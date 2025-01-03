@@ -4,6 +4,8 @@
 
 ## PinotBrokerJSONTransport.token property
 
+Pinot broker auth token.
+
 **Signature:**
 
 ```typescript

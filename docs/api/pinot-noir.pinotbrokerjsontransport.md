@@ -77,6 +77,8 @@ number \| undefined
 
 </td><td>
 
+Maximum query queue size.
+
 </td></tr>
 <tr><td>
 
@@ -93,6 +95,8 @@ number \| undefined
 Pool
 
 </td><td>
+
+HTTP client pool.
 
 </td></tr>
 <tr><td>
@@ -128,6 +132,8 @@ string
 
 </td><td>
 
+Pinot broker auth token.
+
 </td></tr>
 </tbody></table>
 
@@ -159,7 +165,7 @@ Closes connection to pinot broker
 </td></tr>
 <tr><td>
 
-[request({ body, headers, method, path, query, })](./pinot-noir.pinotbrokerjsontransport.request.md)
+[request({ body, headers, method, path, query, options, })](./pinot-noir.pinotbrokerjsontransport.request.md)
 
 </td><td>
 

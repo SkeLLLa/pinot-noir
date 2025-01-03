@@ -4,6 +4,8 @@
 
 ## PinotBrokerJSONTransport.pool property
 
+HTTP client pool.
+
 **Signature:**
 
 ```typescript

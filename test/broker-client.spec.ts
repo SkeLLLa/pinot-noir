@@ -91,6 +91,7 @@ void describe('Pinot client', async () => {
     const options: IPinotQueryOptions = {
       timeoutMs: 20000,
       useMultistageEngine: true,
+      queueTolerance: 0.1,
     };
     const result = PinotClient.toQueryOptions(options);
     assert.equal(result, 'timeoutMs=20000;useMultistageEngine=true');

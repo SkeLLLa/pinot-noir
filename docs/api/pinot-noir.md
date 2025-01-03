@@ -266,6 +266,28 @@ Pinot result table
 </td></tr>
 </tbody></table>
 
+## Variables
+
+<table><thead><tr><th>
+
+Variable
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[NON_PINOT_OPTIONS](./pinot-noir.non_pinot_options.md)
+
+</td><td>
+
+Non pinot options list.
+
+</td></tr>
+</tbody></table>
+
 ## Type Aliases
 
 <table><thead><tr><th>

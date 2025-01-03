@@ -42,7 +42,7 @@ Invalid response from pinot
 </td></tr>
 <tr><td>
 
-LIMIT_EXCEEDED
+QUEUE_TOLERANCE_LIMIT
 
 </td><td>
 
@@ -50,7 +50,7 @@ LIMIT_EXCEEDED
 
 </td><td>
 
-Limit exceded
+Queue tolerance limit exceded
 
 </td></tr>
 <tr><td>

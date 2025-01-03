@@ -9,7 +9,7 @@ Perform HTTP request to pinot
 **Signature:**
 
 ```typescript
-request<TResponse = unknown>({ body, headers, method, path, query, }: IBrokerTransportRequestOptions): Promise<TResponse>;
+request<TResponse = unknown>({ body, headers, method, path, query, options, }: IBrokerTransportRequestOptions): Promise<TResponse>;
 ```
 
 ## Parameters
@@ -29,7 +29,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ body, headers, method, path, query, }
+{ body, headers, method, path, query, options, }
 
 </td><td>
 

@@ -4,6 +4,8 @@
 
 ## PinotBrokerJSONTransport.maxQueueSize property
 
+Maximum query queue size.
+
 **Signature:**
 
 ```typescript

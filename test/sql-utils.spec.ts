@@ -25,4 +25,19 @@ void describe('Sql Utils', async () => {
       `SET useMultistageEngine = true;\nSET timeoutMs = 100;\nSET inPredicateLookupAlgorithm = 'SCAN';\nSELECT * FROM table WHERE id = 1`,
     );
   });
+
+  await test('generates query without non-pinot options', () => {
+    const query = sql`SELECT * FROM table WHERE id = ${1}`;
+    const options: IPinotQueryOptions = {
+      useMultistageEngine: true,
+      timeoutMs: 100,
+      inPredicateLookupAlgorithm: 'SCAN',
+      queueTolerance: 0.3,
+    };
+
+    assert.strictEqual(
+      SqlUtils.stringifyQuery(query, options),
+      `SET useMultistageEngine = true;\nSET timeoutMs = 100;\nSET inPredicateLookupAlgorithm = 'SCAN';\nSELECT * FROM table WHERE id = 1`,
+    );
+  });
 });
