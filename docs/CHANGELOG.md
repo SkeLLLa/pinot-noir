@@ -1,3 +1,9 @@
+## [1.11.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.1...v1.11.2) (2025-01-03)
+
+### 🛠 Fixes
+
+* max queue tolerance ([c2da0e2](https://github.com/SkeLLLa/pinot-noir/commit/c2da0e22eff14f4612b37da36d73ba1081842ca6))
+
 ## [1.11.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.0...v1.11.1) (2025-01-03)
 
 ### 🛠 Fixes
