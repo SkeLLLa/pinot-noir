@@ -9,5 +9,5 @@ Queue tolerance in percent of `maxQueueSize`<!-- -->. If maxQueueSize \* queueTo
 **Signature:**
 
 ```typescript
-queueTolerance?: QueueTolerancePredefined | number;
+queueTolerance?: TQueueTolerancePredefined | number;
 ```

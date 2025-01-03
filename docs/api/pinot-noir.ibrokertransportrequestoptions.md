@@ -41,7 +41,7 @@ Description
 
 </td><td>
 
-{ queueTolerance?: number \| undefined; } \| undefined
+{ queueTolerance?: [TQueueTolerancePredefined](./pinot-noir.tqueuetolerancepredefined.md) \| number \| undefined; } \| undefined
 
 </td><td>
 

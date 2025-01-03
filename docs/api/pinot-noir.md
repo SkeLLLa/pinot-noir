@@ -308,4 +308,13 @@ Description
 Available Pinot data types
 
 </td></tr>
+<tr><td>
+
+[TQueueTolerancePredefined](./pinot-noir.tqueuetolerancepredefined.md)
+
+</td><td>
+
+Predefined queue tolerance values.
+
+</td></tr>
 </tbody></table>

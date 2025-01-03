@@ -219,7 +219,7 @@ _(Optional)_ Number of replica groups to query when replica-group based routing 
 
 </td><td>
 
-QueueTolerancePredefined \| number
+[TQueueTolerancePredefined](./pinot-noir.tqueuetolerancepredefined.md) \| number
 
 </td><td>
 

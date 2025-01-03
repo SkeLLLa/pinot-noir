@@ -1,3 +1,9 @@
+## [1.11.1](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.0...v1.11.1) (2025-01-03)
+
+### 🛠 Fixes
+
+* **types:** queue tolerance ([9719af7](https://github.com/SkeLLLa/pinot-noir/commit/9719af762c7eb5349b00dd921277c1b91a2aa2e5))
+
 ## [1.11.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.10.0...v1.11.0) (2025-01-03)
 
 ### 🚀 Features

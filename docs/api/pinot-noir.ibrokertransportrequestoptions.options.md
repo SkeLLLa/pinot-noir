@@ -8,6 +8,6 @@
 
 ```typescript
 options?: {
-        queueTolerance?: number | undefined;
+        queueTolerance?: TQueueTolerancePredefined | number | undefined;
     } | undefined;
 ```
