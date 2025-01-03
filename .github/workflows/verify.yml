@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # to enable use of OIDC for npm provenance
     strategy:
       matrix:
         node-version: [20.x, 22.x]
