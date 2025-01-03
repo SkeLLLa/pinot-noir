@@ -48,13 +48,15 @@ jobs:
           eslint_flags: '. --ext js,jsx,ts,tsx'
       - name: Test
         run: pnpm test
-      # - name: Upload coverage to Codecov
-      #   uses: codecov/codecov-action@v1
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}
-      #     name: codecov-umbrella
-      #     fail_ci_if_error: false
-      #     verbose: true
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          use_oidc: true
+          disable_search: true
+          files: ./lcov.info
+          flags: js_open_source
+          fail_ci_if_error: false
+          verbose: true
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -93,17 +95,6 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm build
-      - name: Test
-        run: pnpm test
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          use_oidc: true
-          disable_search: true
-          files: ./lcov.info
-          flags: js_open_source
-          fail_ci_if_error: false
-          verbose: true
       - name: Semantic Release
         run: pnpm run release
         env:
