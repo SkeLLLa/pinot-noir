@@ -56,3 +56,4 @@ temp
 
 # Non-finished
 **/*.xxx.*
+lcov.info

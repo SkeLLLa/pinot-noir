@@ -42,7 +42,7 @@
     "lint:types": "tsc -p tsconfig.json",
     "release": "semantic-release",
     "test": "pnpm run lint && pnpm run test:unit",
-    "test:unit": "globstar --node -- node --no-warnings --import tsx --test \"test/**/*.spec.ts\""
+    "test:unit": "globstar --node -- node --no-warnings --import tsx --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info --test \"test/**/*.spec.ts\""
   },
   "dependencies": {
     "@no-esm/sql-template-tag": "^5.2.2",
