@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.10.0...v1.11.0) (2025-01-03)
+
+### 🚀 Features
+
+* add query queue tolerance ([dc73f84](https://github.com/SkeLLLa/pinot-noir/commit/dc73f84d8f9e7bb6c11f298cf4f244aff2a90c97))
+
 ## [1.10.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.9.2...v1.10.0) (2025-01-02)
 
 ### 🚀 Features
