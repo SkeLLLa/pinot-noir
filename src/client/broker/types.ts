@@ -237,7 +237,10 @@ export const enum EBrokerErrorCode {
   UNKNOWN,
 }
 
-type QueueTolerancePredefined =
+/**
+ * Predefined queue tolerance values.
+ */
+export type TQueueTolerancePredefined =
   | 0
   | 0.1
   | 0.2
@@ -315,7 +318,7 @@ export interface IPinotQueryOptions {
    *
    * @defaultValue 1
    */
-  queueTolerance?: QueueTolerancePredefined | number;
+  queueTolerance?: TQueueTolerancePredefined | number;
 }
 
 /**

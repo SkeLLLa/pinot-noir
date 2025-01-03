@@ -70,7 +70,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
     const queueSize = this.pool.stats.queued;
     const maxQueueTolerance =
-      this.maxQueueSize && typeof options?.queueTolerance !== 'undefined'
+      this.maxQueueSize && options?.queueTolerance !== undefined
         ? this.maxQueueSize * options.queueTolerance
         : 1;
     if (queueSize >= maxQueueTolerance) {

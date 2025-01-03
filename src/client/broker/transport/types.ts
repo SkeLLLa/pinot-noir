@@ -1,5 +1,5 @@
 import { Dispatcher } from 'undici';
-import { IPinotPoolStats } from '../types';
+import { IPinotPoolStats, TQueueTolerancePredefined } from '../types';
 
 /**
  * Pinot broker transport config options
@@ -76,7 +76,8 @@ export interface IBrokerTransportRequestOptions
   > {
   options?:
     | {
-        queueTolerance?: number | undefined;
+        // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+        queueTolerance?: TQueueTolerancePredefined | number | undefined;
       }
     | undefined;
 }
