@@ -31,7 +31,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
+[(constructor)({ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, })](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
 
 </td><td>
 

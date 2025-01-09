@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.2...v1.12.0) (2025-01-09)
+
+### 🚀 Features
+
+* keep alive and enable h2 ([f5085b5](https://github.com/SkeLLLa/pinot-noir/commit/f5085b546cbb6ec2ee2a2d3a1ea5a5188e2336fb))
+
 ## [1.11.2](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.1...v1.11.2) (2025-01-03)
 
 ### 🛠 Fixes
