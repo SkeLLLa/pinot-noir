@@ -32,8 +32,9 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     brokerUrl,
     connections = undefined,
     // connectTimeout = 1000,
+    keepAliveTimeout = 60000,
     headersTimeout = 60000,
-    keepAliveMaxTimeout = 60000,
+    keepAliveMaxTimeout = 600000,
     token,
     maxQueueSize,
   }: IBrokerTransportConfig) {
@@ -44,6 +45,9 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       keepAliveMaxTimeout,
       keepAliveTimeoutThreshold: 5000,
       headersTimeout,
+      keepAliveTimeout,
+      allowH2: true,
+      maxRedirections: 0,
       // connect: {
       //   timeout: connectTimeout,
       // },
