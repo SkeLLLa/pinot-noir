@@ -4,7 +4,7 @@
 
 ## IPinoException interface
 
-Pinot exception
+Pinot exception.
 
 **Signature:**
 
@@ -43,7 +43,7 @@ number
 
 </td><td>
 
-Pinot error code
+Pinot error code.
 
 </td></tr>
 <tr><td>
@@ -58,7 +58,7 @@ string
 
 </td><td>
 
-Error message
+Error message.
 
 </td></tr>
 </tbody></table>

@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.connectTimeout property
 
-TCP connect timeout (in ms)
+TCP connect timeout (in ms).
 
 **Signature:**
 

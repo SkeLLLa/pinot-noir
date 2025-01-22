@@ -4,7 +4,7 @@
 
 ## EBrokerErrorCode enum
 
-Broker error codes
+Broker error codes.
 
 **Signature:**
 
@@ -37,7 +37,7 @@ UNKNOWN
 
 </td><td>
 
-Unknown
+Unknown.
 
 </td></tr>
 </tbody></table>

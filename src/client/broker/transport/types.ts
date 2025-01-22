@@ -2,27 +2,27 @@ import { Dispatcher } from 'undici';
 import { IPinotPoolStats, TQueueTolerancePredefined } from '../types';
 
 /**
- * Pinot broker transport config options
+ * Pinot broker transport config options.
  *
  * @public
  */
 export interface IBrokerTransportConfig {
   /**
-   * Broker URL
+   * Broker URL.
    */
   brokerUrl: URL | string;
   /**
-   * Pinot API access token
+   * Pinot API access token.
    */
   token: string;
   /**
-   * The timeout after which a request will time out (in ms)
+   * The timeout after which a request will time out (in ms).
    *
    * @defaultValue 60000
    */
   bodyTimeout?: number;
   /**
-   * Connection keep-alive timeout
+   * Connection keep-alive timeout.
    */
   keepAliveTimeout?: number;
   /**
@@ -32,19 +32,19 @@ export interface IBrokerTransportConfig {
    */
   connections?: number;
   /**
-   * The maximum allowed `keepAliveTimeout` (in ms)
+   * The maximum allowed `keepAliveTimeout` (in ms).
    *
    * @defaultValue 60000
    */
   keepAliveMaxTimeout?: number;
   /**
-   * TCP connect timeout (in ms)
+   * TCP connect timeout (in ms).
    *
    * @defaultValue 1000
    */
   connectTimeout?: number;
   /**
-   * Headers timeout (in ms)
+   * Headers timeout (in ms).
    *
    * @defaultValue 1000
    */
@@ -59,7 +59,7 @@ export interface IBrokerTransportConfig {
 }
 
 /**
- * Pinot broker HTTP request options
+ * Pinot broker HTTP request options.
  *
  * @public
  */
@@ -83,17 +83,17 @@ export interface IBrokerTransportRequestOptions
 }
 
 /**
- * Pinot broker transport interface. Implement it create your own.
+ * Pinot broker transport interface. Implement it to create your own.
  *
  * @public
  */
 export interface IPinotBrokerTransport {
   /**
-   * Perform HTTP request to pinot
+   * Perform HTTP request to Pinot.
    *
    * @public
-   * @param param0 - Request options
-   * @returns Pinot response
+   * @param param0 - Request options.
+   * @returns Pinot response.
    */
   request<TResponse = unknown>({
     method,
@@ -103,33 +103,35 @@ export interface IPinotBrokerTransport {
     query,
   }: IBrokerTransportRequestOptions): Promise<TResponse>;
   /**
-   * Closes connection to pinot broker
+   * Closes connection to Pinot broker.
    */
   close(): Promise<void>;
   /**
-   * Pool statitstics (number of in-flight requests and so on)
+   * Pool statistics (number of in-flight requests and so on).
    */
   stats: IPinotPoolStats;
 }
 
 /**
- * Broker error codes
+ * Broker error codes.
+ *
+ * @public
  */
 export const enum EBrokerTransportErrorCode {
   /**
-   * Unknown code
+   * Unknown code.
    */
   UNKNOWN,
   /**
-   * Invalid response from pinot
+   * Invalid response from Pinot.
    */
   INVALID_RESPONSE,
   /**
-   * Timeout
+   * Timeout.
    */
   TIMEOUT,
   /**
-   * Queue tolerance limit exceded
+   * Queue tolerance limit exceeded.
    */
   QUEUE_TOLERANCE_LIMIT,
 }

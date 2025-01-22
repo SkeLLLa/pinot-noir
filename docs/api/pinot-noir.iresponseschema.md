@@ -4,7 +4,7 @@
 
 ## IResponseSchema interface
 
-Response data schema
+Response data schema.
 
 **Signature:**
 
@@ -39,7 +39,7 @@ Description
 
 </td><td>
 
-string\[\]
+[TPinotDataType](./pinot-noir.tpinotdatatype.md)<!-- -->\[\]
 
 </td><td>
 
@@ -58,7 +58,7 @@ string\[\]
 
 </td><td>
 
-Result column names
+Result column names.
 
 </td></tr>
 </tbody></table>

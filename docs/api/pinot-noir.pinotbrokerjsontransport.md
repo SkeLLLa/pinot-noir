@@ -4,7 +4,7 @@
 
 ## PinotBrokerJSONTransport class
 
-Pinot broker JSON transport based on "undici" http client.
+Pinot broker JSON transport based on "undici" HTTP client.
 
 **Signature:**
 
@@ -113,7 +113,7 @@ HTTP client pool.
 
 </td><td>
 
-HTTP pool statitstics
+HTTP pool statistics.
 
 </td></tr>
 <tr><td>
@@ -160,7 +160,7 @@ Description
 
 </td><td>
 
-Closes connection to pinot broker
+Closes connection to Pinot broker.
 
 </td></tr>
 <tr><td>
@@ -171,7 +171,7 @@ Closes connection to pinot broker
 
 </td><td>
 
-Perform HTTP request to pinot
+Perform HTTP request to Pinot.
 
 </td></tr>
 </tbody></table>

@@ -4,7 +4,7 @@
 
 ## IQueryResult.sql property
 
-Compiled SQL query
+Compiled SQL query.
 
 **Signature:**
 

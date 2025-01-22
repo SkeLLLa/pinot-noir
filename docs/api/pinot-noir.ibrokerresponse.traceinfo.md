@@ -4,10 +4,10 @@
 
 ## IBrokerResponse.traceInfo property
 
-Query trace, if the query was executed with `trace`
+Trace information.
 
 **Signature:**
 
 ```typescript
-traceInfo: Record<string, string>;
+traceInfo?: Record<string, unknown>;
 ```

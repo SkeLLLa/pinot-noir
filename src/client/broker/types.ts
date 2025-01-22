@@ -2,8 +2,10 @@
 import type PoolStats from 'undici/types/pool-stats';
 import type { Sql } from '../../utils/tag';
 
+export type * from './broker-respone.types';
+
 /**
- * Pinot transport pool statistics
+ * Pinot transport pool statistics.
  *
  * @public
  */
@@ -12,233 +14,214 @@ export interface IPinotPoolStats extends PoolStats {
 }
 
 /**
- * Response data schema
- *
- * @public
- */
-
-export interface IResponseSchema {
-  /**
-   * Type for each column. Can be used for proper data parsing.
-   */
-  columnDataTypes: string[];
-  /**
-   * Result column names
-   **/
-  columnNames: string[];
-}
-
-/**
- * Pinot result table
- *
- * @public
- */
-export interface IResultTable {
-  /**
-   * Schema that describes the schema of the response
-   */
-  dataSchema: IResponseSchema;
-  /**
-   * Actual content with values.
-   * This is an array of arrays.
-   * The number of rows depends on the limit value in the query.
-   * The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames
-   */
-  rows: (number | string)[][];
-}
-
-/**
- * Pinot exception
- *
- * @public
- */
-export interface IPinoException {
-  /**
-   * Pinot error code
-   */
-  errorCode: number;
-  /**
-   * Error message
-   */
-  message: string;
-}
-
-/**
- * Available Pinot data types
- */
-export type TPinotDataType =
-  | 'INT'
-  | 'LONG'
-  | 'FLOAT'
-  | 'DOUBLE'
-  | 'BIG_DECIMAL'
-  | 'BOOLEAN'
-  | 'TIMESTAMP'
-  | 'STRING'
-  | 'JSON'
-  | 'BYTES';
-
-/**
- * Pinot broker response
- *
- * @public
- * @see {@link https://docs.pinot.apache.org/users/api/querying-pinot-using-standard-sql/response-format | pinot response format docs} for detailed description
- */
-export interface IBrokerResponse {
-  /**
-   * Result table
-   */
-  resultTable: IResultTable;
-  /**
-   * Query exceptions.
-   * Will contain the stack trace if there is any exception processing the query.
-   */
-  exceptions?: IPinoException[];
-  /**
-   * Query trace, if the query was executed with `trace`
-   */
-  traceInfo: Record<string, string>;
-  /**
-   * Represents the number of servers queried by the broker (may be less than the total number of servers since the broker can apply some optimizations to minimize the number of servers).
-   */
-  numServersQueries: number;
-  /**
-   * This should be equal to the numServersQueried. If this is not the same, then one of more servers might have timed out.
-   * If numServersQueried != numServersResponded, the results can be considered partial and clients can retry the query with exponential back off.
-   */
-  numServersResponded: number;
-  /**
-   * The total number of segmentsQueried for a query.
-   * May be less than the total number of segments if the broker applies optimizations.
-   *
-   * The broker decides how many segments to query on each server, based on broker pruning logic.
-   * The server decides how many of these segments to actually look at, based on server pruning logic.
-   * After processing segments for a query, fewer may have the matching records.
-   *
-   * In general, `numSegmentsQueried >= numSegmentsProcessed >= numSegmentsMatched`.
-   */
-  numSegmentsQueried: number;
-  /**
-   * The number of segment operators used to process segments.
-   * Indicates the effectiveness of the pruning logic. For more information, see
-   *
-   * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-syntax/explain-plan | Single-stage query engine} for more info
-   * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-syntax/explain-plan-multi-stage | Multi-stage query engine} for more info
-   */
-  numSegmentsProcessed: number;
-  /**
-   * The number of segments processed with at least one document matched in the query response.
-   */
-  numSegmentsMatched: number;
-  numConsumingSegmentsQueried: number;
-  /**
-   * Total number of docs scanned
-   */
-  numDocsScanned: number;
-
-  /**
-   * The number of entries scanned after the filtering phase of query execution, ie. aggregation and/or group-by phases.
-   * This is equivalent to numDocScanned * number of projected columns.
-   * This along with numEntriesScannedInFilter indicates where most of the time is spent during query processing.
-   * A high number for this means the selectivity is low (that is, Pinot needs to scan a lot of records to answer the query).
-   * If this is high, consider using star-tree index. (A regular inverted/bitmap index won't improve performance.)
-   */
-  numEntriesScannedPostFilter: number;
-  /**
-   * If the query has a group by clause and top K, Pinot drops new entries after the numGroupsLimit is reached.
-   * If this boolean is set to true, the query result may not be accurate.
-   * The default value for numGroupsLimit is 100k, and should be sufficient for most use cases.
-   */
-  numGroupsLimitReached: boolean;
-  /**
-   * Number of documents/records in the table.
-   */
-  totalDocs: number;
-  /**
-   * Total time taken as seen by the broker before sending the response back to the client.
-   */
-  timeUsedMs: number;
-  minConsumingFreshnessTimeMs: number;
-}
-
-/**
  * Pinot query statistics.
- * Just converted and categorized pinot response stats
+ * Just converted and categorized Pinot response stats.
+ *
+ * @public
  */
 export interface IQueryStats {
   /**
-   * Tracing info
-   */
-  traceInfo: Record<string, string>;
-  /**
-   * Segment stats
+   * Segment stats.
    */
   segments: {
+    /**
+     * Number of segments queried.
+     */
     queried: number;
+    /**
+     * Number of segments processed.
+     */
     processed: number;
+    /**
+     * Number of segments matched.
+     */
     matched: number;
   };
   /**
-   * Server stats
+   * Consuming segments.
+   */
+  consumingSegments: {
+    /**
+     * Freshness time in milliseconds.
+     */
+    freshTimeMs: number;
+    /**
+     * Number of consuming segments queried.
+     */
+    queried: number;
+    /**
+     * Number of consuming segments processed.
+     */
+    processed: number;
+    /**
+     * Number of consuming segments matched.
+     */
+    matched: number;
+  };
+  /**
+   * Pruned by segments count.
+   */
+  prunedSegments: {
+    /**
+     * Number of segments pruned by broker.
+     */
+    broker: number;
+    /**
+     * Number of segments pruned by server.
+     */
+    server: number;
+    /**
+     * Number of invalid segments pruned.
+     */
+    invalid: number;
+    /**
+     * Number of segments pruned by limit.
+     */
+    limit: number;
+    /**
+     * Number of segments pruned by value.
+     */
+    value: number;
+  };
+  /**
+   * Server stats.
    */
   server: {
-    queries: number;
+    /**
+     * Number of servers queried.
+     */
+    queried: number;
+    /**
+     * Number of servers responded.
+     * If everything is ok, should be equal to `queried`.
+     */
     responded: number;
   };
   /**
-   * Docs stats
+   * Docs stats.
    */
   docs: {
+    /**
+     * Number of documents scanned.
+     */
     scanned: number;
+    /**
+     * Number of documents returned.
+     */
     returned: number;
+    /**
+     * Total number of documents.
+     */
     total: number;
   };
   /**
-   * Query time in ms
+   * CPU stats.
    */
-  totalTimeMs: number;
+  cpuTimeMs: {
+    offline: {
+      /**
+       * Thread CPU time in milliseconds for offline segments.
+       */
+      thread: number;
+      /**
+       * System activities CPU time in milliseconds for offline segments.
+       */
+      systemActivities: number;
+      /**
+       * Response serialization CPU time in milliseconds for offline segments.
+       */
+      responseSerialization: number;
+    };
+    realtime: {
+      /**
+       * Thread CPU time in milliseconds for realtime segments.
+       */
+      thread: number;
+      /**
+       * System activities CPU time in milliseconds for realtime segments.
+       */
+      systemActivities: number;
+      /**
+       * Response serialization CPU time in milliseconds for realtime segments.
+       */
+      responseSerialization: number;
+    };
+  };
 
-  minConsumingFreshnessTimeMs: number;
-  numConsumingSegmentsQueried: number;
-  numEntriesScannedPostFilter: number;
-  numGroupsLimitReached: boolean;
+  queryTimeMs: {
+    /**
+     * Query time in milliseconds.
+     */
+    total: number;
+    /**
+     * Broker reduce time in milliseconds.
+     * Important to understand if query is bottlenecked on Broker or Server side.
+     */
+    brokerReduce: number;
+  };
+
+  limitsReached: {
+    /**
+     * Indicates if the group limit was reached.
+     */
+    groups: boolean;
+    /**
+     * Indicates if the maximum number of rows in join was reached.
+     */
+    maxRowsInJoin: boolean;
+    /**
+     * Indicates if the maximum number of rows in window was reached.
+     */
+    maxRowsInWindowReached: boolean;
+  };
+
+  /**
+   * Maximum number of rows in operator.
+   */
+  maxRowsInOperator?: number;
 }
 
 /**
- * Query result
+ * Query result.
+ *
+ * @public
  */
 export interface IQueryResult<TRows = unknown> {
   /**
-   * Data rows
+   * Data rows.
    */
   rows: TRows;
   /**
-   * Query stats
+   * Query stats.
    */
   stats: IQueryStats;
   /**
-   * Compiled SQL query
+   * Compiled SQL query.
    */
   sql: string;
   /**
-   * Query options
+   * Query options.
    */
   queryOptions?: string | undefined;
 }
 
 // TODO: add some codes
 /**
- * Broker error codes
+ * Broker error codes.
+ *
+ * @public
  */
 export const enum EBrokerErrorCode {
   /**
-   * Unknown
+   * Unknown.
    */
   UNKNOWN,
 }
 
 /**
  * Predefined queue tolerance values.
+ *
+ * @public
  */
 export type TQueueTolerancePredefined =
   | 0
@@ -254,7 +237,9 @@ export type TQueueTolerancePredefined =
   | 1;
 
 /**
- * Query options
+ * Query options.
+ *
+ * @public
  *
  * @see {@link https://docs.pinot.apache.org/users/user-guide-query/query-options | Pinot query options} for actual info
  */
@@ -323,6 +308,8 @@ export interface IPinotQueryOptions {
 
 /**
  * Pinot client interface.
+ *
+ * @public
  */
 export interface IPinotClient {
   /**

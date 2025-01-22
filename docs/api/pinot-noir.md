@@ -30,7 +30,7 @@ Pinot DB client.
 
 </td><td>
 
-Pinot broker JSON transport based on "undici" http client.
+Pinot broker JSON transport based on "undici" HTTP client.
 
 </td></tr>
 <tr><td>
@@ -75,7 +75,7 @@ Description
 
 </td><td>
 
-Broker error codes
+Broker error codes.
 
 </td></tr>
 <tr><td>
@@ -84,7 +84,7 @@ Broker error codes
 
 </td><td>
 
-Broker error codes
+Broker error codes.
 
 </td></tr>
 <tr><td>
@@ -142,11 +142,29 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[IAggregateStats](./pinot-noir.iaggregatestats.md)
+
+</td><td>
+
+Stats for the AGGREGATE operator.
+
+</td></tr>
+<tr><td>
+
 [IBrokerResponse](./pinot-noir.ibrokerresponse.md)
 
 </td><td>
 
-Pinot broker response
+Broker response.
+
+</td></tr>
+<tr><td>
+
+[IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
+
+</td><td>
+
+Broker response stats.
 
 </td></tr>
 <tr><td>
@@ -155,7 +173,7 @@ Pinot broker response
 
 </td><td>
 
-Pinot broker transport config options
+Pinot broker transport config options.
 
 </td></tr>
 <tr><td>
@@ -164,7 +182,52 @@ Pinot broker transport config options
 
 </td><td>
 
-Pinot broker HTTP request options
+Pinot broker HTTP request options.
+
+</td></tr>
+<tr><td>
+
+[IFilterStats](./pinot-noir.ifilterstats.md)
+
+</td><td>
+
+Stats for the FILTER operator.
+
+</td></tr>
+<tr><td>
+
+[IHashJoinStats](./pinot-noir.ihashjoinstats.md)
+
+</td><td>
+
+Stats for the HASH_JOIN operator.
+
+</td></tr>
+<tr><td>
+
+[ILeafStats](./pinot-noir.ileafstats.md)
+
+</td><td>
+
+Stats for the LEAF operator.
+
+</td></tr>
+<tr><td>
+
+[IMailboxReceiveStats](./pinot-noir.imailboxreceivestats.md)
+
+</td><td>
+
+Stats for the MAILBOX_RECEIVE operator.
+
+</td></tr>
+<tr><td>
+
+[IMailboxSendStats](./pinot-noir.imailboxsendstats.md)
+
+</td><td>
+
+Stats for the MAILBOX_SEND operator.
 
 </td></tr>
 <tr><td>
@@ -173,7 +236,7 @@ Pinot broker HTTP request options
 
 </td><td>
 
-Pinot exception
+Pinot exception.
 
 </td></tr>
 <tr><td>
@@ -182,7 +245,7 @@ Pinot exception
 
 </td><td>
 
-Pinot broker transport interface. Implement it create your own.
+Pinot broker transport interface. Implement it to create your own.
 
 </td></tr>
 <tr><td>
@@ -207,7 +270,7 @@ Pinot client interface.
 
 </td><td>
 
-Pinot transport pool statistics
+Pinot transport pool statistics.
 
 </td></tr>
 <tr><td>
@@ -216,7 +279,7 @@ Pinot transport pool statistics
 
 </td><td>
 
-Query options
+Query options.
 
 </td></tr>
 <tr><td>
@@ -234,7 +297,7 @@ Apache Pinot exception
 
 </td><td>
 
-Query result
+Query result.
 
 </td></tr>
 <tr><td>
@@ -243,7 +306,7 @@ Query result
 
 </td><td>
 
-Pinot query statistics. Just converted and categorized pinot response stats
+Pinot query statistics. Just converted and categorized Pinot response stats.
 
 </td></tr>
 <tr><td>
@@ -252,7 +315,7 @@ Pinot query statistics. Just converted and categorized pinot response stats
 
 </td><td>
 
-Response data schema
+Response data schema.
 
 </td></tr>
 <tr><td>
@@ -261,7 +324,43 @@ Response data schema
 
 </td><td>
 
-Pinot result table
+Pinot result table.
+
+</td></tr>
+<tr><td>
+
+[ISortOrLimitStats](./pinot-noir.isortorlimitstats.md)
+
+</td><td>
+
+Stats for the SORT_OR_LIMIT operator.
+
+</td></tr>
+<tr><td>
+
+[IStageStatsBase](./pinot-noir.istagestatsbase.md)
+
+</td><td>
+
+Base interface for all stage stats.
+
+</td></tr>
+<tr><td>
+
+[ITransformStats](./pinot-noir.itransformstats.md)
+
+</td><td>
+
+Stats for the TRANSFORM operator.
+
+</td></tr>
+<tr><td>
+
+[IWindowStats](./pinot-noir.iwindowstats.md)
+
+</td><td>
+
+Stats for the WINDOW operator.
 
 </td></tr>
 </tbody></table>
@@ -301,11 +400,20 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[StageStats](./pinot-noir.stagestats.md)
+
+</td><td>
+
+Union type for all stage stats.
+
+</td></tr>
+<tr><td>
+
 [TPinotDataType](./pinot-noir.tpinotdatatype.md)
 
 </td><td>
 
-Available Pinot data types
+Available Pinot data types.
 
 </td></tr>
 <tr><td>

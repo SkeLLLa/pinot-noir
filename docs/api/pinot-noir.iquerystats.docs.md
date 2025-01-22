@@ -4,7 +4,7 @@
 
 ## IQueryStats.docs property
 
-Docs stats
+Docs stats.
 
 **Signature:**
 

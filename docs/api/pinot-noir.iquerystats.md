@@ -4,7 +4,7 @@
 
 ## IQueryStats interface
 
-Pinot query statistics. Just converted and categorized pinot response stats
+Pinot query statistics. Just converted and categorized Pinot response stats.
 
 **Signature:**
 
@@ -33,6 +33,36 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[consumingSegments](./pinot-noir.iquerystats.consumingsegments.md)
+
+</td><td>
+
+</td><td>
+
+{ freshTimeMs: number; queried: number; processed: number; matched: number; }
+
+</td><td>
+
+Consuming segments.
+
+</td></tr>
+<tr><td>
+
+[cpuTimeMs](./pinot-noir.iquerystats.cputimems.md)
+
+</td><td>
+
+</td><td>
+
+{ offline: { thread: number; systemActivities: number; responseSerialization: number; }; realtime: { thread: number; systemActivities: number; responseSerialization: number; }; }
+
+</td><td>
+
+CPU stats.
+
+</td></tr>
+<tr><td>
+
 [docs](./pinot-noir.iquerystats.docs.md)
 
 </td><td>
@@ -43,12 +73,25 @@ Description
 
 </td><td>
 
-Docs stats
+Docs stats.
 
 </td></tr>
 <tr><td>
 
-[minConsumingFreshnessTimeMs](./pinot-noir.iquerystats.minconsumingfreshnesstimems.md)
+[limitsReached](./pinot-noir.iquerystats.limitsreached.md)
+
+</td><td>
+
+</td><td>
+
+{ groups: boolean; maxRowsInJoin: boolean; maxRowsInWindowReached: boolean; }
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+[maxRowsInOperator?](./pinot-noir.iquerystats.maxrowsinoperator.md)
 
 </td><td>
 
@@ -58,42 +101,33 @@ number
 
 </td><td>
 
-</td></tr>
-<tr><td>
-
-[numConsumingSegmentsQueried](./pinot-noir.iquerystats.numconsumingsegmentsqueried.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
+_(Optional)_ Maximum number of rows in operator.
 
 </td></tr>
 <tr><td>
 
-[numEntriesScannedPostFilter](./pinot-noir.iquerystats.numentriesscannedpostfilter.md)
+[prunedSegments](./pinot-noir.iquerystats.prunedsegments.md)
 
 </td><td>
 
 </td><td>
 
-number
+{ broker: number; server: number; invalid: number; limit: number; value: number; }
 
 </td><td>
+
+Pruned by segments count.
 
 </td></tr>
 <tr><td>
 
-[numGroupsLimitReached](./pinot-noir.iquerystats.numgroupslimitreached.md)
+[queryTimeMs](./pinot-noir.iquerystats.querytimems.md)
 
 </td><td>
 
 </td><td>
 
-boolean
+{ total: number; brokerReduce: number; }
 
 </td><td>
 
@@ -110,7 +144,7 @@ boolean
 
 </td><td>
 
-Segment stats
+Segment stats.
 
 </td></tr>
 <tr><td>
@@ -121,41 +155,11 @@ Segment stats
 
 </td><td>
 
-{ queries: number; responded: number; }
+{ queried: number; responded: number; }
 
 </td><td>
 
-Server stats
-
-</td></tr>
-<tr><td>
-
-[totalTimeMs](./pinot-noir.iquerystats.totaltimems.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-Query time in ms
-
-</td></tr>
-<tr><td>
-
-[traceInfo](./pinot-noir.iquerystats.traceinfo.md)
-
-</td><td>
-
-</td><td>
-
-Record&lt;string, string&gt;
-
-</td><td>
-
-Tracing info
+Server stats.
 
 </td></tr>
 </tbody></table>

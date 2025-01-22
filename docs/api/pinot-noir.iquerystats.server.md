@@ -4,13 +4,13 @@
 
 ## IQueryStats.server property
 
-Server stats
+Server stats.
 
 **Signature:**
 
 ```typescript
 server: {
-  queries: number;
+  queried: number;
   responded: number;
 }
 ```

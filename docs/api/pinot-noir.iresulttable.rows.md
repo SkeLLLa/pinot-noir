@@ -4,7 +4,7 @@
 
 ## IResultTable.rows property
 
-Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames
+Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames.
 
 **Signature:**
 

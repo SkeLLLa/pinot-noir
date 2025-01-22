@@ -4,7 +4,7 @@
 
 ## IPinotBrokerTransport interface
 
-Pinot broker transport interface. Implement it create your own.
+Pinot broker transport interface. Implement it to create your own.
 
 **Signature:**
 
@@ -43,7 +43,7 @@ Description
 
 </td><td>
 
-Pool statitstics (number of in-flight requests and so on)
+Pool statistics (number of in-flight requests and so on).
 
 </td></tr>
 </tbody></table>
@@ -65,7 +65,7 @@ Description
 
 </td><td>
 
-Closes connection to pinot broker
+Closes connection to Pinot broker.
 
 </td></tr>
 <tr><td>
@@ -74,7 +74,7 @@ Closes connection to pinot broker
 
 </td><td>
 
-Perform HTTP request to pinot
+Perform HTTP request to Pinot.
 
 </td></tr>
 </tbody></table>

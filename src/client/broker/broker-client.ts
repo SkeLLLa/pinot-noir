@@ -1,7 +1,10 @@
 import { SqlFormat } from '../../utils/format';
 import type { Sql } from '../../utils/tag';
 import { EPinotErrorType, PinotError } from '../errors/pinot';
+import { QueryStats } from './query-stats';
 import type { IPinotBrokerTransport } from './transport/types';
+import type { IPinotValueParser } from './type-parsers/types';
+import { UnsafeParser } from './type-parsers/unsafe';
 import {
   EBrokerErrorCode,
   IPinotClient,
@@ -13,32 +16,50 @@ import {
 } from './types';
 
 /**
+ * Pinot client dependencies.
+ *
+ * @public
+ */
+export interface IPinotClientDeps {
+  /**
+   * Pinot broker transport.
+   */
+  transport: IPinotBrokerTransport;
+  /**
+   * Value parser.
+   *
+   * @defaultValue {@link UnsafeParser}
+   */
+  valueParser?: IPinotValueParser;
+}
+
+/**
  * Pinot DB client.
  *
  * @public
  */
 export class PinotClient implements IPinotClient {
-  constructor(
-    protected readonly deps: {
-      transport: IPinotBrokerTransport;
-    },
-  ) {}
+  private valueParser: IPinotValueParser;
+
+  constructor(protected readonly deps: IPinotClientDeps) {
+    this.valueParser = deps.valueParser ?? new UnsafeParser();
+  }
 
   /**
-   * Standard pinot sql endpoint
+   * Standard Pinot SQL endpoint.
    *
    * @private
    */
   private static ENDPOINTS = { sql: '/query/sql' };
 
   /**
-   * Converts and serializes query options to pinot supported fromat
+   * Converts and serializes query options to Pinot supported format.
    *
    * @public
    * @static
    *
-   * @param options - Query options
-   * @returns Seriialized options
+   * @param options - Query options.
+   * @returns Serialized options.
    */
   public static toQueryOptions(
     options?: IPinotQueryOptions,
@@ -55,6 +76,13 @@ export class PinotClient implements IPinotClient {
       : undefined;
   }
 
+  /**
+   * Gets timeouts for the query.
+   *
+   * @private
+   * @param queryTimeoutMs - Query timeout in milliseconds.
+   * @returns Object containing bodyTimeout and headersTimeout.
+   */
   private static getTimeouts(queryTimeoutMs?: number): {
     bodyTimeout?: number;
     headersTimeout?: number;
@@ -69,19 +97,21 @@ export class PinotClient implements IPinotClient {
 
   /**
    * Transport stats.
+   *
+   * @public
    */
   public get transportStats(): IPinotPoolStats {
     return this.deps.transport.stats;
   }
 
   /**
-   * Execute pinot sql query
+   * Executes Pinot SQL query.
    *
    * @public
-   * @param query - Sql query body
-   * @param options - Query options
-   * @param trace - Pass trace parameter to pinot
-   * @returns Result rows with stats
+   * @param query - SQL query body.
+   * @param options - Query options.
+   * @param trace - Pass trace parameter to Pinot.
+   * @returns Result rows with stats.
    */
   public async select<TResult>(
     query: Sql,
@@ -106,7 +136,7 @@ export class PinotClient implements IPinotClient {
 
     if ((response.exceptions?.length ?? 0) > 0) {
       throw new PinotError({
-        message: 'Pinot query exception',
+        message: 'Pinot query exception.',
         code: EBrokerErrorCode.UNKNOWN,
         exceptions: response.exceptions,
         type: EPinotErrorType.SQL,
@@ -122,30 +152,21 @@ export class PinotClient implements IPinotClient {
     try {
       const {
         resultTable: {
-          dataSchema: { columnNames },
+          dataSchema: { columnNames, columnDataTypes },
           rows,
         },
-        numDocsScanned,
-        numServersQueries,
-        numSegmentsMatched,
-        minConsumingFreshnessTimeMs,
-        numConsumingSegmentsQueried,
-        numEntriesScannedPostFilter,
-        numGroupsLimitReached,
-        numSegmentsProcessed,
-        numSegmentsQueried,
-        timeUsedMs,
-        totalDocs,
-        traceInfo,
-        numServersResponded,
+        ...statsRaw
       } = response;
+      const queryStats = new QueryStats(statsRaw);
 
       const data = rows.map((row) => {
         const obj: Record<string, unknown> = {};
 
         columnNames.forEach((column, index) => {
-          // TODO: add data types conversion
-          obj[column] = row[index];
+          obj[column] = this.valueParser.parse(
+            row[index],
+            columnDataTypes[index],
+          );
         });
 
         return obj as TResult;
@@ -155,32 +176,11 @@ export class PinotClient implements IPinotClient {
         sql,
         queryOptions,
         rows: data,
-        stats: {
-          traceInfo,
-          segments: {
-            matched: numSegmentsMatched,
-            processed: numSegmentsProcessed,
-            queried: numSegmentsQueried,
-          },
-          server: {
-            queries: numServersQueries,
-            responded: numServersResponded,
-          },
-          docs: {
-            scanned: numDocsScanned,
-            returned: data.length,
-            total: totalDocs,
-          },
-          totalTimeMs: timeUsedMs,
-          minConsumingFreshnessTimeMs,
-          numConsumingSegmentsQueried,
-          numEntriesScannedPostFilter,
-          numGroupsLimitReached,
-        },
+        stats: queryStats,
       };
     } catch (error) {
       throw new PinotError({
-        message: 'Pinot parse error',
+        message: 'Pinot parse error.',
         code: EBrokerErrorCode.UNKNOWN,
         type: EPinotErrorType.PARSE,
         cause: error as Error,

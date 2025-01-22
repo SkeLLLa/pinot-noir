@@ -4,7 +4,7 @@
 
 ## IBrokerResponse.resultTable property
 
-Result table
+Result table.
 
 **Signature:**
 

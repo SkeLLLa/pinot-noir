@@ -9,9 +9,7 @@ Constructs a new instance of the `PinotClient` class
 **Signature:**
 
 ```typescript
-constructor(deps: {
-        transport: IPinotBrokerTransport;
-    });
+constructor(deps: IPinotClientDeps);
 ```
 
 ## Parameters
@@ -35,7 +33,7 @@ deps
 
 </td><td>
 
-{ transport: [IPinotBrokerTransport](./pinot-noir.ipinotbrokertransport.md)<!-- -->; }
+IPinotClientDeps
 
 </td><td>
 

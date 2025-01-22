@@ -4,7 +4,7 @@
 
 ## IQueryResult.rows property
 
-Data rows
+Data rows.
 
 **Signature:**
 

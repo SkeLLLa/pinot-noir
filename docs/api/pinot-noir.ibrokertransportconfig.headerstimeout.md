@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.headersTimeout property
 
-Headers timeout (in ms)
+Headers timeout (in ms).
 
 **Signature:**
 

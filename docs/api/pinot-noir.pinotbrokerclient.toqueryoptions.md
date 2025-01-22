@@ -4,7 +4,7 @@
 
 ## PinotBrokerClient.toQueryOptions() method
 
-Converts and serializes query options to pinot supported fromat
+Converts and serializes query options to Pinot supported format.
 
 **Signature:**
 
@@ -37,7 +37,7 @@ options
 
 </td><td>
 
-_(Optional)_ Query options
+_(Optional)_ Query options.
 
 </td></tr>
 </tbody></table>
@@ -45,4 +45,4 @@ _(Optional)_ Query options
 
 string \| undefined
 
-Seriialized options
+Serialized options.

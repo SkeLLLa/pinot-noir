@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig interface
 
-Pinot broker transport config options
+Pinot broker transport config options.
 
 **Signature:**
 
@@ -43,7 +43,7 @@ number
 
 </td><td>
 
-_(Optional)_ The timeout after which a request will time out (in ms)
+_(Optional)_ The timeout after which a request will time out (in ms).
 
 </td></tr>
 <tr><td>
@@ -58,7 +58,7 @@ URL \| string
 
 </td><td>
 
-Broker URL
+Broker URL.
 
 </td></tr>
 <tr><td>
@@ -88,7 +88,7 @@ number
 
 </td><td>
 
-_(Optional)_ TCP connect timeout (in ms)
+_(Optional)_ TCP connect timeout (in ms).
 
 </td></tr>
 <tr><td>
@@ -103,7 +103,7 @@ number
 
 </td><td>
 
-_(Optional)_ Headers timeout (in ms)
+_(Optional)_ Headers timeout (in ms).
 
 </td></tr>
 <tr><td>
@@ -118,7 +118,7 @@ number
 
 </td><td>
 
-_(Optional)_ The maximum allowed `keepAliveTimeout` (in ms)
+_(Optional)_ The maximum allowed `keepAliveTimeout` (in ms).
 
 </td></tr>
 <tr><td>
@@ -133,7 +133,7 @@ number
 
 </td><td>
 
-_(Optional)_ Connection keep-alive timeout
+_(Optional)_ Connection keep-alive timeout.
 
 </td></tr>
 <tr><td>
@@ -163,7 +163,7 @@ string
 
 </td><td>
 
-Pinot API access token
+Pinot API access token.
 
 </td></tr>
 </tbody></table>

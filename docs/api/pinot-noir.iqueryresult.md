@@ -4,7 +4,7 @@
 
 ## IQueryResult interface
 
-Query result
+Query result.
 
 **Signature:**
 
@@ -43,7 +43,7 @@ string \| undefined
 
 </td><td>
 
-_(Optional)_ Query options
+_(Optional)_ Query options.
 
 </td></tr>
 <tr><td>
@@ -58,7 +58,7 @@ TRows
 
 </td><td>
 
-Data rows
+Data rows.
 
 </td></tr>
 <tr><td>
@@ -73,7 +73,7 @@ string
 
 </td><td>
 
-Compiled SQL query
+Compiled SQL query.
 
 </td></tr>
 <tr><td>
@@ -88,7 +88,7 @@ Compiled SQL query
 
 </td><td>
 
-Query stats
+Query stats.
 
 </td></tr>
 </tbody></table>

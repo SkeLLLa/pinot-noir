@@ -4,7 +4,7 @@
 
 ## IQueryResult.queryOptions property
 
-Query options
+Query options.
 
 **Signature:**
 

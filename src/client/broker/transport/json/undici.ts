@@ -9,7 +9,7 @@ import {
 } from '../types';
 
 /**
- * Pinot broker JSON transport based on "undici" http client.
+ * Pinot broker JSON transport based on "undici" HTTP client.
  *
  * @public
  */
@@ -57,13 +57,12 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   }
 
   /**
-   * Perform HTTP request to pinot
+   * Perform HTTP request to Pinot.
    *
    * @public
-   * @param param0 - Request options
-   * @returns Pinot response
+   * @param param0 - Request options.
+   * @returns Pinot response.
    */
-
   async request<TResponse = unknown>({
     body,
     headers,
@@ -81,7 +80,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       // Throw error
       throw new PinotError({
         data: { body, maxQueueTolerance, queueSize },
-        message: `Pinot transport error: Max queue size reached`,
+        message: `Pinot transport error: Max queue size reached.`,
         type: EPinotErrorType.TRANSPORT,
         code: EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT,
       });
@@ -115,7 +114,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       }
       if (err instanceof errors.ResponseStatusCodeError) {
         throw new PinotError({
-          message: `Pinot transport error: response code ${err.statusCode}`,
+          message: `Pinot transport error: Response code ${err.statusCode}`,
           type: EPinotErrorType.TRANSPORT,
           code: EBrokerTransportErrorCode.INVALID_RESPONSE,
           data: {
@@ -141,7 +140,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     } catch (err) {
       const text = await response.body.text().catch((err: Error) => {
         throw new PinotError({
-          message: `Pinot transport error: can't read response body`,
+          message: `Pinot transport error: Can't read response body.`,
           type: EPinotErrorType.TRANSPORT,
           code: EBrokerTransportErrorCode.INVALID_RESPONSE,
           cause: err,
@@ -149,7 +148,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       });
 
       throw new PinotError({
-        message: `Pinot transport error: can't parse response body JSON`,
+        message: `Pinot transport error: Can't parse response body JSON.`,
         type: EPinotErrorType.TRANSPORT,
         code: EBrokerTransportErrorCode.INVALID_RESPONSE,
         cause: err as Error,
@@ -159,14 +158,14 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   }
 
   /**
-   * Closes connection to pinot broker
+   * Closes connection to Pinot broker.
    */
   async close(): Promise<void> {
     return this.pool.close();
   }
 
   /**
-   * HTTP pool statitstics
+   * HTTP pool statistics.
    */
   get stats(): IPinotPoolStats {
     return this.pool.stats;

@@ -4,7 +4,7 @@
 
 ## IResponseSchema.columnNames property
 
-Result column names
+Result column names.
 
 **Signature:**
 

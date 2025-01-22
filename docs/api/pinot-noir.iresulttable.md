@@ -4,7 +4,7 @@
 
 ## IResultTable interface
 
-Pinot result table
+Pinot result table.
 
 **Signature:**
 
@@ -43,7 +43,7 @@ Description
 
 </td><td>
 
-Schema that describes the schema of the response
+Schema that describes the schema of the response.
 
 </td></tr>
 <tr><td>
@@ -58,7 +58,7 @@ Schema that describes the schema of the response
 
 </td><td>
 
-Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames
+Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames.
 
 </td></tr>
 </tbody></table>

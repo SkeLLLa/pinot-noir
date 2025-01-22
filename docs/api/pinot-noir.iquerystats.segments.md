@@ -4,7 +4,7 @@
 
 ## IQueryStats.segments property
 
-Segment stats
+Segment stats.
 
 **Signature:**
 

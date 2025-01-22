@@ -73,7 +73,7 @@ Description
 
 </td><td>
 
-{ transport: [IPinotBrokerTransport](./pinot-noir.ipinotbrokertransport.md)<!-- -->; }
+IPinotClientDeps
 
 </td><td>
 
@@ -120,7 +120,7 @@ Description
 
 </td><td>
 
-Execute pinot sql query
+Executes Pinot SQL query.
 
 </td></tr>
 <tr><td>
@@ -133,7 +133,7 @@ Execute pinot sql query
 
 </td><td>
 
-Converts and serializes query options to pinot supported fromat
+Converts and serializes query options to Pinot supported format.
 
 </td></tr>
 </tbody></table>

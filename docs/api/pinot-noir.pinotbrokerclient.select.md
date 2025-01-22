@@ -4,7 +4,7 @@
 
 ## PinotBrokerClient.select() method
 
-Execute pinot sql query
+Executes Pinot SQL query.
 
 **Signature:**
 
@@ -37,7 +37,7 @@ Sql
 
 </td><td>
 
-Sql query body
+SQL query body.
 
 </td></tr>
 <tr><td>
@@ -50,7 +50,7 @@ options
 
 </td><td>
 
-_(Optional)_ Query options
+_(Optional)_ Query options.
 
 </td></tr>
 <tr><td>
@@ -63,7 +63,7 @@ boolean
 
 </td><td>
 
-_(Optional)_ Pass trace parameter to pinot
+_(Optional)_ Pass trace parameter to Pinot.
 
 </td></tr>
 </tbody></table>
@@ -71,4 +71,4 @@ _(Optional)_ Pass trace parameter to pinot
 
 Promise&lt;[IQueryResult](./pinot-noir.iqueryresult.md)<!-- -->&lt;TResult\[\]&gt;&gt;
 
-Result rows with stats
+Result rows with stats.

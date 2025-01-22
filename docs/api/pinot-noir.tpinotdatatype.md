@@ -4,7 +4,7 @@
 
 ## TPinotDataType type
 
-Available Pinot data types
+Available Pinot data types.
 
 **Signature:**
 

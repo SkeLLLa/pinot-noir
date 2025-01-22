@@ -114,24 +114,60 @@ export enum ERROR_CODES {
 }
 
 // @public
-export interface IBrokerResponse {
-    exceptions?: IPinoException[];
+export interface IAggregateStats extends IStageStatsBase {
     // (undocumented)
+    type: 'AGGREGATE';
+}
+
+// @public
+export interface IBrokerResponse extends IBrokerResponseStats {
+    brokerId: string;
+    exceptions: IPinoException[];
+    partialResult: boolean;
+    requestId: string;
+    resultTable: IResultTable;
+    stats: IBrokerResponseStats;
+    traceInfo?: Record<string, unknown>;
+}
+
+// @public
+export interface IBrokerResponseStats {
+    brokerReduceTimeMs: number;
+    explainPlanNumEmptyFilterSegments: number;
+    explainPlanNumMatchAllFilterSegments: number;
+    maxRowsInJoinReached?: boolean;
+    maxRowsInOperator?: number;
+    maxRowsInWindowReached?: boolean;
     minConsumingFreshnessTimeMs: number;
-    // (undocumented)
+    numConsumingSegmentsMatched: number;
+    numConsumingSegmentsProcessed: number;
     numConsumingSegmentsQueried: number;
     numDocsScanned: number;
+    numEntriesScannedInFilter: number;
     numEntriesScannedPostFilter: number;
     numGroupsLimitReached: boolean;
+    numRowsResultSet: number;
     numSegmentsMatched: number;
     numSegmentsProcessed: number;
+    numSegmentsPrunedByBroker: number;
+    numSegmentsPrunedByLimit: number;
+    numSegmentsPrunedByServer: number;
+    numSegmentsPrunedByValue: number;
+    numSegmentsPrunedInvalid: number;
     numSegmentsQueried: number;
-    numServersQueries: number;
+    numServersQueried: number;
     numServersResponded: number;
-    resultTable: IResultTable;
+    offlineResponseSerializationCpuTimeNs: number;
+    offlineSystemActivitiesCpuTimeNs: number;
+    offlineThreadCpuTimeNs: number;
+    offlineTotalCpuTimeNs: number;
+    realtimeResponseSerializationCpuTimeNs: number;
+    realtimeSystemActivitiesCpuTimeNs: number;
+    realtimeThreadCpuTimeNs: number;
+    realtimeTotalCpuTimeNs: number;
+    stageStats: IStageStatsBase;
     timeUsedMs: number;
     totalDocs: number;
-    traceInfo: Record<string, string>;
 }
 
 // @public
@@ -151,8 +187,65 @@ export interface IBrokerTransportConfig {
 export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query' | 'bodyTimeout' | 'headersTimeout'> {
     // (undocumented)
     options?: {
-        queueTolerance?: number | undefined;
+        queueTolerance?: TQueueTolerancePredefined | number | undefined;
     } | undefined;
+}
+
+// @public
+export interface IFilterStats extends IStageStatsBase {
+    // (undocumented)
+    type: 'FILTER';
+}
+
+// @public
+export interface IHashJoinStats extends IStageStatsBase {
+    timeBuildingHashTableMs: number;
+    // (undocumented)
+    type: 'HASH_JOIN';
+}
+
+// @public
+export interface ILeafStats extends IStageStatsBase {
+    minConsumingFreshnessTimeMs: number;
+    numConsumingSegmentsQueried: number;
+    numDocsScanned: number;
+    numEntriesScannedPostFilter: number;
+    numSegmentsMatched: number;
+    numSegmentsProcessed: number;
+    numSegmentsPrunedByServer: number;
+    numSegmentsQueried: number;
+    systemActivitiesCpuTimeNs?: number;
+    table: string;
+    threadCpuTimeNs: number;
+    totalDocs: number;
+    // (undocumented)
+    type: 'LEAF';
+}
+
+// @public
+export interface IMailboxReceiveStats extends IStageStatsBase {
+    deserializationTimeMs?: number;
+    deserializedBytes: number;
+    downstreamWaitMs?: number;
+    fanIn: number;
+    inMemoryMessages?: number;
+    rawMessages: number;
+    // (undocumented)
+    type: 'MAILBOX_RECEIVE';
+    upstreamWaitMs?: number;
+}
+
+// @public
+export interface IMailboxSendStats extends IStageStatsBase {
+    fanOut: number;
+    inMemoryMessages?: number;
+    parallelism: number;
+    rawMessages: number;
+    serializationTimeMs?: number;
+    serializedBytes: number;
+    stage: number;
+    // (undocumented)
+    type: 'MAILBOX_SEND';
 }
 
 // @public
@@ -208,8 +301,7 @@ export interface IPinotQueryOptions {
     minSegmentGroupTrimSize?: number;
     minServerGroupTrimSize?: number;
     numReplicaGroupsToQuery?: number;
-    // Warning: (ae-forgotten-export) The symbol "QueueTolerancePredefined" needs to be exported by the entry point index.d.ts
-    queueTolerance?: QueueTolerancePredefined | number;
+    queueTolerance?: TQueueTolerancePredefined | number;
     skipIndexes?: string;
     skipUpsert?: boolean;
     timeoutMs?: number;
@@ -233,35 +325,62 @@ export interface IQueryResult<TRows = unknown> {
 
 // @public
 export interface IQueryStats {
+    consumingSegments: {
+        freshTimeMs: number;
+        queried: number;
+        processed: number;
+        matched: number;
+    };
+    cpuTimeMs: {
+        offline: {
+            thread: number;
+            systemActivities: number;
+            responseSerialization: number;
+        };
+        realtime: {
+            thread: number;
+            systemActivities: number;
+            responseSerialization: number;
+        };
+    };
     docs: {
         scanned: number;
         returned: number;
         total: number;
     };
     // (undocumented)
-    minConsumingFreshnessTimeMs: number;
+    limitsReached: {
+        groups: boolean;
+        maxRowsInJoin: boolean;
+        maxRowsInWindowReached: boolean;
+    };
+    maxRowsInOperator?: number;
+    prunedSegments: {
+        broker: number;
+        server: number;
+        invalid: number;
+        limit: number;
+        value: number;
+    };
     // (undocumented)
-    numConsumingSegmentsQueried: number;
-    // (undocumented)
-    numEntriesScannedPostFilter: number;
-    // (undocumented)
-    numGroupsLimitReached: boolean;
+    queryTimeMs: {
+        total: number;
+        brokerReduce: number;
+    };
     segments: {
         queried: number;
         processed: number;
         matched: number;
     };
     server: {
-        queries: number;
+        queried: number;
         responded: number;
     };
-    totalTimeMs: number;
-    traceInfo: Record<string, string>;
 }
 
 // @public
 export interface IResponseSchema {
-    columnDataTypes: string[];
+    columnDataTypes: TPinotDataType[];
     columnNames: string[];
 }
 
@@ -271,6 +390,33 @@ export interface IResultTable {
     rows: (number | string)[][];
 }
 
+// @public
+export interface ISortOrLimitStats extends IStageStatsBase {
+    requireSort?: boolean;
+    // (undocumented)
+    type: 'SORT_OR_LIMIT';
+}
+
+// @public
+export interface IStageStatsBase {
+    children?: IStageStatsBase[];
+    emittedRows: number;
+    executionTimeMs: number;
+    type: string;
+}
+
+// @public
+export interface ITransformStats extends IStageStatsBase {
+    // (undocumented)
+    type: 'TRANSFORM';
+}
+
+// @public
+export interface IWindowStats extends IStageStatsBase {
+    // (undocumented)
+    type: 'WINDOW';
+}
+
 export { join }
 
 // @public
@@ -278,13 +424,11 @@ export const NON_PINOT_OPTIONS: readonly (keyof IPinotQueryOptions)[];
 
 // @public
 export class PinotBrokerClient implements IPinotClient {
-    constructor(deps: {
-        transport: IPinotBrokerTransport;
-    });
+    constructor(deps: IPinotClientDeps);
+    // Warning: (ae-forgotten-export) The symbol "IPinotClientDeps" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    protected readonly deps: {
-        transport: IPinotBrokerTransport;
-    };
+    protected readonly deps: IPinotClientDeps;
     select<TResult>(query: Sql, options?: IPinotQueryOptions, trace?: boolean): Promise<IQueryResult<TResult[]>>;
     static toQueryOptions(options?: IPinotQueryOptions): string | undefined;
     get transportStats(): IPinotPoolStats;
@@ -292,7 +436,7 @@ export class PinotBrokerClient implements IPinotClient {
 
 // @public
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
-    constructor({ bodyTimeout, brokerUrl, connections, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }: IBrokerTransportConfig);
+    constructor({ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }: IBrokerTransportConfig);
     close(): Promise<void>;
     protected readonly maxQueueSize: number | undefined;
     protected readonly pool: Pool;
@@ -354,7 +498,13 @@ export class SqlUtils {
 }
 
 // @public
+export type StageStats = IAggregateStats | IFilterStats | IHashJoinStats | ILeafStats | IMailboxReceiveStats | IMailboxSendStats | ISortOrLimitStats | ITransformStats | IWindowStats;
+
+// @public
 export type TPinotDataType = 'INT' | 'LONG' | 'FLOAT' | 'DOUBLE' | 'BIG_DECIMAL' | 'BOOLEAN' | 'TIMESTAMP' | 'STRING' | 'JSON' | 'BYTES';
+
+// @public
+export type TQueueTolerancePredefined = 0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
 
 // (No @packageDocumentation comment for this package)
 

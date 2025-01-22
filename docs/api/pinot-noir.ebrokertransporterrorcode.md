@@ -4,7 +4,7 @@
 
 ## EBrokerTransportErrorCode enum
 
-Broker error codes
+Broker error codes.
 
 **Signature:**
 
@@ -37,7 +37,7 @@ INVALID_RESPONSE
 
 </td><td>
 
-Invalid response from pinot
+Invalid response from Pinot.
 
 </td></tr>
 <tr><td>
@@ -50,7 +50,7 @@ QUEUE_TOLERANCE_LIMIT
 
 </td><td>
 
-Queue tolerance limit exceded
+Queue tolerance limit exceeded.
 
 </td></tr>
 <tr><td>
@@ -63,7 +63,7 @@ TIMEOUT
 
 </td><td>
 
-Timeout
+Timeout.
 
 </td></tr>
 <tr><td>
@@ -76,7 +76,7 @@ UNKNOWN
 
 </td><td>
 
-Unknown code
+Unknown code.
 
 </td></tr>
 </tbody></table>

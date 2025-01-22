@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.brokerUrl property
 
-Broker URL
+Broker URL.
 
 **Signature:**
 

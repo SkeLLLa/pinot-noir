@@ -4,7 +4,7 @@
 
 ## IPinotPoolStats interface
 
-Pinot transport pool statistics
+Pinot transport pool statistics.
 
 **Signature:**
 

@@ -4,7 +4,7 @@
 
 ## IPinoException.message property
 
-Error message
+Error message.
 
 **Signature:**
 

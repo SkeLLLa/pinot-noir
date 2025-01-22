@@ -4,7 +4,7 @@
 
 ## IResultTable.dataSchema property
 
-Schema that describes the schema of the response
+Schema that describes the schema of the response.
 
 **Signature:**
 

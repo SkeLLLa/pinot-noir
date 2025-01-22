@@ -4,7 +4,7 @@
 
 ## IQueryResult.stats property
 
-Query stats
+Query stats.
 
 **Signature:**
 

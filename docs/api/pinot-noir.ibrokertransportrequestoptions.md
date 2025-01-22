@@ -4,7 +4,7 @@
 
 ## IBrokerTransportRequestOptions interface
 
-Pinot broker HTTP request options
+Pinot broker HTTP request options.
 
 **Signature:**
 

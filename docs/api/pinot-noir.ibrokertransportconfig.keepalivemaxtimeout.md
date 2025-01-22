@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.keepAliveMaxTimeout property
 
-The maximum allowed `keepAliveTimeout` (in ms)
+The maximum allowed `keepAliveTimeout` (in ms).
 
 **Signature:**
 

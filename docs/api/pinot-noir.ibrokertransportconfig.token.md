@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.token property
 
-Pinot API access token
+Pinot API access token.
 
 **Signature:**
 

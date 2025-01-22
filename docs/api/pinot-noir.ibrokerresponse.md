@@ -4,13 +4,15 @@
 
 ## IBrokerResponse interface
 
-Pinot broker response
+Broker response.
 
 **Signature:**
 
 ```typescript
-export interface IBrokerResponse
+export interface IBrokerResponse extends IBrokerResponseStats
 ```
+
+**Extends:** [IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
 
 ## Properties
 
@@ -33,7 +35,22 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[exceptions?](./pinot-noir.ibrokerresponse.exceptions.md)
+[brokerId](./pinot-noir.ibrokerresponse.brokerid.md)
+
+</td><td>
+
+</td><td>
+
+string
+
+</td><td>
+
+Broker ID.
+
+</td></tr>
+<tr><td>
+
+[exceptions](./pinot-noir.ibrokerresponse.exceptions.md)
 
 </td><td>
 
@@ -43,68 +60,12 @@ Description
 
 </td><td>
 
-_(Optional)_ Query exceptions. Will contain the stack trace if there is any exception processing the query.
+List of exceptions.
 
 </td></tr>
 <tr><td>
 
-[minConsumingFreshnessTimeMs](./pinot-noir.ibrokerresponse.minconsumingfreshnesstimems.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-[numConsumingSegmentsQueried](./pinot-noir.ibrokerresponse.numconsumingsegmentsqueried.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-[numDocsScanned](./pinot-noir.ibrokerresponse.numdocsscanned.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-Total number of docs scanned
-
-</td></tr>
-<tr><td>
-
-[numEntriesScannedPostFilter](./pinot-noir.ibrokerresponse.numentriesscannedpostfilter.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-The number of entries scanned after the filtering phase of query execution, ie. aggregation and/or group-by phases. This is equivalent to numDocScanned \* number of projected columns. This along with numEntriesScannedInFilter indicates where most of the time is spent during query processing. A high number for this means the selectivity is low (that is, Pinot needs to scan a lot of records to answer the query). If this is high, consider using star-tree index. (A regular inverted/bitmap index won't improve performance.)
-
-</td></tr>
-<tr><td>
-
-[numGroupsLimitReached](./pinot-noir.ibrokerresponse.numgroupslimitreached.md)
+[partialResult](./pinot-noir.ibrokerresponse.partialresult.md)
 
 </td><td>
 
@@ -114,86 +75,22 @@ boolean
 
 </td><td>
 
-If the query has a group by clause and top K, Pinot drops new entries after the numGroupsLimit is reached. If this boolean is set to true, the query result may not be accurate. The default value for numGroupsLimit is 100k, and should be sufficient for most use cases.
+Indicates if the result is partial.
 
 </td></tr>
 <tr><td>
 
-[numSegmentsMatched](./pinot-noir.ibrokerresponse.numsegmentsmatched.md)
+[requestId](./pinot-noir.ibrokerresponse.requestid.md)
 
 </td><td>
 
 </td><td>
 
-number
+string
 
 </td><td>
 
-The number of segments processed with at least one document matched in the query response.
-
-</td></tr>
-<tr><td>
-
-[numSegmentsProcessed](./pinot-noir.ibrokerresponse.numsegmentsprocessed.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-The number of segment operators used to process segments. Indicates the effectiveness of the pruning logic. For more information, see
-
-</td></tr>
-<tr><td>
-
-[numSegmentsQueried](./pinot-noir.ibrokerresponse.numsegmentsqueried.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-The total number of segmentsQueried for a query. May be less than the total number of segments if the broker applies optimizations.
-
-The broker decides how many segments to query on each server, based on broker pruning logic. The server decides how many of these segments to actually look at, based on server pruning logic. After processing segments for a query, fewer may have the matching records.
-
-In general, `numSegmentsQueried >= numSegmentsProcessed >= numSegmentsMatched`<!-- -->.
-
-</td></tr>
-<tr><td>
-
-[numServersQueries](./pinot-noir.ibrokerresponse.numserversqueries.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-Represents the number of servers queried by the broker (may be less than the total number of servers since the broker can apply some optimizations to minimize the number of servers).
-
-</td></tr>
-<tr><td>
-
-[numServersResponded](./pinot-noir.ibrokerresponse.numserversresponded.md)
-
-</td><td>
-
-</td><td>
-
-number
-
-</td><td>
-
-This should be equal to the numServersQueried. If this is not the same, then one of more servers might have timed out. If numServersQueried != numServersResponded, the results can be considered partial and clients can retry the query with exponential back off.
+Request ID.
 
 </td></tr>
 <tr><td>
@@ -208,52 +105,37 @@ This should be equal to the numServersQueried. If this is not the same, then one
 
 </td><td>
 
-Result table
+Result table.
 
 </td></tr>
 <tr><td>
 
-[timeUsedMs](./pinot-noir.ibrokerresponse.timeusedms.md)
+[stats](./pinot-noir.ibrokerresponse.stats.md)
 
 </td><td>
 
 </td><td>
 
-number
+[IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
 
 </td><td>
 
-Total time taken as seen by the broker before sending the response back to the client.
+Broker response stats.
 
 </td></tr>
 <tr><td>
 
-[totalDocs](./pinot-noir.ibrokerresponse.totaldocs.md)
+[traceInfo?](./pinot-noir.ibrokerresponse.traceinfo.md)
 
 </td><td>
 
 </td><td>
 
-number
+Record&lt;string, unknown&gt;
 
 </td><td>
 
-Number of documents/records in the table.
-
-</td></tr>
-<tr><td>
-
-[traceInfo](./pinot-noir.ibrokerresponse.traceinfo.md)
-
-</td><td>
-
-</td><td>
-
-Record&lt;string, string&gt;
-
-</td><td>
-
-Query trace, if the query was executed with `trace`
+_(Optional)_ Trace information.
 
 </td></tr>
 </tbody></table>

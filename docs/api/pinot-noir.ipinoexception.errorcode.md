@@ -4,7 +4,7 @@
 
 ## IPinoException.errorCode property
 
-Pinot error code
+Pinot error code.
 
 **Signature:**
 

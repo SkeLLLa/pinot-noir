@@ -4,7 +4,7 @@
 
 ## IPinotQueryOptions interface
 
-Query options
+Query options.
 
 **Signature:**
 

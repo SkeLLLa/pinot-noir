@@ -4,10 +4,10 @@
 
 ## IBrokerResponse.exceptions property
 
-Query exceptions. Will contain the stack trace if there is any exception processing the query.
+List of exceptions.
 
 **Signature:**
 
 ```typescript
-exceptions?: IPinoException[];
+exceptions: IPinoException[];
 ```

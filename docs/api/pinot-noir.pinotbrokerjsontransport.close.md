@@ -4,7 +4,7 @@
 
 ## PinotBrokerJSONTransport.close() method
 
-Closes connection to pinot broker
+Closes connection to Pinot broker.
 
 **Signature:**
 

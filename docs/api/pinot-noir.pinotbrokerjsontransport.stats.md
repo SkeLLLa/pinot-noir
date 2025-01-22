@@ -4,7 +4,7 @@
 
 ## PinotBrokerJSONTransport.stats property
 
-HTTP pool statitstics
+HTTP pool statistics.
 
 **Signature:**
 

@@ -4,7 +4,7 @@
 
 ## PinotBrokerJSONTransport.request() method
 
-Perform HTTP request to pinot
+Perform HTTP request to Pinot.
 
 **Signature:**
 
@@ -43,4 +43,4 @@ Description
 
 Promise&lt;TResponse&gt;
 
-Pinot response
+Pinot response.

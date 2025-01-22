@@ -7,7 +7,5 @@
 **Signature:**
 
 ```typescript
-protected readonly deps: {
-        transport: IPinotBrokerTransport;
-    };
+protected readonly deps: IPinotClientDeps;
 ```
