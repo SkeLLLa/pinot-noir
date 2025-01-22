@@ -17,6 +17,15 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[BypassParser](./pinot-noir.bypassparser.md)
+
+</td><td>
+
+Bypass parser.
+
+</td></tr>
+<tr><td>
+
 [PinotBrokerClient](./pinot-noir.pinotbrokerclient.md)
 
 </td><td>
@@ -42,6 +51,15 @@ Pinot broker JSON transport based on "undici" HTTP client.
 </td></tr>
 <tr><td>
 
+[SafeParser](./pinot-noir.safeparser.md)
+
+</td><td>
+
+Safe parser.
+
+</td></tr>
+<tr><td>
+
 [SqlFormat](./pinot-noir.sqlformat.md)
 
 </td><td>
@@ -54,6 +72,15 @@ Pinot broker JSON transport based on "undici" HTTP client.
 </td><td>
 
 Sql utils class.
+
+</td></tr>
+<tr><td>
+
+[UnsafeParser](./pinot-noir.unsafeparser.md)
+
+</td><td>
+
+Unsafe parser.
 
 </td></tr>
 </tbody></table>
@@ -289,6 +316,15 @@ Query options.
 </td><td>
 
 Apache Pinot exception
+
+</td></tr>
+<tr><td>
+
+[IPinotValueParser](./pinot-noir.ipinotvalueparser.md)
+
+</td><td>
+
+Pinot value parser interface.
 
 </td></tr>
 <tr><td>

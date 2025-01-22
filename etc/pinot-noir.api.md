@@ -17,6 +17,11 @@ import { Sql } from '@no-esm/sql-template-tag';
 export { bulk }
 
 // @public
+export class BypassParser implements IPinotValueParser {
+    parse(value?: number | string | boolean | object | null): number | string | boolean | object | null | undefined;
+}
+
+// @public
 export const enum EBrokerErrorCode {
     UNKNOWN = 0
 }
@@ -316,6 +321,11 @@ export interface IPinotSqlException {
 }
 
 // @public
+export interface IPinotValueParser {
+    parse(value?: number | string | boolean | object | null | Date, type?: TPinotDataType): number | string | boolean | object | null | Date | bigint | undefined;
+}
+
+// @public
 export interface IQueryResult<TRows = unknown> {
     queryOptions?: string | undefined;
     rows: TRows;
@@ -462,6 +472,11 @@ export { raw }
 
 export { RawValue }
 
+// @public
+export class SafeParser implements IPinotValueParser {
+    parse(value?: number | string | boolean | object | null, type?: TPinotDataType): number | string | boolean | object | null | bigint | Date | undefined;
+}
+
 export { Sql }
 
 // @public
@@ -505,6 +520,11 @@ export type TPinotDataType = 'INT' | 'LONG' | 'FLOAT' | 'DOUBLE' | 'BIG_DECIMAL'
 
 // @public
 export type TQueueTolerancePredefined = 0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
+
+// @public
+export class UnsafeParser implements IPinotValueParser {
+    parse(value?: number | string | boolean | object | null, type?: TPinotDataType): number | string | boolean | object | null | Date | bigint | undefined;
+}
 
 // (No @packageDocumentation comment for this package)
 

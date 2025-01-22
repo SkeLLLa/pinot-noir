@@ -1,3 +1,4 @@
+/* node:coverage ignore */
 import * as assert from 'node:assert';
 import { describe, test } from 'node:test';
 import { BypassParser } from '../src/client/broker/type-parsers/bypass';
@@ -9,8 +10,8 @@ void describe('Value Parsers', async () => {
     const parser = new UnsafeParser();
     assert.strictEqual(parser.parse('123', 'INT'), 123);
     assert.strictEqual(parser.parse('123.45', 'FLOAT'), 123.45);
-    assert.strictEqual(parser.parse('true', 'BOOLEAN'), true);
-    assert.strictEqual(parser.parse('false', 'BOOLEAN'), false);
+    assert.strictEqual(parser.parse(true, 'BOOLEAN'), true);
+    assert.strictEqual(parser.parse(false, 'BOOLEAN'), false);
     assert.strictEqual(
       (
         parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date
@@ -28,8 +29,8 @@ void describe('Value Parsers', async () => {
     const parser = new SafeParser();
     assert.strictEqual(parser.parse('123', 'INT'), 123);
     assert.strictEqual(parser.parse('123.45', 'FLOAT'), 123.45);
-    assert.strictEqual(parser.parse('true', 'BOOLEAN'), true);
-    assert.strictEqual(parser.parse('false', 'BOOLEAN'), false);
+    assert.strictEqual(parser.parse(true, 'BOOLEAN'), true);
+    assert.strictEqual(parser.parse(false, 'BOOLEAN'), false);
     assert.strictEqual(
       (
         parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date

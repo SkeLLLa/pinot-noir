@@ -3,6 +3,7 @@ import type PoolStats from 'undici/types/pool-stats';
 import type { Sql } from '../../utils/tag';
 
 export type * from './broker-respone.types';
+export type * from './type-parsers/types';
 
 /**
  * Pinot transport pool statistics.

@@ -4,3 +4,4 @@ export * from './utils/sql-utils';
 export * from './client/clients';
 export * from './client/broker/transport/transports';
 export * from './client/errors/pinot';
+export * from './client/broker/type-parsers';
