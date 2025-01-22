@@ -1,3 +1,21 @@
+## [2.0.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.12.0...v2.0.0) (2025-01-22)
+
+### ⚠ BREAKING CHANGES
+
+* Value parser and changed some stat names
+
+### 🛠 Fixes
+
+* tests and add missing docs ([1c102ca](https://github.com/SkeLLLa/pinot-noir/commit/1c102ca4df7f72df039f4e2f30a10fdf94c0ec21))
+
+### 🚀 Features
+
+* add value parser and update stats ([e88dc12](https://github.com/SkeLLLa/pinot-noir/commit/e88dc12145e790ae78a3d38478502988cfb98174))
+
+### 🧾 Other
+
+* **deps:** bump undici from 7.2.0 to 7.2.3 ([af05dc1](https://github.com/SkeLLLa/pinot-noir/commit/af05dc1db9a26c495c92caf61135680fbe25edbc))
+
 ## [1.12.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.11.2...v1.12.0) (2025-01-09)
 
 ### 🚀 Features
