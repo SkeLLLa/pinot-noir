@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.0.0...v2.0.1) (2025-01-27)
+
+### 🛠 Fixes
+
+* disable http2 ([c368cf4](https://github.com/SkeLLLa/pinot-noir/commit/c368cf4dc418c73f3a1b1b79e9a78c6446f53500))
+
 ## [2.0.0](https://github.com/SkeLLLa/pinot-noir/compare/v1.12.0...v2.0.0) (2025-01-22)
 
 ### ⚠ BREAKING CHANGES
