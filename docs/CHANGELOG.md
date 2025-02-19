@@ -1,3 +1,9 @@
+## [2.1.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.0.1...v2.1.0) (2025-02-19)
+
+### 🚀 Features
+
+* better sql identation ([574274d](https://github.com/SkeLLLa/pinot-noir/commit/574274d5661c99567ca7bab1f46f3323c9ceced8))
+
 ## [2.0.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.0.0...v2.0.1) (2025-01-27)
 
 ### 🛠 Fixes
