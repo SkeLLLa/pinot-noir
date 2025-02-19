@@ -40,4 +40,20 @@ void describe('Sql Utils', async () => {
       `SET useMultistageEngine = true;\nSET timeoutMs = 100;\nSET inPredicateLookupAlgorithm = 'SCAN';\nSELECT * FROM table WHERE id = 1`,
     );
   });
+
+  await test('trims indentation from query', () => {
+    const query = sql`
+      SELECT
+        *
+      FROM
+        table
+      WHERE
+        id = ${1}
+    `;
+
+    assert.strictEqual(
+      SqlUtils.stringifyQuery(query),
+      `SELECT\n  *\nFROM\n  table\nWHERE\n  id = 1`,
+    );
+  });
 });

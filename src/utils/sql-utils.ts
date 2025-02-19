@@ -45,9 +45,17 @@ export class SqlUtils {
    * @param options - Pinot query options
    * @returns Serialized query string
    */
-  static stringifyQuery(query: Sql, options?: IPinotQueryOptions) {
-    const sql = SqlFormat.format(query.sql, query.values);
+  static stringifyQuery(query: Sql, options?: IPinotQueryOptions): string {
+    const formattedSql = SqlFormat.format(query.sql, query.values)
+      .split('\n')
+      .filter((line) => line.trim() !== '');
+    const firstLine = formattedSql[0];
+    const indent =
+      typeof firstLine !== 'undefined'
+        ? firstLine.length - firstLine.trimStart().length
+        : 0;
+    const sql = formattedSql.map((line) => line.slice(indent)).join('\n');
 
-    return [SqlUtils.formatOptions(options), sql].filter((x) => !!x).join('\n');
+    return [SqlUtils.formatOptions(options), sql].filter(Boolean).join('\n');
   }
 }
