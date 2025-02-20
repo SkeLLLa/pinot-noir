@@ -69,8 +69,6 @@ Description
 
 `protected`
 
-`readonly`
-
 </td><td>
 
 number \| undefined
@@ -172,6 +170,17 @@ Closes connection to Pinot broker.
 </td><td>
 
 Perform HTTP request to Pinot.
+
+</td></tr>
+<tr><td>
+
+[setMaxQueueSize(size)](./pinot-noir.pinotbrokerjsontransport.setmaxqueuesize.md)
+
+</td><td>
+
+</td><td>
+
+Set maximum query queue size.
 
 </td></tr>
 </tbody></table>

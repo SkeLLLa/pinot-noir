@@ -77,4 +77,13 @@ Closes connection to Pinot broker.
 Perform HTTP request to Pinot.
 
 </td></tr>
+<tr><td>
+
+[setMaxQueueSize(size)](./pinot-noir.ipinotbrokertransport.setmaxqueuesize.md)
+
+</td><td>
+
+Set maximum query queue size.
+
+</td></tr>
 </tbody></table>

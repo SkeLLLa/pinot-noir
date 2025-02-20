@@ -110,6 +110,11 @@ export interface IPinotBrokerTransport {
    * Pool statistics (number of in-flight requests and so on).
    */
   stats: IPinotPoolStats;
+  /**
+   * Set maximum query queue size.
+   * @param size - new queue size
+   */
+  setMaxQueueSize(size: number): void;
 }
 
 /**

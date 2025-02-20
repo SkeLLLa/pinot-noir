@@ -9,5 +9,5 @@ Maximum query queue size.
 **Signature:**
 
 ```typescript
-protected readonly maxQueueSize: number | undefined;
+protected maxQueueSize: number | undefined;
 ```

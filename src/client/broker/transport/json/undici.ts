@@ -25,7 +25,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   /**
    * Maximum query queue size.
    */
-  protected readonly maxQueueSize: number | undefined;
+  protected maxQueueSize: number | undefined;
 
   constructor({
     bodyTimeout = 60000,
@@ -54,6 +54,13 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     });
     this.token = token;
     this.maxQueueSize = maxQueueSize;
+  }
+  /**
+   * Set maximum query queue size.
+   * @param size - new queue size
+   */
+  setMaxQueueSize(size: number): void {
+    this.maxQueueSize = size;
   }
 
   /**
