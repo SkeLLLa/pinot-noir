@@ -1,3 +1,9 @@
+## [2.2.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.1.0...v2.2.0) (2025-02-20)
+
+### 🚀 Features
+
+* **transport:** add method to set queue size ([c7eadaa](https://github.com/SkeLLLa/pinot-noir/commit/c7eadaaea6fb45b6d9f2eab0892614225b6ac884))
+
 ## [2.1.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.0.1...v2.1.0) (2025-02-19)
 
 ### 🚀 Features
