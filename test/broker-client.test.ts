@@ -96,6 +96,10 @@ class MockTransport implements IPinotBrokerTransport {
       });
   }
 
+  setMaxQueueSize(): void {
+    // not needed
+  }
+
   async request<TResponse = unknown>({
     method,
     headers,
