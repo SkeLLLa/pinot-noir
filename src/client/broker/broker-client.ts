@@ -141,8 +141,8 @@ export class PinotClient implements IPinotClient {
         exceptions: response.exceptions,
         type: EPinotErrorType.SQL,
         data: {
-          first: response.resultTable?.rows?.slice(0, 3),
-          last: response.resultTable?.rows?.slice(-3),
+          first: response.resultTable.rows.slice(0, 3),
+          last: response.resultTable.rows.slice(-3),
           sql,
           queryOptions,
         },
@@ -187,8 +187,8 @@ export class PinotClient implements IPinotClient {
         data: {
           sql,
           queryOptions,
-          first: response.resultTable?.rows?.slice(0, 3),
-          last: response.resultTable?.rows?.slice(-3),
+          first: response.resultTable.rows.slice(0, 3),
+          last: response.resultTable.rows.slice(-3),
         },
       });
     }

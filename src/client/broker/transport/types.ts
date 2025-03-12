@@ -1,4 +1,5 @@
 import { Dispatcher } from 'undici';
+import { IncomingHttpHeaders } from 'undici/types/header';
 import { IPinotPoolStats, TQueueTolerancePredefined } from '../types';
 
 /**
@@ -80,6 +81,7 @@ export interface IBrokerTransportRequestOptions
         queueTolerance?: TQueueTolerancePredefined | number | undefined;
       }
     | undefined;
+  headers?: Record<string, string | string[]> | IncomingHttpHeaders;
 }
 
 /**

@@ -27,11 +27,12 @@ export class SqlUtils {
           case 'string':
             return `SET ${key} = '${value}';`;
           case 'number':
-            return `SET ${key} = ${value};`;
+            return `SET ${key} = ${value.toString()};`;
           case 'boolean':
-            return `SET ${key} = ${value};`;
+            return `SET ${key} = ${value.toString()};`;
           default:
-            return `SET ${key} = '${value}';`;
+            // invalid key
+            return ``;
         }
       })
       .join('\n');
