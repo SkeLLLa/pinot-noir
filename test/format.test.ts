@@ -75,7 +75,7 @@ void describe('Sql Formatter', async () => {
     );
     assert.strictEqual(
       SqlFormat.dateToString(date, 'local'),
-      `'${date.getFullYear()}-${SqlFormat.zeroPad(date.getMonth() + 1, 2)}-${SqlFormat.zeroPad(date.getDate(), 2)} ${SqlFormat.zeroPad(date.getHours(), 2)}:${SqlFormat.zeroPad(date.getMinutes(), 2)}:${SqlFormat.zeroPad(date.getSeconds(), 2)}.${SqlFormat.zeroPad(date.getMilliseconds(), 3)}'`,
+      `'${date.getFullYear().toString()}-${SqlFormat.zeroPad(date.getMonth() + 1, 2)}-${SqlFormat.zeroPad(date.getDate(), 2)} ${SqlFormat.zeroPad(date.getHours(), 2)}:${SqlFormat.zeroPad(date.getMinutes(), 2)}:${SqlFormat.zeroPad(date.getSeconds(), 2)}.${SqlFormat.zeroPad(date.getMilliseconds(), 3)}'`,
     );
   });
 

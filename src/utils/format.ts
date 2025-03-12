@@ -38,10 +38,10 @@ export class SqlFormat {
       case 'boolean':
         return val ? 'TRUE' : 'FALSE'; // Changed to uppercase
       case 'number':
-        return val + '';
+        return val.toString() + '';
       case 'object':
         if (Object.prototype.toString.call(val) === '[object Date]') {
-          return SqlFormat.dateToString(val as Date, timeZone || 'local');
+          return SqlFormat.dateToString(val as Date, timeZone ?? 'local');
         } else if (Array.isArray(val)) {
           return SqlFormat.arrayToList(val, timeZone);
         } else if (Buffer.isBuffer(val)) {
@@ -122,7 +122,7 @@ export class SqlFormat {
     }
 
     if (chunkIndex < sql.length) {
-      return result + sql.slice(chunkIndex);
+      result += sql.slice(chunkIndex);
     }
 
     return result;
@@ -171,7 +171,7 @@ export class SqlFormat {
     const str =
       `${SqlFormat.zeroPad(year, 4)}-${SqlFormat.zeroPad(month, 2)}-${SqlFormat.zeroPad(day, 2)} ` +
       `${SqlFormat.zeroPad(hour, 2)}:${SqlFormat.zeroPad(minute, 2)}:${SqlFormat.zeroPad(second, 2)}.` +
-      `${SqlFormat.zeroPad(millisecond, 3)}`;
+      SqlFormat.zeroPad(millisecond, 3);
 
     return SqlFormat.escapeString(str);
   }
@@ -216,7 +216,7 @@ export class SqlFormat {
     while ((match = SqlFormat.CHARS_GLOBAL_REGEXP.exec(val))) {
       escapedVal +=
         val.slice(chunkIndex, match.index) +
-        SqlFormat.CHARS_ESCAPE_MAP[match[0]];
+        (SqlFormat.CHARS_ESCAPE_MAP[match[0]] ?? '');
       chunkIndex = SqlFormat.CHARS_GLOBAL_REGEXP.lastIndex;
     }
 
@@ -240,7 +240,7 @@ export class SqlFormat {
       return 0;
     }
 
-    const match = tz.match(/([+\-\s])(\d{2}):?(\d{2})?/);
+    const match = /([+\-\s])(\d{2}):?(\d{2})?/.exec(tz);
     if (match) {
       const sign = match[1] === '-' ? -1 : 1;
       const hours = parseInt(match[2] ?? '0', 10);

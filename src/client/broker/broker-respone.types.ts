@@ -575,7 +575,7 @@ export interface IBrokerResponse extends IBrokerResponseStats {
    *
    * @see {@link https://docs.pinot.apache.org/users/api/querying-pinot-using-standard-sql/response-format#exceptions | exceptions}
    */
-  exceptions: IPinoException[];
+  exceptions?: IPinoException[];
   /**
    * Indicates if the result is partial.
    *

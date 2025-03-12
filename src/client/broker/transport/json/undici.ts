@@ -105,52 +105,62 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       query: query ?? {},
     };
 
-    const response = await this.pool.request(reqOptions).catch((err: Error) => {
-      if (
-        err instanceof errors.BodyTimeoutError ||
-        err instanceof errors.ConnectTimeoutError ||
-        err instanceof errors.HeadersTimeoutError
-      ) {
+    const response = await this.pool
+      .request(reqOptions)
+      .catch((err: unknown) => {
+        if (
+          err instanceof errors.BodyTimeoutError ||
+          err instanceof errors.ConnectTimeoutError ||
+          err instanceof errors.HeadersTimeoutError
+        ) {
+          throw new PinotError({
+            data: { body },
+            message: `Pinot transport error: Timeout: ${err.message}`,
+            type: EPinotErrorType.TRANSPORT,
+            cause: err,
+            code: EBrokerTransportErrorCode.TIMEOUT,
+          });
+        }
+        if (err instanceof errors.ResponseStatusCodeError) {
+          throw new PinotError({
+            message: `Pinot transport error: Response code ${err.statusCode.toString()}`,
+            type: EPinotErrorType.TRANSPORT,
+            code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+            data: {
+              headers: response.headers,
+              body: err.body,
+              statusCode: err.statusCode,
+            },
+          });
+        }
+        if (err instanceof Error) {
+          throw new PinotError({
+            data: { body },
+            message: `Pinot transport error: ${err.message}`,
+            type: EPinotErrorType.TRANSPORT,
+            cause: err,
+            code: EBrokerTransportErrorCode.UNKNOWN,
+          });
+        }
         throw new PinotError({
-          data: { body },
-          message: `Pinot transport error: Timeout: ${err.message}`,
+          data: { body, err },
+          message: `Pinot transport error: unknown`,
           type: EPinotErrorType.TRANSPORT,
-          cause: err,
-          code: EBrokerTransportErrorCode.TIMEOUT,
+          code: EBrokerTransportErrorCode.UNKNOWN,
         });
-      }
-      if (err instanceof errors.ResponseStatusCodeError) {
-        throw new PinotError({
-          message: `Pinot transport error: Response code ${err.statusCode}`,
-          type: EPinotErrorType.TRANSPORT,
-          code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-          data: {
-            headers: response.headers,
-            body: err.body,
-            statusCode: err.statusCode,
-          },
-        });
-      }
-      throw new PinotError({
-        data: { body },
-        message: `Pinot transport error: ${err.message}`,
-        type: EPinotErrorType.TRANSPORT,
-        cause: err,
-        code: EBrokerTransportErrorCode.UNKNOWN,
       });
-    });
 
     try {
       const raw = (await response.body.json()) as TResponse;
 
       return raw;
     } catch (err) {
-      const text = await response.body.text().catch((err: Error) => {
+      const text = await response.body.text().catch((err: unknown) => {
         throw new PinotError({
           message: `Pinot transport error: Can't read response body.`,
           type: EPinotErrorType.TRANSPORT,
           code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-          cause: err,
+          cause: err as Error,
         });
       });
 

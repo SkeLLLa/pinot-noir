@@ -13,9 +13,7 @@ void describe('Value Parsers', async () => {
     assert.strictEqual(parser.parse(true, 'BOOLEAN'), true);
     assert.strictEqual(parser.parse(false, 'BOOLEAN'), false);
     assert.strictEqual(
-      (
-        parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date
-      )?.toISOString() ?? '',
+      (parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date).toISOString(),
       '2023-01-01T00:00:00.000Z',
     );
     assert.strictEqual(parser.parse('string', 'STRING'), 'string');
@@ -32,9 +30,7 @@ void describe('Value Parsers', async () => {
     assert.strictEqual(parser.parse(true, 'BOOLEAN'), true);
     assert.strictEqual(parser.parse(false, 'BOOLEAN'), false);
     assert.strictEqual(
-      (
-        parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date
-      )?.toISOString() ?? '',
+      (parser.parse('2023-01-01T00:00:00Z', 'TIMESTAMP') as Date).toISOString(),
       '2023-01-01T00:00:00.000Z',
     );
     assert.strictEqual(parser.parse('string', 'STRING'), 'string');
