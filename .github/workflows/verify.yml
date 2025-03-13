@@ -26,7 +26,7 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "PNPM_CACHE_DIRc=$(pnpm store path)" >> $GITHUB_ENV
+          echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
