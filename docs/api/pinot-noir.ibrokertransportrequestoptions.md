@@ -35,6 +35,21 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[headers?](./pinot-noir.ibrokertransportrequestoptions.headers.md)
+
+</td><td>
+
+</td><td>
+
+Record&lt;string, string \| string\[\]&gt; \| IncomingHttpHeaders
+
+</td><td>
+
+_(Optional)_
+
+</td></tr>
+<tr><td>
+
 [options?](./pinot-noir.ibrokertransportrequestoptions.options.md)
 
 </td><td>

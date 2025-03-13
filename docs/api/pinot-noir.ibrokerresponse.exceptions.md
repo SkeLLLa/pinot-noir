@@ -9,5 +9,5 @@ List of exceptions.
 **Signature:**
 
 ```typescript
-exceptions: IPinoException[];
+exceptions?: IPinoException[];
 ```

@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.2.0...v2.2.1) (2025-03-13)
+
+### 🛠 Fixes
+
+* **pj:** remove unused elsint plugins ([15498c8](https://github.com/SkeLLLa/pinot-noir/commit/15498c849526763349f1437d87f9ae23579ece65))
+* **style:** update eslint configs ([b0da3f0](https://github.com/SkeLLLa/pinot-noir/commit/b0da3f0326a5e7be155533a851dff41b03d30d07))
+
 ## [2.2.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.1.0...v2.2.0) (2025-02-20)
 
 ### 🚀 Features

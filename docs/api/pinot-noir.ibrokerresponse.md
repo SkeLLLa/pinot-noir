@@ -50,7 +50,7 @@ Broker ID.
 </td></tr>
 <tr><td>
 
-[exceptions](./pinot-noir.ibrokerresponse.exceptions.md)
+[exceptions?](./pinot-noir.ibrokerresponse.exceptions.md)
 
 </td><td>
 
@@ -60,7 +60,7 @@ Broker ID.
 
 </td><td>
 
-List of exceptions.
+_(Optional)_ List of exceptions.
 
 </td></tr>
 <tr><td>
