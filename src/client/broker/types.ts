@@ -299,6 +299,13 @@ export interface IPinotQueryOptions {
   /** Maximum serialized response size across all servers for a query. */
   maxQueryResponseSizeBytes?: number;
   /**
+   * Use multi stage engine to fill empty response schema for v1 and v2 queries.
+   * @see {@link https://github.com/apache/pinot/issues/15064 | Significant Latency Overhead due to empty Response Handling}
+   * @see {@link https://github.com/apache/pinot/pull/14918 | Enhance data schema generation for empty response}
+   * @see {@link https://github.com/apache/pinot/pull/13831 | Return improved dataschema for empty results when all segments are pruned by broker}
+   */
+  useMSEToFillEmptyResponseSchema?: boolean;
+  /**
    * Queue tolerance in percent of `maxQueueSize`.
    * If maxQueueSize * queueTolerance \<= queue size the request is discarded.
    *
