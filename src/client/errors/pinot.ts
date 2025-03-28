@@ -96,4 +96,16 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
     this.exceptions = exceptions;
     this.data = data;
   }
+
+  /**
+   * Parses a PinotError code and returns the corresponding error type and code.
+   */
+  public static parseErrorCode(code: number): {
+    type: EPinotErrorType;
+    errorCode: ERROR_CODES;
+  } {
+    const type = Math.floor(code / 1000) as EPinotErrorType;
+    const errorCode = (code % 1000) as ERROR_CODES;
+    return { type, errorCode };
+  }
 }
