@@ -1,3 +1,13 @@
+## [2.4.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.3.0...v2.4.0) (2025-03-28)
+
+### 🚀 Features
+
+* add parse error code to pinot errors ([12dd318](https://github.com/SkeLLLa/pinot-noir/commit/12dd318ba212d276c61d9a41871a7399e32c9e67))
+
+### 🧾 Other
+
+* **deps:** update undici to 7.6.0 ([1a0f680](https://github.com/SkeLLLa/pinot-noir/commit/1a0f68029d8f06f5a594815469a5bb1dc2969d19))
+
 ## [2.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.2.1...v2.3.0) (2025-03-28)
 
 ### 🚀 Features

@@ -124,3 +124,33 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
+## Methods
+
+<table><thead><tr><th>
+
+Method
+
+</th><th>
+
+Modifiers
+
+</th><th>
+
+Description
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[parseErrorCode(code)](./pinot-noir.pinoterror.parseerrorcode.md)
+
+</td><td>
+
+`static`
+
+</td><td>
+
+Parses a PinotError code and returns the corresponding error type and code.
+
+</td></tr>
+</tbody></table>
