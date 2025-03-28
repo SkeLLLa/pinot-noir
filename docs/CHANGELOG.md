@@ -1,3 +1,9 @@
+## [2.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.2.1...v2.3.0) (2025-03-28)
+
+### 🚀 Features
+
+* add useMSEToFillEmptyResponseSchema param ([02e1346](https://github.com/SkeLLLa/pinot-noir/commit/02e1346f926c227f500840729bc920cbc08e3ca6))
+
 ## [2.2.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.2.0...v2.2.1) (2025-03-13)
 
 ### 🛠 Fixes

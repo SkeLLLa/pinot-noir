@@ -273,6 +273,21 @@ _(Optional)_ Timeout of the query in milliseconds.
 </td></tr>
 <tr><td>
 
+[useMSEToFillEmptyResponseSchema?](./pinot-noir.ipinotqueryoptions.usemsetofillemptyresponseschema.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ Use multi stage engine to fill empty response schema for v1 and v2 queries.
+
+</td></tr>
+<tr><td>
+
 [useMultistageEngine?](./pinot-noir.ipinotqueryoptions.usemultistageengine.md)
 
 </td><td>
