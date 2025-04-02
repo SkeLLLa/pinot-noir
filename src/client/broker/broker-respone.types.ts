@@ -594,7 +594,7 @@ export interface IBrokerResponse extends IBrokerResponseStats {
    *
    * @see {@link https://docs.pinot.apache.org/users/api/querying-pinot-using-standard-sql/response-format#resulttable | resultTable}
    */
-  resultTable: IResultTable;
+  resultTable?: IResultTable;
   /**
    * Trace information.
    *

@@ -141,22 +141,36 @@ export class PinotClient implements IPinotClient {
         exceptions: response.exceptions,
         type: EPinotErrorType.SQL,
         data: {
-          first: response.resultTable.rows.slice(0, 3),
-          last: response.resultTable.rows.slice(-3),
+          // Sometimes it can be undefined, but it shouldn't happen
+          ...(response.resultTable
+            ? {
+                first: response.resultTable.rows.slice(0, 3),
+                last: response.resultTable.rows.slice(-3),
+              }
+            : { response }),
           sql,
           queryOptions,
         },
       });
     }
-
+    const { resultTable, ...statsRaw } = response;
+    if (!resultTable) {
+      throw new PinotError({
+        message: 'Pinot query result table is empty.',
+        code: EBrokerErrorCode.UNKNOWN,
+        type: EPinotErrorType.UNKNOWN,
+        data: {
+          sql,
+          queryOptions,
+          response,
+        },
+      });
+    }
     try {
       const {
-        resultTable: {
-          dataSchema: { columnNames, columnDataTypes },
-          rows,
-        },
-        ...statsRaw
-      } = response;
+        dataSchema: { columnNames, columnDataTypes },
+        rows,
+      } = resultTable;
       const queryStats = new QueryStats(statsRaw);
 
       const data = rows.map((row) => {
@@ -187,8 +201,13 @@ export class PinotClient implements IPinotClient {
         data: {
           sql,
           queryOptions,
-          first: response.resultTable.rows.slice(0, 3),
-          last: response.resultTable.rows.slice(-3),
+          // Sometimes it can be undefined, but it shouldn't happen
+          ...(response.resultTable
+            ? {
+                first: response.resultTable.rows.slice(0, 3),
+                last: response.resultTable.rows.slice(-3),
+              }
+            : { response }),
         },
       });
     }

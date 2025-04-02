@@ -6,6 +6,7 @@
 import { bulk } from '@no-esm/sql-template-tag';
 import { Dispatcher } from 'undici';
 import { empty } from '@no-esm/sql-template-tag';
+import { IncomingHttpHeaders } from 'undici/types/header';
 import { join } from '@no-esm/sql-template-tag';
 import { Pool } from 'undici';
 import type PoolStats from 'undici/types/pool-stats';
@@ -128,10 +129,10 @@ export interface IAggregateStats extends IStageStatsBase {
 // @public
 export interface IBrokerResponse extends IBrokerResponseStats {
   brokerId: string;
-  exceptions: IPinoException[];
+  exceptions?: IPinoException[];
   partialResult: boolean;
   requestId: string;
-  resultTable: IResultTable;
+  resultTable?: IResultTable;
   stats: IBrokerResponseStats;
   traceInfo?: Record<string, unknown>;
 }
@@ -201,6 +202,8 @@ export interface IBrokerTransportRequestOptions
     | 'bodyTimeout'
     | 'headersTimeout'
   > {
+  // (undocumented)
+  headers?: Record<string, string | string[]> | IncomingHttpHeaders;
   // (undocumented)
   options?:
     | {
@@ -336,6 +339,7 @@ export interface IPinotQueryOptions {
   skipIndexes?: string;
   skipUpsert?: boolean;
   timeoutMs?: number;
+  useMSEToFillEmptyResponseSchema?: boolean;
   useMultistageEngine?: boolean;
   useStarTree?: boolean;
 }
@@ -521,6 +525,10 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
   readonly data?: TData | undefined;
   // (undocumented)
   readonly exceptions?: IPinotSqlException[] | undefined;
+  static parseErrorCode(code: number): {
+    type: EPinotErrorType;
+    errorCode: ERROR_CODES;
+  };
   // (undocumented)
   readonly type: EPinotErrorType;
 }

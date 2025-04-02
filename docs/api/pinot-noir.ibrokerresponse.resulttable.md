@@ -9,5 +9,5 @@ Result table.
 **Signature:**
 
 ```typescript
-resultTable: IResultTable;
+resultTable?: IResultTable;
 ```

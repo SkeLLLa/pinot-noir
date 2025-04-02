@@ -95,7 +95,7 @@ Request ID.
 </td></tr>
 <tr><td>
 
-[resultTable](./pinot-noir.ibrokerresponse.resulttable.md)
+[resultTable?](./pinot-noir.ibrokerresponse.resulttable.md)
 
 </td><td>
 
@@ -105,7 +105,7 @@ Request ID.
 
 </td><td>
 
-Result table.
+_(Optional)_ Result table.
 
 </td></tr>
 <tr><td>
