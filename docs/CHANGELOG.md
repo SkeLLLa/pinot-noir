@@ -1,3 +1,9 @@
+## [2.4.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.4.0...v2.4.1) (2025-04-02)
+
+### 🛠 Fixes
+
+* handle empty response from pinot ([071fd7d](https://github.com/SkeLLLa/pinot-noir/commit/071fd7d2da752611086762acf382da34e1673fa7))
+
 ## [2.4.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.3.0...v2.4.0) (2025-03-28)
 
 ### 🚀 Features
