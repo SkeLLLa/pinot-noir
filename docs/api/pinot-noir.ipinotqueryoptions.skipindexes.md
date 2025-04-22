@@ -4,7 +4,7 @@
 
 ## IPinotQueryOptions.skipIndexes property
 
-Which indexes to skip usage of, per-column. Format: `col1=indexType1,indexType2&col2=indexType1`<!-- -->.
+Which indexes to skip usage of (i.e. scan instead), per-column. This is useful for side-by-side comparison/debugging. There can be cases where the use of an index is actually more expensive than performing a scan of the docs which match other filters. One such example could be a low-selectivity inverted index used in conjunction with another highly selective filter. Config can be specified using url parameter format: skipIndexes='col1=inverted,range&amp;col2=inverted'. Possible index types to skip are: sorted, range, inverted, H3. To find out which indexes are used to resolve a given query, use the EXPLAIN query.
 
 **Signature:**
 

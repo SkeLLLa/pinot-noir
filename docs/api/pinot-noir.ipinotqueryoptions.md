@@ -48,6 +48,21 @@ _(Optional)_ Enable scan reordering for AND clauses.
 </td></tr>
 <tr><td>
 
+[dropResults?](./pinot-noir.ipinotqueryoptions.dropresults.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ Set dropResults=true in the config to drop the resultTable from the response. Use this option to troubleshoot a customer's query (which may have sensitive data in the result) using metadata only.
+
+</td></tr>
+<tr><td>
+
 [enableNullHandling?](./pinot-noir.ipinotqueryoptions.enablenullhandling.md)
 
 </td><td>
@@ -74,6 +89,21 @@ boolean
 </td><td>
 
 _(Optional)_ Return verbose result for `EXPLAIN` query. (introduced in 0.11.0)
+
+</td></tr>
+<tr><td>
+
+[filteredAggregationsSkipEmptyGroups?](./pinot-noir.ipinotqueryoptions.filteredaggregationsskipemptygroups.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ This config can be set to true to avoid computing all the groups in a group by query with only filtered aggregations (and no non-filtered aggregations). By default, the groups are computed over all the rows returned by the main filter, even if certain rows will never match any of the aggregation filters. This is the standard SQL behavior. However, if the selectivity of the main filter is very high as compared to the selectivity of the aggregation filters, this query option can help provide a big performance boost if the empty groups aren't required. For instance, a query like SELECT SUM(X) FILTER (WHERE Y = 1) FROM mytable will compute the groups over all the rows in the table by default since there's no main query filter. Setting this query option to true in such cases can massively improve performance if there's an inverted index on column Y for instance.
 
 </td></tr>
 <tr><td>
@@ -228,6 +258,36 @@ _(Optional)_ Queue tolerance in percent of `maxQueueSize`<!-- -->. If maxQueueSi
 </td></tr>
 <tr><td>
 
+[serverReturnFinalResult?](./pinot-noir.ipinotqueryoptions.serverreturnfinalresult.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ For aggregation and group-by queries, ask servers to directly return final results instead of intermediate results for aggregations. Can be applied when the group key is server partitioned, i.e. the column(s) is partitioned, and all the data for a partition is served by the same server.
+
+</td></tr>
+<tr><td>
+
+[serverReturnFinalResultKeyUnpartitioned?](./pinot-noir.ipinotqueryoptions.serverreturnfinalresultkeyunpartitioned.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ For group-by queries, ask servers to directly return final results instead of intermediate results for aggregations. Different from serverReturnFinalResult, this option should be used when the group key is not server partitioned, but the aggregated column is server partitioned. It is particularly useful for distinct count queries. When this option is enabled, server will return final results, but won't directly trim the result to the query limit.
+
+</td></tr>
+<tr><td>
+
 [skipIndexes?](./pinot-noir.ipinotqueryoptions.skipindexes.md)
 
 </td><td>
@@ -238,7 +298,22 @@ string
 
 </td><td>
 
-_(Optional)_ Which indexes to skip usage of, per-column. Format: `col1=indexType1,indexType2&col2=indexType1`<!-- -->.
+_(Optional)_ Which indexes to skip usage of (i.e. scan instead), per-column. This is useful for side-by-side comparison/debugging. There can be cases where the use of an index is actually more expensive than performing a scan of the docs which match other filters. One such example could be a low-selectivity inverted index used in conjunction with another highly selective filter. Config can be specified using url parameter format: skipIndexes='col1=inverted,range&amp;col2=inverted'. Possible index types to skip are: sorted, range, inverted, H3. To find out which indexes are used to resolve a given query, use the EXPLAIN query.
+
+</td></tr>
+<tr><td>
+
+[skipUnavailableServers?](./pinot-noir.ipinotqueryoptions.skipunavailableservers.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ Set skipUnavailableServers=true in the config to continue sending queries to remaining servers if dispatching a query fails.
 
 </td></tr>
 <tr><td>

@@ -1,3 +1,9 @@
+## [2.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.4.1...v2.5.0) (2025-04-22)
+
+### 🚀 Features
+
+* add missing query options ([556297c](https://github.com/SkeLLLa/pinot-noir/commit/556297c505a40c95c0f325213b7bda93661ea78d))
+
 ## [2.4.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.4.0...v2.4.1) (2025-04-02)
 
 ### 🛠 Fixes
