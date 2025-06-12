@@ -321,8 +321,10 @@ export interface IPinotPoolStats extends PoolStats {}
 // @public
 export interface IPinotQueryOptions {
   andScanReordering?: boolean;
+  dropResults?: boolean;
   enableNullHandling?: boolean;
   explainPlanVerbose?: boolean;
+  filteredAggregationsSkipEmptyGroups?: boolean;
   inPredicateLookupAlgorithm?:
     | 'DIVIDE_BINARY_SEARCH'
     | 'SCAN'
@@ -336,7 +338,10 @@ export interface IPinotQueryOptions {
   minServerGroupTrimSize?: number;
   numReplicaGroupsToQuery?: number;
   queueTolerance?: TQueueTolerancePredefined | number;
+  serverReturnFinalResult?: boolean;
+  serverReturnFinalResultKeyUnpartitioned?: boolean;
   skipIndexes?: string;
+  skipUnavailableServers?: boolean;
   skipUpsert?: boolean;
   timeoutMs?: number;
   useMSEToFillEmptyResponseSchema?: boolean;

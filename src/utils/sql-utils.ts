@@ -50,12 +50,36 @@ export class SqlUtils {
     const formattedSql = SqlFormat.format(query.sql, query.values)
       .split('\n')
       .filter((line) => line.trim() !== '');
+
     const firstLine = formattedSql[0];
-    const indent =
-      typeof firstLine !== 'undefined'
-        ? firstLine.length - firstLine.trimStart().length
-        : 0;
-    const sql = formattedSql.map((line) => line.slice(indent)).join('\n');
+
+    if (!firstLine) {
+      return SqlUtils.formatOptions(options) || '';
+    }
+
+    // Get indentation of the first line
+    const firstLineIndent = firstLine.length - firstLine.trimStart().length;
+
+    // Process all lines preserving their relative indentation to the first line
+    const processedLines = formattedSql.map((line, index) => {
+      if (index === 0) {
+        // First line gets no indentation
+        return line.trimStart();
+      } else {
+        // Calculate this line's indentation amount relative to first line
+        const currentIndent = line.length - line.trimStart().length;
+        // If current line has less indent than first line, preserve the difference
+        // If current line has more indent than first line, add the difference
+        const relativeIndent =
+          currentIndent < firstLineIndent
+            ? currentIndent // Maintain the same indentation if less than first line
+            : currentIndent - firstLineIndent; // Otherwise, make it relative to first line
+
+        return ' '.repeat(relativeIndent) + line.trimStart();
+      }
+    });
+
+    const sql = processedLines.join('\n');
 
     return [SqlUtils.formatOptions(options), sql].filter(Boolean).join('\n');
   }

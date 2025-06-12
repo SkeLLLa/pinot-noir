@@ -56,4 +56,15 @@ void describe('Sql Utils', async () => {
       `SELECT\n  *\nFROM\n  table\nWHERE\n  id = 1`,
     );
   });
+
+  await test('handles inconsistent indentation in SQL queries', () => {
+    const query = sql`
+    select * from table
+  where a = ${1}
+      limit 5
+`;
+
+    const result = SqlUtils.stringifyQuery(query);
+    assert.strictEqual(result, 'select * from table\n  where a = 1\n  limit 5');
+  });
 });
