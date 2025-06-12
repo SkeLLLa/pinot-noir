@@ -1,3 +1,9 @@
+## [2.5.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.0...v2.5.1) (2025-06-12)
+
+### 🛠 Fixes
+
+* **utils:** identation formatting ([8e1025d](https://github.com/SkeLLLa/pinot-noir/commit/8e1025d342f07a74eba8bf839154a4d6e1151a1a))
+
 ## [2.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.4.1...v2.5.0) (2025-04-22)
 
 ### 🚀 Features
