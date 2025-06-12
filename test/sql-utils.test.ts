@@ -61,7 +61,7 @@ void describe('Sql Utils', async () => {
     const query = sql`
     select * from table
   where a = ${1}
-      limit 5
+      limit 5  
 `;
 
     const result = SqlUtils.stringifyQuery(query);
