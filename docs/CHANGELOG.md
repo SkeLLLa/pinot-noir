@@ -1,3 +1,9 @@
+## [2.5.2](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.1...v2.5.2) (2025-06-12)
+
+### 🛠 Fixes
+
+* formatting trim trailing spaces ([d6aad8c](https://github.com/SkeLLLa/pinot-noir/commit/d6aad8cb81ecefa05cdc457850edc4b0df79d50c))
+
 ## [2.5.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.0...v2.5.1) (2025-06-12)
 
 ### 🛠 Fixes
