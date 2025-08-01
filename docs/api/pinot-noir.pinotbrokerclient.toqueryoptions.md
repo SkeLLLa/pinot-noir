@@ -41,6 +41,7 @@ _(Optional)_ Query options.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 string \| undefined

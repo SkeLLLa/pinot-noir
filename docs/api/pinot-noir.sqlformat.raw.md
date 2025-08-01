@@ -39,6 +39,7 @@ string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 { toSqlFormat: () =&gt; string; }

@@ -41,6 +41,7 @@ _(Optional)_ Pinot query options
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 string

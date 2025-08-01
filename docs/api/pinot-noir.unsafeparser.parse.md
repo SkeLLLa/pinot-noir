@@ -54,6 +54,7 @@ _(Optional)_ value type
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 number \| string \| boolean \| object \| null \| Date \| bigint \| undefined

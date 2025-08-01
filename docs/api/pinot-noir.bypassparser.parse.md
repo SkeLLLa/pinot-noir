@@ -41,6 +41,7 @@ _(Optional)_ value to parse
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 number \| string \| boolean \| object \| null \| undefined

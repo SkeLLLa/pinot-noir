@@ -1,3 +1,27 @@
+## [2.5.3](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.2...v2.5.3) (2025-08-01)
+
+### 🛠 Fixes
+
+* header timeout as 80% ([f39df1a](https://github.com/SkeLLLa/pinot-noir/commit/f39df1aa51a6a615be6c1592f2d4ddc69a246b74))
+
+### 🧾 Other
+
+* **deps-dev:** bump @ianvs/prettier-plugin-sort-imports ([be5dd3d](https://github.com/SkeLLLa/pinot-noir/commit/be5dd3d0f6804b72b0ad81b5d830dcd89e63444c))
+* **deps-dev:** bump @microsoft/api-documenter from 7.26.18 to 7.26.30 ([c3ff805](https://github.com/SkeLLLa/pinot-noir/commit/c3ff8055ad326c9cacc7099dccbfc0911b854811))
+* **deps-dev:** bump @microsoft/api-extractor from 7.52.2 to 7.52.10 ([2a30ad3](https://github.com/SkeLLLa/pinot-noir/commit/2a30ad342f36b0c06eaa84569629487ee445da7e))
+* **deps-dev:** bump @semantic-release/exec from 7.0.3 to 7.1.0 ([a114756](https://github.com/SkeLLLa/pinot-noir/commit/a114756340d1e5b15adeadbcdd5cce3021be5dfb))
+* **deps-dev:** bump @semantic-release/github from 11.0.1 to 11.0.3 ([bd3eddf](https://github.com/SkeLLLa/pinot-noir/commit/bd3eddf3d1539927340e0033b7d98b978170950d))
+* **deps-dev:** bump @semantic-release/npm from 12.0.1 to 12.0.2 ([90f8d56](https://github.com/SkeLLLa/pinot-noir/commit/90f8d56d7db6ffc514c0c65bd4d6d26a81c815c5))
+* **deps-dev:** bump @types/node from 22.13.14 to 24.1.0 ([0161a89](https://github.com/SkeLLLa/pinot-noir/commit/0161a89603c6ae8ccf4ebde9c565cccda8af043c))
+* **deps-dev:** bump eslint-config-prettier from 10.1.1 to 10.1.8 ([01dced7](https://github.com/SkeLLLa/pinot-noir/commit/01dced7c59076290236aea4244d33a9a7ac369bc))
+* **deps-dev:** bump eslint-import-resolver-typescript ([61830d6](https://github.com/SkeLLLa/pinot-noir/commit/61830d6b5ca9fa48942faa12bedf1f01a88d6159))
+* **deps-dev:** bump eslint-plugin-import-x from 4.9.3 to 4.16.1 ([3e472bf](https://github.com/SkeLLLa/pinot-noir/commit/3e472bf7c3b024c87323a199d82f4ae3b4bed3c3))
+* **deps-dev:** bump prettier-plugin-jsdoc from 1.3.2 to 1.3.3 ([5723b94](https://github.com/SkeLLLa/pinot-noir/commit/5723b9428abc0aab332274b321519eb591a44c13))
+* **deps-dev:** bump prettier-plugin-sh from 0.15.0 to 0.17.4 ([bbd253a](https://github.com/SkeLLLa/pinot-noir/commit/bbd253af1b6cc6ada0f5bf14c16d6d115bb199a9))
+* **deps-dev:** bump tsx from 4.19.3 to 4.20.3 ([b3d5790](https://github.com/SkeLLLa/pinot-noir/commit/b3d57909ec4888278ec9884dbefff63f5dba3e48))
+* **deps-dev:** bump typescript from 5.8.2 to 5.8.3 ([7c7ae97](https://github.com/SkeLLLa/pinot-noir/commit/7c7ae97335ea41b45011557b3ef4558f0a6fcde7))
+* **deps:** bump the npm_and_yarn group with 2 updates ([5db2995](https://github.com/SkeLLLa/pinot-noir/commit/5db2995b129621dd59d1c643b99475ae00d6a73d))
+
 ## [2.5.2](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.1...v2.5.2) (2025-06-12)
 
 ### 🛠 Fixes

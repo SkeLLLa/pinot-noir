@@ -41,6 +41,7 @@ new queue size
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 void

@@ -67,6 +67,7 @@ _(Optional)_ Pass trace parameter to pinot
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[IQueryResult](./pinot-noir.iqueryresult.md)<!-- -->&lt;TResult\[\]&gt;&gt;

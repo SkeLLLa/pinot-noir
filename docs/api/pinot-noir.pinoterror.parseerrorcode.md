@@ -42,6 +42,7 @@ number
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 { type: [EPinotErrorType](./pinot-noir.epinoterrortype.md)<!-- -->; errorCode: [ERROR_CODES](./pinot-noir.error_codes.md)<!-- -->; }
