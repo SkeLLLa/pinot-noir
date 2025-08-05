@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-conversion */
 export class SqlFormat {
   private static ID_GLOBAL_REGEXP = /"/g;
   private static QUAL_GLOBAL_REGEXP = /\./g;
