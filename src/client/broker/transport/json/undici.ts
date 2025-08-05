@@ -47,7 +47,6 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       headersTimeout,
       keepAliveTimeout,
       allowH2: false,
-      maxRedirections: 0,
       // connect: {
       //   timeout: connectTimeout,
       // },
