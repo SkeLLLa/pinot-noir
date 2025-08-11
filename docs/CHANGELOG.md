@@ -1,3 +1,9 @@
+## [2.5.5](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.4...v2.5.5) (2025-08-11)
+
+### 🛠 Fixes
+
+* remove PR approval ([3818cad](https://github.com/SkeLLLa/pinot-noir/commit/3818cad888616e9e220d494b6133482e44fe9b89))
+
 ## [2.5.4](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.3...v2.5.4) (2025-08-11)
 
 ### 🛠 Fixes
