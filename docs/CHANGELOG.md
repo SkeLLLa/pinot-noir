@@ -1,3 +1,14 @@
+## [2.5.4](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.3...v2.5.4) (2025-08-11)
+
+### 🛠 Fixes
+
+* removed maxRedirections ([13480cd](https://github.com/SkeLLLa/pinot-noir/commit/13480cdf87546f9f2d3b670b94fb8958bca3f41a))
+
+### 🧾 Other
+
+* dev deps bump ([eed3383](https://github.com/SkeLLLa/pinot-noir/commit/eed338321412a91b566e9421578f9e462e0b6ad8))
+* silent eslint rule ([19c4238](https://github.com/SkeLLLa/pinot-noir/commit/19c4238d5d1a3e55f633bed6fc32c7b7d8117e38))
+
 ## [2.5.3](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.2...v2.5.3) (2025-08-01)
 
 ### 🛠 Fixes
