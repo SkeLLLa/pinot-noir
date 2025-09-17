@@ -1,3 +1,16 @@
+## [2.6.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.5...v2.6.0) (2025-09-17)
+
+### 🚀 Features
+
+* add useFixedReplica parameter ([e1d6f11](https://github.com/SkeLLLa/pinot-noir/commit/e1d6f1182f1cf32a42270cb44393107adcf55936))
+
+### 🧾 Other
+
+* **ci:** dependabot automerge try 3 ([9bb21be](https://github.com/SkeLLLa/pinot-noir/commit/9bb21be8bbceeb28bb6aee0ec216b2b9053a85dc))
+* **ci:** remove dependabot approval ([6695c03](https://github.com/SkeLLLa/pinot-noir/commit/6695c03bbc76ca117aca9c1e321c137729bcb65a))
+* **deps-dev:** bump @types/node from 24.2.0 to 24.3.1 ([0177f45](https://github.com/SkeLLLa/pinot-noir/commit/0177f453eb60bcb019be3fcb8459833fe0f51a9a))
+* **deps-dev:** bump eslint-plugin-prettier from 5.5.3 to 5.5.4 ([dd5fd0d](https://github.com/SkeLLLa/pinot-noir/commit/dd5fd0dda0772a1c117d33a3b7039b4c5981c730))
+
 ## [2.5.5](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.4...v2.5.5) (2025-08-11)
 
 ### 🛠 Fixes

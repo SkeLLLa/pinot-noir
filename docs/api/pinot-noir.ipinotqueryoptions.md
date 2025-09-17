@@ -348,6 +348,21 @@ _(Optional)_ Timeout of the query in milliseconds.
 </td></tr>
 <tr><td>
 
+[useFixedReplica?](./pinot-noir.ipinotqueryoptions.usefixedreplica.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ Use fixed replica for query execution. By default, the Pinot broker will route queries to the segment replica that is currently under the least load. It is possible to have the Pinot broker route all queries for a specific table to the same server for a given segment. You might do this if you are finding inconsistencies in query results due to an offset for consuming segments across different replicas.
+
+</td></tr>
+<tr><td>
+
 [useMSEToFillEmptyResponseSchema?](./pinot-noir.ipinotqueryoptions.usemsetofillemptyresponseschema.md)
 
 </td><td>
