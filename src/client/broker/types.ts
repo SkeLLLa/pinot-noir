@@ -360,6 +360,15 @@ export interface IPinotQueryOptions {
    * @defaultValue false
    */
   skipUnavailableServers?: boolean;
+  /**
+   * Use fixed replica for query execution.
+   * By default, the Pinot broker will route queries to the segment replica that is currently under the least load. It is possible to have the Pinot broker route all queries for a specific table to the same server for a given segment. You might do this if you are finding inconsistencies in query results due to an offset for consuming segments across different replicas.
+   *
+   * @see {@link https://docs.pinot.apache.org/operators/operating-pinot/tuning/routing#single-replica-routing | Single-replica routing}
+   *
+   * @defaultValue false
+   */
+  useFixedReplica?: boolean;
 }
 
 /**
