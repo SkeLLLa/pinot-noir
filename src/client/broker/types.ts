@@ -369,6 +369,13 @@ export interface IPinotQueryOptions {
    * @defaultValue false
    */
   useFixedReplica?: boolean;
+  /**
+   * Use new query optimizer in the Multistage Engine that computes and tracks precise Data Distribution across the entire plan before running some critical optimizations like Sort Pushdown, Aggregate Split/Pushdown, etc.
+   *
+   * @see {@link https://docs.pinot.apache.org/users/user-guide-query/multi-stage-query/physical-optimizer | Physical Optimizer}
+   * @defaultValue false
+   */
+  usePhysicalOptimizer?: boolean;
 }
 
 /**
