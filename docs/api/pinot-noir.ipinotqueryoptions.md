@@ -393,6 +393,21 @@ _(Optional)_ Use multi-stage engine to execute the query. (introduced in 0.11.0)
 </td></tr>
 <tr><td>
 
+[usePhysicalOptimizer?](./pinot-noir.ipinotqueryoptions.usephysicaloptimizer.md)
+
+</td><td>
+
+</td><td>
+
+boolean
+
+</td><td>
+
+_(Optional)_ Use new query optimizer in the Multistage Engine that computes and tracks precise Data Distribution across the entire plan before running some critical optimizations like Sort Pushdown, Aggregate Split/Pushdown, etc.
+
+</td></tr>
+<tr><td>
+
 [useStarTree?](./pinot-noir.ipinotqueryoptions.usestartree.md)
 
 </td><td>

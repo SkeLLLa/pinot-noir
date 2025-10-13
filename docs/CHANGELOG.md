@@ -1,3 +1,16 @@
+## [2.7.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.6.0...v2.7.0) (2025-10-13)
+
+### 🧾 Other
+
+* **deps-dev:** bump @semantic-release/github from 11.0.3 to 11.0.6 ([805edb3](https://github.com/SkeLLLa/pinot-noir/commit/805edb3bdbc76aa513245d8a725183dfeb5713cd))
+* **deps-dev:** bump @tsconfig/strictest from 2.0.5 to 2.0.6 ([18af176](https://github.com/SkeLLLa/pinot-noir/commit/18af176228f3d533122b0a60425d9d237a777c8f))
+* **deps-dev:** bump globals from 16.3.0 to 16.4.0 ([9018424](https://github.com/SkeLLLa/pinot-noir/commit/9018424705e4a0292552d62e2403c166ec71ad5b))
+* **deps-dev:** bump tsx from 4.20.3 to 4.20.6 ([34f621d](https://github.com/SkeLLLa/pinot-noir/commit/34f621d35af2c6d94031b871608def2c1ef5e058))
+
+### 🚀 Features
+
+* add usePhysicalOptimizer flag ([6fc9860](https://github.com/SkeLLLa/pinot-noir/commit/6fc9860be8b4947fdfce69f08e0efcda029ecfa6))
+
 ## [2.6.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.5.5...v2.6.0) (2025-09-17)
 
 ### 🚀 Features
