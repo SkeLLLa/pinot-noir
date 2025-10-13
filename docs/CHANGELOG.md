@@ -1,3 +1,13 @@
+## [2.7.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.7.0...v2.7.1) (2025-10-13)
+
+### 🛠 Fixes
+
+* bump undici ([f8b76b0](https://github.com/SkeLLLa/pinot-noir/commit/f8b76b0569cb41faf431893c7458e6c2da7292a3))
+
+### 🧾 Other
+
+* deps update ([603d91a](https://github.com/SkeLLLa/pinot-noir/commit/603d91ab4c254cf9b7986a50780c509011d4e81e))
+
 ## [2.7.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.6.0...v2.7.0) (2025-10-13)
 
 ### 🧾 Other
