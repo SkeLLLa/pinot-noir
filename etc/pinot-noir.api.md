@@ -344,8 +344,10 @@ export interface IPinotQueryOptions {
   skipUnavailableServers?: boolean;
   skipUpsert?: boolean;
   timeoutMs?: number;
+  useFixedReplica?: boolean;
   useMSEToFillEmptyResponseSchema?: boolean;
   useMultistageEngine?: boolean;
+  usePhysicalOptimizer?: boolean;
   useStarTree?: boolean;
 }
 

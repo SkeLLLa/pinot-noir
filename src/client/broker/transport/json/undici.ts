@@ -120,7 +120,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
             code: EBrokerTransportErrorCode.TIMEOUT,
           });
         }
-        if (err instanceof errors.ResponseStatusCodeError) {
+        if (err instanceof errors.ResponseError) {
           throw new PinotError({
             message: `Pinot transport error: Response code ${err.statusCode.toString()}`,
             type: EPinotErrorType.TRANSPORT,
