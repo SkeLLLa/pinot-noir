@@ -1,3 +1,13 @@
+## [2.8.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.7.1...v2.8.0) (2025-10-13)
+
+### 🛠 Fixes
+
+* revert OIDC ([217db82](https://github.com/SkeLLLa/pinot-noir/commit/217db82550991b11619a120824b4912bd122521c))
+
+### 🚀 Features
+
+* npm OIDC ([3eebb7f](https://github.com/SkeLLLa/pinot-noir/commit/3eebb7fd7b75828d588695b969d6b6529cda5653))
+
 ## [2.7.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.7.0...v2.7.1) (2025-10-13)
 
 ### 🛠 Fixes
