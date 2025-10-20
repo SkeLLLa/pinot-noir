@@ -1,3 +1,9 @@
+## [2.9.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.8.0...v2.9.0) (2025-10-20)
+
+### 🚀 Features
+
+* OIDC publish ([8d2b449](https://github.com/SkeLLLa/pinot-noir/commit/8d2b449ff102c84641bd87bc4ffc1c865ec0b401))
+
 ## [2.8.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.7.1...v2.8.0) (2025-10-13)
 
 ### 🛠 Fixes
