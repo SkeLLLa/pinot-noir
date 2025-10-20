@@ -10,12 +10,14 @@ on:
       - master
       - next
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   verify:
     name: Verify
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -97,8 +99,10 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm build
+      - name: Update npm
+        run: pnpm install -g npm@latest
       - name: Semantic Release
         run: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
