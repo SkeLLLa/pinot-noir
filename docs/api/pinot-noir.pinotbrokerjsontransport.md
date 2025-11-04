@@ -163,7 +163,7 @@ Closes connection to Pinot broker.
 </td></tr>
 <tr><td>
 
-[request({ body, headers, method, path, query, options, })](./pinot-noir.pinotbrokerjsontransport.request.md)
+[request({ body, headers, method, path, query, options, bodyTimeout, headersTimeout, })](./pinot-noir.pinotbrokerjsontransport.request.md)
 
 </td><td>
 

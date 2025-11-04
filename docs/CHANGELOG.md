@@ -1,3 +1,9 @@
+## [2.9.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.9.0...v2.9.1) (2025-11-04)
+
+### 🛠 Fixes
+
+* adjust query timout from queryTimeoutMs ([acb9ea4](https://github.com/SkeLLLa/pinot-noir/commit/acb9ea4f74e2f8e98fc09bbf1b5ad9e9c6d3f5c1))
+
 ## [2.9.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.8.0...v2.9.0) (2025-10-20)
 
 ### 🚀 Features
