@@ -23,7 +23,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
@@ -78,7 +78,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
