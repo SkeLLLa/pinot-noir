@@ -90,7 +90,7 @@ export class PinotClient implements IPinotClient {
     return queryTimeoutMs
       ? {
           bodyTimeout: queryTimeoutMs,
-          headersTimeout: queryTimeoutMs * 0.8,
+          headersTimeout: queryTimeoutMs,
         }
       : {};
   }

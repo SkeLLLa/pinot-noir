@@ -76,6 +76,8 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     path,
     query,
     options,
+    bodyTimeout,
+    headersTimeout,
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
     const queueSize = this.pool.stats.queued;
     const maxQueueTolerance =
@@ -99,6 +101,8 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
         'content-type': 'application/json',
         'authorization': `Basic ${this.token}`,
       },
+      bodyTimeout: bodyTimeout ?? null,
+      headersTimeout: headersTimeout ?? null,
       path,
       body: body ?? null,
       query: query ?? {},
