@@ -1,3 +1,9 @@
+## [2.10.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.9.1...v2.10.0) (2025-11-04)
+
+### 🚀 Features
+
+* **ci:** use node 24 ([63470c7](https://github.com/SkeLLLa/pinot-noir/commit/63470c7607f6d9a488b69ecc565c33b4f9186bd3))
+
 ## [2.9.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.9.0...v2.9.1) (2025-11-04)
 
 ### 🛠 Fixes
