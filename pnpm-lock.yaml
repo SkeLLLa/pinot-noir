@@ -46,8 +46,8 @@ importers:
         specifier: ^1.0.16
         version: 1.0.17(@types/eslint@9.6.1)(@typescript-eslint/parser@8.47.0(eslint@9.39.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.1)(prettier@3.6.2)(typescript@5.9.3)
       '@tsconfig/node-lts':
-        specifier: ^22.0.2
-        version: 22.0.2
+        specifier: ^24.0.0
+        version: 24.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.7
         version: 2.0.7
@@ -602,8 +602,11 @@ packages:
       prettier: ^3.0.0
       typescript: ^5.0.0
 
-  '@tsconfig/node-lts@22.0.2':
-    resolution: {integrity: sha512-Kgq5yXTvnUnvlhob0xJpOH4na9PWtuFhHSf94MpDwnENWgiFeJKDNANQV2MT1WpXZYkK2WSWfVYKhVkR7bc8TA==}
+  '@tsconfig/node-lts@22.0.4':
+    resolution: {integrity: sha512-5eAeCX6l/EYe6H2UAw5nBgjfAgdlsR+lSp8YNNGwz+ixoi7JfJ5bOQvsiEhxGm5bOZFVF+cJSIj4tanpCCRMIw==}
+
+  '@tsconfig/node-lts@24.0.0':
+    resolution: {integrity: sha512-8mSTqWwCd6aQpvxSrpQlMoA9RiUZSs7bYhL5qsLXIIaN9HQaINeoydrRu/Y7/fws4bvfuyhs0BRnW9/NI8tySg==}
 
   '@tsconfig/strictest@2.0.7':
     resolution: {integrity: sha512-lG1bXQloBVvQXasPBZSBaWbs7GNW4txZMYs7XMUVzM0s4seCbJACYBPFIRpGNVD3gC8gndK00AZON1uBrJt4Fw==}
@@ -3216,7 +3219,7 @@ snapshots:
       '@eslint/eslintrc': 3.3.1
       '@eslint/js': 9.39.1
       '@ianvs/prettier-plugin-sort-imports': 4.7.0(prettier@3.6.2)
-      '@tsconfig/node-lts': 22.0.2
+      '@tsconfig/node-lts': 22.0.4
       '@tsconfig/strictest': 2.0.7
       '@typescript-eslint/eslint-plugin': 8.47.0(@typescript-eslint/parser@8.47.0(eslint@9.39.1)(typescript@5.9.3))(eslint@9.39.1)(typescript@5.9.3)
       '@typescript-eslint/utils': 8.47.0(eslint@9.39.1)(typescript@5.9.3)
@@ -3245,7 +3248,9 @@ snapshots:
       - prettier-plugin-ember-template-tag
       - supports-color
 
-  '@tsconfig/node-lts@22.0.2': {}
+  '@tsconfig/node-lts@22.0.4': {}
+
+  '@tsconfig/node-lts@24.0.0': {}
 
   '@tsconfig/strictest@2.0.7': {}
 

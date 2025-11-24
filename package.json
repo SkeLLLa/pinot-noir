@@ -61,7 +61,7 @@
     "@semantic-release/npm": "^13.1.1",
     "@semantic-release/release-notes-generator": "^14.1.0",
     "@skellla/lint-config": "^1.0.16",
-    "@tsconfig/node-lts": "^22.0.2",
+    "@tsconfig/node-lts": "^24.0.0",
     "@tsconfig/strictest": "^2.0.7",
     "@types/node": "^24.10.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
