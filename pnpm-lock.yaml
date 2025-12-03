@@ -50,7 +50,7 @@ importers:
         version: 24.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.7
-        version: 2.0.7
+        version: 2.0.8
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.1
@@ -608,8 +608,8 @@ packages:
   '@tsconfig/node-lts@24.0.0':
     resolution: {integrity: sha512-8mSTqWwCd6aQpvxSrpQlMoA9RiUZSs7bYhL5qsLXIIaN9HQaINeoydrRu/Y7/fws4bvfuyhs0BRnW9/NI8tySg==}
 
-  '@tsconfig/strictest@2.0.7':
-    resolution: {integrity: sha512-lG1bXQloBVvQXasPBZSBaWbs7GNW4txZMYs7XMUVzM0s4seCbJACYBPFIRpGNVD3gC8gndK00AZON1uBrJt4Fw==}
+  '@tsconfig/strictest@2.0.8':
+    resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -3221,7 +3221,7 @@ snapshots:
       '@eslint/js': 9.39.1
       '@ianvs/prettier-plugin-sort-imports': 4.7.0(prettier@3.6.2)
       '@tsconfig/node-lts': 22.0.4
-      '@tsconfig/strictest': 2.0.7
+      '@tsconfig/strictest': 2.0.8
       '@typescript-eslint/eslint-plugin': 8.47.0(@typescript-eslint/parser@8.47.0(eslint@9.39.1)(typescript@5.9.3))(eslint@9.39.1)(typescript@5.9.3)
       '@typescript-eslint/utils': 8.47.0(eslint@9.39.1)(typescript@5.9.3)
       eslint: 9.39.1
@@ -3253,7 +3253,7 @@ snapshots:
 
   '@tsconfig/node-lts@24.0.0': {}
 
-  '@tsconfig/strictest@2.0.7': {}
+  '@tsconfig/strictest@2.0.8': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
