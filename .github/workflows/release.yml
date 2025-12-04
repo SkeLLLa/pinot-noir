@@ -13,6 +13,10 @@ on:
 permissions:
   id-token: write # Required for OIDC
   contents: read
+  # Required to upload SARIF file to CodeQL. See: https://github.com/github/codeql-action/issues/2117
+  actions: read
+  # Require writing security events to upload SARIF file to security tab
+  security-events: write
 
 jobs:
   verify:
@@ -61,10 +65,20 @@ jobs:
           flags: js_open_source
           fail_ci_if_error: false
           verbose: true
+  osv:
+    uses: 'google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@v2.3.0'
+    with:
+      scan-args: |-
+        ./
+    permissions:
+      # Require writing security events to upload SARIF file to security tab
+      security-events: write
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: verify
+    needs:
+      - verify
+      - osv
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
