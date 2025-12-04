@@ -73,6 +73,8 @@ jobs:
     permissions:
       # Require writing security events to upload SARIF file to security tab
       security-events: write
+      actions: read,
+      contents: read
   release:
     name: Release
     runs-on: ubuntu-latest
