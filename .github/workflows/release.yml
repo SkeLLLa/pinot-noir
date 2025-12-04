@@ -73,7 +73,7 @@ jobs:
     permissions:
       # Require writing security events to upload SARIF file to security tab
       security-events: write
-      actions: read,
+      actions: read
       contents: read
   release:
     name: Release
