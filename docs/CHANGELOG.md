@@ -1,3 +1,26 @@
+## [2.11.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.10.0...v2.11.0) (2025-12-04)
+
+### 🛠 Fixes
+
+* **ci:** osv permissions ([1c96f05](https://github.com/SkeLLLa/pinot-noir/commit/1c96f055bd7a2dddc35be1a873bfb617e999a2d0))
+* **ci:** workflow typo ([2ca0c98](https://github.com/SkeLLLa/pinot-noir/commit/2ca0c98078d433c63748522f5c340d159b5aa17a))
+
+### 🚀 Features
+
+* **build:** better deps security ([3264420](https://github.com/SkeLLLa/pinot-noir/commit/32644209d78a134d7eb6e79eafdc23410f1aa913))
+* **ci:** osv scan ([9e9a62c](https://github.com/SkeLLLa/pinot-noir/commit/9e9a62cdb7eba3c5c0c1011ff81202c3b8dec196))
+
+### 🧾 Other
+
+* **deps-dev:** bump @semantic-release/github from 12.0.1 to 12.0.2 ([da37149](https://github.com/SkeLLLa/pinot-noir/commit/da371495625f03001334f39987ca09b7e02a1194))
+* **deps-dev:** bump @semantic-release/npm from 13.1.1 to 13.1.2 ([be8e995](https://github.com/SkeLLLa/pinot-noir/commit/be8e9958e0422456867d2c790390231b9a3c3267))
+* **deps-dev:** bump @skellla/lint-config from 1.0.16 to 1.0.17 ([79b1d26](https://github.com/SkeLLLa/pinot-noir/commit/79b1d269102906c920e8d147fb62b1f0ce38ba33))
+* **deps-dev:** bump @tsconfig/node-lts from 22.0.2 to 24.0.0 ([9c5aea5](https://github.com/SkeLLLa/pinot-noir/commit/9c5aea5a6e8b8a15ac1a415b3aede92d701a280e))
+* **deps-dev:** bump @tsconfig/strictest from 2.0.7 to 2.0.8 ([b8270e1](https://github.com/SkeLLLa/pinot-noir/commit/b8270e193e60a0affe5681dd9356ef5df7eaf1d5))
+* **deps-dev:** bump @types/node from 24.10.0 to 24.10.1 ([1c302fd](https://github.com/SkeLLLa/pinot-noir/commit/1c302fd7cc24931130b26ef8ec5973f330a5e5a9))
+* **deps-dev:** bump semantic-release from 25.0.1 to 25.0.2 ([9503afa](https://github.com/SkeLLLa/pinot-noir/commit/9503afa6599f95d306426efed0b63cf71d1738c5))
+* **deps:** bump js-yaml in the npm_and_yarn group across 1 directory ([4bcbfef](https://github.com/SkeLLLa/pinot-noir/commit/4bcbfefa3deefd4eb080d1ba51c33c91f8483720))
+
 ## [2.10.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.9.1...v2.10.0) (2025-11-04)
 
 ### 🚀 Features
