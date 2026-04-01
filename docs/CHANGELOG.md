@@ -1,3 +1,9 @@
+## [2.12.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.11.0...v2.12.0) (2026-04-01)
+
+### 🚀 Features
+
+* bump deps, improve dependabot ([2e4072e](https://github.com/SkeLLLa/pinot-noir/commit/2e4072eab89843f7b995c79c84832e0a649aaa01))
+
 ## [2.11.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.10.0...v2.11.0) (2025-12-04)
 
 ### 🛠 Fixes
