@@ -64,17 +64,16 @@ export interface IBrokerTransportConfig {
  *
  * @public
  */
-export interface IBrokerTransportRequestOptions
-  extends Pick<
-    Dispatcher.RequestOptions,
-    | 'method'
-    | 'headers'
-    | 'path'
-    | 'body'
-    | 'query'
-    | 'bodyTimeout'
-    | 'headersTimeout'
-  > {
+export interface IBrokerTransportRequestOptions extends Pick<
+  Dispatcher.RequestOptions,
+  | 'method'
+  | 'headers'
+  | 'path'
+  | 'body'
+  | 'query'
+  | 'bodyTimeout'
+  | 'headersTimeout'
+> {
   options?:
     | {
         // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

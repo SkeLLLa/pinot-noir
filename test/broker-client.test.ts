@@ -227,6 +227,7 @@ void describe('Pinot client', async () => {
         maxRowsInJoin: false,
         maxRowsInWindowReached: false,
       },
+      maxRowsInOperator: undefined,
     });
   });
 });

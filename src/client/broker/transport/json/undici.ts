@@ -30,7 +30,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   constructor({
     bodyTimeout = 60000,
     brokerUrl,
-    connections = undefined,
+    connections,
     // connectTimeout = 1000,
     keepAliveTimeout = 60000,
     headersTimeout = 60000,
@@ -72,7 +72,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   async request<TResponse = unknown>({
     body,
     headers,
-    method = 'POST',
+    method,
     path,
     query,
     options,
@@ -130,7 +130,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
             type: EPinotErrorType.TRANSPORT,
             code: EBrokerTransportErrorCode.INVALID_RESPONSE,
             data: {
-              headers: response.headers,
+              headers: err.headers,
               body: err.body,
               statusCode: err.statusCode,
             },

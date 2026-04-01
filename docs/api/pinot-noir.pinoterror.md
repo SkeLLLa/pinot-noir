@@ -29,7 +29,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ message, type, code, cause, exceptions, data, })](./pinot-noir.pinoterror._constructor_.md)
+[(constructor)({ message, type, code, cause, exceptions, data, }, input)](./pinot-noir.pinoterror._constructor_.md)
 
 </td><td>
 

@@ -173,15 +173,17 @@ export class PinotClient implements IPinotClient {
       } = resultTable;
       const queryStats = new QueryStats(statsRaw);
 
+      const colCount = columnNames.length;
       const data = rows.map((row) => {
         const obj: Record<string, unknown> = {};
 
-        columnNames.forEach((column, index) => {
-          obj[column] = this.valueParser.parse(
-            row[index],
-            columnDataTypes[index],
+        for (let i = 0; i < colCount; i++) {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          obj[columnNames[i]!] = this.valueParser.parse(
+            row[i],
+            columnDataTypes[i],
           );
-        });
+        }
 
         return obj as TResult;
       });

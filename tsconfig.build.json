@@ -5,6 +5,12 @@
     "outDir": "dist",
     "rootDir": "src"
   },
+  "exclude": [
+    "dist/**/*",
+    "coverage/**/*",
+    "node_modules/**/*",
+    "test/**/*.ts"
+  ],
   "extends": "./tsconfig.json",
   "include": ["src/**/*"]
 }

@@ -9,7 +9,7 @@ Constructs a new instance of the `PinotError` class
 **Signature:**
 
 ```typescript
-constructor({ message, type, code, cause, exceptions, data, }: IPinotErrorConstructorArgs<TData>);
+constructor(input: IPinotErrorConstructorArgs<TData>);
 ```
 
 ## Parameters
@@ -30,6 +30,17 @@ Description
 <tbody><tr><td>
 
 { message, type, code, cause, exceptions, data, }
+
+</td><td>
+
+(not declared)
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+input
 
 </td><td>
 

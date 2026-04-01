@@ -70,7 +70,7 @@ Closes connection to Pinot broker.
 </td></tr>
 <tr><td>
 
-[request({ method, headers, path, body, query, })](./pinot-noir.ipinotbrokertransport.request.md)
+[request({ method, headers, path, body, query, }, input)](./pinot-noir.ipinotbrokertransport.request.md)
 
 </td><td>
 

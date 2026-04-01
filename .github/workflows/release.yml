@@ -11,11 +11,9 @@ on:
       - next
 
 permissions:
-  id-token: write # Required for OIDC
+  id-token: write
   contents: read
-  # Required to upload SARIF file to CodeQL. See: https://github.com/github/codeql-action/issues/2117
   actions: read
-  # Require writing security events to upload SARIF file to security tab
   security-events: write
 
 jobs:
@@ -23,12 +21,12 @@ jobs:
     name: Verify
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         id: pnpm-install
         with:
@@ -37,7 +35,7 @@ jobs:
         id: pnpm-cache
         run: |
           echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.PNPM_CACHE_DIR }}
@@ -57,7 +55,7 @@ jobs:
       - name: Test
         run: pnpm test
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           use_oidc: true
           disable_search: true
@@ -71,7 +69,6 @@ jobs:
       scan-args: |-
         ./
     permissions:
-      # Require writing security events to upload SARIF file to security tab
       security-events: write
       actions: read
       contents: read
@@ -82,20 +79,20 @@ jobs:
       - verify
       - osv
     permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
       packages: write
       checks: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         id: pnpm-install
         with:
@@ -103,11 +100,11 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v4
+          echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          path: ${{ env.PNPM_CACHE_DIR }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -121,4 +118,4 @@ jobs:
         run: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN not needed - using OIDC provenance

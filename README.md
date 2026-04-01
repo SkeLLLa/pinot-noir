@@ -3,9 +3,10 @@
 [![NPM Version](https://img.shields.io/npm/v/pinot-noir.svg)](https://www.npmjs.com/package/pinot-noir)
 [![Downloads Count](https://img.shields.io/npm/dm/pinot-noir.svg)](https://www.npmjs.com/package/pinot-noir)
 [![Vunerabilities Count](https://snyk.io/test/npm/pinot-noir/badge.svg)](https://www.npmjs.com/package/pinot-noir)
-[![Release](https://github.com/SkeLLLa/pinot-noir/actions/workflows/release.yml/badge.svg)](https://github.com/SkeLLLa/pinot-noir/actions/workflows/release.yml)
+[![Build Status](https://github.com/SkeLLLa/pinot-noir/workflows/release/badge.svg)](https://github.com/SkeLLLa/pinot-noir/actions)
 [![License](https://img.shields.io/npm/l/pinot-noir.svg)](https://gitlab.com/m03geek/pinot-noir/blob/master/LICENSE)
 [![Codecov](https://img.shields.io/codecov/c/gh/SkeLLLa/pinot-noir.svg)](https://codecov.io/gh/SkeLLLa/pinot-noir)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/pinot-noir)](https://socket.dev/npm/package/pinot-noir)
 
 Unofficial node.js [Apache Pnot](https://pinot.apache.org/) client. Uses [undici](https://undici.nodejs.org) to make http requests to pinot brokers.
 
