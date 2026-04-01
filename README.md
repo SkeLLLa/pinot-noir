@@ -28,6 +28,8 @@ Unofficial node.js [Apache Pnot](https://pinot.apache.org/) client. Uses [undici
         - [stringifyQuery](#stringifyquery)
   - [Demo](#demo)
   - [See also](#see-also)
+  - [Support Ukraine](#support-ukraine)
+  - [License](#license)
 
 ## Features
 
@@ -292,3 +294,11 @@ See results
 ## See also
 
 - [pinot-client-node](https://github.com/kffl/pinot-client-node#readme) - another good Apache Pinot client and inspiration for this library, which in adddition has Pinot controller client.
+
+## Support Ukraine
+
+If you find this project useful, please consider [supporting Ukraine's defense](./SPONSOR.md).
+
+## License
+
+Licensed under [MIT](./LICENSE).
