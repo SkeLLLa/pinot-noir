@@ -1,3 +1,18 @@
+## [2.12.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.0...v2.12.1) (2026-04-04)
+
+### 🛠 Fixes
+
+* harden security ([0164562](https://github.com/SkeLLLa/pinot-noir/commit/0164562a96b477d3717fc747c65ecc96a895f8dd))
+
+### 🧾 Other
+
+* **deps:** bump the all-actions group with 4 updates ([ab983d6](https://github.com/SkeLLLa/pinot-noir/commit/ab983d6a0fc4855d852b4b655cf60fec6893b462))
+* **deps:** dev deps osv scan fixes ([36992d4](https://github.com/SkeLLLa/pinot-noir/commit/36992d478d922d6ec1c772d830439115219799e4))
+
+### 📔 Docs
+
+* update readme ([11fa3fd](https://github.com/SkeLLLa/pinot-noir/commit/11fa3fd11e475a38465134346e459becc834838a))
+
 ## [2.12.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.11.0...v2.12.0) (2026-04-01)
 
 ### 🚀 Features
