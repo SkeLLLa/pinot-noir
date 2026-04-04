@@ -1,3 +1,9 @@
+## [2.12.2](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.1...v2.12.2) (2026-04-04)
+
+### 🛠 Fixes
+
+* **deps:** bump lodash from 4.17.23 to 4.18.1 ([6dfabb7](https://github.com/SkeLLLa/pinot-noir/commit/6dfabb7e1ddf2803c9ae8bfb065132121df38592))
+
 ## [2.12.1](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.0...v2.12.1) (2026-04-04)
 
 ### 🛠 Fixes
