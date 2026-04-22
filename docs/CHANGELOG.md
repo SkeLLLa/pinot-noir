@@ -1,3 +1,20 @@
+## [3.0.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.2...v3.0.0) (2026-04-22)
+
+### ⚠ BREAKING CHANGES
+
+* bump undici to v8
+
+### 🚀 Features
+
+* bump undici to v8 ([4d2bad5](https://github.com/SkeLLLa/pinot-noir/commit/4d2bad503bbd9eba28ded20118a7a2b7ed4f10bd))
+
+### 🧾 Other
+
+* **deps-dev:** bump @types/node from 24.12.0 to 25.6.0 ([2279bd8](https://github.com/SkeLLLa/pinot-noir/commit/2279bd842cef7c0273a65cc275664ac0c65d70f5))
+* **deps-dev:** bump globals from 16.5.0 to 17.5.0 ([dde703f](https://github.com/SkeLLLa/pinot-noir/commit/dde703ff4f852efcde845886dd95fb2e2180a3c1))
+* **deps-dev:** bump the all-minor-patch group with 4 updates ([89319e9](https://github.com/SkeLLLa/pinot-noir/commit/89319e90cad413ad6f2ce7fb663498ed1e46daca))
+* **deps:** bump the all-actions group across 1 directory with 2 updates ([c7a1670](https://github.com/SkeLLLa/pinot-noir/commit/c7a16701c67f0cb25db348455b5315aff068bac5))
+
 ## [2.12.2](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.1...v2.12.2) (2026-04-04)
 
 ### 🛠 Fixes
