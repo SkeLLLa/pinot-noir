@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@no-esm/sql-template-tag": "^5.2.2",
-    "undici": "^7.24.0"
+    "undici": "^8.1.0"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.29.8",
@@ -74,15 +74,15 @@
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   },
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=20",
+    "node": ">=22.19.0",
     "pnpm": ">=10"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": ">=20"
+      "version": ">=22.19.0"
     }
   },
   "publishConfig": {
@@ -92,20 +92,17 @@
     "typings": "dist/index.d.ts"
   },
   "pnpm": {
-    "minimumReleaseAgeExclude": [
-      "@skellla/lint-config"
-    ],
     "overrides": {
-      "handlebars": ">=4.7.9",
-      "flatted": ">=3.4.2",
-      "minimatch@<4": ">=3.1.4",
-      "minimatch@>=9 <9.0.7": ">=9.0.7",
-      "brace-expansion@<2": ">=1.1.13",
       "brace-expansion@>=2 <2.0.3": ">=2.0.3",
-      "picomatch": ">=4.0.4",
+      "brace-expansion@<2": ">=1.1.13",
+      "diff": ">=8.0.3",
+      "flatted": ">=3.4.2",
+      "handlebars": ">=4.7.9",
       "lodash": ">=4.18.1",
       "lodash-es": ">=4.17.23",
-      "diff": ">=8.0.3"
+      "minimatch@>=9 <9.0.7": ">=9.0.7",
+      "minimatch@<4": ">=3.1.4",
+      "picomatch": ">=4.0.4"
     }
   }
 }
