@@ -11,3 +11,7 @@ The maximum allowed `keepAliveTimeout` (in ms).
 ```typescript
 keepAliveMaxTimeout?: number;
 ```
+
+## Default Value
+
+60000

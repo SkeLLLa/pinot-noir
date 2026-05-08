@@ -11,3 +11,7 @@ Set skipUnavailableServers=true in the config to continue sending queries to rem
 ```typescript
 skipUnavailableServers?: boolean;
 ```
+
+## Default Value
+
+false

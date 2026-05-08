@@ -11,3 +11,7 @@ Indicates that the values in the IN clause are already sorted.
 ```typescript
 inPredicatePreSorted?: boolean;
 ```
+
+## Default Value
+
+`false`

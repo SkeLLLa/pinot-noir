@@ -11,3 +11,7 @@ For group-by queries, ask servers to directly return final results instead of in
 ```typescript
 serverReturnFinalResultKeyUnpartitioned?: boolean;
 ```
+
+## Default Value
+
+false

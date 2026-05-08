@@ -11,3 +11,7 @@ Use star-tree index if available. (introduced in 0.11.0)
 ```typescript
 useStarTree?: boolean;
 ```
+
+## Default Value
+
+`true`

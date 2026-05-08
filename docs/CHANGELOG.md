@@ -1,3 +1,13 @@
+## [3.0.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.0...v3.0.1) (2026-05-08)
+
+### 🛠 Fixes
+
+* **deps:** bump undici from 8.1.0 to 8.2.0 ([03aecba](https://github.com/SkeLLLa/pinot-noir/commit/03aecba53f07d776496aaf8e526b91ea8f33deca))
+
+### 🧾 Other
+
+* **deps-dev:** bump the all-minor-patch group with 2 updates ([732a08a](https://github.com/SkeLLLa/pinot-noir/commit/732a08a7a126575506992c11cd8be1090c8b4bdd))
+
 ## [3.0.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.2...v3.0.0) (2026-04-22)
 
 ### ⚠ BREAKING CHANGES

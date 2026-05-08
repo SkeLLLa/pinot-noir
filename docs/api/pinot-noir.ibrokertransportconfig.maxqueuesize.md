@@ -11,3 +11,7 @@ Max pool queue size. If undefined or 0, queue is infinite. If a request comes an
 ```typescript
 maxQueueSize?: number;
 ```
+
+## Default Value
+
+value undefined

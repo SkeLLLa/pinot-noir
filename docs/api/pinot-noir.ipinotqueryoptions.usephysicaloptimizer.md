@@ -11,3 +11,7 @@ Use new query optimizer in the Multistage Engine that computes and tracks precis
 ```typescript
 usePhysicalOptimizer?: boolean;
 ```
+
+## Default Value
+
+false

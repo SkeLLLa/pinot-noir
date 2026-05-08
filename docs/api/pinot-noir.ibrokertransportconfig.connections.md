@@ -11,3 +11,7 @@ Max pool connections. `undefined` = unlimited.
 ```typescript
 connections?: number;
 ```
+
+## Default Value
+
+undefined (unlimited)

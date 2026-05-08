@@ -11,3 +11,7 @@ Which indexes to skip usage of (i.e. scan instead), per-column. This is useful f
 ```typescript
 skipIndexes?: string;
 ```
+
+## Default Value
+
+`null`

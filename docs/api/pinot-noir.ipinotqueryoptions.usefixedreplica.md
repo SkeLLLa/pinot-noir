@@ -11,3 +11,7 @@ Use fixed replica for query execution. By default, the Pinot broker will route q
 ```typescript
 useFixedReplica?: boolean;
 ```
+
+## Default Value
+
+false

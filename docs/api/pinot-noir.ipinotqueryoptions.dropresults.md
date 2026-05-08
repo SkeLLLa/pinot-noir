@@ -11,3 +11,7 @@ Set dropResults=true in the config to drop the resultTable from the response. Us
 ```typescript
 dropResults?: boolean;
 ```
+
+## Default Value
+
+false

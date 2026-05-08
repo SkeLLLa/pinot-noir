@@ -11,3 +11,7 @@ The timeout after which a request will time out (in ms).
 ```typescript
 bodyTimeout?: number;
 ```
+
+## Default Value
+
+60000

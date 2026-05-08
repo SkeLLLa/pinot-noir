@@ -11,3 +11,7 @@ TCP connect timeout (in ms).
 ```typescript
 connectTimeout?: number;
 ```
+
+## Default Value
+
+1000

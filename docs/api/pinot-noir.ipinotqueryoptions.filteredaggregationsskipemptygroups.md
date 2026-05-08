@@ -11,3 +11,7 @@ This config can be set to true to avoid computing all the groups in a group by q
 ```typescript
 filteredAggregationsSkipEmptyGroups?: boolean;
 ```
+
+## Default Value
+
+false
