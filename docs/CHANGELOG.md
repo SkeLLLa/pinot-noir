@@ -1,3 +1,9 @@
+## [3.0.2](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.1...v3.0.2) (2026-05-12)
+
+### 🛠 Fixes
+
+* **deps:** bump fast-uri from 3.1.0 to 3.1.2 ([caaf674](https://github.com/SkeLLLa/pinot-noir/commit/caaf674f4c75e07997a94b566270b9700c2b03f1))
+
 ## [3.0.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.0...v3.0.1) (2026-05-08)
 
 ### 🛠 Fixes
