@@ -1,3 +1,14 @@
+## [3.0.3](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.2...v3.0.3) (2026-07-04)
+
+### 🛠 Fixes
+
+* **deps:** bump undici from 8.2.0 to 8.5.0 ([3ac14df](https://github.com/SkeLLLa/pinot-noir/commit/3ac14dfa42690277a0b5c47a63eb7d4deab79b37))
+
+### 🧾 Other
+
+* **deps:** bump codecov/codecov-action in the all-actions group ([f93c497](https://github.com/SkeLLLa/pinot-noir/commit/f93c4972af3e294cbdc90390e9292e902d52c5c6))
+* **deps:** bump the all-actions group with 2 updates ([5c04510](https://github.com/SkeLLLa/pinot-noir/commit/5c04510f21baae96c465d22d1fbfea498a9f68dc))
+
 ## [3.0.2](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.1...v3.0.2) (2026-05-12)
 
 ### 🛠 Fixes
