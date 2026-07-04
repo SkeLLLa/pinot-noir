@@ -1,3 +1,9 @@
+## [3.0.4](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.3...v3.0.4) (2026-07-04)
+
+### 🛠 Fixes
+
+* **deps:** bump undici from 8.5.0 to 8.7.0 ([7b9e11a](https://github.com/SkeLLLa/pinot-noir/commit/7b9e11a950d72b0661311951af6e0325c813e531))
+
 ## [3.0.3](https://github.com/SkeLLLa/pinot-noir/compare/v3.0.2...v3.0.3) (2026-07-04)
 
 ### 🛠 Fixes
