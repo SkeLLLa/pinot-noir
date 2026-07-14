@@ -21,9 +21,9 @@ jobs:
     name: Verify
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
       - uses: pnpm/action-setup@v6
@@ -35,7 +35,7 @@ jobs:
         id: pnpm-cache
         run: |
           echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         name: Setup pnpm cache
         with:
           path: ${{ env.PNPM_CACHE_DIR }}
@@ -87,9 +87,9 @@ jobs:
       checks: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
       - uses: pnpm/action-setup@v6
@@ -101,7 +101,7 @@ jobs:
         id: pnpm-cache
         run: |
           echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         name: Setup pnpm cache
         with:
           path: ${{ env.PNPM_CACHE_DIR }}
