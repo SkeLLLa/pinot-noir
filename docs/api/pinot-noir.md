@@ -125,7 +125,7 @@ Pinot error types
 </td></tr>
 <tr><td>
 
-[ERROR_CODES](./pinot-noir.error_codes.md)
+[ERROR\_CODES](./pinot-noir.error_codes.md)
 
 </td><td>
 
@@ -227,7 +227,7 @@ Stats for the FILTER operator.
 
 </td><td>
 
-Stats for the HASH_JOIN operator.
+Stats for the HASH\_JOIN operator.
 
 </td></tr>
 <tr><td>
@@ -245,7 +245,7 @@ Stats for the LEAF operator.
 
 </td><td>
 
-Stats for the MAILBOX_RECEIVE operator.
+Stats for the MAILBOX\_RECEIVE operator.
 
 </td></tr>
 <tr><td>
@@ -254,7 +254,7 @@ Stats for the MAILBOX_RECEIVE operator.
 
 </td><td>
 
-Stats for the MAILBOX_SEND operator.
+Stats for the MAILBOX\_SEND operator.
 
 </td></tr>
 <tr><td>
@@ -369,7 +369,7 @@ Pinot result table.
 
 </td><td>
 
-Stats for the SORT_OR_LIMIT operator.
+Stats for the SORT\_OR\_LIMIT operator.
 
 </td></tr>
 <tr><td>
@@ -414,7 +414,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[NON_PINOT_OPTIONS](./pinot-noir.non_pinot_options.md)
+[NON\_PINOT\_OPTIONS](./pinot-noir.non_pinot_options.md)
 
 </td><td>
 

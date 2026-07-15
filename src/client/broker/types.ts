@@ -225,17 +225,7 @@ export const enum EBrokerErrorCode {
  * @public
  */
 export type TQueueTolerancePredefined =
-  | 0
-  | 0.1
-  | 0.2
-  | 0.3
-  | 0.4
-  | 0.5
-  | 0.6
-  | 0.7
-  | 0.8
-  | 0.9
-  | 1;
+  0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
 
 /**
  * Query options.
@@ -302,9 +292,7 @@ export interface IPinotQueryOptions {
 
   /** Algorithm to use to look up the dictionary ids for the IN clause values. */
   inPredicateLookupAlgorithm?:
-    | 'DIVIDE_BINARY_SEARCH'
-    | 'SCAN'
-    | 'PLAIN_BINARY_SEARCH';
+    'DIVIDE_BINARY_SEARCH' | 'SCAN' | 'PLAIN_BINARY_SEARCH';
 
   /** Maximum length of the serialized response per server for a query. */
   maxServerResponseSizeBytes?: number;

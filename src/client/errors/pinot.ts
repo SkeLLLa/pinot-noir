@@ -104,8 +104,8 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
     type: EPinotErrorType;
     errorCode: ERROR_CODES;
   } {
-    const type = Math.floor(code / 1000) as EPinotErrorType;
-    const errorCode = (code % 1000) as ERROR_CODES;
+    const type = Math.floor(code / 1000);
+    const errorCode = code % 1000;
     return { type, errorCode };
   }
 }

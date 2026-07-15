@@ -180,6 +180,7 @@ export interface IBrokerResponseStats {
 
 // @public
 export interface IBrokerTransportConfig {
+  authScheme?: 'Basic' | 'Bearer';
   bodyTimeout?: number;
   brokerUrl: URL | string;
   connections?: number;
@@ -322,9 +323,7 @@ export interface IPinotQueryOptions {
   explainPlanVerbose?: boolean;
   filteredAggregationsSkipEmptyGroups?: boolean;
   inPredicateLookupAlgorithm?:
-    | 'DIVIDE_BINARY_SEARCH'
-    | 'SCAN'
-    | 'PLAIN_BINARY_SEARCH';
+    'DIVIDE_BINARY_SEARCH' | 'SCAN' | 'PLAIN_BINARY_SEARCH';
   inPredicatePreSorted?: boolean;
   maxExecutionThreads?: number;
   maxQueryResponseSizeBytes?: number;
@@ -487,6 +486,7 @@ export class PinotBrokerClient implements IPinotClient {
 // @public
 export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   constructor(input: IBrokerTransportConfig);
+  protected readonly authHeader: string;
   close(): Promise<void>;
   protected maxQueueSize: number | undefined;
   protected readonly pool: Pool;
@@ -604,17 +604,7 @@ export type TPinotDataType =
 
 // @public
 export type TQueueTolerancePredefined =
-  | 0
-  | 0.1
-  | 0.2
-  | 0.3
-  | 0.4
-  | 0.5
-  | 0.6
-  | 0.7
-  | 0.8
-  | 0.9
-  | 1;
+  0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
 
 // @public
 export class UnsafeParser implements IPinotValueParser {

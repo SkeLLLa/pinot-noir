@@ -114,7 +114,7 @@ _(Optional)_ This config can be set to true to avoid computing all the groups in
 
 </td><td>
 
-'DIVIDE_BINARY_SEARCH' \| 'SCAN' \| 'PLAIN_BINARY_SEARCH'
+'DIVIDE\_BINARY\_SEARCH' \| 'SCAN' \| 'PLAIN\_BINARY\_SEARCH'
 
 </td><td>
 

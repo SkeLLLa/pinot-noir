@@ -29,7 +29,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-INVALID_RESPONSE
+INVALID\_RESPONSE
 
 </td><td>
 
@@ -42,7 +42,7 @@ Invalid response from Pinot.
 </td></tr>
 <tr><td>
 
-QUEUE_TOLERANCE_LIMIT
+QUEUE\_TOLERANCE\_LIMIT
 
 </td><td>
 

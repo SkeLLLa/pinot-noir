@@ -45,4 +45,4 @@ number
 
 **Returns:**
 
-{ type: [EPinotErrorType](./pinot-noir.epinoterrortype.md)<!-- -->; errorCode: [ERROR_CODES](./pinot-noir.error_codes.md)<!-- -->; }
+{ type: [EPinotErrorType](./pinot-noir.epinoterrortype.md)<!-- -->; errorCode: [ERROR\_CODES](./pinot-noir.error_codes.md)<!-- -->; }

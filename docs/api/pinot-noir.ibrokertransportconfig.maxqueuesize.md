@@ -4,7 +4,7 @@
 
 ## IBrokerTransportConfig.maxQueueSize property
 
-Max pool queue size. If undefined or 0, queue is infinite. If a request comes and queue is already at maximum size it will be discarded with LIMIT_EXCEEDED error.
+Max pool queue size. If undefined or 0, queue is infinite. If a request comes and queue is already at maximum size it will be discarded with LIMIT\_EXCEEDED error.
 
 **Signature:**
 

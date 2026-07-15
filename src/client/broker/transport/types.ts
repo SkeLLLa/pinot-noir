@@ -17,6 +17,14 @@ export interface IBrokerTransportConfig {
    */
   token: string;
   /**
+   * Authorization scheme prefix for the token.
+   *
+   * Use `'Basic'` for Pinot v1 and `'Bearer'` for Pinot v2.
+   *
+   * @defaultValue 'Basic'
+   */
+  authScheme?: 'Basic' | 'Bearer';
+  /**
    * The timeout after which a request will time out (in ms).
    *
    * @defaultValue 60000

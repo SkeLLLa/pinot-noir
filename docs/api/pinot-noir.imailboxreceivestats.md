@@ -4,7 +4,7 @@
 
 ## IMailboxReceiveStats interface
 
-Stats for the MAILBOX_RECEIVE operator.
+Stats for the MAILBOX\_RECEIVE operator.
 
 **Signature:**
 
@@ -131,7 +131,7 @@ Number of raw messages received.
 
 </td><td>
 
-'MAILBOX_RECEIVE'
+'MAILBOX\_RECEIVE'
 
 </td><td>
 

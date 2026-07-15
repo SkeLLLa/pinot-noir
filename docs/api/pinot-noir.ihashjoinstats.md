@@ -4,7 +4,7 @@
 
 ## IHashJoinStats interface
 
-Stats for the HASH_JOIN operator.
+Stats for the HASH\_JOIN operator.
 
 **Signature:**
 
@@ -56,7 +56,7 @@ Time spent building the hash table in milliseconds.
 
 </td><td>
 
-'HASH_JOIN'
+'HASH\_JOIN'
 
 </td><td>
 

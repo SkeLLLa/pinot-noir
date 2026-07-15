@@ -69,6 +69,7 @@ import { PinotBrokerJSONTransport } from 'pinot-noir';
 const pinotTransport = new PinotBrokerJSONTransport({
   brokerUrl: 'https://broker.pinot.my-cluster.example.startree.cloud', // replace with your broker url
   token: '<your-token>', // for docker-based demo pinot leave blank
+  authScheme: 'Basic', // 'Basic' (default, Pinot v1) or 'Bearer' (Pinot v2)
 });
 ```
 

@@ -4,7 +4,7 @@
 
 ## ISortOrLimitStats interface
 
-Stats for the SORT_OR_LIMIT operator.
+Stats for the SORT\_OR\_LIMIT operator.
 
 **Signature:**
 
@@ -56,7 +56,7 @@ _(Optional)_ Indicates if sorting is required.
 
 </td><td>
 
-'SORT_OR_LIMIT'
+'SORT\_OR\_LIMIT'
 
 </td><td>
 

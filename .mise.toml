@@ -1,6 +1,6 @@
 [tools]
-node = "24.14.1"
-pnpm = "10.33.0"
+node = "26.5.0"
+pnpm = "11.13.0"
 
 [tasks.sync-versions]
 description = "Sync tool versions from .mise.toml to package.json"

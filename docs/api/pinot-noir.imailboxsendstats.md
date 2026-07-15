@@ -4,7 +4,7 @@
 
 ## IMailboxSendStats interface
 
-Stats for the MAILBOX_SEND operator.
+Stats for the MAILBOX\_SEND operator.
 
 **Signature:**
 
@@ -146,7 +146,7 @@ Stage number.
 
 </td><td>
 
-'MAILBOX_SEND'
+'MAILBOX\_SEND'
 
 </td><td>
 
