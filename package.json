@@ -72,7 +72,7 @@
     "pretty-quick": "^4.2.2",
     "semantic-release": "^25.0.6",
     "tsx": "^4.23.0",
-    "typescript": "^6.0.2"
+    "typescript": "^7.0.2"
   },
   "packageManager": "pnpm@11.13.0",
   "engines": {
