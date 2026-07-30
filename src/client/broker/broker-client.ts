@@ -6,12 +6,14 @@ import type { IPinotBrokerTransport } from './transport/types';
 import type { IPinotValueParser } from './type-parsers/types';
 import { UnsafeParser } from './type-parsers/unsafe';
 import {
+  DEFAULT_RETRYABLE_ERROR_CODES,
   EBrokerErrorCode,
   IPinotClient,
   IPinotPoolStats,
   NON_PINOT_OPTIONS,
   type IBrokerResponse,
   type IPinotQueryOptions,
+  type IPinotRetryOptions,
   type IQueryResult,
 } from './types';
 
@@ -31,6 +33,13 @@ export interface IPinotClientDeps {
    * @defaultValue {@link UnsafeParser}
    */
   valueParser?: IPinotValueParser;
+  /**
+   * Query retry options. Retries queries that fail with transient Pinot error
+   * codes (e.g. `410 BROKER_RESOURCE_MISSING`).
+   *
+   * @defaultValue retries enabled for {@link DEFAULT_RETRYABLE_ERROR_CODES}
+   */
+  retry?: IPinotRetryOptions;
 }
 
 /**
@@ -40,9 +49,17 @@ export interface IPinotClientDeps {
  */
 export class PinotClient implements IPinotClient {
   private valueParser: IPinotValueParser;
+  private readonly retry: Required<IPinotRetryOptions>;
 
   constructor(protected readonly deps: IPinotClientDeps) {
     this.valueParser = deps.valueParser ?? new UnsafeParser();
+    this.retry = {
+      maxRetries: deps.retry?.maxRetries ?? 2,
+      retryDelayMs: deps.retry?.retryDelayMs ?? 100,
+      backoffFactor: deps.retry?.backoffFactor ?? 2,
+      retryableErrorCodes:
+        deps.retry?.retryableErrorCodes ?? DEFAULT_RETRYABLE_ERROR_CODES,
+    };
   }
 
   /**
@@ -51,6 +68,26 @@ export class PinotClient implements IPinotClient {
    * @private
    */
   private static ENDPOINTS = { sql: '/query/sql' };
+
+  /**
+   * Resolves after the given number of milliseconds.
+   */
+  private static delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  /**
+   * Checks if a broker response contains a retryable Pinot error code.
+   *
+   * @private
+   * @param response - Broker response.
+   * @returns `true` if any exception matches a retryable error code.
+   */
+  private isRetryableResponse(response: IBrokerResponse): boolean {
+    return (response.exceptions ?? []).some((exception) => {
+      return this.retry.retryableErrorCodes.includes(exception.errorCode);
+    });
+  }
 
   /**
    * Converts and serializes query options to Pinot supported format.
@@ -122,8 +159,8 @@ export class PinotClient implements IPinotClient {
     const sql = SqlFormat.format(query.sql, query.values);
     const queryOptions = PinotClient.toQueryOptions(options);
 
-    const response = await transport.request<IBrokerResponse>({
-      method: 'POST',
+    const requestOptions = {
+      method: 'POST' as const,
       path: PinotClient.ENDPOINTS.sql,
       ...PinotClient.getTimeouts(options?.timeoutMs),
       options,
@@ -132,7 +169,20 @@ export class PinotClient implements IPinotClient {
         queryOptions,
         trace,
       }),
-    });
+    };
+
+    let response = await transport.request<IBrokerResponse>(requestOptions);
+
+    for (
+      let attempt = 1;
+      attempt <= this.retry.maxRetries && this.isRetryableResponse(response);
+      attempt++
+    ) {
+      await PinotClient.delay(
+        this.retry.retryDelayMs * this.retry.backoffFactor ** (attempt - 1),
+      );
+      response = await transport.request<IBrokerResponse>(requestOptions);
+    }
 
     if ((response.exceptions?.length ?? 0) > 0) {
       throw new PinotError({

@@ -39,7 +39,7 @@ export class SafeParser implements IPinotValueParser {
         return new Date(value as string);
       case 'STRING':
       case 'JSON':
-        return value as string;
+        return value;
       case 'BYTES':
         return Buffer.from(value as string, 'hex');
       default:

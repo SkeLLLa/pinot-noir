@@ -23,6 +23,10 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
    */
   protected readonly token: string;
   /**
+   * Precomputed `authorization` header value (scheme + token).
+   */
+  protected readonly authHeader: string;
+  /**
    * Maximum query queue size.
    */
   protected maxQueueSize: number | undefined;
@@ -36,6 +40,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     headersTimeout = 60000,
     keepAliveMaxTimeout = 600000,
     token,
+    authScheme = 'Basic',
     maxQueueSize,
   }: IBrokerTransportConfig) {
     this.pool = new Pool(brokerUrl, {
@@ -52,6 +57,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       // },
     });
     this.token = token;
+    this.authHeader = `${authScheme} ${token}`;
     this.maxQueueSize = maxQueueSize;
   }
   /**
@@ -99,7 +105,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
       headers: {
         ...headers,
         'content-type': 'application/json',
-        'authorization': `Basic ${this.token}`,
+        'authorization': this.authHeader,
       },
       bodyTimeout: bodyTimeout ?? null,
       headersTimeout: headersTimeout ?? null,
