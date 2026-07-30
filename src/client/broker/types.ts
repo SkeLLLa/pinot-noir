@@ -412,6 +412,194 @@ export interface IPinotQueryOptions {
    * @defaultValue false
    */
   usePhysicalOptimizer?: boolean;
+
+  /**
+   * For multi-stage queries, add this many milliseconds to the passive deadline used while waiting on upstream stages or mailbox data. Does not change the active query deadline set by `timeoutMs`.
+   *
+   * @defaultValue broker level config (default `100`)
+   */
+  extraPassiveTimeoutMs?: number;
+
+  /**
+   * For eligible single-stage queries, controls whether broker-side materialized-view rewrite is allowed. Set to `false` to bypass MV rewrite for one query and force the base-table path.
+   *
+   * @defaultValue `true` (enabled when absent)
+   */
+  enableMaterializedViewRewrite?: boolean;
+
+  /** Controls behavior when a join operation exceeds `maxRowsInJoin`. */
+  joinOverflowMode?: 'THROW' | 'BREAK';
+
+  /**
+   * Maximum rows allowed in a window function operation, to prevent excessive memory usage when processing large window frames.
+   *
+   * @defaultValue cluster config `pinot.query.window.max.rows`, or `2^20` (1048576) if unset
+   */
+  maxRowsInWindow?: number;
+
+  /** Controls behavior when a window operation exceeds `maxRowsInWindow`. */
+  windowOverflowMode?: 'THROW' | 'BREAK';
+
+  /**
+   * For upsert tables using `SNAPSHOT` consistency mode, overrides the query-time freshness window for the upsert view. `0` forces a refresh for every query.
+   *
+   * @defaultValue table's `upsertViewRefreshIntervalMs`
+   */
+  upsertViewFreshnessMs?: number;
+
+  /**
+   * Comma-delimited list of defaultly-enabled MSE query planner rules to skip, e.g. `'FilterProjectTranspose,PruneEmptySort'`. Rule names match `EXPLAIN PLAN FOR` output.
+   *
+   * @defaultValue `null/empty`
+   */
+  skipPlannerRules?: string;
+
+  /**
+   * Comma-delimited list of defaultly-disabled MSE query planner rules to enable, e.g. `'AggregateJoinTransposeExtended,SortProjectTranspose'`.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/default-disabled-rules | Default Disabled Rules}
+   * @defaultValue `null/empty`
+   */
+  usePlannerRules?: string;
+
+  /**
+   * Ignores `SERVER_SEGMENT_MISSING` exceptions when a routed segment is unavailable on a server, so the query can continue instead of failing. The query can succeed while silently omitting data from the missing segments.
+   *
+   * @defaultValue false
+   */
+  ignoreMissingSegments?: boolean;
+
+  /**
+   * Selects a named table sampler from the table config to run the query against a sampled subset of segments.
+   *
+   * @see {@link https://docs.pinot.apache.org/reference/configuration-reference/table#table-samplers | Table samplers}
+   * @defaultValue `null/empty` (no table sampler)
+   */
+  sampler?: string;
+
+  /**
+   * Custom correlation ID for a query, used for tracking and query cancellation.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/query-correlation-id | Query Correlation ID}
+   * @defaultValue `null/empty`
+   */
+  clientQueryId?: string;
+
+  /**
+   * Assigns the query to a named application for application-level query quotas.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/query-quotas | Query Quotas}
+   * @defaultValue `null/empty` (no application name)
+   */
+  applicationName?: string;
+
+  /**
+   * For SSE `GROUP BY ... LIMIT` without `ORDER BY` or `HAVING`, retains a deterministic subset by keeping the lexicographically smallest group keys during server/broker reduction. Does not rank by an aggregate; use `ORDER BY` for top-N results.
+   *
+   * @defaultValue false
+   */
+  accurateGroupByWithoutOrderBy?: boolean;
+
+  /**
+   * Caps how many groups each query operator keeps before it stops admitting new groups, for both leaf and intermediate MSE stages.
+   *
+   * @defaultValue server level config (default `100000`)
+   */
+  numGroupsLimit?: number;
+
+  /**
+   * Warning threshold for the number of groups a query operator accumulates. Sets `numGroupsWarningLimitReached=true` in response metadata but continues execution.
+   *
+   * @defaultValue server level config (default `150000`)
+   */
+  numGroupsWarningLimit?: number;
+
+  /**
+   * For multi-stage group-by queries, throws an exception instead of returning partial results when `numGroupsLimit` is reached.
+   *
+   * @defaultValue false
+   */
+  errorOnNumGroupsLimit?: boolean;
+
+  /**
+   * For single-stage selection queries, allows Pinot to read a sorted segment in descending order for `ORDER BY ... DESC` instead of scanning ascending and reordering, enabling early termination.
+   *
+   * @defaultValue false
+   */
+  allowReverseOrder?: boolean;
+
+  /**
+   * Minimum initial capacity used when creating `IndexedTable` instances to merge grouped results. Higher values reduce rehashing for many-group queries at the cost of memory for smaller ones.
+   *
+   * @defaultValue 128
+   */
+  minInitialIndexedTableCapacity?: number;
+
+  /**
+   * For group-by queries ordering by all group keys, use sort-aggregation instead of hash-aggregation when `LIMIT` is below this threshold.
+   */
+  sortAggregateLimitThreshold?: number;
+
+  /**
+   * Enables stage-level spooling for multi-stage queries, letting Pinot reuse equivalent stages within a query plan instead of executing them repeatedly.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/stage-level-spooling | Stage-level spooling}
+   * @defaultValue broker level config (default `false`)
+   */
+  useSpools?: boolean;
+
+  /**
+   * Ignores virtual columns (those starting with `$`) during MSE query planning and execution, e.g. so they don't participate in `NATURAL JOIN` condition matching.
+   *
+   * @defaultValue false
+   */
+  excludeVirtualColumns?: boolean;
+
+  /**
+   * Traces MSE planner rule productions, returning rules that produced new relations along with timing, for debugging query planning.
+   *
+   * @defaultValue false
+   */
+  traceRuleProductions?: boolean;
+
+  /**
+   * Controls MSE explain behavior. When `true`, servers are asked to return the segment plan; when `false`, only the logical plan is returned.
+   *
+   * @defaultValue broker level config (default `false`)
+   */
+  explainAskingServers?: boolean;
+
+  /**
+   * Enables multi-cluster querying (federation) to route queries across multiple Pinot clusters. Requires broker configuration with remote cluster connections; only applies to logical tables.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-cluster-querying | Multi-Cluster Querying}
+   * @defaultValue false
+   */
+  enableMultiClusterRouting?: boolean;
+
+  /**
+   * Assigns the query to a named workload for CPU/memory accounting and workload budget enforcement.
+   *
+   * @see {@link https://docs.pinot.apache.org/operate-pinot/tuning/workload-query-isolation | Workload-Based Query Resource Isolation}
+   * @defaultValue `null/empty` (default workload, no budget enforcement)
+   */
+  workloadName?: string;
+
+  /**
+   * Marks the query as a secondary workload query, running with limited threads or mapped to the configured secondary workload budget depending on scheduler.
+   *
+   * @see {@link https://docs.pinot.apache.org/operate-pinot/tuning/workload-query-isolation | Workload-Based Query Resource Isolation}
+   * @defaultValue false
+   */
+  isSecondaryWorkload?: boolean;
+
+  /**
+   * For multi-stage joins, tells Pinot to infer partition information from the joined tables to enable colocated execution when table partitioning and server assignment allow it.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/join-strategies | Colocated join strategy}
+   * @defaultValue broker level config (default `false`)
+   */
+  inferPartitionHint?: boolean;
 }
 
 /**
