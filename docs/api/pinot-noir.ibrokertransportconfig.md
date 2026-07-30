@@ -33,6 +33,23 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[authScheme?](./pinot-noir.ibrokertransportconfig.authscheme.md)
+
+</td><td>
+
+</td><td>
+
+'Basic' \| 'Bearer'
+
+</td><td>
+
+_(Optional)_ Authorization scheme prefix for the token.
+
+Use `'Basic'` for Pinot v1 and `'Bearer'` for Pinot v2.
+
+</td></tr>
+<tr><td>
+
 [bodyTimeout?](./pinot-noir.ibrokertransportconfig.bodytimeout.md)
 
 </td><td>

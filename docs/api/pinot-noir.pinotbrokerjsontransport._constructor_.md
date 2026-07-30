@@ -29,7 +29,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }
+{ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, authScheme, maxQueueSize, }
 
 </td><td>
 

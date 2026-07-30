@@ -129,7 +129,9 @@ Pinot error types
 
 </td><td>
 
-Pinot error codes
+Pinot query error codes.
+
+Mirrors Apache Pinot's `QueryErrorCode` enum.
 
 </td></tr>
 </tbody></table>
@@ -311,6 +313,15 @@ Query options.
 </td></tr>
 <tr><td>
 
+[IPinotRetryOptions](./pinot-noir.ipinotretryoptions.md)
+
+</td><td>
+
+Query retry options.
+
+</td></tr>
+<tr><td>
+
 [IPinotSqlException](./pinot-noir.ipinotsqlexception.md)
 
 </td><td>
@@ -413,6 +424,17 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[DEFAULT_RETRYABLE_ERROR_CODES](./pinot-noir.default_retryable_error_codes.md)
+
+</td><td>
+
+Default Pinot error codes that trigger a query retry.
+
+Contains transient broker/server side failures that are safe to retry. `BROKER_RESOURCE_MISSING` (410) can be caused by stale broker routing / external view updates and is usually resolved on retry.
+
+</td></tr>
+<tr><td>
 
 [NON_PINOT_OPTIONS](./pinot-noir.non_pinot_options.md)
 

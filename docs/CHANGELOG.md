@@ -1,3 +1,15 @@
+## [2.13.0](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.2...v2.13.0) (2026-07-30)
+
+### 🛠 Fixes
+
+* bump undici ([768ec07](https://github.com/SkeLLLa/pinot-noir/commit/768ec070635dabd3b3539de6be9c666da0e77bd4))
+* release channel ([6bfa20a](https://github.com/SkeLLLa/pinot-noir/commit/6bfa20a45eb192c575a0d1eb5c3bd11c4f9f7507))
+
+### 🚀 Features
+
+* ci for legacy releases ([7e498ac](https://github.com/SkeLLLa/pinot-noir/commit/7e498acbd460ddf3bd3179ea3c14e667107fef74))
+* **v2:** backport v3 features to v2 ([88c97fc](https://github.com/SkeLLLa/pinot-noir/commit/88c97fc4a0aeb5640a8bb58f08a6924e6b6553a2))
+
 ## [2.12.2](https://github.com/SkeLLLa/pinot-noir/compare/v2.12.1...v2.12.2) (2026-04-04)
 
 ### 🛠 Fixes

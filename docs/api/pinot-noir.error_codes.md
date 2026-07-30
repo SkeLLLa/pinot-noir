@@ -4,7 +4,9 @@
 
 ## ERROR_CODES enum
 
-Pinot error codes
+Pinot query error codes.
+
+Mirrors Apache Pinot's `QueryErrorCode` enum.
 
 **Signature:**
 
@@ -34,17 +36,6 @@ ACCESS_DENIED_ERROR_CODE
 </td><td>
 
 `180`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-BROKER_GATHER_ERROR_CODE
-
-</td><td>
-
-`300`
 
 </td><td>
 
@@ -106,50 +97,6 @@ BROKER_TIMEOUT_ERROR_CODE
 </td></tr>
 <tr><td>
 
-COMBINE_GROUP_BY_EXCEPTION_ERROR_CODE
-
-</td><td>
-
-`600`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-COMBINE_SEGMENT_PLAN_TIMEOUT_ERROR_CODE
-
-</td><td>
-
-`170`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-DATA_TABLE_DESERIALIZATION_ERROR_CODE
-
-</td><td>
-
-`310`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-DATA_TABLE_SERIALIZATION_ERROR_CODE
-
-</td><td>
-
-`260`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
 EXECUTION_TIMEOUT_ERROR_CODE
 
 </td><td>
@@ -161,44 +108,11 @@ EXECUTION_TIMEOUT_ERROR_CODE
 </td></tr>
 <tr><td>
 
-FEDERATED_BROKER_UNAVAILABLE_ERROR_CODE
-
-</td><td>
-
-`550`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-FUTURE_CALL_ERROR_CODE
-
-</td><td>
-
-`350`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
 INTERNAL_ERROR_CODE
 
 </td><td>
 
 `450`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-JSON_COMPILATION_ERROR_CODE
-
-</td><td>
-
-`101`
 
 </td><td>
 
@@ -231,7 +145,7 @@ QUERY_CANCELLATION_ERROR_CODE
 
 </td><td>
 
-`205`
+`503`
 
 </td><td>
 
@@ -243,6 +157,28 @@ QUERY_EXECUTION_ERROR_CODE
 </td><td>
 
 `200`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+QUERY_PLANNING_ERROR_CODE
+
+</td><td>
+
+`720`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+QUERY_SCAN_LIMIT_EXCEEDED_ERROR_CODE
+
+</td><td>
+
+`246`
 
 </td><td>
 
@@ -271,11 +207,11 @@ QUERY_VALIDATION_ERROR_CODE
 </td></tr>
 <tr><td>
 
-SEGMENT_PLAN_EXECUTION_ERROR_CODE
+REMOTE_CLUSTER_UNAVAILABLE_ERROR_CODE
 
 </td><td>
 
-`160`
+`510`
 
 </td><td>
 
@@ -298,6 +234,17 @@ SERVER_OUT_OF_CAPACITY_ERROR_CODE
 </td><td>
 
 `211`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+SERVER_RESOURCE_LIMIT_EXCEEDED_ERROR_CODE
+
+</td><td>
+
+`245`
 
 </td><td>
 
@@ -348,11 +295,44 @@ SQL_PARSING_ERROR_CODE
 </td></tr>
 <tr><td>
 
+SQL_RUNTIME_ERROR_CODE
+
+</td><td>
+
+`160`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 TABLE_DOES_NOT_EXIST_ERROR_CODE
 
 </td><td>
 
 `190`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+TABLE_IS_DISABLED_ERROR_CODE
+
+</td><td>
+
+`191`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+TIMESERIES_PARSING_ERROR_CODE
+
+</td><td>
+
+`155`
 
 </td><td>
 

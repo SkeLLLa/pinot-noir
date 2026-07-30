@@ -31,7 +31,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, maxQueueSize, }, input)](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
+[(constructor)({ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, authScheme, maxQueueSize, }, input)](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
 
 </td><td>
 
@@ -62,6 +62,25 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[authHeader](./pinot-noir.pinotbrokerjsontransport.authheader.md)
+
+</td><td>
+
+`protected`
+
+`readonly`
+
+</td><td>
+
+string
+
+</td><td>
+
+Precomputed `authorization` header value (scheme + token).
+
+</td></tr>
+<tr><td>
 
 [maxQueueSize](./pinot-noir.pinotbrokerjsontransport.maxqueuesize.md)
 
