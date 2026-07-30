@@ -2,7 +2,7 @@ module.exports = {
   branches: [
     { name: 'master', prerelease: false },
     { name: 'next', prerelease: true },
-    { name: 'legacy/v2', range: '2.x.x' },
+    { name: 'legacy/v2', range: '2.x.x', channel: 'v2' },
   ],
   plugins: [
     require('./commit-analyzer'),
