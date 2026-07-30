@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import type PoolStats from 'undici/types/pool-stats';
 import type { Sql } from '../../utils/tag';
+import { ERROR_CODES } from '../errors/pinot';
 
 export type * from './broker-respone.types';
 export type * from './type-parsers/types';
@@ -217,6 +218,53 @@ export const enum EBrokerErrorCode {
    * Unknown.
    */
   UNKNOWN,
+}
+
+/**
+ * Default Pinot error codes that trigger a query retry.
+ *
+ * Contains transient broker/server side failures that are safe to retry.
+ * `BROKER_RESOURCE_MISSING` (410) can be caused by stale broker routing /
+ * external view updates and is usually resolved on retry.
+ *
+ * @public
+ */
+export const DEFAULT_RETRYABLE_ERROR_CODES: readonly number[] = [
+  ERROR_CODES.BROKER_RESOURCE_MISSING_ERROR_CODE,
+];
+
+/**
+ * Query retry options.
+ *
+ * @public
+ */
+export interface IPinotRetryOptions {
+  /**
+   * Maximum number of retry attempts (in addition to the initial request).
+   * Set to `0` to disable retries.
+   *
+   * @defaultValue 2
+   */
+  maxRetries?: number;
+  /**
+   * Base delay between retry attempts in milliseconds.
+   *
+   * @defaultValue 100
+   */
+  retryDelayMs?: number;
+  /**
+   * Exponential backoff factor applied to `retryDelayMs` per attempt.
+   * Delay for attempt `n` = `retryDelayMs * backoffFactor ^ (n - 1)`.
+   *
+   * @defaultValue 2
+   */
+  backoffFactor?: number;
+  /**
+   * Pinot error codes that trigger a retry.
+   *
+   * @defaultValue {@link DEFAULT_RETRYABLE_ERROR_CODES} (`[410]`)
+   */
+  retryableErrorCodes?: readonly number[];
 }
 
 /**

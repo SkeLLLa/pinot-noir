@@ -3,10 +3,12 @@ import * as assert from 'node:assert';
 import { beforeEach, describe, test } from 'node:test';
 import { MockAgent, MockPool } from 'undici';
 import {
+  ERROR_CODES,
   IBrokerTransportRequestOptions,
   IPinotBrokerTransport,
   IPinotPoolStats,
   IPinotQueryOptions,
+  PinotError,
   sql,
 } from '../src';
 import { PinotClient } from '../src/client/broker/broker-client';
@@ -229,5 +231,83 @@ void describe('Pinot client', async () => {
       },
       maxRowsInOperator: undefined,
     });
+  });
+});
+
+/**
+ * Transport stub that returns a configured sequence of exception codes,
+ * then a successful (empty) response. Counts invocations.
+ */
+class SequenceTransport implements IPinotBrokerTransport {
+  public calls = 0;
+  constructor(private readonly exceptionCodes: number[]) {}
+  setMaxQueueSize(): void {
+    // not needed
+  }
+  request<TResponse = unknown>(): Promise<TResponse> {
+    const code = this.exceptionCodes[this.calls];
+    this.calls++;
+    if (code !== undefined) {
+      return Promise.resolve({
+        exceptions: [{ errorCode: code, message: `error ${code.toString()}` }],
+      } as TResponse);
+    }
+    return Promise.resolve({
+      exceptions: [],
+      resultTable: {
+        dataSchema: { columnNames: [], columnDataTypes: [] },
+        rows: [],
+      },
+    } as TResponse);
+  }
+  close(): Promise<void> {
+    return Promise.resolve();
+  }
+  get stats(): IPinotPoolStats {
+    return {} as IPinotPoolStats;
+  }
+}
+
+void describe('Pinot client retries', async () => {
+  const query = sql`SELECT * FROM t`;
+  const missing = ERROR_CODES.BROKER_RESOURCE_MISSING_ERROR_CODE;
+
+  await test('retries on BROKER_RESOURCE_MISSING (410) then succeeds', async () => {
+    const transport = new SequenceTransport([missing, missing]);
+    const client = new PinotClient({ transport });
+
+    const result = await client.select(query);
+
+    assert.equal(transport.calls, 3); // 2 failures + 1 success
+    assert.deepEqual(result.rows, []);
+  });
+
+  await test('does not retry non-retryable error codes', async () => {
+    const transport = new SequenceTransport([
+      ERROR_CODES.QUERY_VALIDATION_ERROR_CODE,
+    ]);
+    const client = new PinotClient({ transport });
+
+    await assert.rejects(client.select(query), PinotError);
+    assert.equal(transport.calls, 1);
+  });
+
+  await test('exhausts retries and throws', async () => {
+    const transport = new SequenceTransport([missing, missing, missing]);
+    const client = new PinotClient({
+      transport,
+      retry: { maxRetries: 2, retryDelayMs: 0 },
+    });
+
+    await assert.rejects(client.select(query), PinotError);
+    assert.equal(transport.calls, 3); // initial + 2 retries
+  });
+
+  await test('retries can be disabled', async () => {
+    const transport = new SequenceTransport([missing]);
+    const client = new PinotClient({ transport, retry: { maxRetries: 0 } });
+
+    await assert.rejects(client.select(query), PinotError);
+    assert.equal(transport.calls, 1);
   });
 });

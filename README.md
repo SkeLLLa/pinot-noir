@@ -88,6 +88,24 @@ import { PinotBrokerClient } from 'pinot-noir';
 const pinotClient = new PinotBrokerClient({ transport: pinotTransport });
 ```
 
+#### Retries
+
+Queries that fail with transient Pinot error codes are retried automatically.
+By default `410 BROKER_RESOURCE_MISSING` (caused by stale broker routing / external
+view updates) is retried. Configure via the `retry` option:
+
+```typescript
+const pinotClient = new PinotBrokerClient({
+  transport: pinotTransport,
+  retry: {
+    maxRetries: 2, // set 0 to disable
+    retryDelayMs: 100,
+    backoffFactor: 2,
+    retryableErrorCodes: [410], // defaults to [410]
+  },
+});
+```
+
 ### Constructing and performing queries
 
 To make sql queries this library supplies `sql` template tag which is modified version of [sql-template-tag](https://github.com/blakeembrey/sql-template-tag) library to match Apache Pinot syntax.
