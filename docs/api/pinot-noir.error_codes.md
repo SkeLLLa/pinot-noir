@@ -4,7 +4,9 @@
 
 ## ERROR\_CODES enum
 
-Pinot error codes
+Pinot query error codes.
+
+Mirrors Apache Pinot's `QueryErrorCode` enum.
 
 **Signature:**
 
@@ -34,17 +36,6 @@ ACCESS\_DENIED\_ERROR\_CODE
 </td><td>
 
 `180`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-BROKER\_GATHER\_ERROR\_CODE
-
-</td><td>
-
-`300`
 
 </td><td>
 
@@ -106,50 +97,6 @@ BROKER\_TIMEOUT\_ERROR\_CODE
 </td></tr>
 <tr><td>
 
-COMBINE\_GROUP\_BY\_EXCEPTION\_ERROR\_CODE
-
-</td><td>
-
-`600`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-COMBINE\_SEGMENT\_PLAN\_TIMEOUT\_ERROR\_CODE
-
-</td><td>
-
-`170`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-DATA\_TABLE\_DESERIALIZATION\_ERROR\_CODE
-
-</td><td>
-
-`310`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-DATA\_TABLE\_SERIALIZATION\_ERROR\_CODE
-
-</td><td>
-
-`260`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
 EXECUTION\_TIMEOUT\_ERROR\_CODE
 
 </td><td>
@@ -161,44 +108,11 @@ EXECUTION\_TIMEOUT\_ERROR\_CODE
 </td></tr>
 <tr><td>
 
-FEDERATED\_BROKER\_UNAVAILABLE\_ERROR\_CODE
-
-</td><td>
-
-`550`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-FUTURE\_CALL\_ERROR\_CODE
-
-</td><td>
-
-`350`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
 INTERNAL\_ERROR\_CODE
 
 </td><td>
 
 `450`
-
-</td><td>
-
-</td></tr>
-<tr><td>
-
-JSON\_COMPILATION\_ERROR\_CODE
-
-</td><td>
-
-`101`
 
 </td><td>
 
@@ -231,7 +145,7 @@ QUERY\_CANCELLATION\_ERROR\_CODE
 
 </td><td>
 
-`205`
+`503`
 
 </td><td>
 
@@ -243,6 +157,28 @@ QUERY\_EXECUTION\_ERROR\_CODE
 </td><td>
 
 `200`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+QUERY\_PLANNING\_ERROR\_CODE
+
+</td><td>
+
+`720`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+QUERY\_SCAN\_LIMIT\_EXCEEDED\_ERROR\_CODE
+
+</td><td>
+
+`246`
 
 </td><td>
 
@@ -271,11 +207,11 @@ QUERY\_VALIDATION\_ERROR\_CODE
 </td></tr>
 <tr><td>
 
-SEGMENT\_PLAN\_EXECUTION\_ERROR\_CODE
+REMOTE\_CLUSTER\_UNAVAILABLE\_ERROR\_CODE
 
 </td><td>
 
-`160`
+`510`
 
 </td><td>
 
@@ -298,6 +234,17 @@ SERVER\_OUT\_OF\_CAPACITY\_ERROR\_CODE
 </td><td>
 
 `211`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+SERVER\_RESOURCE\_LIMIT\_EXCEEDED\_ERROR\_CODE
+
+</td><td>
+
+`245`
 
 </td><td>
 
@@ -348,11 +295,44 @@ SQL\_PARSING\_ERROR\_CODE
 </td></tr>
 <tr><td>
 
+SQL\_RUNTIME\_ERROR\_CODE
+
+</td><td>
+
+`160`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
 TABLE\_DOES\_NOT\_EXIST\_ERROR\_CODE
 
 </td><td>
 
 `190`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+TABLE\_IS\_DISABLED\_ERROR\_CODE
+
+</td><td>
+
+`191`
+
+</td><td>
+
+</td></tr>
+<tr><td>
+
+TIMESERIES\_PARSING\_ERROR\_CODE
+
+</td><td>
+
+`155`
 
 </td><td>
 
