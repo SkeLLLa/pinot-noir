@@ -600,6 +600,233 @@ export interface IPinotQueryOptions {
    * @defaultValue broker level config (default `false`)
    */
   inferPartitionHint?: boolean;
+
+  /**
+   * When sort-aggregation is used (see `sortAggregateLimitThreshold`), use single-threaded sequential combine instead of parallel pair-wise combine when the number of segments to merge is below this threshold.
+   *
+   * @defaultValue Number of CPU cores
+   */
+  sortAggregateSingleThreadedNumSegmentsThreshold?: number;
+
+  /**
+   * For `IVF_FLAT`, `IVF_PQ`, and `IVF_ON_DISK` vector search, sets how many inverted lists Pinot probes per segment before collecting ANN candidates. Higher values usually improve recall at the cost of latency. Ignored for HNSW indexes and for the exact-scan fallback path used on segments without a vector index.
+   *
+   * @see {@link https://docs.pinot.apache.org/basics/indexing/vector-index | Vector index}
+   * @defaultValue `4` for `IVF_FLAT`, `IVF_PQ`, and `IVF_ON_DISK`; ignored for HNSW and exact-scan fallback
+   */
+  vectorNprobe?: number;
+
+  /**
+   * For vector search that uses an ANN index, re-score the ANN candidates with exact distance from the forward index before Pinot returns the final top-K. Improves accuracy but does not turn ANN search into a full exact scan.
+   *
+   * @see {@link https://docs.pinot.apache.org/basics/indexing/vector-index | Vector index}
+   * @defaultValue `true` for `IVF_PQ` (PQ distances are approximate by construction); `false` for HNSW and `IVF_FLAT`
+   */
+  vectorExactRerank?: boolean;
+
+  /**
+   * When `vectorExactRerank=true`, sets how many ANN candidates Pinot retrieves before exact reranking. Pinot always uses at least `topK`, and ignores this option when exact rerank is disabled.
+   *
+   * @see {@link https://docs.pinot.apache.org/basics/indexing/vector-index | Vector index}
+   * @defaultValue `topK * 10` when exact rerank is enabled
+   */
+  vectorMaxCandidates?: number;
+
+  /**
+   * For vector similarity queries, return all results within this distance threshold instead of limiting to top-K. Enables confidence-based retrieval where all results meeting a quality threshold are returned. Applies to `VECTOR_SIMILARITY` queries; the distance function used in the `WHERE` clause determines which threshold is applied.
+   *
+   * @defaultValue Not set (uses top-K retrieval)
+   */
+  vectorDistanceThreshold?: number;
+
+  /**
+   * For HNSW vector search, controls how many nodes the graph traversal visits (search beam width). Higher values improve recall at the cost of query latency. Typical ranges: 100-150 for low latency, 200-300 for balanced, 400-800 for high recall. Ignored for IVF indexes and the exact-scan fallback path.
+   *
+   * @see {@link https://docs.pinot.apache.org/basics/indexing/vector-index | Vector index}
+   * @defaultValue From index config (defaults to `topK` when not set)
+   */
+  vectorEfSearch?: number;
+
+  /**
+   * For HNSW vector search, toggles competitive (relative-distance) pruning during graph traversal. Disabling this (`false`) can improve recall on some data distributions at the cost of higher latency. Ignored for non-HNSW indexes.
+   *
+   * @defaultValue `true`
+   */
+  vectorUseRelativeDistance?: boolean;
+
+  /**
+   * For HNSW vector search, toggles the bounded top-K collector during graph traversal. Disabling this (`false`) may improve recall in certain scenarios. Ignored for non-HNSW indexes.
+   *
+   * @defaultValue `true`
+   */
+  vectorUseBoundedQueue?: boolean;
+
+  /**
+   * For debugging upsert tables, bypass the consistent upsert view maintained by `SYNC` or `SNAPSHOT` consistency mode and query as if the table were using `NONE` mode.
+   *
+   * @defaultValue false
+   */
+  skipUpsertView?: boolean;
+
+  /**
+   * For multi-stage `UNNEST` queries on the logical planner path, prune unused passthrough columns from the `UNNEST` output, including the source array when nothing downstream references it. Only enable after all servers in the cluster support the feature. Ignored when `usePhysicalOptimizer=true`.
+   */
+  unnestColumnPruning?: boolean;
+
+  /**
+   * For multi-stage `ORDER BY ... LIMIT` queries, controls when Pinot pushes the sort-and-limit operation below the sort exchange so each upstream worker sends only its top rows. Applied only when the effective fetch is at or below this integer threshold.
+   *
+   * @defaultValue broker level config (default `10000`)
+   */
+  sortExchangeCopyThreshold?: number;
+
+  /**
+   * For partitioned realtime tables in the multi-stage engine, infer segment partitions from realtime segment names when Pinot cannot rely on the stored segment-partition metadata. Falls back to unpartitioned distribution if partitions cannot be inferred.
+   *
+   * @defaultValue false
+   */
+  inferRealtimeSegmentPartition?: boolean;
+
+  /**
+   * Enable Multistage Engine Lite Mode, which runs MSE queries using a scatter-gather paradigm (like the single-stage engine) with a configurable limit on rows returned by each leaf stage instance. Requires both `useMultistageEngine=true` and `usePhysicalOptimizer=true`. (introduced in 1.4.0)
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/multistage-lite-mode | Multistage Lite Mode}
+   */
+  useLiteMode?: boolean;
+
+  /**
+   * For Multistage Engine Lite Mode, overrides the maximum number of records a leaf stage worker is allowed to return.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/multistage-lite-mode | Multistage Lite Mode}
+   * @defaultValue broker level config (default `100000`)
+   */
+  liteModeLeafStageLimit?: number;
+
+  /**
+   * For Multistage Engine Lite Mode, overrides the fan-out-adjusted leaf-stage limit. Pinot divides this value by the number of workers assigned to the leaf stage and uses the quotient as the per-worker hard limit instead of `liteModeLeafStageLimit`.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/multistage-lite-mode | Multistage Lite Mode}
+   * @defaultValue broker level config (disabled when unset or non-positive)
+   */
+  liteModeLeafStageFanOutAdjustedLimit?: number;
+
+  /**
+   * For Multistage Engine Lite Mode, controls where Pinot runs the non-leaf stages. When `true`, runs the non-leaf stages in the broker to preserve the scatter-gather execution model. When `false`, runs the non-leaf stages on servers instead.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/multi-stage-query/multistage-lite-mode | Multistage Lite Mode}
+   */
+  runInBroker?: boolean;
+
+  /**
+   * For multi-stage queries, use the same servers chosen for leaf stages as the workers for intermediate stages instead of selecting from all enabled servers. Helps control fanout and reduce data shuffling.
+   *
+   * @defaultValue false
+   */
+  useLeafServerForIntermediateStage?: boolean;
+
+  /**
+   * For multi-stage queries, switch broker-to-server dispatch to the streaming `SubmitWithStream` stats path instead of the legacy unary submit path. Adds `streamStatsCoverage` to the response. Only enable after every server in the cluster supports the streaming RPC, since Pinot does not fall back automatically on mixed-version clusters.
+   *
+   * @defaultValue broker level config (default false)
+   */
+  streamStats?: boolean;
+
+  /**
+   * Specifies a prioritized list of server pools for broker query routing, provided as a vertical bar (`|`) separated list of pool identifiers (integers). The broker attempts to route queries to the specified pools in order, falling back gracefully to other available replicas if none of the preferred pools are available. Currently supported for Balanced and ReplicaGroup routing strategies with Adaptive Server Selection in non-MSE mode. (introduced in 1.4.0)
+   *
+   * @defaultValue `null/empty` (no pool preference; use default routing)
+   */
+  orderedPreferredPools?: string;
+
+  /**
+   * When set to `true`, a cursor is returned instead of the complete result set, allowing clients to fetch query results incrementally. Useful for large result sets.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/cursor-pagination | Cursor Pagination}
+   * @defaultValue false (return full result set)
+   */
+  getCursor?: boolean;
+
+  /**
+   * Number of rows each cursor page should contain. Only applies when `getCursor=true`.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/cursor-pagination | Cursor Pagination}
+   * @defaultValue broker level config
+   */
+  cursorNumRows?: number;
+
+  /**
+   * Minimum number of groups to keep when trimming groups at the broker level for group-by queries (SSE only). Similar to `minSegmentGroupTrimSize` and `minServerGroupTrimSize` but applied at the broker reduce phase. Setting to a non-positive value disables broker-level trim.
+   *
+   * @defaultValue broker level config (default `5000`)
+   */
+  minBrokerGroupTrimSize?: number;
+
+  /**
+   * For multi-stage group-by queries, sets how many groups Pinot keeps when trimming intermediate-stage aggregation results. Provides the same override as the `mse_min_group_trim_size` aggregate hint.
+   *
+   * @defaultValue server level config (default `5000`)
+   */
+  mseMinGroupTrimSize?: number;
+
+  /**
+   * Threshold for group-by trimming at the broker level. Controls the maximum number of groups that can be held before trimming is triggered during the broker reduce phase.
+   *
+   * @defaultValue broker level config (default `1000000`)
+   */
+  groupTrimThreshold?: number;
+
+  /**
+   * For `GROUP BY` queries in the multi-stage engine, flushes partial group-by results when the accumulated number of groups reaches this threshold, bounding server memory usage for high-cardinality `GROUP BY` queries. When set to a positive value, enables the `StreamingGroupByCombineOperator`; when unset or `0`, uses the standard `GroupByCombineOperator`. Result trimming is disabled in streaming mode to prevent incorrect partial aggregates.
+   *
+   * @defaultValue broker level config `pinot.broker.mse.streaming.group.by.flush.threshold` when set to a positive value; otherwise `0` (disabled)
+   */
+  streamingGroupByFlushThreshold?: number;
+
+  /**
+   * When set to `true`, enables broker-side segment pruning for multi-stage leaf-stage routing. On the physical optimizer path, uses the broker default from `pinot.broker.multistage.use.broker.pruning`. On the logical planner path, uses the broker default from `pinot.broker.multistage.logical.planner.use.broker.pruning` for eligible non-partitioned leaves, partitioned leaves, and logical tables. Unsupported or pre-partitioned leaf shapes (e.g. colocated joins) fall back to unpruned routing. If Pinot cannot route the filter-bearing pruning request, it retries the query with unpruned routing instead of failing it.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/query-options | Query Options: Broker Pruning}
+   * @defaultValue `true` on both the physical optimizer path and the logical planner path (for eligible leaf stages)
+   */
+  useBrokerPruning?: boolean;
+
+  /**
+   * When `true`, enables index-based `DISTINCT` operators when applicable. Pinot routes eligible single-column `SELECT DISTINCT jsonExtractIndex(...)` queries to `JsonIndexDistinctOperator`, which reads distinct values directly from the JSON index instead of projecting every matching document. Also enables `InvertedIndexDistinctOperator` for eligible inverted-index-backed `DISTINCT` queries.
+   *
+   * @defaultValue false
+   */
+  useIndexBasedDistinctOperator?: boolean;
+
+  /**
+   * Only applies to `JsonIndexDistinctOperator`. When `true`, Pinot skips missing-path handling for index-based `SELECT DISTINCT jsonExtractIndex(...)`: it does not add the 4-arg default, does not add `NULL` when null handling is enabled, and does not throw `Illegal Json Path` when some matching docs do not contain the extracted path. Requires `useIndexBasedDistinctOperator=true`.
+   */
+  jsonIndexDistinctSkipMissingPath?: boolean;
+
+  /**
+   * Overrides the cost heuristic for `InvertedIndexDistinctOperator`. Pinot chooses the bitmap inverted-index path when `dictionaryCardinality * costRatio <= filteredDocCount`. Set to `0` to force the bitmap inverted-index path whenever the filter matches at least one row. Requires `useIndexBasedDistinctOperator=true`.
+   */
+  invertedIndexDistinctCostRatio?: number;
+
+  /**
+   * Maximum number of rows to scan across all segments in a `DISTINCT` query before early termination. When reached, the single-stage `DISTINCT` path stops scanning additional segments and returns partial results.
+   *
+   * @defaultValue `null/empty` (no limit)
+   */
+  maxRowsInDistinct?: number;
+
+  /**
+   * Maximum number of rows to scan in a `DISTINCT` query without producing any new distinct values before early termination. Useful when the distinct value set converges quickly. When reached, the single-stage `DISTINCT` path stops scanning and returns partial results.
+   *
+   * @defaultValue `null/empty` (no limit)
+   */
+  maxRowsWithoutChangeInDistinct?: number;
+
+  /**
+   * Wall-clock time budget in milliseconds for the combine operator in a `DISTINCT` query. When exceeded, the single-stage `DISTINCT` path returns partial results.
+   *
+   * @defaultValue `null/empty` (no limit)
+   */
+  maxExecutionTimeMsInDistinct?: number;
 }
 
 /**
