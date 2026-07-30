@@ -9,6 +9,7 @@ on:
     branches:
       - master
       - next
+      - legacy/v2
 
 permissions:
   id-token: write
