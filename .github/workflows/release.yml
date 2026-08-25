@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
-      - uses: pnpm/action-setup@v6.0.9
+      - uses: pnpm/action-setup@v6.0.10
         name: Install pnpm
         id: pnpm-install
         with:
@@ -64,7 +64,7 @@ jobs:
           fail_ci_if_error: false
           verbose: true
   osv:
-    uses: 'google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@v2.3.8'
+    uses: 'google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@v2.5.1'
     with:
       scan-args: |-
         ./
@@ -92,7 +92,7 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
-      - uses: pnpm/action-setup@v6.0.9
+      - uses: pnpm/action-setup@v6.0.10
         name: Install pnpm
         id: pnpm-install
         with:
