@@ -1,6 +1,7 @@
 import { errors, Pool, type Dispatcher } from 'undici';
+
 import { EPinotErrorType, PinotError } from '../../../errors/pinot';
-import { IPinotPoolStats } from '../../types';
+import type { IPinotPoolStats } from '../../types';
 import {
   EBrokerTransportErrorCode,
   type IBrokerTransportConfig,
@@ -164,12 +165,12 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
 
       return raw;
     } catch (err) {
-      const text = await response.body.text().catch((err: unknown) => {
+      const text = await response.body.text().catch((textErr: unknown) => {
         throw new PinotError({
           message: `Pinot transport error: Can't read response body.`,
           type: EPinotErrorType.TRANSPORT,
           code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-          cause: err as Error,
+          cause: textErr as Error,
         });
       });
 

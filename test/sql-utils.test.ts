@@ -1,6 +1,8 @@
 import * as assert from 'node:assert';
 import { describe, test } from 'node:test';
-import { IPinotQueryOptions, sql, SqlUtils } from '../src';
+
+import type { IPinotQueryOptions } from '../src';
+import { sql, SqlUtils } from '../src';
 
 void describe('Sql Utils', async () => {
   await test('generates query with no options', () => {

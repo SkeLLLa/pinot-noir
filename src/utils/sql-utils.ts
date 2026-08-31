@@ -1,5 +1,7 @@
-import { Sql } from '@no-esm/sql-template-tag';
-import { IPinotQueryOptions, NON_PINOT_OPTIONS } from '../client/clients';
+import type { Sql } from '@no-esm/sql-template-tag';
+
+import type { IPinotQueryOptions } from '../client/clients';
+import { NON_PINOT_OPTIONS } from '../client/clients';
 import { SqlFormat } from './format';
 
 /**

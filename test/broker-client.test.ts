@@ -2,15 +2,14 @@
 import * as assert from 'node:assert';
 import { beforeEach, describe, test } from 'node:test';
 import { MockAgent, MockPool } from 'undici';
-import {
-  ERROR_CODES,
+
+import type {
   IBrokerTransportRequestOptions,
   IPinotBrokerTransport,
   IPinotPoolStats,
   IPinotQueryOptions,
-  PinotError,
-  sql,
 } from '../src';
+import { ERROR_CODES, PinotError, sql } from '../src';
 import { PinotClient } from '../src/client/broker/broker-client';
 
 const brokerUrl = 'http://broker.pinot.mock';

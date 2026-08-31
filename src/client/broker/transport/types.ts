@@ -1,6 +1,7 @@
-import { Dispatcher } from 'undici';
-import { IncomingHttpHeaders } from 'undici/types/header';
-import { IPinotPoolStats, TQueueTolerancePredefined } from '../types';
+import type { Dispatcher } from 'undici';
+import type { IncomingHttpHeaders } from 'undici/types/header';
+
+import type { IPinotPoolStats, TQueueTolerancePredefined } from '../types';
 
 /**
  * Pinot broker transport config options.

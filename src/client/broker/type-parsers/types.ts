@@ -1,4 +1,4 @@
-import { TPinotDataType } from '../broker-respone.types';
+import type { TPinotDataType } from '../broker-respone.types';
 
 /**
  * Pinot value parser interface.

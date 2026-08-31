@@ -1,6 +1,7 @@
 /* node:coverage disable */
 import * as assert from 'node:assert';
 import { describe, test } from 'node:test';
+
 import { SqlFormat } from '../src/utils/format';
 
 void describe('Sql Formatter', async () => {

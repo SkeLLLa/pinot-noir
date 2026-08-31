@@ -19,6 +19,6 @@ export {
 export const sql = (
   strings: readonly string[],
   ...values: readonly RawValue[]
-) => {
+): Sql => {
   return new Sql(strings, values);
 };

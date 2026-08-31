@@ -5,11 +5,10 @@ import { QueryStats } from './query-stats';
 import type { IPinotBrokerTransport } from './transport/types';
 import type { IPinotValueParser } from './type-parsers/types';
 import { UnsafeParser } from './type-parsers/unsafe';
+import type { IPinotClient, IPinotPoolStats } from './types';
 import {
   DEFAULT_RETRYABLE_ERROR_CODES,
   EBrokerErrorCode,
-  IPinotClient,
-  IPinotPoolStats,
   NON_PINOT_OPTIONS,
   type IBrokerResponse,
   type IPinotQueryOptions,
@@ -228,7 +227,6 @@ export class PinotClient implements IPinotClient {
         const obj: Record<string, unknown> = {};
 
         for (let i = 0; i < colCount; i++) {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           obj[columnNames[i]!] = this.valueParser.parse(
             row[i],
             columnDataTypes[i],
