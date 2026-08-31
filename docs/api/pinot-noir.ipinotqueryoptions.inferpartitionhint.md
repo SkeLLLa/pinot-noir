@@ -15,3 +15,4 @@ inferPartitionHint?: boolean;
 ## Default Value
 
 broker level config (default `false`<!-- -->)
+

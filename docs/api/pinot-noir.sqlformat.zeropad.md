@@ -16,35 +16,44 @@ static zeroPad(number: number, length: number): string;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 number
 
+
 </td><td>
 
 number
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 length
 
+
 </td><td>
 
 number
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
@@ -52,3 +61,4 @@ number
 **Returns:**
 
 string
+

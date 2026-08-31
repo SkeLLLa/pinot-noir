@@ -9,16 +9,7 @@ Union type for all stage stats.
 **Signature:**
 
 ```typescript
-export type StageStats =
-  | IAggregateStats
-  | IFilterStats
-  | IHashJoinStats
-  | ILeafStats
-  | IMailboxReceiveStats
-  | IMailboxSendStats
-  | ISortOrLimitStats
-  | ITransformStats
-  | IWindowStats;
+export type StageStats = IAggregateStats | IFilterStats | IHashJoinStats | ILeafStats | IMailboxReceiveStats | IMailboxSendStats | ISortOrLimitStats | ITransformStats | IWindowStats;
 ```
-
 **References:** [IAggregateStats](./pinot-noir.iaggregatestats.md)<!-- -->, [IFilterStats](./pinot-noir.ifilterstats.md)<!-- -->, [IHashJoinStats](./pinot-noir.ihashjoinstats.md)<!-- -->, [ILeafStats](./pinot-noir.ileafstats.md)<!-- -->, [IMailboxReceiveStats](./pinot-noir.imailboxreceivestats.md)<!-- -->, [IMailboxSendStats](./pinot-noir.imailboxsendstats.md)<!-- -->, [ISortOrLimitStats](./pinot-noir.isortorlimitstats.md)<!-- -->, [ITransformStats](./pinot-noir.itransformstats.md)<!-- -->, [IWindowStats](./pinot-noir.iwindowstats.md)
+

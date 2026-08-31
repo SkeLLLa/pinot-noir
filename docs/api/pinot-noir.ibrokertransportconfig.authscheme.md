@@ -17,3 +17,4 @@ authScheme?: 'Basic' | 'Bearer';
 ## Default Value
 
 'Basic'
+

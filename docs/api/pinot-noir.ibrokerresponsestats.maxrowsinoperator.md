@@ -6,6 +6,7 @@
 
 Maximum number of rows in operator.
 
+
 **Signature:**
 
 ```typescript

@@ -9,9 +9,8 @@ Safe parser.
 **Signature:**
 
 ```typescript
-export declare class SafeParser implements IPinotValueParser
+export declare class SafeParser implements IPinotValueParser 
 ```
-
 **Implements:** [IPinotValueParser](./pinot-noir.ipinotvalueparser.md)
 
 ## Methods
@@ -20,24 +19,31 @@ export declare class SafeParser implements IPinotValueParser
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [parse(value, type)](./pinot-noir.safeparser.parse.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Parses the value.
 
+
 </td></tr>
 </tbody></table>
+

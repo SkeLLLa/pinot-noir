@@ -10,10 +10,10 @@ Pruned by segments count.
 
 ```typescript
 prunedSegments: {
-  broker: number;
-  server: number;
-  invalid: number;
-  limit: number;
-  value: number;
-}
+        broker: number;
+        server: number;
+        invalid: number;
+        limit: number;
+        value: number;
+    };
 ```

@@ -9,9 +9,8 @@ Broker response.
 **Signature:**
 
 ```typescript
-export interface IBrokerResponse extends IBrokerResponseStats
+export interface IBrokerResponse extends IBrokerResponseStats 
 ```
-
 **Extends:** [IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
 
 ## Properties
@@ -20,122 +19,155 @@ export interface IBrokerResponse extends IBrokerResponseStats
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [brokerId](./pinot-noir.ibrokerresponse.brokerid.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Broker ID.
+
 
 </td></tr>
 <tr><td>
 
 [exceptions?](./pinot-noir.ibrokerresponse.exceptions.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IPinoException](./pinot-noir.ipinoexception.md)<!-- -->\[\]
 
+
 </td><td>
 
 _(Optional)_ List of exceptions.
+
 
 </td></tr>
 <tr><td>
 
 [partialResult](./pinot-noir.ibrokerresponse.partialresult.md)
 
+
 </td><td>
+
 
 </td><td>
 
 boolean
 
+
 </td><td>
 
 Indicates if the result is partial.
+
 
 </td></tr>
 <tr><td>
 
 [requestId](./pinot-noir.ibrokerresponse.requestid.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Request ID.
+
 
 </td></tr>
 <tr><td>
 
 [resultTable?](./pinot-noir.ibrokerresponse.resulttable.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IResultTable](./pinot-noir.iresulttable.md)
 
+
 </td><td>
 
 _(Optional)_ Result table.
+
 
 </td></tr>
 <tr><td>
 
 [stats](./pinot-noir.ibrokerresponse.stats.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
 
+
 </td><td>
 
 Broker response stats.
+
 
 </td></tr>
 <tr><td>
 
 [traceInfo?](./pinot-noir.ibrokerresponse.traceinfo.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Record&lt;string, unknown&gt;
 
+
 </td><td>
 
 _(Optional)_ Trace information.
 
+
 </td></tr>
 </tbody></table>
+

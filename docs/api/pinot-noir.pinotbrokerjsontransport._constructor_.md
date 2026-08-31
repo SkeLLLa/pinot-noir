@@ -18,35 +18,45 @@ constructor(input: IBrokerTransportConfig);
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 { bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, authScheme, maxQueueSize, }
 
+
 </td><td>
 
 (not declared)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 input
 
+
 </td><td>
 
 [IBrokerTransportConfig](./pinot-noir.ibrokertransportconfig.md)
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

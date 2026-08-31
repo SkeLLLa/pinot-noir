@@ -9,15 +9,5 @@ Available Pinot data types.
 **Signature:**
 
 ```typescript
-export type TPinotDataType =
-  | 'INT'
-  | 'LONG'
-  | 'FLOAT'
-  | 'DOUBLE'
-  | 'BIG_DECIMAL'
-  | 'BOOLEAN'
-  | 'TIMESTAMP'
-  | 'STRING'
-  | 'JSON'
-  | 'BYTES';
+export type TPinotDataType = 'INT' | 'LONG' | 'FLOAT' | 'DOUBLE' | 'BIG_DECIMAL' | 'BOOLEAN' | 'TIMESTAMP' | 'STRING' | 'JSON' | 'BYTES';
 ```

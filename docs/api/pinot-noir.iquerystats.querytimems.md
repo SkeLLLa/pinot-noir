@@ -8,7 +8,7 @@
 
 ```typescript
 queryTimeMs: {
-  total: number;
-  brokerReduce: number;
-}
+        total: number;
+        brokerReduce: number;
+    };
 ```

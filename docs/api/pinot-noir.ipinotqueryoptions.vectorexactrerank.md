@@ -15,3 +15,4 @@ vectorExactRerank?: boolean;
 ## Default Value
 
 `true` for `IVF_PQ` (PQ distances are approximate by construction); `false` for HNSW and `IVF_FLAT`
+

@@ -18,26 +18,32 @@ parse(value?: number | string | boolean | object | null): number | string | bool
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 value
 
+
 </td><td>
 
 number \| string \| boolean \| object \| null
 
+
 </td><td>
 
 _(Optional)_ value to parse
+
 
 </td></tr>
 </tbody></table>
@@ -47,3 +53,4 @@ _(Optional)_ value to parse
 number \| string \| boolean \| object \| null \| undefined
 
 parsed value
+

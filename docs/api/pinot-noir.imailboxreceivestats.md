@@ -9,9 +9,8 @@ Stats for the MAILBOX\_RECEIVE operator.
 **Signature:**
 
 ```typescript
-export interface IMailboxReceiveStats extends IStageStatsBase
+export interface IMailboxReceiveStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,135 +19,172 @@ export interface IMailboxReceiveStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [deserializationTimeMs?](./pinot-noir.imailboxreceivestats.deserializationtimems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Time spent deserializing messages in milliseconds.
+
 
 </td></tr>
 <tr><td>
 
 [deserializedBytes](./pinot-noir.imailboxreceivestats.deserializedbytes.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of bytes deserialized.
+
 
 </td></tr>
 <tr><td>
 
 [downstreamWaitMs?](./pinot-noir.imailboxreceivestats.downstreamwaitms.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Time spent waiting for downstream operators in milliseconds.
+
 
 </td></tr>
 <tr><td>
 
 [fanIn](./pinot-noir.imailboxreceivestats.fanin.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of upstream operators.
+
 
 </td></tr>
 <tr><td>
 
 [inMemoryMessages?](./pinot-noir.imailboxreceivestats.inmemorymessages.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Number of in-memory messages.
+
 
 </td></tr>
 <tr><td>
 
 [rawMessages](./pinot-noir.imailboxreceivestats.rawmessages.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of raw messages received.
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.imailboxreceivestats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'MAILBOX\_RECEIVE'
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [upstreamWaitMs?](./pinot-noir.imailboxreceivestats.upstreamwaitms.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Time spent waiting for upstream operators in milliseconds.
 
+
 </td></tr>
 </tbody></table>
+

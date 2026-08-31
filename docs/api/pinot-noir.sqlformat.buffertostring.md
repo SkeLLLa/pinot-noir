@@ -16,24 +16,30 @@ static bufferToString(buffer: Buffer): string;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 buffer
 
+
 </td><td>
 
 Buffer
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
@@ -41,3 +47,4 @@ Buffer
 **Returns:**
 
 string
+

@@ -16,37 +16,46 @@ static escapeId(val: string | string[], forbidQualified?: boolean): string;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 val
 
+
 </td><td>
 
 string \| string\[\]
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 forbidQualified
 
+
 </td><td>
 
 boolean
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 </tbody></table>
@@ -54,3 +63,4 @@ _(Optional)_
 **Returns:**
 
 string
+

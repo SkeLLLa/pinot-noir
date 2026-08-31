@@ -10,9 +10,9 @@ Consuming segments.
 
 ```typescript
 consumingSegments: {
-  freshTimeMs: number;
-  queried: number;
-  processed: number;
-  matched: number;
-}
+        freshTimeMs: number;
+        queried: number;
+        processed: number;
+        matched: number;
+    };
 ```

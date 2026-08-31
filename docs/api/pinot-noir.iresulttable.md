@@ -9,7 +9,7 @@ Pinot result table.
 **Signature:**
 
 ```typescript
-export interface IResultTable
+export interface IResultTable 
 ```
 
 ## Properties
@@ -18,47 +18,60 @@ export interface IResultTable
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [dataSchema](./pinot-noir.iresulttable.dataschema.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IResponseSchema](./pinot-noir.iresponseschema.md)
 
+
 </td><td>
 
 Schema that describes the schema of the response.
+
 
 </td></tr>
 <tr><td>
 
 [rows](./pinot-noir.iresulttable.rows.md)
 
+
 </td><td>
+
 
 </td><td>
 
 (number \| string)\[\]\[\]
 
+
 </td><td>
 
 Actual content with values. This is an array of arrays. The number of rows depends on the limit value in the query. The number of columns in each row is equal to the length of resultTable.dataSchema.columnNames.
 
+
 </td></tr>
 </tbody></table>
+

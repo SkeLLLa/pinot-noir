@@ -15,3 +15,4 @@ accurateGroupByWithoutOrderBy?: boolean;
 ## Default Value
 
 false
+

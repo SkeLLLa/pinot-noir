@@ -15,3 +15,4 @@ getCursor?: boolean;
 ## Default Value
 
 false (return full result set)
+

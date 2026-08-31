@@ -9,9 +9,8 @@ Bypass parser.
 **Signature:**
 
 ```typescript
-export declare class BypassParser implements IPinotValueParser
+export declare class BypassParser implements IPinotValueParser 
 ```
-
 **Implements:** [IPinotValueParser](./pinot-noir.ipinotvalueparser.md)
 
 ## Methods
@@ -20,24 +19,31 @@ export declare class BypassParser implements IPinotValueParser
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [parse(value)](./pinot-noir.bypassparser.parse.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Parses the value.
 
+
 </td></tr>
 </tbody></table>
+

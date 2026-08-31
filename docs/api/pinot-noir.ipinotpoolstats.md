@@ -9,7 +9,7 @@ Pinot transport pool statistics.
 **Signature:**
 
 ```typescript
-export interface IPinotPoolStats extends PoolStats
+export interface IPinotPoolStats extends PoolStats 
 ```
-
 **Extends:** PoolStats
+

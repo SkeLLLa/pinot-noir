@@ -18,39 +18,48 @@ static stringifyQuery(query: Sql, options?: IPinotQueryOptions): string;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 query
 
+
 </td><td>
 
 Sql
 
+
 </td><td>
 
 Pinot sql query
+
 
 </td></tr>
 <tr><td>
 
 options
 
+
 </td><td>
 
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
 
+
 </td><td>
 
 _(Optional)_ Pinot query options
+
 
 </td></tr>
 </tbody></table>
@@ -60,3 +69,4 @@ _(Optional)_ Pinot query options
 string
 
 Serialized query string
+

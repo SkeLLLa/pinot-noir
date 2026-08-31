@@ -18,24 +18,31 @@ constructor(deps: IPinotClientDeps);
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 deps
 
+
 </td><td>
 
 IPinotClientDeps
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

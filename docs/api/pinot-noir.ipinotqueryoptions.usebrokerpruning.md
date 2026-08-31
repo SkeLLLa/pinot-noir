@@ -15,3 +15,4 @@ useBrokerPruning?: boolean;
 ## Default Value
 
 `true` on both the physical optimizer path and the logical planner path (for eligible leaf stages)
+

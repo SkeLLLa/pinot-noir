@@ -16,37 +16,46 @@ static objectToValues(object: Record<string, unknown>, timeZone?: string): strin
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 object
 
+
 </td><td>
 
 Record&lt;string, unknown&gt;
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 timeZone
 
+
 </td><td>
 
 string
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 </tbody></table>
@@ -54,3 +63,4 @@ _(Optional)_
 **Returns:**
 
 string
+

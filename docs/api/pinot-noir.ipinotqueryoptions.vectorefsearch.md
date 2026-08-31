@@ -15,3 +15,4 @@ vectorEfSearch?: number;
 ## Default Value
 
 From index config (defaults to `topK` when not set)
+

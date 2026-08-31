@@ -9,7 +9,7 @@ SQL template tag
 **Signature:**
 
 ```typescript
-sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql;
+sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql
 ```
 
 ## Parameters
@@ -18,39 +18,48 @@ sql: (strings: readonly string[], ...values: readonly RawValue[]) => Sql;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 strings
 
+
 </td><td>
 
 readonly string\[\]
 
+
 </td><td>
 
 sql template
+
 
 </td></tr>
 <tr><td>
 
 values
 
+
 </td><td>
 
 readonly RawValue\[\]
 
+
 </td><td>
 
 template values
+
 
 </td></tr>
 </tbody></table>
@@ -60,3 +69,4 @@ template values
 Sql
 
 SQL statement
+

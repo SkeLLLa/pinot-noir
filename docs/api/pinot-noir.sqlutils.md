@@ -9,7 +9,7 @@ Sql utils class.
 **Signature:**
 
 ```typescript
-export declare class SqlUtils
+export declare class SqlUtils 
 ```
 
 ## Methods
@@ -18,39 +18,49 @@ export declare class SqlUtils
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [formatOptions(options)](./pinot-noir.sqlutils.formatoptions.md)
 
+
 </td><td>
 
 `static`
 
+
 </td><td>
 
 Format pinot options to make them embeddable into query.
+
 
 </td></tr>
 <tr><td>
 
 [stringifyQuery(query, options)](./pinot-noir.sqlutils.stringifyquery.md)
 
+
 </td><td>
 
 `static`
+
 
 </td><td>
 
 Compile and transform sql query with options into string. Might be helpful for logging and copy-paste debugging.
 
+
 </td></tr>
 </tbody></table>
+

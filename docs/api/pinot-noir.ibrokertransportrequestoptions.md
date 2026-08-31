@@ -9,9 +9,8 @@ Pinot broker HTTP request options.
 **Signature:**
 
 ```typescript
-export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query' | 'bodyTimeout' | 'headersTimeout'>
+export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestOptions, 'method' | 'headers' | 'path' | 'body' | 'query' | 'bodyTimeout' | 'headersTimeout'> 
 ```
-
 **Extends:** Pick&lt;Dispatcher.RequestOptions, 'method' \| 'headers' \| 'path' \| 'body' \| 'query' \| 'bodyTimeout' \| 'headersTimeout'&gt;
 
 ## Properties
@@ -20,47 +19,60 @@ export interface IBrokerTransportRequestOptions extends Pick<Dispatcher.RequestO
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [headers?](./pinot-noir.ibrokertransportrequestoptions.headers.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Record&lt;string, string \| string\[\]&gt; \| IncomingHttpHeaders
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [options?](./pinot-noir.ibrokertransportrequestoptions.options.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { queueTolerance?: [TQueueTolerancePredefined](./pinot-noir.tqueuetolerancepredefined.md) \| number \| undefined; } \| undefined
 
+
 </td><td>
 
 _(Optional)_
 
+
 </td></tr>
 </tbody></table>
+

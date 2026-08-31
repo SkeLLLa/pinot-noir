@@ -9,7 +9,7 @@ Pinot client interface.
 **Signature:**
 
 ```typescript
-export interface IPinotClient
+export interface IPinotClient 
 ```
 
 ## Properties
@@ -18,32 +18,40 @@ export interface IPinotClient
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [transportStats](./pinot-noir.ipinotclient.transportstats.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
+
 </td><td>
 
 Transport stats.
+
 
 </td></tr>
 </tbody></table>
@@ -54,18 +62,23 @@ Transport stats.
 
 Method
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [select(query, options, trace)](./pinot-noir.ipinotclient.select.md)
 
+
 </td><td>
 
 Execute pinot sql query
 
+
 </td></tr>
 </tbody></table>
+

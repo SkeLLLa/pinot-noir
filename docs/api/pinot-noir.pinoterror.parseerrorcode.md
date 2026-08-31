@@ -21,24 +21,30 @@ static parseErrorCode(code: number): {
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 code
 
+
 </td><td>
 
 number
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
@@ -46,3 +52,4 @@ number
 **Returns:**
 
 { type: [EPinotErrorType](./pinot-noir.epinoterrortype.md)<!-- -->; errorCode: [ERROR\_CODES](./pinot-noir.error_codes.md)<!-- -->; }
+

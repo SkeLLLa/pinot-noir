@@ -15,3 +15,4 @@ retryableErrorCodes?: readonly number[];
 ## Default Value
 
 [DEFAULT\_RETRYABLE\_ERROR\_CODES](./pinot-noir.default_retryable_error_codes.md) (`[410]`<!-- -->)
+

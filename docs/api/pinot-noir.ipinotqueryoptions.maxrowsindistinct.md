@@ -15,3 +15,4 @@ maxRowsInDistinct?: number;
 ## Default Value
 
 `null/empty` (no limit)
+

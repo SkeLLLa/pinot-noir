@@ -18,35 +18,44 @@ request<TResponse = unknown>(input: IBrokerTransportRequestOptions): Promise<TRe
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 { body, headers, method, path, query, options, bodyTimeout, headersTimeout, }
 
+
 </td><td>
 
 (not declared)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 input
 
+
 </td><td>
 
 [IBrokerTransportRequestOptions](./pinot-noir.ibrokertransportrequestoptions.md)
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
@@ -56,3 +65,4 @@ input
 Promise&lt;TResponse&gt;
 
 Pinot response.
+

@@ -8,8 +8,8 @@
 
 ```typescript
 limitsReached: {
-  groups: boolean;
-  maxRowsInJoin: boolean;
-  maxRowsInWindowReached: boolean;
-}
+        groups: boolean;
+        maxRowsInJoin: boolean;
+        maxRowsInWindowReached: boolean;
+    };
 ```

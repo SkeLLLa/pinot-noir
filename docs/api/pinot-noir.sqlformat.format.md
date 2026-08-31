@@ -16,61 +16,76 @@ static format(sql: string, values: unknown[] | null | undefined, stringifyObject
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 sql
 
+
 </td><td>
 
 string
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 values
 
+
 </td><td>
 
 unknown\[\] \| null \| undefined
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 stringifyObjects
 
+
 </td><td>
 
 boolean
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 timeZone
 
+
 </td><td>
 
 string
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 </tbody></table>
@@ -78,3 +93,4 @@ _(Optional)_
 **Returns:**
 
 string
+

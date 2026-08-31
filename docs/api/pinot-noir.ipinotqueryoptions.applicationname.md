@@ -15,3 +15,4 @@ applicationName?: string;
 ## Default Value
 
 `null/empty` (no application name)
+

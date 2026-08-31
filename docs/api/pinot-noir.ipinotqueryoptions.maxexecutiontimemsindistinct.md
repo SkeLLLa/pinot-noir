@@ -15,3 +15,4 @@ maxExecutionTimeMsInDistinct?: number;
 ## Default Value
 
 `null/empty` (no limit)
+

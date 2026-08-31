@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>>
+export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>> 
 ```
 
 ## Properties
@@ -16,105 +16,134 @@ export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>>
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [cause?](./pinot-noir.ipinoterrorconstructorargs.cause.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Error
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [code?](./pinot-noir.ipinoterrorconstructorargs.code.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [data?](./pinot-noir.ipinoterrorconstructorargs.data.md)
 
+
 </td><td>
+
 
 </td><td>
 
 TData
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [exceptions?](./pinot-noir.ipinoterrorconstructorargs.exceptions.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IPinotSqlException](./pinot-noir.ipinotsqlexception.md)<!-- -->\[\] \| undefined
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [message](./pinot-noir.ipinoterrorconstructorargs.message.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [type?](./pinot-noir.ipinoterrorconstructorargs.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [EPinotErrorType](./pinot-noir.epinoterrortype.md)
 
+
 </td><td>
 
 _(Optional)_
 
+
 </td></tr>
 </tbody></table>
+

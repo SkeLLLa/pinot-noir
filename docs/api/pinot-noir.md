@@ -10,77 +10,95 @@
 
 Class
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [BypassParser](./pinot-noir.bypassparser.md)
 
+
 </td><td>
 
 Bypass parser.
+
 
 </td></tr>
 <tr><td>
 
 [PinotBrokerClient](./pinot-noir.pinotbrokerclient.md)
 
+
 </td><td>
 
 Pinot DB client.
+
 
 </td></tr>
 <tr><td>
 
 [PinotBrokerJSONTransport](./pinot-noir.pinotbrokerjsontransport.md)
 
+
 </td><td>
 
 Pinot broker JSON transport based on "undici" HTTP client.
+
 
 </td></tr>
 <tr><td>
 
 [PinotError](./pinot-noir.pinoterror.md)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [SafeParser](./pinot-noir.safeparser.md)
 
+
 </td><td>
 
 Safe parser.
+
 
 </td></tr>
 <tr><td>
 
 [SqlFormat](./pinot-noir.sqlformat.md)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [SqlUtils](./pinot-noir.sqlutils.md)
 
+
 </td><td>
 
 Sql utils class.
+
 
 </td></tr>
 <tr><td>
 
 [UnsafeParser](./pinot-noir.unsafeparser.md)
 
+
 </td><td>
 
 Unsafe parser.
+
 
 </td></tr>
 </tbody></table>
@@ -91,47 +109,70 @@ Unsafe parser.
 
 Enumeration
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [EBrokerErrorCode](./pinot-noir.ebrokererrorcode.md)
 
+
 </td><td>
 
 Broker error codes.
+
 
 </td></tr>
 <tr><td>
 
 [EBrokerTransportErrorCode](./pinot-noir.ebrokertransporterrorcode.md)
 
+
 </td><td>
 
 Broker error codes.
+
+
+</td></tr>
+<tr><td>
+
+[EPinotErrorCategory](./pinot-noir.epinoterrorcategory.md)
+
+
+</td><td>
+
+Coarse, protocol-agnostic classification of a Pinot query error.
+
+Lets consumers (gRPC, REST, CLI, ...) map a Pinot error to their own status vocabulary without hand-maintaining a copy of [ERROR\_CODES](./pinot-noir.error_codes.md)<!-- -->.
+
 
 </td></tr>
 <tr><td>
 
 [EPinotErrorType](./pinot-noir.epinoterrortype.md)
 
+
 </td><td>
 
 Pinot error types
+
 
 </td></tr>
 <tr><td>
 
 [ERROR\_CODES](./pinot-noir.error_codes.md)
 
+
 </td><td>
 
 Pinot query error codes.
 
 Mirrors Apache Pinot's `QueryErrorCode` enum.
+
 
 </td></tr>
 </tbody></table>
@@ -142,18 +183,33 @@ Mirrors Apache Pinot's `QueryErrorCode` enum.
 
 Function
 
+
 </th><th>
 
 Description
 
+
 </th></tr></thead>
 <tbody><tr><td>
 
+[getErrorCategory(errorCode)](./pinot-noir.geterrorcategory.md)
+
+
+</td><td>
+
+Categorizes a Pinot query error code into a coarse, protocol-agnostic bucket. Unmapped/unknown codes default to `QUERY_ERROR`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
 [sql(strings, values)](./pinot-noir.sql.md)
+
 
 </td><td>
 
 SQL template tag
+
 
 </td></tr>
 </tbody></table>
@@ -164,250 +220,306 @@ SQL template tag
 
 Interface
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [IAggregateStats](./pinot-noir.iaggregatestats.md)
 
+
 </td><td>
 
 Stats for the AGGREGATE operator.
+
 
 </td></tr>
 <tr><td>
 
 [IBrokerResponse](./pinot-noir.ibrokerresponse.md)
 
+
 </td><td>
 
 Broker response.
+
 
 </td></tr>
 <tr><td>
 
 [IBrokerResponseStats](./pinot-noir.ibrokerresponsestats.md)
 
+
 </td><td>
 
 Broker response stats.
+
 
 </td></tr>
 <tr><td>
 
 [IBrokerTransportConfig](./pinot-noir.ibrokertransportconfig.md)
 
+
 </td><td>
 
 Pinot broker transport config options.
+
 
 </td></tr>
 <tr><td>
 
 [IBrokerTransportRequestOptions](./pinot-noir.ibrokertransportrequestoptions.md)
 
+
 </td><td>
 
 Pinot broker HTTP request options.
+
 
 </td></tr>
 <tr><td>
 
 [IFilterStats](./pinot-noir.ifilterstats.md)
 
+
 </td><td>
 
 Stats for the FILTER operator.
+
 
 </td></tr>
 <tr><td>
 
 [IHashJoinStats](./pinot-noir.ihashjoinstats.md)
 
+
 </td><td>
 
 Stats for the HASH\_JOIN operator.
+
 
 </td></tr>
 <tr><td>
 
 [ILeafStats](./pinot-noir.ileafstats.md)
 
+
 </td><td>
 
 Stats for the LEAF operator.
+
 
 </td></tr>
 <tr><td>
 
 [IMailboxReceiveStats](./pinot-noir.imailboxreceivestats.md)
 
+
 </td><td>
 
 Stats for the MAILBOX\_RECEIVE operator.
+
 
 </td></tr>
 <tr><td>
 
 [IMailboxSendStats](./pinot-noir.imailboxsendstats.md)
 
+
 </td><td>
 
 Stats for the MAILBOX\_SEND operator.
+
 
 </td></tr>
 <tr><td>
 
 [IPinoException](./pinot-noir.ipinoexception.md)
 
+
 </td><td>
 
 Pinot exception.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotBrokerTransport](./pinot-noir.ipinotbrokertransport.md)
 
+
 </td><td>
 
 Pinot broker transport interface. Implement it to create your own.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotClient](./pinot-noir.ipinotclient.md)
 
+
 </td><td>
 
 Pinot client interface.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotErrorConstructorArgs](./pinot-noir.ipinoterrorconstructorargs.md)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
+
 </td><td>
 
 Pinot transport pool statistics.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
 
+
 </td><td>
 
 Query options.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotRetryOptions](./pinot-noir.ipinotretryoptions.md)
 
+
 </td><td>
 
 Query retry options.
+
 
 </td></tr>
 <tr><td>
 
 [IPinotSqlException](./pinot-noir.ipinotsqlexception.md)
 
+
 </td><td>
 
 Apache Pinot exception
+
 
 </td></tr>
 <tr><td>
 
 [IPinotValueParser](./pinot-noir.ipinotvalueparser.md)
 
+
 </td><td>
 
 Pinot value parser interface.
+
 
 </td></tr>
 <tr><td>
 
 [IQueryResult](./pinot-noir.iqueryresult.md)
 
+
 </td><td>
 
 Query result.
+
 
 </td></tr>
 <tr><td>
 
 [IQueryStats](./pinot-noir.iquerystats.md)
 
+
 </td><td>
 
 Pinot query statistics. Just converted and categorized Pinot response stats.
+
 
 </td></tr>
 <tr><td>
 
 [IResponseSchema](./pinot-noir.iresponseschema.md)
 
+
 </td><td>
 
 Response data schema.
+
 
 </td></tr>
 <tr><td>
 
 [IResultTable](./pinot-noir.iresulttable.md)
 
+
 </td><td>
 
 Pinot result table.
+
 
 </td></tr>
 <tr><td>
 
 [ISortOrLimitStats](./pinot-noir.isortorlimitstats.md)
 
+
 </td><td>
 
 Stats for the SORT\_OR\_LIMIT operator.
+
 
 </td></tr>
 <tr><td>
 
 [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
+
 </td><td>
 
 Base interface for all stage stats.
+
 
 </td></tr>
 <tr><td>
 
 [ITransformStats](./pinot-noir.itransformstats.md)
 
+
 </td><td>
 
 Stats for the TRANSFORM operator.
+
 
 </td></tr>
 <tr><td>
 
 [IWindowStats](./pinot-noir.iwindowstats.md)
 
+
 </td><td>
 
 Stats for the WINDOW operator.
+
 
 </td></tr>
 </tbody></table>
@@ -418,14 +530,17 @@ Stats for the WINDOW operator.
 
 Variable
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [DEFAULT\_RETRYABLE\_ERROR\_CODES](./pinot-noir.default_retryable_error_codes.md)
+
 
 </td><td>
 
@@ -433,14 +548,17 @@ Default Pinot error codes that trigger a query retry.
 
 Contains transient broker/server side failures that are safe to retry. `BROKER_RESOURCE_MISSING` (410) can be caused by stale broker routing / external view updates and is usually resolved on retry.
 
+
 </td></tr>
 <tr><td>
 
 [NON\_PINOT\_OPTIONS](./pinot-noir.non_pinot_options.md)
 
+
 </td><td>
 
 Non pinot options list.
+
 
 </td></tr>
 </tbody></table>
@@ -451,36 +569,45 @@ Non pinot options list.
 
 Type Alias
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [StageStats](./pinot-noir.stagestats.md)
 
+
 </td><td>
 
 Union type for all stage stats.
+
 
 </td></tr>
 <tr><td>
 
 [TPinotDataType](./pinot-noir.tpinotdatatype.md)
 
+
 </td><td>
 
 Available Pinot data types.
+
 
 </td></tr>
 <tr><td>
 
 [TQueueTolerancePredefined](./pinot-noir.tqueuetolerancepredefined.md)
 
+
 </td><td>
 
 Predefined queue tolerance values.
 
+
 </td></tr>
 </tbody></table>
+

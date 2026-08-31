@@ -18,26 +18,32 @@ static toQueryOptions(options?: IPinotQueryOptions): string | undefined;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 options
 
+
 </td><td>
 
 [IPinotQueryOptions](./pinot-noir.ipinotqueryoptions.md)
 
+
 </td><td>
 
 _(Optional)_ Query options.
+
 
 </td></tr>
 </tbody></table>
@@ -47,3 +53,4 @@ _(Optional)_ Query options.
 string \| undefined
 
 Serialized options.
+

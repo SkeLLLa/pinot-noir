@@ -9,9 +9,8 @@ Stats for the SORT\_OR\_LIMIT operator.
 **Signature:**
 
 ```typescript
-export interface ISortOrLimitStats extends IStageStatsBase
+export interface ISortOrLimitStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,45 +19,58 @@ export interface ISortOrLimitStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [requireSort?](./pinot-noir.isortorlimitstats.requiresort.md)
 
+
 </td><td>
+
 
 </td><td>
 
 boolean
 
+
 </td><td>
 
 _(Optional)_ Indicates if sorting is required.
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.isortorlimitstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'SORT\_OR\_LIMIT'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

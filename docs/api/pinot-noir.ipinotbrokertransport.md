@@ -9,7 +9,7 @@ Pinot broker transport interface. Implement it to create your own.
 **Signature:**
 
 ```typescript
-export interface IPinotBrokerTransport
+export interface IPinotBrokerTransport 
 ```
 
 ## Properties
@@ -18,32 +18,40 @@ export interface IPinotBrokerTransport
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [stats](./pinot-noir.ipinotbrokertransport.stats.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
+
 </td><td>
 
 Pool statistics (number of in-flight requests and so on).
+
 
 </td></tr>
 </tbody></table>
@@ -54,36 +62,45 @@ Pool statistics (number of in-flight requests and so on).
 
 Method
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [close()](./pinot-noir.ipinotbrokertransport.close.md)
 
+
 </td><td>
 
 Closes connection to Pinot broker.
+
 
 </td></tr>
 <tr><td>
 
 [request({ method, headers, path, body, query, }, input)](./pinot-noir.ipinotbrokertransport.request.md)
 
+
 </td><td>
 
 Perform HTTP request to Pinot.
+
 
 </td></tr>
 <tr><td>
 
 [setMaxQueueSize(size)](./pinot-noir.ipinotbrokertransport.setmaxqueuesize.md)
 
+
 </td><td>
 
 Set maximum query queue size.
 
+
 </td></tr>
 </tbody></table>
+

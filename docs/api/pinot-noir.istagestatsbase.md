@@ -9,7 +9,7 @@ Base interface for all stage stats.
 **Signature:**
 
 ```typescript
-export interface IStageStatsBase
+export interface IStageStatsBase 
 ```
 
 ## Properties
@@ -18,77 +18,98 @@ export interface IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [children?](./pinot-noir.istagestatsbase.children.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IStageStatsBase](./pinot-noir.istagestatsbase.md)<!-- -->\[\]
 
+
 </td><td>
 
 _(Optional)_ Child operators' stats.
+
 
 </td></tr>
 <tr><td>
 
 [emittedRows](./pinot-noir.istagestatsbase.emittedrows.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of rows emitted by the operator.
+
 
 </td></tr>
 <tr><td>
 
 [executionTimeMs](./pinot-noir.istagestatsbase.executiontimems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Execution time in milliseconds.
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.istagestatsbase.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Type of the operator.
 
+
 </td></tr>
 </tbody></table>
+

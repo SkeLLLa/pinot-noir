@@ -9,9 +9,8 @@ Stats for the AGGREGATE operator.
 **Signature:**
 
 ```typescript
-export interface IAggregateStats extends IStageStatsBase
+export interface IAggregateStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,30 +19,39 @@ export interface IAggregateStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [type](./pinot-noir.iaggregatestats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'AGGREGATE'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

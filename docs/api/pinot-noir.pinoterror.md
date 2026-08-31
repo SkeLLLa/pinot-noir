@@ -7,9 +7,8 @@
 **Signature:**
 
 ```typescript
-export declare class PinotError<TData = Record<string, unknown>> extends Error
+export declare class PinotError<TData = Record<string, unknown>> extends Error 
 ```
-
 **Extends:** Error
 
 ## Constructors
@@ -18,24 +17,30 @@ export declare class PinotError<TData = Record<string, unknown>> extends Error
 
 Constructor
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [(constructor)({ message, type, code, cause, exceptions, data, }, input)](./pinot-noir.pinoterror._constructor_.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Constructs a new instance of the `PinotError` class
+
 
 </td></tr>
 </tbody></table>
@@ -46,81 +51,122 @@ Constructs a new instance of the `PinotError` class
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
 
+
 </th></tr></thead>
 <tbody><tr><td>
 
-[code](./pinot-noir.pinoterror.code.md)
+[category](./pinot-noir.pinoterror.category.md)
+
 
 </td><td>
 
 `readonly`
 
+
+</td><td>
+
+[EPinotErrorCategory](./pinot-noir.epinoterrorcategory.md)
+
+
+</td><td>
+
+Coarse, protocol-agnostic category of this error. Pinot only guarantees a reliable numeric code when there's exactly one exception, otherwise falls back to this error's own `code`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[code](./pinot-noir.pinoterror.code.md)
+
+
+</td><td>
+
+`readonly`
+
+
 </td><td>
 
 number
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [data?](./pinot-noir.pinoterror.data.md)
 
+
 </td><td>
 
 `readonly`
+
 
 </td><td>
 
 TData \| undefined
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [exceptions?](./pinot-noir.pinoterror.exceptions.md)
 
+
 </td><td>
 
 `readonly`
+
 
 </td><td>
 
 [IPinotSqlException](./pinot-noir.ipinotsqlexception.md)<!-- -->\[\] \| undefined
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.pinoterror.type.md)
 
+
 </td><td>
 
 `readonly`
+
 
 </td><td>
 
 [EPinotErrorType](./pinot-noir.epinoterrortype.md)
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
@@ -131,26 +177,33 @@ _(Optional)_
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [parseErrorCode(code)](./pinot-noir.pinoterror.parseerrorcode.md)
 
+
 </td><td>
 
 `static`
+
 
 </td><td>
 
 Parses a PinotError code and returns the corresponding error type and code.
 
+
 </td></tr>
 </tbody></table>
+

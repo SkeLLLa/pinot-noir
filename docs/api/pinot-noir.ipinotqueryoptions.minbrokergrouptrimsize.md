@@ -15,3 +15,4 @@ minBrokerGroupTrimSize?: number;
 ## Default Value
 
 broker level config (default `5000`<!-- -->)
+

@@ -9,9 +9,8 @@ Pinot DB client.
 **Signature:**
 
 ```typescript
-export declare class PinotClient implements IPinotClient
+export declare class PinotClient implements IPinotClient 
 ```
-
 **Implements:** [IPinotClient](./pinot-noir.ipinotclient.md)
 
 ## Constructors
@@ -20,24 +19,30 @@ export declare class PinotClient implements IPinotClient
 
 Constructor
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [(constructor)(deps)](./pinot-noir.pinotbrokerclient._constructor_.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Constructs a new instance of the `PinotClient` class
+
 
 </td></tr>
 </tbody></table>
@@ -48,22 +53,27 @@ Constructs a new instance of the `PinotClient` class
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [deps](./pinot-noir.pinotbrokerclient.deps.md)
+
 
 </td><td>
 
@@ -71,28 +81,35 @@ Description
 
 `readonly`
 
+
 </td><td>
 
 IPinotClientDeps
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [transportStats](./pinot-noir.pinotbrokerclient.transportstats.md)
 
+
 </td><td>
 
 `readonly`
+
 
 </td><td>
 
 [IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
+
 </td><td>
 
 Transport stats.
+
 
 </td></tr>
 </tbody></table>
@@ -103,37 +120,47 @@ Transport stats.
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [select(query, options, trace)](./pinot-noir.pinotbrokerclient.select.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Executes Pinot SQL query.
+
 
 </td></tr>
 <tr><td>
 
 [toQueryOptions(options)](./pinot-noir.pinotbrokerclient.toqueryoptions.md)
 
+
 </td><td>
 
 `static`
+
 
 </td><td>
 
 Converts and serializes query options to Pinot supported format.
 
+
 </td></tr>
 </tbody></table>
+

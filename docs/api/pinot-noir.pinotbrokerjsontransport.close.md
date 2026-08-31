@@ -11,7 +11,7 @@ Closes connection to Pinot broker.
 ```typescript
 close(): Promise<void>;
 ```
-
 **Returns:**
 
 Promise&lt;void&gt;
+

@@ -9,7 +9,7 @@ Query retry options.
 **Signature:**
 
 ```typescript
-export interface IPinotRetryOptions
+export interface IPinotRetryOptions 
 ```
 
 ## Properties
@@ -18,77 +18,98 @@ export interface IPinotRetryOptions
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [backoffFactor?](./pinot-noir.ipinotretryoptions.backofffactor.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Exponential backoff factor applied to `retryDelayMs` per attempt. Delay for attempt `n` = `retryDelayMs * backoffFactor ^ (n - 1)`<!-- -->.
+
 
 </td></tr>
 <tr><td>
 
 [maxRetries?](./pinot-noir.ipinotretryoptions.maxretries.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Maximum number of retry attempts (in addition to the initial request). Set to `0` to disable retries.
+
 
 </td></tr>
 <tr><td>
 
 [retryableErrorCodes?](./pinot-noir.ipinotretryoptions.retryableerrorcodes.md)
 
+
 </td><td>
+
 
 </td><td>
 
 readonly number\[\]
 
+
 </td><td>
 
 _(Optional)_ Pinot error codes that trigger a retry.
+
 
 </td></tr>
 <tr><td>
 
 [retryDelayMs?](./pinot-noir.ipinotretryoptions.retrydelayms.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Base delay between retry attempts in milliseconds.
 
+
 </td></tr>
 </tbody></table>
+

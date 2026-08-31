@@ -10,8 +10,8 @@ Docs stats.
 
 ```typescript
 docs: {
-  scanned: number;
-  returned: number;
-  total: number;
-}
+        scanned: number;
+        returned: number;
+        total: number;
+    };
 ```

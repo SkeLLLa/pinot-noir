@@ -9,7 +9,7 @@ Pinot value parser interface.
 **Signature:**
 
 ```typescript
-export interface IPinotValueParser
+export interface IPinotValueParser 
 ```
 
 ## Methods
@@ -18,18 +18,23 @@ export interface IPinotValueParser
 
 Method
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [parse(value, type)](./pinot-noir.ipinotvalueparser.parse.md)
 
+
 </td><td>
 
 Parses the value.
 
+
 </td></tr>
 </tbody></table>
+

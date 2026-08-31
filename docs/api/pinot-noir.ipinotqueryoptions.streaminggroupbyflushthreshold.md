@@ -15,3 +15,4 @@ streamingGroupByFlushThreshold?: number;
 ## Default Value
 
 broker level config `pinot.broker.mse.streaming.group.by.flush.threshold` when set to a positive value; otherwise `0` (disabled)
+

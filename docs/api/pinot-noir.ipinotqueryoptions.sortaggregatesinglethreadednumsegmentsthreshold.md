@@ -15,3 +15,4 @@ sortAggregateSingleThreadedNumSegmentsThreshold?: number;
 ## Default Value
 
 Number of CPU cores
+

@@ -9,9 +9,8 @@ Stats for the HASH\_JOIN operator.
 **Signature:**
 
 ```typescript
-export interface IHashJoinStats extends IStageStatsBase
+export interface IHashJoinStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,45 +19,58 @@ export interface IHashJoinStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [timeBuildingHashTableMs](./pinot-noir.ihashjoinstats.timebuildinghashtablems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Time spent building the hash table in milliseconds.
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.ihashjoinstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'HASH\_JOIN'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

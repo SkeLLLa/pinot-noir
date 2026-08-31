@@ -9,7 +9,7 @@ Response data schema.
 **Signature:**
 
 ```typescript
-export interface IResponseSchema
+export interface IResponseSchema 
 ```
 
 ## Properties
@@ -18,47 +18,60 @@ export interface IResponseSchema
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [columnDataTypes](./pinot-noir.iresponseschema.columndatatypes.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [TPinotDataType](./pinot-noir.tpinotdatatype.md)<!-- -->\[\]
 
+
 </td><td>
 
 Type for each column. Can be used for proper data parsing.
+
 
 </td></tr>
 <tr><td>
 
 [columnNames](./pinot-noir.iresponseschema.columnnames.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string\[\]
 
+
 </td><td>
 
 Result column names.
 
+
 </td></tr>
 </tbody></table>
+

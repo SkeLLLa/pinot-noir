@@ -10,7 +10,7 @@ Server stats.
 
 ```typescript
 server: {
-  queried: number;
-  responded: number;
-}
+        queried: number;
+        responded: number;
+    };
 ```

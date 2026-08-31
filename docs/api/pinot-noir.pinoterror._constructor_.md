@@ -18,35 +18,45 @@ constructor(input: IPinotErrorConstructorArgs<TData>);
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 { message, type, code, cause, exceptions, data, }
 
+
 </td><td>
 
 (not declared)
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 input
 
+
 </td><td>
 
 [IPinotErrorConstructorArgs](./pinot-noir.ipinoterrorconstructorargs.md)<!-- -->&lt;TData&gt;
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

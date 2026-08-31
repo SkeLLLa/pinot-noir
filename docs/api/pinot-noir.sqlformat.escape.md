@@ -16,50 +16,62 @@ static escape(val: unknown, stringifyObjects?: boolean, timeZone?: string): stri
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 val
 
+
 </td><td>
 
 unknown
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 stringifyObjects
 
+
 </td><td>
 
 boolean
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 <tr><td>
 
 timeZone
 
+
 </td><td>
 
 string
 
+
 </td><td>
 
 _(Optional)_
+
 
 </td></tr>
 </tbody></table>
@@ -67,3 +79,4 @@ _(Optional)_
 **Returns:**
 
 string
+

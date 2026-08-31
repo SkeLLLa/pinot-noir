@@ -15,3 +15,4 @@ enableMaterializedViewRewrite?: boolean;
 ## Default Value
 
 `true` (enabled when absent)
+

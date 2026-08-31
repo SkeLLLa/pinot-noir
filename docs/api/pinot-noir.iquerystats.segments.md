@@ -10,8 +10,8 @@ Segment stats.
 
 ```typescript
 segments: {
-  queried: number;
-  processed: number;
-  matched: number;
-}
+        queried: number;
+        processed: number;
+        matched: number;
+    };
 ```

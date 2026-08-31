@@ -9,9 +9,8 @@ Stats for the TRANSFORM operator.
 **Signature:**
 
 ```typescript
-export interface ITransformStats extends IStageStatsBase
+export interface ITransformStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,30 +19,39 @@ export interface ITransformStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [type](./pinot-noir.itransformstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'TRANSFORM'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

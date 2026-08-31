@@ -6,6 +6,7 @@
 
 Indicates if the maximum number of rows in join was reached.
 
+
 **Signature:**
 
 ```typescript

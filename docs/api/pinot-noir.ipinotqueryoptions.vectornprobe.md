@@ -15,3 +15,4 @@ vectorNprobe?: number;
 ## Default Value
 
 `4` for `IVF_FLAT`<!-- -->, `IVF_PQ`<!-- -->, and `IVF_ON_DISK`<!-- -->; ignored for HNSW and exact-scan fallback
+

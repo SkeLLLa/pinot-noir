@@ -9,9 +9,8 @@ Stats for the WINDOW operator.
 **Signature:**
 
 ```typescript
-export interface IWindowStats extends IStageStatsBase
+export interface IWindowStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,30 +19,39 @@ export interface IWindowStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [type](./pinot-noir.iwindowstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'WINDOW'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

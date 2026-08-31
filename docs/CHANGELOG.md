@@ -1,3 +1,21 @@
+## [3.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.2.1...v3.3.0) (2026-08-31)
+
+### 🛠 Fixes
+
+* **ci:** revert semantic-release pkgs to working versions ([dcffc34](https://github.com/SkeLLLa/pinot-noir/commit/dcffc349fc9a683e300c61d392754cd974b6dd90))
+* **ci:** update actions ([8804603](https://github.com/SkeLLLa/pinot-noir/commit/8804603a9549fd86c977b391098e8602006de5ed))
+
+### 🚀 Features
+
+* new error classes ([998b473](https://github.com/SkeLLLa/pinot-noir/commit/998b47326d647d3bb444b3b9c475e0a4f6298ea9))
+* pnpm 12 & oxc ([2d3ed11](https://github.com/SkeLLLa/pinot-noir/commit/2d3ed11cec772988e76b9c8916d4547a850330f0))
+
+### 🧾 Other
+
+* **deps-dev:** bump @semantic-release/changelog from 6.0.3 to 7.0.0 ([c5a5dc0](https://github.com/SkeLLLa/pinot-noir/commit/c5a5dc003814cc857092f9a4c58f58200ab0ad5a))
+* **deps-dev:** bump @semantic-release/git from 10.0.1 to 11.0.1 ([61f5e50](https://github.com/SkeLLLa/pinot-noir/commit/61f5e5015c1d204729986cf7994c3f88f7ab8a69))
+* **deps-dev:** bump the all-minor-patch group with 4 updates ([c9ea168](https://github.com/SkeLLLa/pinot-noir/commit/c9ea168d2d46621bb1d9f4db97590a2316fba04b))
+
 ## [3.2.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.2.0...v3.2.1) (2026-08-20)
 
 ## [3.2.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.1.1...v3.2.0) (2026-07-30)

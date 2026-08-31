@@ -9,7 +9,7 @@ Query result.
 **Signature:**
 
 ```typescript
-export interface IQueryResult<TRows = unknown>
+export interface IQueryResult<TRows = unknown> 
 ```
 
 ## Properties
@@ -18,77 +18,98 @@ export interface IQueryResult<TRows = unknown>
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [queryOptions?](./pinot-noir.iqueryresult.queryoptions.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string \| undefined
 
+
 </td><td>
 
 _(Optional)_ Query options.
+
 
 </td></tr>
 <tr><td>
 
 [rows](./pinot-noir.iqueryresult.rows.md)
 
+
 </td><td>
+
 
 </td><td>
 
 TRows
 
+
 </td><td>
 
 Data rows.
+
 
 </td></tr>
 <tr><td>
 
 [sql](./pinot-noir.iqueryresult.sql.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Compiled SQL query.
+
 
 </td></tr>
 <tr><td>
 
 [stats](./pinot-noir.iqueryresult.stats.md)
 
+
 </td><td>
+
 
 </td><td>
 
 [IQueryStats](./pinot-noir.iquerystats.md)
 
+
 </td><td>
 
 Query stats.
 
+
 </td></tr>
 </tbody></table>
+

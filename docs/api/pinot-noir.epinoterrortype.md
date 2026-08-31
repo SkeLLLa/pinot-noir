@@ -9,7 +9,7 @@ Pinot error types
 **Signature:**
 
 ```typescript
-export declare enum EPinotErrorType
+export declare enum EPinotErrorType 
 ```
 
 ## Enumeration Members
@@ -18,57 +18,73 @@ export declare enum EPinotErrorType
 
 Member
 
+
 </th><th>
 
 Value
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 PARSE
 
+
 </td><td>
 
 `3`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SQL
 
+
 </td><td>
 
 `2`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 TRANSPORT
 
+
 </td><td>
 
 `1`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 UNKNOWN
 
+
 </td><td>
 
 `0`
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

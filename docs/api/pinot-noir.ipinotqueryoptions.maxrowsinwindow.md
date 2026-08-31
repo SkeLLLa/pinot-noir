@@ -15,3 +15,4 @@ maxRowsInWindow?: number;
 ## Default Value
 
 cluster config `pinot.query.window.max.rows`<!-- -->, or `2^20` (1048576) if unset
+

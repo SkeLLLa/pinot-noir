@@ -9,7 +9,7 @@ Pinot query statistics. Just converted and categorized Pinot response stats.
 **Signature:**
 
 ```typescript
-export interface IQueryStats
+export interface IQueryStats 
 ```
 
 ## Properties
@@ -18,148 +18,189 @@ export interface IQueryStats
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [consumingSegments](./pinot-noir.iquerystats.consumingsegments.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { freshTimeMs: number; queried: number; processed: number; matched: number; }
 
+
 </td><td>
 
 Consuming segments.
+
 
 </td></tr>
 <tr><td>
 
 [cpuTimeMs](./pinot-noir.iquerystats.cputimems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { offline: { thread: number; systemActivities: number; responseSerialization: number; }; realtime: { thread: number; systemActivities: number; responseSerialization: number; }; }
 
+
 </td><td>
 
 CPU stats.
+
 
 </td></tr>
 <tr><td>
 
 [docs](./pinot-noir.iquerystats.docs.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { scanned: number; returned: number; total: number; }
 
+
 </td><td>
 
 Docs stats.
+
 
 </td></tr>
 <tr><td>
 
 [limitsReached](./pinot-noir.iquerystats.limitsreached.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { groups: boolean; maxRowsInJoin: boolean; maxRowsInWindowReached: boolean; }
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [maxRowsInOperator?](./pinot-noir.iquerystats.maxrowsinoperator.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Maximum number of rows in operator.
+
 
 </td></tr>
 <tr><td>
 
 [prunedSegments](./pinot-noir.iquerystats.prunedsegments.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { broker: number; server: number; invalid: number; limit: number; value: number; }
 
+
 </td><td>
 
 Pruned by segments count.
+
 
 </td></tr>
 <tr><td>
 
 [queryTimeMs](./pinot-noir.iquerystats.querytimems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { total: number; brokerReduce: number; }
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 [segments](./pinot-noir.iquerystats.segments.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { queried: number; processed: number; matched: number; }
 
+
 </td><td>
 
 Segment stats.
+
 
 </td></tr>
 <tr><td>
 
 [server](./pinot-noir.iquerystats.server.md)
 
+
 </td><td>
+
 
 </td><td>
 
 { queried: number; responded: number; }
 
+
 </td><td>
 
 Server stats.
 
+
 </td></tr>
 </tbody></table>
+

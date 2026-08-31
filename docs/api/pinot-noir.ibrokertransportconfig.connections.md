@@ -15,3 +15,4 @@ connections?: number;
 ## Default Value
 
 undefined (unlimited)
+

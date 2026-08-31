@@ -9,7 +9,7 @@ Apache Pinot exception
 **Signature:**
 
 ```typescript
-export interface IPinotSqlException
+export interface IPinotSqlException 
 ```
 
 ## Properties
@@ -18,47 +18,60 @@ export interface IPinotSqlException
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [errorCode](./pinot-noir.ipinotsqlexception.errorcode.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Error code
+
 
 </td></tr>
 <tr><td>
 
 [message](./pinot-noir.ipinotsqlexception.message.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Error message
 
+
 </td></tr>
 </tbody></table>
+

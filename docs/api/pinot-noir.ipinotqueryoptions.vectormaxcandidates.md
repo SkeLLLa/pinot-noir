@@ -15,3 +15,4 @@ vectorMaxCandidates?: number;
 ## Default Value
 
 `topK * 10` when exact rerank is enabled
+

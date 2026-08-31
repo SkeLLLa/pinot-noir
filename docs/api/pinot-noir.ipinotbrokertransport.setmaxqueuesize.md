@@ -18,26 +18,32 @@ setMaxQueueSize(size: number): void;
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 size
 
+
 </td><td>
 
 number
 
+
 </td><td>
 
 new queue size
+
 
 </td></tr>
 </tbody></table>
@@ -45,3 +51,4 @@ new queue size
 **Returns:**
 
 void
+

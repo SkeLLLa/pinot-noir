@@ -15,3 +15,4 @@ queueTolerance?: TQueueTolerancePredefined | number;
 ## Default Value
 
 1
+

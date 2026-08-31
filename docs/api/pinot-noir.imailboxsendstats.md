@@ -9,9 +9,8 @@ Stats for the MAILBOX\_SEND operator.
 **Signature:**
 
 ```typescript
-export interface IMailboxSendStats extends IStageStatsBase
+export interface IMailboxSendStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,135 +19,172 @@ export interface IMailboxSendStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [fanOut](./pinot-noir.imailboxsendstats.fanout.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of downstream operators.
+
 
 </td></tr>
 <tr><td>
 
 [inMemoryMessages?](./pinot-noir.imailboxsendstats.inmemorymessages.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Number of in-memory messages.
+
 
 </td></tr>
 <tr><td>
 
 [parallelism](./pinot-noir.imailboxsendstats.parallelism.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of parallel operators.
+
 
 </td></tr>
 <tr><td>
 
 [rawMessages](./pinot-noir.imailboxsendstats.rawmessages.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of raw messages sent.
+
 
 </td></tr>
 <tr><td>
 
 [serializationTimeMs?](./pinot-noir.imailboxsendstats.serializationtimems.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 _(Optional)_ Time spent serializing messages in milliseconds.
+
 
 </td></tr>
 <tr><td>
 
 [serializedBytes](./pinot-noir.imailboxsendstats.serializedbytes.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Number of bytes serialized.
+
 
 </td></tr>
 <tr><td>
 
 [stage](./pinot-noir.imailboxsendstats.stage.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Stage number.
+
 
 </td></tr>
 <tr><td>
 
 [type](./pinot-noir.imailboxsendstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'MAILBOX\_SEND'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

@@ -15,3 +15,4 @@ upsertViewFreshnessMs?: number;
 ## Default Value
 
 table's `upsertViewRefreshIntervalMs`
+

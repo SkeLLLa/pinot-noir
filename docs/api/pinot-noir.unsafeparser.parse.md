@@ -18,39 +18,48 @@ parse(value?: number | string | boolean | object | null, type?: TPinotDataType):
 
 Parameter
 
+
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 value
 
+
 </td><td>
 
 number \| string \| boolean \| object \| null
 
+
 </td><td>
 
 _(Optional)_ value to parse
+
 
 </td></tr>
 <tr><td>
 
 type
 
+
 </td><td>
 
 [TPinotDataType](./pinot-noir.tpinotdatatype.md)
 
+
 </td><td>
 
 _(Optional)_ value type
+
 
 </td></tr>
 </tbody></table>
@@ -60,3 +69,4 @@ _(Optional)_ value type
 number \| string \| boolean \| object \| null \| Date \| bigint \| undefined
 
 parsed value
+

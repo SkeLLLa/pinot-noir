@@ -9,7 +9,7 @@ Pinot exception.
 **Signature:**
 
 ```typescript
-export interface IPinoException
+export interface IPinoException 
 ```
 
 ## Properties
@@ -18,47 +18,60 @@ export interface IPinoException
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [errorCode](./pinot-noir.ipinoexception.errorcode.md)
 
+
 </td><td>
+
 
 </td><td>
 
 number
 
+
 </td><td>
 
 Pinot error code.
+
 
 </td></tr>
 <tr><td>
 
 [message](./pinot-noir.ipinoexception.message.md)
 
+
 </td><td>
+
 
 </td><td>
 
 string
 
+
 </td><td>
 
 Error message.
 
+
 </td></tr>
 </tbody></table>
+

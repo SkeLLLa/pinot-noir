@@ -15,3 +15,4 @@ inferRealtimeSegmentPartition?: boolean;
 ## Default Value
 
 false
+

@@ -11,7 +11,7 @@ Mirrors Apache Pinot's `QueryErrorCode` enum.
 **Signature:**
 
 ```typescript
-export declare enum ERROR_CODES
+export declare enum ERROR_CODES 
 ```
 
 ## Enumeration Members
@@ -20,354 +20,451 @@ export declare enum ERROR_CODES
 
 Member
 
+
 </th><th>
 
 Value
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 ACCESS\_DENIED\_ERROR\_CODE
 
+
 </td><td>
 
 `180`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 BROKER\_INSTANCE\_MISSING\_ERROR\_CODE
 
+
 </td><td>
 
 `420`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 BROKER\_REQUEST\_SEND\_ERROR\_CODE
 
+
 </td><td>
 
 `425`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 BROKER\_RESOURCE\_MISSING\_ERROR\_CODE
 
+
 </td><td>
 
 `410`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 BROKER\_SEGMENT\_UNAVAILABLE\_ERROR\_CODE
 
+
 </td><td>
 
 `305`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 BROKER\_TIMEOUT\_ERROR\_CODE
 
+
 </td><td>
 
 `400`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 EXECUTION\_TIMEOUT\_ERROR\_CODE
 
+
 </td><td>
 
 `250`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 INTERNAL\_ERROR\_CODE
 
+
 </td><td>
 
 `450`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 JSON\_PARSING\_ERROR\_CODE
 
+
 </td><td>
 
 `100`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 MERGE\_RESPONSE\_ERROR\_CODE
 
+
 </td><td>
 
 `500`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_CANCELLATION\_ERROR\_CODE
 
+
 </td><td>
 
 `503`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_EXECUTION\_ERROR\_CODE
 
+
 </td><td>
 
 `200`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_PLANNING\_ERROR\_CODE
 
+
 </td><td>
 
 `720`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_SCAN\_LIMIT\_EXCEEDED\_ERROR\_CODE
 
+
 </td><td>
 
 `246`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_SCHEDULING\_TIMEOUT\_ERROR\_CODE
 
+
 </td><td>
 
 `240`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 QUERY\_VALIDATION\_ERROR\_CODE
 
+
 </td><td>
 
 `700`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 REMOTE\_CLUSTER\_UNAVAILABLE\_ERROR\_CODE
 
+
 </td><td>
 
 `510`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_NOT\_RESPONDING\_ERROR\_CODE
 
+
 </td><td>
 
 `427`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_OUT\_OF\_CAPACITY\_ERROR\_CODE
 
+
 </td><td>
 
 `211`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_RESOURCE\_LIMIT\_EXCEEDED\_ERROR\_CODE
 
+
 </td><td>
 
 `245`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_SEGMENT\_MISSING\_ERROR\_CODE
 
+
 </td><td>
 
 `235`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_SHUTTING\_DOWN\_ERROR\_CODE
 
+
 </td><td>
 
 `210`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SERVER\_TABLE\_MISSING\_ERROR\_CODE
 
+
 </td><td>
 
 `230`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SQL\_PARSING\_ERROR\_CODE
 
+
 </td><td>
 
 `150`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 SQL\_RUNTIME\_ERROR\_CODE
 
+
 </td><td>
 
 `160`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 TABLE\_DOES\_NOT\_EXIST\_ERROR\_CODE
 
+
 </td><td>
 
 `190`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 TABLE\_IS\_DISABLED\_ERROR\_CODE
 
+
 </td><td>
 
 `191`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 TIMESERIES\_PARSING\_ERROR\_CODE
 
+
 </td><td>
 
 `155`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 TOO\_MANY\_REQUESTS\_ERROR\_CODE
 
+
 </td><td>
 
 `429`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 UNKNOWN\_COLUMN\_ERROR\_CODE
 
+
 </td><td>
 
 `710`
 
+
 </td><td>
+
 
 </td></tr>
 <tr><td>
 
 UNKNOWN\_ERROR\_CODE
 
+
 </td><td>
 
 `1000`
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

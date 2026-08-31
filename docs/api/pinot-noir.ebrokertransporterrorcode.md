@@ -9,7 +9,7 @@ Broker error codes.
 **Signature:**
 
 ```typescript
-export declare const enum EBrokerTransportErrorCode
+export declare const enum EBrokerTransportErrorCode 
 ```
 
 ## Enumeration Members
@@ -18,65 +18,81 @@ export declare const enum EBrokerTransportErrorCode
 
 Member
 
+
 </th><th>
 
 Value
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 INVALID\_RESPONSE
 
+
 </td><td>
 
 `1`
 
+
 </td><td>
 
 Invalid response from Pinot.
+
 
 </td></tr>
 <tr><td>
 
 QUEUE\_TOLERANCE\_LIMIT
 
+
 </td><td>
 
 `3`
 
+
 </td><td>
 
 Queue tolerance limit exceeded.
+
 
 </td></tr>
 <tr><td>
 
 TIMEOUT
 
+
 </td><td>
 
 `2`
 
+
 </td><td>
 
 Timeout.
+
 
 </td></tr>
 <tr><td>
 
 UNKNOWN
 
+
 </td><td>
 
 `0`
+
 
 </td><td>
 
 Unknown code.
 
+
 </td></tr>
 </tbody></table>
+

@@ -15,3 +15,4 @@ mseMinGroupTrimSize?: number;
 ## Default Value
 
 server level config (default `5000`<!-- -->)
+

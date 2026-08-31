@@ -9,9 +9,8 @@ Stats for the FILTER operator.
 **Signature:**
 
 ```typescript
-export interface IFilterStats extends IStageStatsBase
+export interface IFilterStats extends IStageStatsBase 
 ```
-
 **Extends:** [IStageStatsBase](./pinot-noir.istagestatsbase.md)
 
 ## Properties
@@ -20,30 +19,39 @@ export interface IFilterStats extends IStageStatsBase
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [type](./pinot-noir.ifilterstats.type.md)
 
+
 </td><td>
+
 
 </td><td>
 
 'FILTER'
 
+
 </td><td>
+
 
 </td></tr>
 </tbody></table>
+

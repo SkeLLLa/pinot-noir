@@ -9,9 +9,8 @@ Pinot broker JSON transport based on "undici" HTTP client.
 **Signature:**
 
 ```typescript
-export declare class PinotBrokerJSONTransport implements IPinotBrokerTransport
+export declare class PinotBrokerJSONTransport implements IPinotBrokerTransport 
 ```
-
 **Implements:** [IPinotBrokerTransport](./pinot-noir.ipinotbrokertransport.md)
 
 ## Constructors
@@ -20,24 +19,30 @@ export declare class PinotBrokerJSONTransport implements IPinotBrokerTransport
 
 Constructor
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [(constructor)({ bodyTimeout, brokerUrl, connections, keepAliveTimeout, headersTimeout, keepAliveMaxTimeout, token, authScheme, maxQueueSize, }, input)](./pinot-noir.pinotbrokerjsontransport._constructor_.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Constructs a new instance of the `PinotBrokerJSONTransport` class
+
 
 </td></tr>
 </tbody></table>
@@ -48,94 +53,115 @@ Constructs a new instance of the `PinotBrokerJSONTransport` class
 
 Property
 
+
 </th><th>
 
 Modifiers
+
 
 </th><th>
 
 Type
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [authHeader](./pinot-noir.pinotbrokerjsontransport.authheader.md)
 
+
 </td><td>
 
 `protected`
 
 `readonly`
 
+
 </td><td>
 
 string
 
+
 </td><td>
 
 Precomputed `authorization` header value (scheme + token).
+
 
 </td></tr>
 <tr><td>
 
 [maxQueueSize](./pinot-noir.pinotbrokerjsontransport.maxqueuesize.md)
 
+
 </td><td>
 
 `protected`
+
 
 </td><td>
 
 number \| undefined
 
+
 </td><td>
 
 Maximum query queue size.
+
 
 </td></tr>
 <tr><td>
 
 [pool](./pinot-noir.pinotbrokerjsontransport.pool.md)
 
+
 </td><td>
 
 `protected`
 
 `readonly`
 
+
 </td><td>
 
 Pool
 
+
 </td><td>
 
 HTTP client pool.
+
 
 </td></tr>
 <tr><td>
 
 [stats](./pinot-noir.pinotbrokerjsontransport.stats.md)
 
+
 </td><td>
 
 `readonly`
+
 
 </td><td>
 
 [IPinotPoolStats](./pinot-noir.ipinotpoolstats.md)
 
+
 </td><td>
 
 HTTP pool statistics.
+
 
 </td></tr>
 <tr><td>
 
 [token](./pinot-noir.pinotbrokerjsontransport.token.md)
+
 
 </td><td>
 
@@ -143,13 +169,16 @@ HTTP pool statistics.
 
 `readonly`
 
+
 </td><td>
 
 string
 
+
 </td><td>
 
 Pinot broker auth token.
+
 
 </td></tr>
 </tbody></table>
@@ -160,46 +189,59 @@ Pinot broker auth token.
 
 Method
 
+
 </th><th>
 
 Modifiers
 
+
 </th><th>
 
 Description
+
 
 </th></tr></thead>
 <tbody><tr><td>
 
 [close()](./pinot-noir.pinotbrokerjsontransport.close.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Closes connection to Pinot broker.
+
 
 </td></tr>
 <tr><td>
 
 [request({ body, headers, method, path, query, options, bodyTimeout, headersTimeout, }, input)](./pinot-noir.pinotbrokerjsontransport.request.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Perform HTTP request to Pinot.
+
 
 </td></tr>
 <tr><td>
 
 [setMaxQueueSize(size)](./pinot-noir.pinotbrokerjsontransport.setmaxqueuesize.md)
 
+
 </td><td>
+
 
 </td><td>
 
 Set maximum query queue size.
 
+
 </td></tr>
 </tbody></table>
+

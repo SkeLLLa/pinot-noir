@@ -10,15 +10,15 @@ CPU stats.
 
 ```typescript
 cpuTimeMs: {
-  offline: {
-    thread: number;
-    systemActivities: number;
-    responseSerialization: number;
-  }
-  realtime: {
-    thread: number;
-    systemActivities: number;
-    responseSerialization: number;
-  }
-}
+        offline: {
+            thread: number;
+            systemActivities: number;
+            responseSerialization: number;
+        };
+        realtime: {
+            thread: number;
+            systemActivities: number;
+            responseSerialization: number;
+        };
+    };
 ```
