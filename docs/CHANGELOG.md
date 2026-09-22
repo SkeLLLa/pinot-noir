@@ -1,3 +1,13 @@
+## [3.3.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.3.0...v3.3.1) (2026-09-22)
+
+### 🧾 Other
+
+* **deps:** bump the all-actions group across 1 directory with 4 updates ([868ee24](https://github.com/SkeLLLa/pinot-noir/commit/868ee245bbe216bad89d5a2ce9886bba52d65c87))
+
+### 🛠 Fixes
+
+* **deps:** bump the all-minor-patch group across 1 directory with 8 updates ([464737d](https://github.com/SkeLLLa/pinot-noir/commit/464737d426bf1e0f0bb9a6a00e3970cb88d36e2f))
+
 ## [3.3.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.2.1...v3.3.0) (2026-08-31)
 
 ### 🛠 Fixes
