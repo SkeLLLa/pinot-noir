@@ -48,8 +48,8 @@
     "lint:packages": "pnpm audit --prod --audit-level=high",
     "release": "semantic-release",
     "test": "pnpm run lint && pnpm run test:unit",
-    "test:unit": "node --no-warnings --import tsx --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info --test test/** --test-coverage-exclude=test/**",
-    "test:unit:local": "node --no-warnings --import tsx --experimental-test-coverage --test test/**  --test-coverage-exclude=test/**"
+    "test:unit": "node --no-warnings --import tsx --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=99 --test-coverage-branches=95 --test-coverage-functions=100 --test-reporter=lcov --test-reporter-destination=lcov.info --test 'test/**/*.test.ts'",
+    "test:unit:local": "node --no-warnings --import tsx --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=99 --test-coverage-branches=95 --test-coverage-functions=100 --test 'test/**/*.test.ts'"
   },
   "dependencies": {
     "@no-esm/sql-template-tag": "^5.2.2",
@@ -87,5 +87,5 @@
     "node": ">=22.19.0",
     "pnpm": ">=12"
   },
-  "packageManager": "pnpm@12.1.0"
+  "packageManager": "pnpm@12.6.0"
 }

@@ -25,11 +25,14 @@ export class SqlUtils {
         return !NON_PINOT_OPTIONS.includes(k as keyof IPinotQueryOptions);
       })
       .map(([key, value]) => {
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) {
+          throw new TypeError('Invalid Pinot query option name');
+        }
         switch (typeof value) {
           case 'string':
-            return `SET ${key} = '${value}';`;
+            return `SET ${key} = ${SqlFormat.escape(value)};`;
           case 'number':
-            return `SET ${key} = ${value.toString()};`;
+            return `SET ${key} = ${SqlFormat.escape(value)};`;
           case 'boolean':
             return `SET ${key} = ${value.toString()};`;
           default:
@@ -49,7 +52,7 @@ export class SqlUtils {
    * @returns Serialized query string
    */
   static stringifyQuery(query: Sql, options?: IPinotQueryOptions): string {
-    const formattedSql = SqlFormat.format(query.sql, query.values)
+    const formattedSql = SqlFormat.formatQuery(query)
       .split('\n')
       .filter((line) => line.trim() !== '');
 

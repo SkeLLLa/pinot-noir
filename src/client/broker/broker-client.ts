@@ -102,11 +102,31 @@ export class PinotClient implements IPinotClient {
   ): string | undefined {
     return options
       ? Object.entries(options)
-          .filter(([k]) => {
-            return !NON_PINOT_OPTIONS.includes(k as keyof IPinotQueryOptions);
+          .filter(([k, value]) => {
+            return (
+              value !== undefined &&
+              !NON_PINOT_OPTIONS.includes(k as keyof IPinotQueryOptions)
+            );
           })
-          .map((kv) => {
-            return kv.join('=');
+          .map(([key, value]) => {
+            // REST options allow custom names, but delimiters cannot be escaped.
+            if (!key || key !== key.trim() || /[;=]/.test(key)) {
+              throw new TypeError('Invalid Pinot query option name.');
+            }
+            if (
+              (typeof value !== 'string' &&
+                typeof value !== 'number' &&
+                typeof value !== 'boolean') ||
+              (typeof value === 'number' && !Number.isFinite(value))
+            ) {
+              throw new TypeError('Invalid Pinot query option value.');
+            }
+            if (typeof value === 'string' && /[;=]/.test(value)) {
+              throw new TypeError(
+                'Pinot request option values cannot contain ";" or "="; use a SQL SET statement instead.',
+              );
+            }
+            return `${key}=${String(value)}`;
           })
           .join(';')
       : undefined;
@@ -155,7 +175,7 @@ export class PinotClient implements IPinotClient {
     trace?: boolean,
   ): Promise<IQueryResult<TResult[]>> {
     const { transport } = this.deps;
-    const sql = SqlFormat.format(query.sql, query.values);
+    const sql = SqlFormat.formatQuery(query);
     const queryOptions = PinotClient.toQueryOptions(options);
 
     const requestOptions = {
@@ -227,10 +247,19 @@ export class PinotClient implements IPinotClient {
         const obj: Record<string, unknown> = {};
 
         for (let i = 0; i < colCount; i++) {
-          obj[columnNames[i]!] = this.valueParser.parse(
-            row[i],
-            columnDataTypes[i],
-          );
+          const value = this.valueParser.parse(row[i], columnDataTypes[i]);
+          const key = columnNames[i]!;
+          // Keep inherited setters and special names from intercepting values.
+          if (key in obj) {
+            Object.defineProperty(obj, key, {
+              value,
+              enumerable: true,
+              configurable: true,
+              writable: true,
+            });
+          } else {
+            obj[key] = value;
+          }
         }
 
         return obj as TResult;

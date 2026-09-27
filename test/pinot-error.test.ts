@@ -43,6 +43,113 @@ void describe('getErrorCategory', async () => {
   });
 });
 
+void describe('PinotError construction and parsing', () => {
+  void test('defaults to an unknown error while retaining standard Error behavior', () => {
+    const error = new PinotError({ message: 'failed' });
+    assert.ok(error instanceof Error);
+    assert.strictEqual(error.name, 'PinotError');
+    assert.strictEqual(error.message, 'failed');
+    assert.strictEqual(error.type, EPinotErrorType.UNKNOWN);
+    assert.strictEqual(error.code, 0);
+    assert.strictEqual(error.category, EPinotErrorCategory.QUERY_ERROR);
+    assert.strictEqual(error.cause, undefined);
+    assert.strictEqual(error.data, undefined);
+    assert.strictEqual(error.exceptions, undefined);
+  });
+
+  void test('preserves cause and typed data and honors an explicit error code', () => {
+    const cause = new Error('underlying');
+    const data = { request: 'test' };
+    const exceptions = [
+      { message: 'denied', errorCode: ERROR_CODES.ACCESS_DENIED_ERROR_CODE },
+    ];
+    const error = new PinotError({
+      message: 'failed',
+      type: EPinotErrorType.SQL,
+      code: ERROR_CODES.BROKER_TIMEOUT_ERROR_CODE,
+      cause,
+      data,
+      exceptions,
+    });
+    assert.strictEqual(error.code, 2400);
+    assert.strictEqual(error.cause, cause);
+    assert.strictEqual(error.data, data);
+    assert.strictEqual(error.exceptions, exceptions);
+    assert.strictEqual(error.category, EPinotErrorCategory.PERMISSION_DENIED);
+  });
+
+  void test('derives codes from one exception and uses explicit codes for empty exceptions', () => {
+    const derived = new PinotError({
+      message: 'failed',
+      type: EPinotErrorType.SQL,
+      exceptions: [
+        { message: 'denied', errorCode: ERROR_CODES.ACCESS_DENIED_ERROR_CODE },
+      ],
+    });
+    assert.strictEqual(derived.code, 2180);
+    const empty = new PinotError({
+      message: 'failed',
+      type: EPinotErrorType.TRANSPORT,
+      code: ERROR_CODES.BROKER_TIMEOUT_ERROR_CODE,
+      exceptions: [],
+    });
+    assert.strictEqual(empty.code, 1400);
+    assert.strictEqual(empty.category, EPinotErrorCategory.TIMEOUT);
+  });
+
+  void test('decodes type and broker code across error domains', () => {
+    for (const type of [
+      EPinotErrorType.UNKNOWN,
+      EPinotErrorType.TRANSPORT,
+      EPinotErrorType.SQL,
+      EPinotErrorType.PARSE,
+    ]) {
+      const error = new PinotError({
+        message: 'failed',
+        type,
+        code: ERROR_CODES.SQL_PARSING_ERROR_CODE,
+      });
+      assert.deepStrictEqual(PinotError.parseErrorCode(error.code), {
+        type,
+        errorCode: ERROR_CODES.SQL_PARSING_ERROR_CODE,
+      });
+    }
+    assert.deepStrictEqual(PinotError.parseErrorCode(0), {
+      type: EPinotErrorType.UNKNOWN,
+      errorCode: 0,
+    });
+  });
+});
+
+void test('every published broker error code has the expected category', () => {
+  const groups: [EPinotErrorCategory, number[]][] = [
+    [EPinotErrorCategory.VALIDATION, [100, 150, 155, 700, 710]],
+    [EPinotErrorCategory.PERMISSION_DENIED, [180]],
+    [EPinotErrorCategory.NOT_FOUND, [190, 191]],
+    [EPinotErrorCategory.TIMEOUT, [240, 250, 400]],
+    [EPinotErrorCategory.RESOURCE_EXHAUSTED, [211, 245, 246, 429]],
+    [EPinotErrorCategory.CANCELLED, [503]],
+    [
+      EPinotErrorCategory.UNAVAILABLE,
+      [210, 230, 235, 305, 410, 420, 425, 427, 510],
+    ],
+    [EPinotErrorCategory.QUERY_ERROR, [160, 200, 450, 500, 720, 1000]],
+  ];
+  const tested = new Set<number>();
+  for (const [category, codes] of groups) {
+    for (const code of codes) {
+      assert.strictEqual(getErrorCategory(code), category, `code ${code}`);
+      tested.add(code);
+    }
+  }
+  assert.deepStrictEqual(
+    tested,
+    new Set(
+      Object.values(ERROR_CODES).filter((code) => typeof code === 'number'),
+    ),
+  );
+});
+
 void describe('PinotError.category', async () => {
   await test('categorizes based on the single exception errorCode', () => {
     const error = new PinotError({

@@ -11,6 +11,7 @@ import type {
 } from '../src';
 import { ERROR_CODES, PinotError, sql } from '../src';
 import { PinotClient } from '../src/client/broker/broker-client';
+import { EPinotErrorType } from '../src/client/errors/pinot';
 
 const brokerUrl = 'http://broker.pinot.mock';
 
@@ -308,5 +309,168 @@ void describe('Pinot client retries', async () => {
 
     await assert.rejects(client.select(query), PinotError);
     assert.equal(transport.calls, 1);
+  });
+});
+
+function stub(response: unknown): IPinotBrokerTransport {
+  return {
+    request: <TResponse>() => Promise.resolve(response as TResponse),
+    stats: { queued: 4 } as IPinotPoolStats,
+    close: () => Promise.resolve(),
+    setMaxQueueSize: () => {},
+  };
+}
+
+void describe('Pinot client response contracts', () => {
+  const resultTable = {
+    dataSchema: { columnNames: ['value'], columnDataTypes: ['STRING'] },
+    rows: [['first'], ['second'], ['third'], ['fourth']],
+  };
+
+  void test('passes query timeout, trace and options through and exposes transport stats', async (t) => {
+    const transport = stub({ resultTable });
+    const dispatch = t.mock.method(transport, 'request');
+    const client = new PinotClient({ transport });
+    const options = { timeoutMs: 50, queueTolerance: 0.5 };
+    await client.select(sql`SELECT ${'value'}`, options, true);
+    assert.equal(client.transportStats, transport.stats);
+    assert.deepEqual(dispatch.mock.calls[0]?.arguments[0], {
+      method: 'POST',
+      path: '/query/sql',
+      bodyTimeout: 50,
+      headersTimeout: 50,
+      options,
+      body: JSON.stringify({
+        sql: "SELECT 'value'",
+        queryOptions: 'timeoutMs=50',
+        trace: true,
+      }),
+    });
+  });
+
+  void test('custom parser receives each value and Pinot type', async (t) => {
+    const parse = t.mock.fn((value: unknown) => String(value).toUpperCase());
+    const client = new PinotClient({
+      transport: stub({ resultTable }),
+      valueParser: { parse },
+    });
+    const result = await client.select(sql`SELECT value`);
+    assert.deepEqual(result.rows, [
+      { value: 'FIRST' },
+      { value: 'SECOND' },
+      { value: 'THIRD' },
+      { value: 'FOURTH' },
+    ]);
+    assert.deepEqual(
+      parse.mock.calls.map((call) => call.arguments),
+      [
+        ['first', 'STRING'],
+        ['second', 'STRING'],
+        ['third', 'STRING'],
+        ['fourth', 'STRING'],
+      ],
+    );
+  });
+
+  void test('broker SQL exceptions include bounded first and last row context', async () => {
+    const exceptions = [{ errorCode: 150, message: 'bad query' }];
+    const client = new PinotClient({
+      transport: stub({ exceptions, resultTable }),
+      retry: { maxRetries: 0 },
+    });
+    await assert.rejects(client.select(sql`SELECT value`), (error: unknown) => {
+      assert.ok(error instanceof PinotError);
+      assert.equal(error.type, EPinotErrorType.SQL);
+      assert.equal(error.exceptions, exceptions);
+      assert.deepEqual(error.data, {
+        first: resultTable.rows.slice(0, 3),
+        last: resultTable.rows.slice(-3),
+        sql: 'SELECT value',
+        queryOptions: undefined,
+      });
+      return true;
+    });
+  });
+
+  void test('missing result table returns a diagnostic Pinot error', async () => {
+    const response = { exceptions: [] };
+    const client = new PinotClient({ transport: stub(response) });
+    await assert.rejects(client.select(sql`SELECT value`), (error: unknown) => {
+      assert.ok(error instanceof PinotError);
+      assert.equal(error.type, EPinotErrorType.UNKNOWN);
+      assert.deepEqual(error.data, {
+        response,
+        sql: 'SELECT value',
+        queryOptions: undefined,
+      });
+      return true;
+    });
+  });
+
+  void test('parser failures retain their cause and bounded result context', async () => {
+    const cause = new Error('parser rejected value');
+    const client = new PinotClient({
+      transport: stub({ resultTable }),
+      valueParser: {
+        parse: () => {
+          throw cause;
+        },
+      },
+    });
+    await assert.rejects(client.select(sql`SELECT value`), (error: unknown) => {
+      assert.ok(error instanceof PinotError);
+      assert.equal(error.type, EPinotErrorType.PARSE);
+      assert.equal(error.cause, cause);
+      assert.deepEqual(error.data, {
+        first: resultTable.rows.slice(0, 3),
+        last: resultTable.rows.slice(-3),
+        sql: 'SELECT value',
+        queryOptions: undefined,
+      });
+      return true;
+    });
+  });
+
+  void test('transport rejection propagates without SQL retries', async (t) => {
+    const cause = new Error('transport failed');
+    const transport = stub({ resultTable });
+    const dispatch = t.mock.method(transport, 'request', () =>
+      Promise.reject(cause),
+    );
+    await assert.rejects(
+      new PinotClient({ transport }).select(sql`SELECT value`),
+      (error: unknown) => error === cause,
+    );
+    assert.equal(dispatch.mock.callCount(), 1);
+  });
+
+  void test('custom retry codes and backoff schedule are applied without changing the request', async (t) => {
+    const transport = new SequenceTransport([150, 150]);
+    const dispatch = t.mock.method(transport, 'request');
+    const delays: number[] = [];
+    t.mock.method(
+      globalThis,
+      'setTimeout',
+      (callback: () => void, delay: number) => {
+        delays.push(delay);
+        callback();
+      },
+    );
+    const client = new PinotClient({
+      transport,
+      retry: {
+        retryableErrorCodes: [150],
+        retryDelayMs: 12,
+        backoffFactor: 3,
+        maxRetries: 2,
+      },
+    });
+    await client.select(sql`SELECT 1`);
+    assert.deepEqual(delays, [12, 36]);
+    assert.equal(dispatch.mock.callCount(), 3);
+    assert.deepEqual(
+      dispatch.mock.calls[0]?.arguments,
+      dispatch.mock.calls[2]?.arguments,
+    );
   });
 });

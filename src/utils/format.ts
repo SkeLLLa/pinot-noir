@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-conversion */
+import type { Sql } from '@no-esm/sql-template-tag';
+
 export class SqlFormat {
   private static ID_GLOBAL_REGEXP = /"/g;
   private static QUAL_GLOBAL_REGEXP = /\./g;
@@ -39,6 +41,9 @@ export class SqlFormat {
       case 'boolean':
         return val ? 'TRUE' : 'FALSE'; // Changed to uppercase
       case 'number':
+        if (!Number.isFinite(val)) {
+          throw new TypeError('SQL numbers must be finite');
+        }
         return val.toString() + '';
       case 'object':
         if (Object.prototype.toString.call(val) === '[object Date]') {
@@ -93,7 +98,7 @@ export class SqlFormat {
     }
 
     let chunkIndex = 0;
-    const placeholdersRegex = /\?+/g;
+    const placeholdersRegex = SqlFormat.sqlTokens();
     let result = '';
     let valuesIndex = 0;
     let match: RegExpExecArray | null;
@@ -104,7 +109,7 @@ export class SqlFormat {
     ) {
       const len = match[0].length;
 
-      if (len > 2) {
+      if (match[0][0] !== '?' || len > 2) {
         continue;
       }
 
@@ -124,6 +129,52 @@ export class SqlFormat {
 
     if (chunkIndex < sql.length) {
       result += sql.slice(chunkIndex);
+    }
+
+    return result;
+  }
+
+  // Treat quoted text and comments as indivisible tokens, including unfinished
+  // tokens. Backslashes are ordinary characters in Pinot SQL string literals.
+  private static sqlTokens(): RegExp {
+    return /'(?:''|[^'])*(?:'|$)|"(?:""|[^"])*(?:"|$)|`(?:``|[^`])*(?:`|$)|--[^\r\n]*|\/\*[\s\S]*?(?:\*\/|$)|\?+/g;
+  }
+
+  /** Compile the original template boundaries without reinterpreting SQL text. */
+  static formatQuery(query: Sql): string {
+    const { strings, values } = query;
+    if (strings.length !== values.length + 1) {
+      throw new TypeError('Invalid SQL template');
+    }
+    let result = strings[0] ?? '';
+    if (values.length === 0) {
+      return result;
+    }
+
+    const source = strings.join('?');
+    const tokens = source.matchAll(SqlFormat.sqlTokens());
+    let token = tokens.next();
+    let offset = 0;
+
+    for (let index = 0; index < values.length; index++) {
+      offset += strings[index]!.length;
+      while (
+        !token.done &&
+        token.value.index + token.value[0].length <= offset
+      ) {
+        token = tokens.next();
+      }
+      if (
+        token.done ||
+        token.value[0][0] !== '?' ||
+        token.value.index > offset
+      ) {
+        throw new TypeError(
+          'SQL values must appear outside quoted text and comments',
+        );
+      }
+      result += SqlFormat.escape(values[index], true) + strings[index + 1]!;
+      offset++;
     }
 
     return result;

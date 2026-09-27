@@ -137,6 +137,21 @@ console.log(result.stats);
 
 While using query options like `timeoutMs` they are passed to http request timeouts as well, so they shouldn't run longer than you expect the query should run.
 
+Pinot's request `queryOptions` format cannot represent values containing `;` or
+`=`. For structured values such as `skipIndexes`, use a SQL `SET` statement with
+the template tag's value escaping instead:
+
+```typescript
+const indexes = 'yearID=inverted,range';
+const query = sql`SET skipIndexes = ${indexes}; SELECT * FROM baseballStats`;
+const result = await pinotClient.select(query);
+```
+
+See [Pinot query options](https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/query-options)
+for the distinction between SQL `SET` and request options. Request policies such
+as `sqlOptionsMode=REJECT` can disable SQL `SET`; the client does not automatically
+move request options into SQL.
+
 ### Pools and queues
 
 #### Queue size

@@ -87,11 +87,19 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
     headersTimeout,
   }: IBrokerTransportRequestOptions): Promise<TResponse> {
     const queueSize = this.pool.stats.queued;
-    const maxQueueTolerance =
-      this.maxQueueSize && options?.queueTolerance !== undefined
-        ? this.maxQueueSize * options.queueTolerance
-        : this.maxQueueSize;
-    if (maxQueueTolerance && queueSize >= maxQueueTolerance) {
+    const queueTolerance = options?.queueTolerance ?? 1;
+    if (!Number.isFinite(queueTolerance) || queueTolerance < 0) {
+      throw new TypeError(
+        'Queue tolerance must be a finite, non-negative number.',
+      );
+    }
+    const maxQueueTolerance = this.maxQueueSize
+      ? this.maxQueueSize * queueTolerance
+      : undefined;
+    if (
+      maxQueueTolerance !== undefined &&
+      (queueTolerance === 0 ? queueSize > 0 : queueSize >= maxQueueTolerance)
+    ) {
       // Throw error
       throw new PinotError({
         data: { body, maxQueueTolerance, queueSize },
