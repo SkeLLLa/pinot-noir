@@ -114,6 +114,22 @@ Description
 </td></tr>
 <tr><td>
 
+[formatQuery(query)](./pinot-noir.sqlformat.formatquery.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Compile the original template boundaries without reinterpreting SQL text.
+
+
+</td></tr>
+<tr><td>
+
 [objectToValues(object, timeZone)](./pinot-noir.sqlformat.objecttovalues.md)
 
 

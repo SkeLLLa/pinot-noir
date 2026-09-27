@@ -1,3 +1,9 @@
+## [3.4.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.3.1...v3.4.0) (2026-09-27)
+
+### 🚀 Features
+
+* improve security for pinot options and sql ([95fdd5f](https://github.com/SkeLLLa/pinot-noir/commit/95fdd5fc77168cfe9ba87732bc460fc72cd78454))
+
 ## [3.3.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.3.0...v3.3.1) (2026-09-22)
 
 ### 🧾 Other
