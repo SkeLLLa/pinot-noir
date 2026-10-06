@@ -546,7 +546,7 @@ Description
 
 Default Pinot error codes that trigger a query retry.
 
-Contains transient broker/server side failures that are safe to retry. `BROKER_RESOURCE_MISSING` (410) can be caused by stale broker routing / external view updates and is usually resolved on retry.
+Contains transient broker/server side failures that are safe to retry.`BROKER_RESOURCE_MISSING` (410) can be caused by stale broker routing / external view updates and is usually resolved on retry.
 
 
 </td></tr>
