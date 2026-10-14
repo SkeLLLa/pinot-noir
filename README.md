@@ -8,7 +8,7 @@
 [![Codecov](https://img.shields.io/codecov/c/gh/SkeLLLa/pinot-noir.svg)](https://codecov.io/gh/SkeLLLa/pinot-noir)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/pinot-noir)](https://socket.dev/npm/package/pinot-noir)
 
-Unofficial node.js [Apache Pnot](https://pinot.apache.org/) client. Uses [undici](https://undici.nodejs.org) to make http requests to pinot brokers.
+Unofficial node.js [Apache Pinot](https://pinot.apache.org/) client. Uses [undici](https://undici.nodejs.org) to make http requests to pinot brokers.
 
 ## ToC
 
