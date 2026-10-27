@@ -1,3 +1,13 @@
+## [3.4.3](https://github.com/SkeLLLa/pinot-noir/compare/v3.4.2...v3.4.3) (2026-10-27)
+
+### 🛠 Fixes
+
+* **deps:** bump the all-minor-patch group with 4 updates ([75e841d](https://github.com/SkeLLLa/pinot-noir/commit/75e841d393fb1bf76a1573047d0f0aef75ef8fd2))
+
+### 🧾 Other
+
+* **deps:** bump github/codeql-action ([440c830](https://github.com/SkeLLLa/pinot-noir/commit/440c8300b3d1a151337794545fcfadc6ff536cd9))
+
 ## [3.4.2](https://github.com/SkeLLLa/pinot-noir/compare/v3.4.1...v3.4.2) (2026-10-20)
 
 ### 🛠 Fixes
