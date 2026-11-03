@@ -176,12 +176,74 @@ export interface IQueryStats {
      * Indicates if the maximum number of rows in window was reached.
      */
     maxRowsInWindowReached: boolean;
+    /**
+     * Indicates if the number of groups warning limit was reached. Set when the broker reports it.
+     */
+    groupsWarning?: boolean;
+    /**
+     * Indicates if the `maxRowsInDistinct` limit was reached. Set when the broker reports it.
+     */
+    maxRowsInDistinct?: boolean;
+    /**
+     * Indicates if the `maxRowsWithoutChangeInDistinct` limit was reached. Set when the broker reports it.
+     */
+    maxRowsWithoutChangeInDistinct?: boolean;
+    /**
+     * Indicates if the `maxExecutionTimeMsInDistinct` limit was reached. Set when the broker reports it.
+     */
+    maxExecutionTimeInDistinct?: boolean;
   };
 
   /**
    * Maximum number of rows in operator.
    */
   maxRowsInOperator?: number;
+
+  /**
+   * Indicates if the result is approximated (see the `useApproximateFunction` query option). Set when the broker reports it.
+   */
+  approximatedResult?: boolean;
+
+  /**
+   * Indicates if groups were trimmed (reduced in size after sorting). Set when the broker reports it.
+   */
+  groupsTrimmed?: boolean;
+
+  /**
+   * Memory allocated by the query, in bytes. Set when the broker reports thread memory allocation.
+   */
+  memAllocatedBytes?: {
+    offline: {
+      /** Thread memory allocated for query execution against offline segments. */
+      thread: number;
+      /** Memory allocated for response serialization against offline segments. */
+      responseSerialization: number;
+      /** Total memory allocated against offline segments. */
+      total: number;
+    };
+    realtime: {
+      /** Thread memory allocated for query execution against realtime segments. */
+      thread: number;
+      /** Memory allocated for response serialization against realtime segments. */
+      responseSerialization: number;
+      /** Total memory allocated against realtime segments. */
+      total: number;
+    };
+  };
+
+  /**
+   * Reads of segment data from a remote storage tier. Set when the broker reports them.
+   */
+  remoteAccess?: {
+    /** Number of remote accesses (local cache misses). */
+    count: number;
+    /** Bytes read by the remote accesses. */
+    bytes: number;
+    /** Number of remote accesses made directly, outside the buffers fetched for the query. */
+    directCount: number;
+    /** Bytes read by the direct remote accesses. */
+    directBytes: number;
+  };
 }
 
 /**

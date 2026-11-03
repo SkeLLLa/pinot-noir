@@ -11,5 +11,9 @@ limitsReached: {
         groups: boolean;
         maxRowsInJoin: boolean;
         maxRowsInWindowReached: boolean;
+        groupsWarning?: boolean;
+        maxRowsInDistinct?: boolean;
+        maxRowsWithoutChangeInDistinct?: boolean;
+        maxExecutionTimeInDistinct?: boolean;
     };
 ```

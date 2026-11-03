@@ -37,6 +37,25 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[approximatedResult?](./pinot-noir.iquerystats.approximatedresult.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the result is approximated (see the `useApproximateFunction` query option). Set when the broker reports it.
+
+
+</td></tr>
+<tr><td>
+
 [consumingSegments](./pinot-noir.iquerystats.consumingsegments.md)
 
 
@@ -94,6 +113,25 @@ Docs stats.
 </td></tr>
 <tr><td>
 
+[groupsTrimmed?](./pinot-noir.iquerystats.groupstrimmed.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if groups were trimmed (reduced in size after sorting). Set when the broker reports it.
+
+
+</td></tr>
+<tr><td>
+
 [limitsReached](./pinot-noir.iquerystats.limitsreached.md)
 
 
@@ -102,7 +140,7 @@ Docs stats.
 
 </td><td>
 
-{ groups: boolean; maxRowsInJoin: boolean; maxRowsInWindowReached: boolean; }
+{ groups: boolean; maxRowsInJoin: boolean; maxRowsInWindowReached: boolean; groupsWarning?: boolean; maxRowsInDistinct?: boolean; maxRowsWithoutChangeInDistinct?: boolean; maxExecutionTimeInDistinct?: boolean; }
 
 
 </td><td>
@@ -125,6 +163,25 @@ number
 </td><td>
 
 _(Optional)_ Maximum number of rows in operator.
+
+
+</td></tr>
+<tr><td>
+
+[memAllocatedBytes?](./pinot-noir.iquerystats.memallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ offline: { thread: number; responseSerialization: number; total: number; }; realtime: { thread: number; responseSerialization: number; total: number; }; }
+
+
+</td><td>
+
+_(Optional)_ Memory allocated by the query, in bytes. Set when the broker reports thread memory allocation.
 
 
 </td></tr>
@@ -161,6 +218,25 @@ Pruned by segments count.
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteAccess?](./pinot-noir.iquerystats.remoteaccess.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ count: number; bytes: number; directCount: number; directBytes: number; }
+
+
+</td><td>
+
+_(Optional)_ Reads of segment data from a remote storage tier. Set when the broker reports them.
 
 
 </td></tr>

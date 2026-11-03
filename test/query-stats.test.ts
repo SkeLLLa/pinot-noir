@@ -90,3 +90,66 @@ void test('copies maxRowsInOperator when the broker reports it', () => {
     100,
   );
 });
+
+void test('omits optional stats the broker does not report', () => {
+  const stats = new QueryStats(response);
+  assert.equal(stats.approximatedResult, undefined);
+  assert.equal(stats.groupsTrimmed, undefined);
+  assert.equal(stats.memAllocatedBytes, undefined);
+  assert.equal(stats.remoteAccess, undefined);
+  assert.deepEqual(Object.keys(stats.limitsReached), [
+    'groups',
+    'maxRowsInJoin',
+    'maxRowsInWindowReached',
+  ]);
+});
+
+void test('groups optional broker stats when reported', () => {
+  const stats = new QueryStats({
+    ...response,
+    approximatedResult: true,
+    groupsTrimmed: false,
+    numGroupsWarningLimitReached: true,
+    maxRowsInDistinctReached: false,
+    maxRowsWithoutChangeInDistinctReached: true,
+    maxExecutionTimeInDistinctReached: false,
+    offlineThreadMemAllocatedBytes: 1,
+    offlineResponseSerMemAllocatedBytes: 2,
+    offlineTotalMemAllocatedBytes: 3,
+    realtimeThreadMemAllocatedBytes: 4,
+    numRemoteAccesses: 5,
+    remoteAccessBytes: 6,
+  });
+  assert.equal(stats.approximatedResult, true);
+  assert.equal(stats.groupsTrimmed, false);
+  assert.deepEqual(stats.limitsReached, {
+    groups: true,
+    maxRowsInJoin: false,
+    maxRowsInWindowReached: false,
+    groupsWarning: true,
+    maxRowsInDistinct: false,
+    maxRowsWithoutChangeInDistinct: true,
+    maxExecutionTimeInDistinct: false,
+  });
+  assert.deepEqual(stats.memAllocatedBytes, {
+    offline: { thread: 1, responseSerialization: 2, total: 3 },
+    realtime: { thread: 4, responseSerialization: 0, total: 0 },
+  });
+  assert.deepEqual(stats.remoteAccess, {
+    count: 5,
+    bytes: 6,
+    directCount: 0,
+    directBytes: 0,
+  });
+});
+
+void test('reports memory stats when only realtime segments report them', () => {
+  const stats = new QueryStats({
+    ...response,
+    realtimeThreadMemAllocatedBytes: 7,
+  });
+  assert.deepEqual(stats.memAllocatedBytes, {
+    offline: { thread: 0, responseSerialization: 0, total: 0 },
+    realtime: { thread: 7, responseSerialization: 0, total: 0 },
+  });
+});

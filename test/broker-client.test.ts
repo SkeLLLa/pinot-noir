@@ -230,6 +230,10 @@ void describe('Pinot client', async () => {
         maxRowsInWindowReached: false,
       },
       maxRowsInOperator: undefined,
+      approximatedResult: undefined,
+      groupsTrimmed: undefined,
+      memAllocatedBytes: undefined,
+      remoteAccess: undefined,
     });
   });
 });

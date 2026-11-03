@@ -493,6 +493,7 @@ export interface IQueryResult<TRows = unknown> {
 
 // @public
 export interface IQueryStats {
+    approximatedResult?: boolean;
     consumingSegments: {
         freshTimeMs: number;
         queried: number;
@@ -516,13 +517,30 @@ export interface IQueryStats {
         returned: number;
         total: number;
     };
+    groupsTrimmed?: boolean;
     // (undocumented)
     limitsReached: {
         groups: boolean;
         maxRowsInJoin: boolean;
         maxRowsInWindowReached: boolean;
+        groupsWarning?: boolean;
+        maxRowsInDistinct?: boolean;
+        maxRowsWithoutChangeInDistinct?: boolean;
+        maxExecutionTimeInDistinct?: boolean;
     };
     maxRowsInOperator?: number;
+    memAllocatedBytes?: {
+        offline: {
+            thread: number;
+            responseSerialization: number;
+            total: number;
+        };
+        realtime: {
+            thread: number;
+            responseSerialization: number;
+            total: number;
+        };
+    };
     prunedSegments: {
         broker: number;
         server: number;
@@ -534,6 +552,12 @@ export interface IQueryStats {
     queryTimeMs: {
         total: number;
         brokerReduce: number;
+    };
+    remoteAccess?: {
+        count: number;
+        bytes: number;
+        directCount: number;
+        directBytes: number;
     };
     segments: {
         queried: number;

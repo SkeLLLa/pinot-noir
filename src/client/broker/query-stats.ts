@@ -1,6 +1,10 @@
 import type { IBrokerResponseStats } from './broker-respone.types';
 import type { IQueryStats } from './types';
 
+type TLimitsReached = IQueryStats['limitsReached'];
+type TMemAllocatedBytes = NonNullable<IQueryStats['memAllocatedBytes']>;
+type TRemoteAccess = NonNullable<IQueryStats['remoteAccess']>;
+
 /**
  * Query stats.
  *
@@ -52,12 +56,12 @@ export class QueryStats implements IQueryStats {
     total: number;
     brokerReduce: number;
   };
-  limitsReached: {
-    groups: boolean;
-    maxRowsInJoin: boolean;
-    maxRowsInWindowReached: boolean;
-  };
+  limitsReached: TLimitsReached;
   maxRowsInOperator?: number;
+  approximatedResult?: boolean;
+  groupsTrimmed?: boolean;
+  memAllocatedBytes?: TMemAllocatedBytes;
+  remoteAccess?: TRemoteAccess;
 
   /**
    * Constructs a QueryStats instance.
@@ -110,13 +114,86 @@ export class QueryStats implements IQueryStats {
       total: response.timeUsedMs,
       brokerReduce: response.brokerReduceTimeMs,
     };
-    this.limitsReached = {
+    this.limitsReached = QueryStats.toLimitsReached(response);
+    if (response.maxRowsInOperator !== undefined) {
+      this.maxRowsInOperator = response.maxRowsInOperator;
+    }
+    if (response.approximatedResult !== undefined) {
+      this.approximatedResult = response.approximatedResult;
+    }
+    if (response.groupsTrimmed !== undefined) {
+      this.groupsTrimmed = response.groupsTrimmed;
+    }
+    const memAllocatedBytes = QueryStats.toMemAllocatedBytes(response);
+    if (memAllocatedBytes) {
+      this.memAllocatedBytes = memAllocatedBytes;
+    }
+    const remoteAccess = QueryStats.toRemoteAccess(response);
+    if (remoteAccess) {
+      this.remoteAccess = remoteAccess;
+    }
+  }
+
+  // Optional limits are added only when the broker reports them.
+  private static toLimitsReached(
+    response: IBrokerResponseStats,
+  ): TLimitsReached {
+    const limits: TLimitsReached = {
       groups: response.numGroupsLimitReached,
       maxRowsInJoin: response.maxRowsInJoinReached ?? false,
       maxRowsInWindowReached: response.maxRowsInWindowReached ?? false,
     };
-    if (response.maxRowsInOperator !== undefined) {
-      this.maxRowsInOperator = response.maxRowsInOperator;
+    const optional = {
+      groupsWarning: response.numGroupsWarningLimitReached,
+      maxRowsInDistinct: response.maxRowsInDistinctReached,
+      maxRowsWithoutChangeInDistinct:
+        response.maxRowsWithoutChangeInDistinctReached,
+      maxExecutionTimeInDistinct: response.maxExecutionTimeInDistinctReached,
+    };
+    for (const [key, value] of Object.entries(optional)) {
+      if (value !== undefined) {
+        limits[key as keyof typeof optional] = value;
+      }
     }
+    return limits;
+  }
+
+  private static toMemAllocatedBytes(
+    response: IBrokerResponseStats,
+  ): TMemAllocatedBytes | undefined {
+    if (
+      response.offlineThreadMemAllocatedBytes === undefined &&
+      response.realtimeThreadMemAllocatedBytes === undefined
+    ) {
+      return undefined;
+    }
+    return {
+      offline: {
+        thread: response.offlineThreadMemAllocatedBytes ?? 0,
+        responseSerialization:
+          response.offlineResponseSerMemAllocatedBytes ?? 0,
+        total: response.offlineTotalMemAllocatedBytes ?? 0,
+      },
+      realtime: {
+        thread: response.realtimeThreadMemAllocatedBytes ?? 0,
+        responseSerialization:
+          response.realtimeResponseSerMemAllocatedBytes ?? 0,
+        total: response.realtimeTotalMemAllocatedBytes ?? 0,
+      },
+    };
+  }
+
+  private static toRemoteAccess(
+    response: IBrokerResponseStats,
+  ): TRemoteAccess | undefined {
+    if (response.numRemoteAccesses === undefined) {
+      return undefined;
+    }
+    return {
+      count: response.numRemoteAccesses,
+      bytes: response.remoteAccessBytes ?? 0,
+      directCount: response.numDirectRemoteAccesses ?? 0,
+      directBytes: response.directRemoteAccessBytes ?? 0,
+    };
   }
 }
