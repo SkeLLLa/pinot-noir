@@ -1,3 +1,18 @@
+## [3.6.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.5.0...v3.6.0) (2026-11-03)
+
+### 🚀 Features
+
+* expose new broker stats on QueryStats ([00266a9](https://github.com/SkeLLLa/pinot-noir/commit/00266a9174cc01d5c7875a7bee72ca66dc736d36))
+
+### 🧾 Other
+
+* **deps:** override minimatch to 11 to fix CVE-2026-118764 ([648601e](https://github.com/SkeLLLa/pinot-noir/commit/648601e262b6a8462a2f1bbe8348cf0429bdb278))
+* **release:** 3.5.1 [skip ci] ([4496be6](https://github.com/SkeLLLa/pinot-noir/commit/4496be641482c26141ff7e7ea65f4cf13c3b1607))
+
+### 🛠 Fixes
+
+* make the SQL block-comment token regex linear ([1b8fe4c](https://github.com/SkeLLLa/pinot-noir/commit/1b8fe4c9f2cf8c7a7b96c0f4ba92043aa01bd8b4))
+
 ## [3.5.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.5.0...v3.5.1) (2026-11-03)
 
 ### 🛠 Fixes
