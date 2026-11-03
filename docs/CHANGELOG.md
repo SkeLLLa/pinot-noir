@@ -1,3 +1,9 @@
+## [3.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.4.3...v3.5.0) (2026-11-03)
+
+### 🚀 Features
+
+* improve ci & new query options ([9c4585c](https://github.com/SkeLLLa/pinot-noir/commit/9c4585c0674df436e4f7526188ada440b9d96507))
+
 ## [3.4.3](https://github.com/SkeLLLa/pinot-noir/compare/v3.4.2...v3.4.3) (2026-10-27)
 
 ### 🛠 Fixes
