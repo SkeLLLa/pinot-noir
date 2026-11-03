@@ -7,3 +7,4 @@ overrides:
   brace-expansion@>=5.0.0 <5.0.12: ^5.0.12
   fast-uri@>=3.0.0 <3.1.9: ^3.1.9
   handlebars@<4.7.10: ^4.7.10
+  minimatch@<11.0.1: ^11.0.1

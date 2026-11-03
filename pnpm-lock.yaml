@@ -166,6 +166,7 @@ overrides:
   brace-expansion@>=5.0.0 <5.0.12: ^5.0.12
   fast-uri@>=3.0.0 <3.1.9: ^3.1.9
   handlebars@<4.7.10: ^4.7.10
+  minimatch@<11.0.1: ^11.0.1
 
 importers:
 
@@ -417,6 +418,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@isaacs/nonrecursive-glob-match@1.0.3':
+    resolution: {integrity: sha512-SI7kyKHq4XXDRozw+r9GlRZkia1ZkFrpLW98r2IC2Bpr8YkFGE3fvjzmxCG0x78A++69HmDNrDvSMYBZmHGpKA==}
 
   '@microsoft/api-documenter@7.30.20':
     resolution: {integrity: sha512-aGyajeJv7uXKUKk3Ds8geXWnWI7NHBtk7jeWPYOSQlsIKP+B5Zo+4THt1V+orRdQi/GiB+P0F1F6Y6TIGuk28g==}
@@ -1609,8 +1613,8 @@ packages:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
 
-  minimatch@10.2.3:
-    resolution: {integrity: sha512-Rwi3pnapEqirPSbWbrZaa6N3nmqq4Xer/2XooiOKyV3q12ML06f7MOuc5DVH8ONZIFhwIYQ3yzPH4nt7iWHaTg==}
+  minimatch@11.0.3:
+    resolution: {integrity: sha512-iny/40PEGkNJQ5/Pv6z3nm6FbRAby32GeZRjCUJk2WnNDbgPSTcdI+DDvLqsgBdD4cD5sMtMheqPPnehCCa8Nw==}
     engines: {node: 18 || 20 || >=22}
 
   minimist@1.2.8:
@@ -2364,6 +2368,8 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
+  '@isaacs/nonrecursive-glob-match@1.0.3': {}
+
   '@microsoft/api-documenter@7.30.20(@types/node@26.6.6)':
     dependencies:
       '@microsoft/api-extractor-model': 7.33.16(@types/node@26.6.6)
@@ -2394,7 +2400,7 @@ snapshots:
       '@rushstack/terminal': 0.24.8(@types/node@26.6.6)
       '@rushstack/ts-command-line': 5.3.18(@types/node@26.6.6)
       diff: 8.0.4
-      minimatch: 10.2.3
+      minimatch: 11.0.3
       resolve: 1.22.12
       semver: 7.7.4
       source-map: 0.6.1
@@ -3431,8 +3437,9 @@ snapshots:
 
   mimic-fn@4.0.0: {}
 
-  minimatch@10.2.3:
+  minimatch@11.0.3:
     dependencies:
+      '@isaacs/nonrecursive-glob-match': 1.0.3
       brace-expansion: 5.0.12
 
   minimist@1.2.8: {}
