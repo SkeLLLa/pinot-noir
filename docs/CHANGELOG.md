@@ -1,3 +1,13 @@
+## [3.5.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.5.0...v3.5.1) (2026-11-03)
+
+### 🛠 Fixes
+
+* make the SQL block-comment token regex linear ([1b8fe4c](https://github.com/SkeLLLa/pinot-noir/commit/1b8fe4c9f2cf8c7a7b96c0f4ba92043aa01bd8b4))
+
+### 🧾 Other
+
+* **deps:** override minimatch to 11 to fix CVE-2026-118764 ([648601e](https://github.com/SkeLLLa/pinot-noir/commit/648601e262b6a8462a2f1bbe8348cf0429bdb278))
+
 ## [3.5.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.4.3...v3.5.0) (2026-11-03)
 
 ### 🚀 Features
