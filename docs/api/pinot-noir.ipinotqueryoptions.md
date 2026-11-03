@@ -75,6 +75,25 @@ _(Optional)_ For single-stage selection queries, allows Pinot to read a sorted s
 </td></tr>
 <tr><td>
 
+[andRestrictionPushdownMode?](./pinot-noir.ipinotqueryoptions.andrestrictionpushdownmode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'ALWAYS' \| 'NEVER' \| 'AUTO'
+
+
+</td><td>
+
+_(Optional)_ Per-query override of the server's AND restriction pushdown mode, which pushes AND restrictions into composite filter children. (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
 [andScanReordering?](./pinot-noir.ipinotqueryoptions.andscanreordering.md)
 
 
@@ -113,6 +132,44 @@ _(Optional)_ Assigns the query to a named application for application-level quer
 </td></tr>
 <tr><td>
 
+[autoRewriteAggregationType?](./pinot-noir.ipinotqueryoptions.autorewriteaggregationtype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Rewrite aggregations by input operand type to improve performance and avoid precision loss from double-based aggregations, e.g. `MIN(longCol)` to `MINLONG(longCol)`<!-- -->, `SUM(intCol)` to `SUMINT(intCol)`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[chunkSizeExtractFinalResult?](./pinot-noir.ipinotqueryoptions.chunksizeextractfinalresult.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Chunk size used in the final reduce at broker level.
+
+
+</td></tr>
+<tr><td>
+
 [clientQueryId?](./pinot-noir.ipinotqueryoptions.clientqueryid.md)
 
 
@@ -127,6 +184,25 @@ string
 </td><td>
 
 _(Optional)_ Custom correlation ID for a query, used for tracking and query cancellation.
+
+
+</td></tr>
+<tr><td>
+
+[collectGCStats?](./pinot-noir.ipinotqueryoptions.collectgcstats.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Collect garbage-collection stats for the query.
 
 
 </td></tr>
@@ -360,6 +436,63 @@ _(Optional)_ When set to `true`<!-- -->, a cursor is returned instead of the com
 </td></tr>
 <tr><td>
 
+[groupingSetsBaseAggregation?](./pinot-noir.ipinotqueryoptions.groupingsetsbaseaggregation.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ For `GROUP BY GROUPING SETS` / `ROLLUP` / `CUBE`<!-- -->: aggregate only the base grouping per segment and derive the grouping sets in the combine phase. Can help when many rows collapse into few base groups; can regress for expensive-to-merge intermediates such as sketches. (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
+[groupingSetsBaseAggregationMaxGroups?](./pinot-noir.ipinotqueryoptions.groupingsetsbaseaggregationmaxgroups.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Per-segment bound on the estimated base-group count for `groupingSetsBaseAggregation`<!-- -->. (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
+[groupingSetsMinServerTrimSize?](./pinot-noir.ipinotqueryoptions.groupingsetsminservertrimsize.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ For grouping sets with base aggregation and an `ORDER BY`<!-- -->: minimum number of groups each server keeps within each grouping set (`max(5 * LIMIT, value)`<!-- -->). Non-positive disables the per-set trim. (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
 [groupTrimThreshold?](./pinot-noir.ipinotqueryoptions.grouptrimthreshold.md)
 
 
@@ -393,6 +526,45 @@ boolean
 </td><td>
 
 _(Optional)_ Ignores `SERVER_SEGMENT_MISSING` exceptions when a routed segment is unavailable on a server, so the query can continue instead of failing. The query can succeed while silently omitting data from the missing segments.
+
+
+</td></tr>
+<tr><td>
+
+[inferAnyValueType?](./pinot-noir.ipinotqueryoptions.inferanyvaluetype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Rewrite `ANY_VALUE(expr)` to return the type of `expr` instead of the legacy result type (`STRING` in the single-stage engine). (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
+[inferInvalidSegmentPartition?](./pinot-noir.ipinotqueryoptions.inferinvalidsegmentpartition.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ When auto-inferring data partitioning, let the multi-stage optimizer infer a segment's partition from its name when the segment has multiple partitions in its `columnPartitionMap`<!-- -->.
+
 
 
 </td></tr>
@@ -469,6 +641,25 @@ boolean
 </td><td>
 
 _(Optional)_ Indicates that the values in the IN clause are already sorted.
+
+
+</td></tr>
+<tr><td>
+
+[inPredicatePruningThreshold?](./pinot-noir.ipinotqueryoptions.inpredicatepruningthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum number of values in an `IN` predicate for which Pinot attempts value-based or bloom-filter segment pruning. A larger positive value permits pruning for larger lists; a negative value always attempts pruning. Controls whole-segment pruning only.
 
 
 </td></tr>
@@ -626,6 +817,25 @@ _(Optional)_ Wall-clock time budget in milliseconds for the combine operator in 
 </td></tr>
 <tr><td>
 
+[maxInitialResultHolderCapacity?](./pinot-noir.ipinotqueryoptions.maxinitialresultholdercapacity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum initial capacity of the group-by result holder.
+
+
+</td></tr>
+<tr><td>
+
 [maxQueryResponseSizeBytes?](./pinot-noir.ipinotqueryoptions.maxqueryresponsesizebytes.md)
 
 
@@ -740,6 +950,25 @@ _(Optional)_ Maximum length of the serialized response per server for a query.
 </td></tr>
 <tr><td>
 
+[maxStreamingPendingBlocks?](./pinot-noir.ipinotqueryoptions.maxstreamingpendingblocks.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum number of pending result blocks allowed in the streaming operator.
+
+
+</td></tr>
+<tr><td>
+
 [minBrokerGroupTrimSize?](./pinot-noir.ipinotqueryoptions.minbrokergrouptrimsize.md)
 
 
@@ -816,6 +1045,26 @@ _(Optional)_ Minimum groups to keep when trimming groups at the server level for
 </td></tr>
 <tr><td>
 
+[mseMaxInitialResultHolderCapacity?](./pinot-noir.ipinotqueryoptions.msemaxinitialresultholdercapacity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum initial capacity of the group-by result holder in the multi-stage engine.
+
+
+
+</td></tr>
+<tr><td>
+
 [mseMinGroupTrimSize?](./pinot-noir.ipinotqueryoptions.msemingrouptrimsize.md)
 
 
@@ -830,6 +1079,26 @@ number
 </td><td>
 
 _(Optional)_ For multi-stage group-by queries, sets how many groups Pinot keeps when trimming intermediate-stage aggregation results. Provides the same override as the `mse_min_group_trim_size` aggregate hint.
+
+
+</td></tr>
+<tr><td>
+
+[multiStageLeafLimit?](./pinot-noir.ipinotqueryoptions.multistageleaflimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum number of rows the multi-stage engine reads from each leaf stage.
+
 
 
 </td></tr>
@@ -892,6 +1161,44 @@ _(Optional)_ Number of replica groups to query when replica-group based routing 
 </td></tr>
 <tr><td>
 
+[numThreadsExtractFinalResult?](./pinot-noir.ipinotqueryoptions.numthreadsextractfinalresult.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Number of threads used in the final reduce. Useful for expensive aggregation functions such as funnels.
+
+
+</td></tr>
+<tr><td>
+
+[optimizeMaxInitialResultHolderCapacity?](./pinot-noir.ipinotqueryoptions.optimizemaxinitialresultholdercapacity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Single-stage `GROUP BY`<!-- -->: use equality and `IN` predicates on single-value grouping columns to reduce the initial result-holder capacity. Best effort.
+
+
+</td></tr>
+<tr><td>
+
 [orderedPreferredPools?](./pinot-noir.ipinotqueryoptions.orderedpreferredpools.md)
 
 
@@ -911,6 +1218,25 @@ _(Optional)_ Specifies a prioritized list of server pools for broker query routi
 </td></tr>
 <tr><td>
 
+[partitionPruningPreparationThreshold?](./pinot-noir.ipinotqueryoptions.partitionpruningpreparationthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Minimum candidate segments at which the broker prepares partition-pruning predicate IDs once for this query. Overrides the table and cluster settings. A negative value disables preparation, not partition pruning. (introduced in 1.7.0)
+
+
+</td></tr>
+<tr><td>
+
 [queueTolerance?](./pinot-noir.ipinotqueryoptions.queuetolerance.md)
 
 
@@ -925,6 +1251,25 @@ _(Optional)_ Specifies a prioritized list of server pools for broker query routi
 </td><td>
 
 _(Optional)_ Queue tolerance in percent of `maxQueueSize`<!-- -->. If maxQueueSize \* queueTolerance &lt;<!-- -->= queue size the request is discarded.
+
+
+</td></tr>
+<tr><td>
+
+[regexDictSizeThreshold?](./pinot-noir.ipinotqueryoptions.regexdictsizethreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ For `REGEXP_LIKE` on a dictionary-encoded column: below this dictionary size, scan the dictionary for matching ids first (and use an inverted index if one exists); otherwise match while scanning the forward index.
 
 
 </td></tr>
@@ -963,6 +1308,26 @@ string
 </td><td>
 
 _(Optional)_ Selects a named table sampler from the table config to run the query against a sampled subset of segments.
+
+
+</td></tr>
+<tr><td>
+
+[sealedInListThreshold?](./pinot-noir.ipinotqueryoptions.sealedinlistthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ In multi-stage planning, seal `IN` and `NOT IN` lists with at least this many values while Calcite optimizes the query, then restore them. Reduces planning time for large lists. `0` or a negative value disables sealing.
+
 
 
 </td></tr>
@@ -1082,6 +1447,25 @@ _(Optional)_ For upsert-enabled table, skip the effect of upsert and query all r
 </td></tr>
 <tr><td>
 
+[skipUpsertDelete?](./pinot-noir.ipinotqueryoptions.skipupsertdelete.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ For upsert-enabled tables, include rows deleted via `deleteRecordColumn` (tombstones), which queries exclude by default.
+
+
+</td></tr>
+<tr><td>
+
 [skipUpsertView?](./pinot-noir.ipinotqueryoptions.skipupsertview.md)
 
 
@@ -1153,6 +1537,45 @@ number
 </td><td>
 
 _(Optional)_ For multi-stage `ORDER BY ... LIMIT` queries, controls when Pinot pushes the sort-and-limit operation below the sort exchange so each upstream worker sends only its top rows. Applied only when the effective fetch is at or below this integer threshold.
+
+
+</td></tr>
+<tr><td>
+
+[sqlOptionsMode?](./pinot-noir.ipinotqueryoptions.sqloptionsmode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'ALLOW' \| 'IGNORE' \| 'REJECT'
+
+
+</td><td>
+
+_(Optional)_ How Pinot handles query options embedded in the SQL text (`SET` statements and the legacy `OPTION(...)` suffix): `ALLOW` merges them with precedence over the request options, `IGNORE` drops them (a `DELETE` statement carrying any fails), `REJECT` fails the query. Takes effect only as a request option, which is how this client sends options.
+
+
+</td></tr>
+<tr><td>
+
+[streamingDistinctFlushThreshold?](./pinot-noir.ipinotqueryoptions.streamingdistinctflushthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ For eligible multi-stage `DISTINCT` queries (no `ORDER BY`<!-- -->, leaf `LIMIT` above the threshold), flush the leaf's accumulated distinct values downstream when their count reaches this positive threshold. Otherwise a no-op.
+
 
 
 </td></tr>
@@ -1267,6 +1690,25 @@ number
 </td><td>
 
 _(Optional)_ For upsert tables using `SNAPSHOT` consistency mode, overrides the query-time freshness window for the upsert view. `0` forces a refresh for every query.
+
+
+</td></tr>
+<tr><td>
+
+[useApproximateFunction?](./pinot-noir.ipinotqueryoptions.useapproximatefunction.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Set `true` to rewrite eligible exact distinct-count and percentile aggregates to SMART variants, or `false` to keep them exact for this query. Overrides the table setting (single-stage only), cluster config, and broker config in both query engines. The response sets `approximatedResult` when a SMART function actually becomes approximate.
 
 
 </td></tr>
@@ -1438,6 +1880,25 @@ string
 </td><td>
 
 _(Optional)_ Comma-delimited list of defaultly-disabled MSE query planner rules to enable, e.g. `'AggregateJoinTransposeExtended,SortProjectTranspose'`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[useScanReorderOpt?](./pinot-noir.ipinotqueryoptions.usescanreorderopt.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Set `false` to disable reordering scan-based filter predicates.
 
 
 </td></tr>

@@ -37,6 +37,25 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[approximatedResult?](./pinot-noir.ibrokerresponsestats.approximatedresult.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the result is approximated: a function that can return an exact result returned an approximate one (for example a SMART function such as `DISTINCT_COUNT_SMART_HLL` crossing its conversion threshold). See the `useApproximateFunction` query option.
+
+
+</td></tr>
+<tr><td>
+
 [brokerReduceTimeMs](./pinot-noir.ibrokerresponsestats.brokerreducetimems.md)
 
 
@@ -51,6 +70,25 @@ number
 </td><td>
 
 Broker reduce time in milliseconds.
+
+
+</td></tr>
+<tr><td>
+
+[directRemoteAccessBytes?](./pinot-noir.ibrokerresponsestats.directremoteaccessbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Bytes read by the direct remote accesses.
 
 
 </td></tr>
@@ -89,6 +127,83 @@ number
 </td><td>
 
 Number of match all filter segments in explain plan.
+
+
+</td></tr>
+<tr><td>
+
+[groupsTrimmed?](./pinot-noir.ibrokerresponsestats.groupstrimmed.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if groups were trimmed (reduced in size after sorting).
+
+
+</td></tr>
+<tr><td>
+
+[maxExecutionTimeInDistinctReached?](./pinot-noir.ibrokerresponsestats.maxexecutiontimeindistinctreached.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the `maxExecutionTimeMsInDistinct` limit was reached.
+
+
+</td></tr>
+<tr><td>
+
+[maxRowsInDistinctReached?](./pinot-noir.ibrokerresponsestats.maxrowsindistinctreached.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the `maxRowsInDistinct` limit was reached.
+
+
+</td></tr>
+<tr><td>
+
+[maxRowsInJoin?](./pinot-noir.ibrokerresponsestats.maxrowsinjoin.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum number of rows in join (the limit `maxRowsInJoinReached` refers to).
+
 
 
 </td></tr>
@@ -134,6 +249,26 @@ _(Optional)_ Maximum number of rows in operator.
 </td></tr>
 <tr><td>
 
+[maxRowsInWindow?](./pinot-noir.ibrokerresponsestats.maxrowsinwindow.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum number of rows in window (the limit `maxRowsInWindowReached` refers to).
+
+
+
+</td></tr>
+<tr><td>
+
 [maxRowsInWindowReached?](./pinot-noir.ibrokerresponsestats.maxrowsinwindowreached.md)
 
 
@@ -154,6 +289,25 @@ _(Optional)_ Indicates if the maximum number of rows in window was reached.
 </td></tr>
 <tr><td>
 
+[maxRowsWithoutChangeInDistinctReached?](./pinot-noir.ibrokerresponsestats.maxrowswithoutchangeindistinctreached.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the `maxRowsWithoutChangeInDistinct` limit was reached.
+
+
+</td></tr>
+<tr><td>
+
 [minConsumingFreshnessTimeMs](./pinot-noir.ibrokerresponsestats.minconsumingfreshnesstimems.md)
 
 
@@ -168,6 +322,66 @@ number
 </td><td>
 
 Minimum consuming freshness time in milliseconds.
+
+
+</td></tr>
+<tr><td>
+
+[mseLiteFanOutAdjustedLimitApplied?](./pinot-noir.ibrokerresponsestats.mselitefanoutadjustedlimitapplied.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the MSE Lite leaf-stage limit was adjusted for fan-out.
+
+
+
+</td></tr>
+<tr><td>
+
+[mseLiteLeafStageEffectiveLimit?](./pinot-noir.ibrokerresponsestats.mseliteleafstageeffectivelimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Effective MSE Lite leaf-stage limit.
+
+
+
+</td></tr>
+<tr><td>
+
+[mseLiteLeafStageLimitReached?](./pinot-noir.ibrokerresponsestats.mseliteleafstagelimitreached.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the MSE Lite leaf-stage limit was reached.
+
 
 
 </td></tr>
@@ -230,6 +444,25 @@ Number of consuming segments queried.
 </td></tr>
 <tr><td>
 
+[numDirectRemoteAccesses?](./pinot-noir.ibrokerresponsestats.numdirectremoteaccesses.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Number of remote accesses made directly, outside the buffers fetched for the query.
+
+
+</td></tr>
+<tr><td>
+
 [numDocsScanned](./pinot-noir.ibrokerresponsestats.numdocsscanned.md)
 
 
@@ -287,6 +520,26 @@ Number of entries scanned post filter.
 </td></tr>
 <tr><td>
 
+[numGroups?](./pinot-noir.ibrokerresponsestats.numgroups.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Number of groups.
+
+
+
+</td></tr>
+<tr><td>
+
 [numGroupsLimitReached](./pinot-noir.ibrokerresponsestats.numgroupslimitreached.md)
 
 
@@ -301,6 +554,44 @@ boolean
 </td><td>
 
 Indicates if the number of groups limit was reached.
+
+
+</td></tr>
+<tr><td>
+
+[numGroupsWarningLimitReached?](./pinot-noir.ibrokerresponsestats.numgroupswarninglimitreached.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates if the number of groups warning limit was reached.
+
+
+</td></tr>
+<tr><td>
+
+[numRemoteAccesses?](./pinot-noir.ibrokerresponsestats.numremoteaccesses.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Number of remote accesses (local cache misses) made to read segment data from a remote storage tier. `0` when segments are not backed by one.
 
 
 </td></tr>
@@ -534,6 +825,25 @@ Offline response serialization CPU time in nanoseconds.
 </td></tr>
 <tr><td>
 
+[offlineResponseSerMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.offlineresponsesermemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Memory bytes allocated for response serialization against the offline table.
+
+
+</td></tr>
+<tr><td>
+
 [offlineSystemActivitiesCpuTimeNs](./pinot-noir.ibrokerresponsestats.offlinesystemactivitiescputimens.md)
 
 
@@ -572,6 +882,25 @@ Offline thread CPU time in nanoseconds.
 </td></tr>
 <tr><td>
 
+[offlineThreadMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.offlinethreadmemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Thread memory bytes allocated for query execution against the offline table.
+
+
+</td></tr>
+<tr><td>
+
 [offlineTotalCpuTimeNs](./pinot-noir.ibrokerresponsestats.offlinetotalcputimens.md)
 
 
@@ -591,6 +920,25 @@ Offline total CPU time in nanoseconds.
 </td></tr>
 <tr><td>
 
+[offlineTotalMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.offlinetotalmemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Total memory bytes allocated for query execution and response serialization against the offline table.
+
+
+</td></tr>
+<tr><td>
+
 [realtimeResponseSerializationCpuTimeNs](./pinot-noir.ibrokerresponsestats.realtimeresponseserializationcputimens.md)
 
 
@@ -605,6 +953,25 @@ number
 </td><td>
 
 Realtime response serialization CPU time in nanoseconds.
+
+
+</td></tr>
+<tr><td>
+
+[realtimeResponseSerMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.realtimeresponsesermemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Memory bytes allocated for response serialization against the realtime table.
 
 
 </td></tr>
@@ -648,6 +1015,25 @@ Realtime thread CPU time in nanoseconds.
 </td></tr>
 <tr><td>
 
+[realtimeThreadMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.realtimethreadmemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Thread memory bytes allocated for query execution against the realtime table.
+
+
+</td></tr>
+<tr><td>
+
 [realtimeTotalCpuTimeNs](./pinot-noir.ibrokerresponsestats.realtimetotalcputimens.md)
 
 
@@ -662,6 +1048,44 @@ number
 </td><td>
 
 Realtime total CPU time in nanoseconds.
+
+
+</td></tr>
+<tr><td>
+
+[realtimeTotalMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.realtimetotalmemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Total memory bytes allocated for query execution and response serialization against the realtime table.
+
+
+</td></tr>
+<tr><td>
+
+[remoteAccessBytes?](./pinot-noir.ibrokerresponsestats.remoteaccessbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Bytes read by the remote accesses.
 
 
 </td></tr>
@@ -719,6 +1143,26 @@ number
 </td><td>
 
 Total number of documents.
+
+
+</td></tr>
+<tr><td>
+
+[totalMemAllocatedBytes?](./pinot-noir.ibrokerresponsestats.totalmemallocatedbytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Heap bytes allocated by the query across all its stages and workers (total allocated, not peak heap used).
+
 
 
 </td></tr>

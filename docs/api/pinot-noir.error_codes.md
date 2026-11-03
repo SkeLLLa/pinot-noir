@@ -466,5 +466,21 @@ UNKNOWN\_ERROR\_CODE
 
 
 </td></tr>
+<tr><td>
+
+WORKLOAD\_BUDGET\_EXCEEDED\_ERROR\_CODE
+
+
+</td><td>
+
+`430`
+
+
+</td><td>
+
+Workload budget exceeded. Pinot 1.6.0 and earlier report it as 429. (introduced in 1.7.0)
+
+
+</td></tr>
 </tbody></table>
 

@@ -548,6 +548,82 @@ export interface IBrokerResponseStats {
    * @see {@link https://docs.pinot.apache.org/users/api/querying-pinot-using-standard-sql/response-format#explainplannummatchallfiltersegments | explainPlanNumMatchAllFilterSegments}
    */
   explainPlanNumMatchAllFilterSegments: number;
+  /**
+   * Indicates if the result is approximated: a function that can return an exact result returned an approximate one (for example a SMART function such as `DISTINCT_COUNT_SMART_HLL` crossing its conversion threshold). See the `useApproximateFunction` query option.
+   */
+  approximatedResult?: boolean;
+  /** Indicates if groups were trimmed (reduced in size after sorting). */
+  groupsTrimmed?: boolean;
+  /** Indicates if the number of groups warning limit was reached. */
+  numGroupsWarningLimitReached?: boolean;
+  /**
+   * Number of groups.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  numGroups?: number;
+  /**
+   * Maximum number of rows in join (the limit `maxRowsInJoinReached` refers to).
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  maxRowsInJoin?: number;
+  /**
+   * Maximum number of rows in window (the limit `maxRowsInWindowReached` refers to).
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  maxRowsInWindow?: number;
+  /** Indicates if the `maxRowsInDistinct` limit was reached. */
+  maxRowsInDistinctReached?: boolean;
+  /** Indicates if the `maxRowsWithoutChangeInDistinct` limit was reached. */
+  maxRowsWithoutChangeInDistinctReached?: boolean;
+  /** Indicates if the `maxExecutionTimeMsInDistinct` limit was reached. */
+  maxExecutionTimeInDistinctReached?: boolean;
+  /**
+   * Indicates if the MSE Lite leaf-stage limit was reached.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  mseLiteLeafStageLimitReached?: boolean;
+  /**
+   * Effective MSE Lite leaf-stage limit.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  mseLiteLeafStageEffectiveLimit?: number;
+  /**
+   * Indicates if the MSE Lite leaf-stage limit was adjusted for fan-out.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  mseLiteFanOutAdjustedLimitApplied?: boolean;
+  /** Thread memory bytes allocated for query execution against the offline table. */
+  offlineThreadMemAllocatedBytes?: number;
+  /** Thread memory bytes allocated for query execution against the realtime table. */
+  realtimeThreadMemAllocatedBytes?: number;
+  /** Memory bytes allocated for response serialization against the offline table. */
+  offlineResponseSerMemAllocatedBytes?: number;
+  /** Memory bytes allocated for response serialization against the realtime table. */
+  realtimeResponseSerMemAllocatedBytes?: number;
+  /** Total memory bytes allocated for query execution and response serialization against the offline table. */
+  offlineTotalMemAllocatedBytes?: number;
+  /** Total memory bytes allocated for query execution and response serialization against the realtime table. */
+  realtimeTotalMemAllocatedBytes?: number;
+  /**
+   * Heap bytes allocated by the query across all its stages and workers (total allocated, not peak heap used).
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  totalMemAllocatedBytes?: number;
+  /** Number of remote accesses (local cache misses) made to read segment data from a remote storage tier. `0` when segments are not backed by one. */
+  numRemoteAccesses?: number;
+  /** Bytes read by the remote accesses. */
+  remoteAccessBytes?: number;
+  /** Number of remote accesses made directly, outside the buffers fetched for the query. */
+  numDirectRemoteAccesses?: number;
+  /** Bytes read by the direct remote accesses. */
+  directRemoteAccessBytes?: number;
 }
 
 /**
@@ -583,6 +659,30 @@ export interface IBrokerResponse extends IBrokerResponseStats {
    * @see {@link https://github.com/apache/pinot/pull/11592 | Partial results PR}
    */
   partialResult: boolean;
+  /** Client request ID of the query, if the request set one. */
+  clientRequestId?: string;
+  /** Tables queried in the request. */
+  tablesQueried?: string[];
+  /** Server pools queried in the request. */
+  pools?: number[];
+  /** Name of the materialized view table the query was rewritten to, or `null` if none was used. */
+  materializedViewQueried?: string | null;
+  /** Free-form informational notes about how the query was handled. */
+  responseMetadata?: Record<string, unknown>;
+  /**
+   * Why the query terminated early, if it did.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  earlyTerminationReasons?: string[];
+  /**
+   * Stream-mode stats coverage indexed by stage id (`null` for stages with no coverage), or `null` when the query ran in legacy mode.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  streamStatsCoverage?: unknown[] | null;
+  /** Per-server stats, when the broker reports them. */
+  serverStats?: string;
   /**
    * Broker response stats.
    *

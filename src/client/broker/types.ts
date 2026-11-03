@@ -840,6 +840,153 @@ export interface IPinotQueryOptions {
    * @defaultValue `null/empty` (no limit)
    */
   maxExecutionTimeMsInDistinct?: number;
+
+  /**
+   * How Pinot handles query options embedded in the SQL text (`SET` statements and the legacy `OPTION(...)` suffix): `ALLOW` merges them with precedence over the request options, `IGNORE` drops them (a `DELETE` statement carrying any fails), `REJECT` fails the query. Takes effect only as a request option, which is how this client sends options.
+   *
+   * @see {@link https://docs.pinot.apache.org/build-with-pinot/querying-and-sql/query-execution-controls/query-options#sql-option-policies | SQL option policies}
+   * @defaultValue `ALLOW`
+   */
+  sqlOptionsMode?: 'ALLOW' | 'IGNORE' | 'REJECT';
+
+  /**
+   * Set `true` to rewrite eligible exact distinct-count and percentile aggregates to SMART variants, or `false` to keep them exact for this query. Overrides the table setting (single-stage only), cluster config, and broker config in both query engines. The response sets `approximatedResult` when a SMART function actually becomes approximate.
+   *
+   * @defaultValue Table, cluster, or broker setting; `false` if unset everywhere
+   */
+  useApproximateFunction?: boolean;
+
+  /**
+   * For upsert-enabled tables, include rows deleted via `deleteRecordColumn` (tombstones), which queries exclude by default.
+   *
+   * @defaultValue `false`
+   */
+  skipUpsertDelete?: boolean;
+
+  /**
+   * Maximum number of values in an `IN` predicate for which Pinot attempts value-based or bloom-filter segment pruning. A larger positive value permits pruning for larger lists; a negative value always attempts pruning. Controls whole-segment pruning only.
+   *
+   * @defaultValue Server `inpredicate.threshold` setting (default `10`)
+   */
+  inPredicatePruningThreshold?: number;
+
+  /**
+   * Minimum candidate segments at which the broker prepares partition-pruning predicate IDs once for this query. Overrides the table and cluster settings. A negative value disables preparation, not partition pruning. (introduced in 1.7.0)
+   *
+   * @defaultValue Table setting, then cluster setting; `32` if unset
+   */
+  partitionPruningPreparationThreshold?: number;
+
+  /**
+   * Per-query override of the server's AND restriction pushdown mode, which pushes AND restrictions into composite filter children. (introduced in 1.7.0)
+   */
+  andRestrictionPushdownMode?: 'ALWAYS' | 'NEVER' | 'AUTO';
+
+  /**
+   * In multi-stage planning, seal `IN` and `NOT IN` lists with at least this many values while Calcite optimizes the query, then restore them. Reduces planning time for large lists. `0` or a negative value disables sealing.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   *
+   * @defaultValue Broker level config (default `20`)
+   */
+  sealedInListThreshold?: number;
+
+  /**
+   * For eligible multi-stage `DISTINCT` queries (no `ORDER BY`, leaf `LIMIT` above the threshold), flush the leaf's accumulated distinct values downstream when their count reaches this positive threshold. Otherwise a no-op.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   *
+   * @defaultValue Broker default when positive; otherwise disabled
+   */
+  streamingDistinctFlushThreshold?: number;
+
+  /**
+   * Single-stage `GROUP BY`: use equality and `IN` predicates on single-value grouping columns to reduce the initial result-holder capacity. Best effort.
+   *
+   * @defaultValue `false`
+   */
+  optimizeMaxInitialResultHolderCapacity?: boolean;
+
+  /** Maximum initial capacity of the group-by result holder. */
+  maxInitialResultHolderCapacity?: number;
+
+  /**
+   * Maximum initial capacity of the group-by result holder in the multi-stage engine.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  mseMaxInitialResultHolderCapacity?: number;
+
+  /**
+   * Rewrite aggregations by input operand type to improve performance and avoid precision loss from double-based aggregations, e.g. `MIN(longCol)` to `MINLONG(longCol)`, `SUM(intCol)` to `SUMINT(intCol)`.
+   *
+   * @defaultValue `false`
+   */
+  autoRewriteAggregationType?: boolean;
+
+  /**
+   * Rewrite `ANY_VALUE(expr)` to return the type of `expr` instead of the legacy result type (`STRING` in the single-stage engine). (introduced in 1.7.0)
+   *
+   * @defaultValue Broker level config
+   */
+  inferAnyValueType?: boolean;
+
+  /** Number of threads used in the final reduce. Useful for expensive aggregation functions such as funnels. */
+  numThreadsExtractFinalResult?: number;
+
+  /** Chunk size used in the final reduce at broker level. */
+  chunkSizeExtractFinalResult?: number;
+
+  /**
+   * For `REGEXP_LIKE` on a dictionary-encoded column: below this dictionary size, scan the dictionary for matching ids first (and use an inverted index if one exists); otherwise match while scanning the forward index.
+   */
+  regexDictSizeThreshold?: number;
+
+  /** Maximum number of pending result blocks allowed in the streaming operator. */
+  maxStreamingPendingBlocks?: number;
+
+  /**
+   * Set `false` to disable reordering scan-based filter predicates.
+   *
+   * @defaultValue `true`
+   */
+  useScanReorderOpt?: boolean;
+
+  /**
+   * Maximum number of rows the multi-stage engine reads from each leaf stage.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  multiStageLeafLimit?: number;
+
+  /**
+   * When auto-inferring data partitioning, let the multi-stage optimizer infer a segment's partition from its name when the segment has multiple partitions in its `columnPartitionMap`.
+   *
+   * {@label MULTI_STAGE_ENGINE}
+   */
+  inferInvalidSegmentPartition?: boolean;
+
+  /**
+   * For `GROUP BY GROUPING SETS` / `ROLLUP` / `CUBE`: aggregate only the base grouping per segment and derive the grouping sets in the combine phase. Can help when many rows collapse into few base groups; can regress for expensive-to-merge intermediates such as sketches. (introduced in 1.7.0)
+   *
+   * @defaultValue `false`
+   */
+  groupingSetsBaseAggregation?: boolean;
+
+  /**
+   * Per-segment bound on the estimated base-group count for `groupingSetsBaseAggregation`. (introduced in 1.7.0)
+   *
+   * @defaultValue `numGroupsLimit`
+   */
+  groupingSetsBaseAggregationMaxGroups?: number;
+
+  /**
+   * For grouping sets with base aggregation and an `ORDER BY`: minimum number of groups each server keeps within each grouping set (`max(5 * LIMIT, value)`). Non-positive disables the per-set trim. (introduced in 1.7.0)
+   */
+  groupingSetsMinServerTrimSize?: number;
+
+  /** Collect garbage-collection stats for the query. */
+  collectGCStats?: boolean;
 }
 
 /**

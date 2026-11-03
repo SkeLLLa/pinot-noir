@@ -115,5 +115,8 @@ export class QueryStats implements IQueryStats {
       maxRowsInJoin: response.maxRowsInJoinReached ?? false,
       maxRowsInWindowReached: response.maxRowsInWindowReached ?? false,
     };
+    if (response.maxRowsInOperator !== undefined) {
+      this.maxRowsInOperator = response.maxRowsInOperator;
+    }
   }
 }

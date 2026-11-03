@@ -4,28 +4,59 @@ on:
   pull_request:
     branches: [master, next]
 
+# Nothing is granted by default; each job asks for what it needs.
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  # `mise run lint:actions`. mise installs only jactionlint here (version from .mise.toml).
+  workflow-lint:
+    name: Workflow lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install jactionlint (version from .mise.toml)
+        uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install_args: jactionlint
+          cache: false
+      - name: jactionlint
+        run: jactionlint
+
+  build:
+    name: build (node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
       id-token: write
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [22.x, 24.x, 26.x]
     steps:
-      - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
         name: Install pnpm
         id: pnpm-install
         with:
           run_install: false
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm oxlint -f github
       - name: Build
@@ -33,7 +64,7 @@ jobs:
       - name: Test
         run: pnpm test
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           use_oidc: true
           disable_search: true
@@ -42,13 +73,69 @@ jobs:
           fail_ci_if_error: false
           verbose: true
 
+  # `mise run lint:complexity`. mise installs only cccc here; the build job uses setup-node.
+  complexity:
+    name: Complexity
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install cccc (version from .mise.toml)
+        uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install_args: github:moznion/cccc
+          cache: false
+      # Both rankings, like `mise run lint:complexity`: each run fails on either ceiling but only
+      # lists the offenders it ranks by.
+      - name: Cognitive and cyclomatic complexity (cccc.toml)
+        run: |
+          s=0
+          cccc --top-cognitive 10 src || s=$?
+          cccc --top-cyclomatic 10 src || s=$?
+          exit "${s}"
+
+  # `mise run lint:fallow` through fallow's action, for its annotations and job summary.
+  fallow:
+    name: Fallow
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Read the fallow version from .mise.toml
+        id: fallow
+        run: |
+          set -eu
+          v="$(sed -n 's/^"github:fallow-rs\/fallow" = "\([^"]*\)"$/\1/p' .mise.toml)"
+          test -n "${v}"
+          echo "version=${v}" >> "${GITHUB_OUTPUT}"
+      # The action checks the binary's SHA-256 and Ed25519 signature for a pinned version.
+      - name: Run fallow
+        uses: fallow-rs/fallow@85fa32733e951df85966842f2bb6a3f2720a940c # v3.37.0
+        with:
+          version: ${{ steps.fallow.outputs.version }}
+          config: fallow.toml
+          # The whole tree, like `mise run lint:fallow`, not only a PR's changed files.
+          auto-changed-since: false
+
   dependabot:
     needs: [build]
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'SkeLLLa/pinot-noir'
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v3.1.0
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'

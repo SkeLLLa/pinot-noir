@@ -8,6 +8,13 @@ export enum EPinotErrorType {
   PARSE,
 }
 
+// Keyed by plain number: a code's thousands digit is not guaranteed to name a type.
+const PINOT_ERROR_TYPES: Partial<Record<number, EPinotErrorType>> = {
+  [EPinotErrorType.TRANSPORT]: EPinotErrorType.TRANSPORT,
+  [EPinotErrorType.SQL]: EPinotErrorType.SQL,
+  [EPinotErrorType.PARSE]: EPinotErrorType.PARSE,
+};
+
 /**
  * Pinot query error codes.
  *
@@ -40,8 +47,9 @@ export enum ERROR_CODES {
   BROKER_INSTANCE_MISSING_ERROR_CODE = 420,
   BROKER_REQUEST_SEND_ERROR_CODE = 425,
   SERVER_NOT_RESPONDING_ERROR_CODE = 427,
-  // Pinot also defines `WORKLOAD_BUDGET_EXCEEDED` at 429 as an alias.
   TOO_MANY_REQUESTS_ERROR_CODE = 429,
+  /** Workload budget exceeded. Pinot 1.6.0 and earlier report it as 429. (introduced in 1.7.0) */
+  WORKLOAD_BUDGET_EXCEEDED_ERROR_CODE = 430,
   INTERNAL_ERROR_CODE = 450,
   MERGE_RESPONSE_ERROR_CODE = 500,
   QUERY_CANCELLATION_ERROR_CODE = 503,
@@ -71,7 +79,8 @@ export enum EPinotErrorCategory {
   QUERY_ERROR,
 }
 
-const ERROR_CATEGORIES: Partial<Record<ERROR_CODES, EPinotErrorCategory>> = {
+// Keyed by plain number: brokers can send codes this enum does not list.
+const ERROR_CATEGORIES: Partial<Record<number, EPinotErrorCategory>> = {
   // malformed/invalid query supplied by the caller
   [ERROR_CODES.JSON_PARSING_ERROR_CODE]: EPinotErrorCategory.VALIDATION,
   [ERROR_CODES.SQL_PARSING_ERROR_CODE]: EPinotErrorCategory.VALIDATION,
@@ -98,6 +107,8 @@ const ERROR_CATEGORIES: Partial<Record<ERROR_CODES, EPinotErrorCategory>> = {
   [ERROR_CODES.QUERY_SCAN_LIMIT_EXCEEDED_ERROR_CODE]:
     EPinotErrorCategory.RESOURCE_EXHAUSTED,
   [ERROR_CODES.TOO_MANY_REQUESTS_ERROR_CODE]:
+    EPinotErrorCategory.RESOURCE_EXHAUSTED,
+  [ERROR_CODES.WORKLOAD_BUDGET_EXCEEDED_ERROR_CODE]:
     EPinotErrorCategory.RESOURCE_EXHAUSTED,
 
   [ERROR_CODES.QUERY_CANCELLATION_ERROR_CODE]: EPinotErrorCategory.CANCELLED,
@@ -137,10 +148,7 @@ const ERROR_CATEGORIES: Partial<Record<ERROR_CODES, EPinotErrorCategory>> = {
  * @public
  */
 export function getErrorCategory(errorCode: number): EPinotErrorCategory {
-  return (
-    ERROR_CATEGORIES[errorCode as ERROR_CODES] ??
-    EPinotErrorCategory.QUERY_ERROR
-  );
+  return ERROR_CATEGORIES[errorCode] ?? EPinotErrorCategory.QUERY_ERROR;
 }
 
 export interface IPinotErrorConstructorArgs<TData = Record<string, unknown>> {
@@ -213,9 +221,15 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
   public static parseErrorCode(code: number): {
     type: EPinotErrorType;
     errorCode: ERROR_CODES;
+  };
+  // `errorCode` can also be a transport code or 0, outside ERROR_CODES. The public signature above
+  // keeps the enum type for compatibility; this implementation signature states what it returns.
+  public static parseErrorCode(code: number): {
+    type: EPinotErrorType;
+    errorCode: number;
   } {
-    const type = Math.floor(code / 1000);
-    const errorCode = code % 1000;
-    return { type, errorCode };
+    const type =
+      PINOT_ERROR_TYPES[Math.floor(code / 1000)] ?? EPinotErrorType.UNKNOWN;
+    return { type, errorCode: code % 1000 };
   }
 }

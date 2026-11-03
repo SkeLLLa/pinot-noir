@@ -1,6 +1,14 @@
 [tools]
-node = "26.10.0"
-pnpm = "12.6.0"
+node = "26.13.0"
+pnpm = "12.16.1"
+# Dead code, duplication and complexity (`lint:fallow`, fallow.toml; CI runs fallow's action at
+# the same version).
+"github:fallow-rs/fallow" = "3.37.0"
+# Cognitive/cyclomatic complexity ceilings for the TypeScript sources (`lint:complexity`,
+# cccc.toml).
+"github:moznion/cccc" = "1.8.5"
+# Workflow and dependabot.yml lint (`lint:actions`; CI installs it with mise-action).
+jactionlint = "2.4.0"
 
 [tasks.sync-versions]
 description = "Sync tool versions from .mise.toml to package.json"
@@ -21,3 +29,16 @@ fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\\n');
 "
 echo "Synced: node=$NODE_VERSION pnpm=$PNPM_VERSION"
 """
+
+[tasks."lint:complexity"]
+description = "cccc: cognitive and cyclomatic complexity ceilings (cccc.toml); prints the 10 worst functions by each"
+# Both rankings: either run fails on any ceiling, but only lists the offenders it ranks by.
+run = "s=0; cccc --top-cognitive 10 src || s=$?; cccc --top-cyclomatic 10 src || s=$?; exit $s"
+
+[tasks."lint:fallow"]
+description = "fallow: dead code, duplication and complexity (fallow.toml)"
+run = "fallow"
+
+[tasks."lint:actions"]
+description = "jactionlint: the GitHub workflows and dependabot.yml"
+run = "jactionlint"

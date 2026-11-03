@@ -53,28 +53,27 @@
   },
   "dependencies": {
     "@no-esm/sql-template-tag": "^5.2.2",
-    "undici": "^8.7.0"
+    "undici": "^8.12.3"
   },
   "devDependencies": {
-    "@microsoft/api-documenter": "^7.30.7",
-    "@microsoft/api-extractor": "^7.58.9",
+    "@microsoft/api-documenter": "^7.30.20",
+    "@microsoft/api-extractor": "^7.60.1",
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^11.0.1",
-    "@semantic-release/github": "^12.0.9",
-    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/github": "^12.0.10",
+    "@semantic-release/npm": "^13.2.0",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "@tsconfig/node-lts": "^24.0.0",
+    "@tsconfig/node-lts": "^24.0.1",
     "@tsconfig/strictest": "^2.0.8",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.6.6",
     "conventional-changelog-conventionalcommits": "9.3.1",
-    "globstar": "^1.0.0",
-    "oxfmt": "^0.74.0",
-    "oxlint": "^1.78.0",
-    "oxlint-tsgolint": "^7.0.2001",
-    "semantic-release": "^25.0.6",
-    "tsx": "^4.23.0",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
+    "oxlint-tsgolint": "^7.0.2005",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
   "devEngines": {
@@ -87,5 +86,5 @@
     "node": ">=22.19.0",
     "pnpm": ">=12"
   },
-  "packageManager": "pnpm@12.6.0"
+  "packageManager": "pnpm@12.16.1"
 }

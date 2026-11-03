@@ -82,3 +82,11 @@ void test('retains explicit operator limits for both true and false responses', 
     });
   }
 });
+
+void test('copies maxRowsInOperator when the broker reports it', () => {
+  assert.equal(new QueryStats(response).maxRowsInOperator, undefined);
+  assert.equal(
+    new QueryStats({ ...response, maxRowsInOperator: 100 }).maxRowsInOperator,
+    100,
+  );
+});

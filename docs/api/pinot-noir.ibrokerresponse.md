@@ -57,6 +57,45 @@ Broker ID.
 </td></tr>
 <tr><td>
 
+[clientRequestId?](./pinot-noir.ibrokerresponse.clientrequestid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Client request ID of the query, if the request set one.
+
+
+</td></tr>
+<tr><td>
+
+[earlyTerminationReasons?](./pinot-noir.ibrokerresponse.earlyterminationreasons.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ Why the query terminated early, if it did.
+
+
+
+</td></tr>
+<tr><td>
+
 [exceptions?](./pinot-noir.ibrokerresponse.exceptions.md)
 
 
@@ -71,6 +110,25 @@ Broker ID.
 </td><td>
 
 _(Optional)_ List of exceptions.
+
+
+</td></tr>
+<tr><td>
+
+[materializedViewQueried?](./pinot-noir.ibrokerresponse.materializedviewqueried.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string \| null
+
+
+</td><td>
+
+_(Optional)_ Name of the materialized view table the query was rewritten to, or `null` if none was used.
 
 
 </td></tr>
@@ -95,6 +153,25 @@ Indicates if the result is partial.
 </td></tr>
 <tr><td>
 
+[pools?](./pinot-noir.ibrokerresponse.pools.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number\[\]
+
+
+</td><td>
+
+_(Optional)_ Server pools queried in the request.
+
+
+</td></tr>
+<tr><td>
+
 [requestId](./pinot-noir.ibrokerresponse.requestid.md)
 
 
@@ -109,6 +186,25 @@ string
 </td><td>
 
 Request ID.
+
+
+</td></tr>
+<tr><td>
+
+[responseMetadata?](./pinot-noir.ibrokerresponse.responsemetadata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Record&lt;string, unknown&gt;
+
+
+</td><td>
+
+_(Optional)_ Free-form informational notes about how the query was handled.
 
 
 </td></tr>
@@ -133,6 +229,25 @@ _(Optional)_ Result table.
 </td></tr>
 <tr><td>
 
+[serverStats?](./pinot-noir.ibrokerresponse.serverstats.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Per-server stats, when the broker reports them.
+
+
+</td></tr>
+<tr><td>
+
 [stats](./pinot-noir.ibrokerresponse.stats.md)
 
 
@@ -147,6 +262,45 @@ _(Optional)_ Result table.
 </td><td>
 
 Broker response stats.
+
+
+</td></tr>
+<tr><td>
+
+[streamStatsCoverage?](./pinot-noir.ibrokerresponse.streamstatscoverage.md)
+
+
+</td><td>
+
+
+</td><td>
+
+unknown\[\] \| null
+
+
+</td><td>
+
+_(Optional)_ Stream-mode stats coverage indexed by stage id (`null` for stages with no coverage), or `null` when the query ran in legacy mode.
+
+
+
+</td></tr>
+<tr><td>
+
+[tablesQueried?](./pinot-noir.ibrokerresponse.tablesqueried.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ Tables queried in the request.
 
 
 </td></tr>

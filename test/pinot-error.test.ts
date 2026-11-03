@@ -29,6 +29,10 @@ void describe('getErrorCategory', async () => {
       EPinotErrorCategory.RESOURCE_EXHAUSTED,
     );
     assert.strictEqual(
+      getErrorCategory(ERROR_CODES.WORKLOAD_BUDGET_EXCEEDED_ERROR_CODE),
+      EPinotErrorCategory.RESOURCE_EXHAUSTED,
+    );
+    assert.strictEqual(
       getErrorCategory(ERROR_CODES.SERVER_NOT_RESPONDING_ERROR_CODE),
       EPinotErrorCategory.UNAVAILABLE,
     );
@@ -127,7 +131,7 @@ void test('every published broker error code has the expected category', () => {
     [EPinotErrorCategory.PERMISSION_DENIED, [180]],
     [EPinotErrorCategory.NOT_FOUND, [190, 191]],
     [EPinotErrorCategory.TIMEOUT, [240, 250, 400]],
-    [EPinotErrorCategory.RESOURCE_EXHAUSTED, [211, 245, 246, 429]],
+    [EPinotErrorCategory.RESOURCE_EXHAUSTED, [211, 245, 246, 429, 430]],
     [EPinotErrorCategory.CANCELLED, [503]],
     [
       EPinotErrorCategory.UNAVAILABLE,

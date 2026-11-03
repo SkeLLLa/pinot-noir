@@ -1,0 +1,6 @@
+# cccc: cognitive and cyclomatic complexity of the TypeScript sources (`mise run lint:complexity`).
+# Ceilings sit at today's worst functions (format.ts escape, unsafe.ts parse), the same numbers as
+# fallow.toml; lower them as those get split up.
+max-cognitive = 15
+max-cyclomatic = 15
+table = true

@@ -1,0 +1,16 @@
+# fallow: dead code, duplication and complexity (`mise run lint:fallow`).
+# See https://fallow.tools/docs/
+
+# The semantic-release config (.releaserc.js) lives in this hidden directory.
+ignorePatterns = ["!.release/**"]
+# Loaded by name through the `conventionalcommits` preset (.release/release-notes.js).
+ignoreDependencies = ["conventional-changelog-conventionalcommits"]
+
+[health]
+# Ceilings sit at today's worst functions (format.ts escape, unsafe.ts parse), the same numbers
+# as cccc.toml; lower them as those get split up.
+maxCyclomatic = 15
+maxCognitive = 15
+# The tests write lcov (node --test), not the Istanbul JSON fallow reads, so every CRAP estimate
+# treats exported functions as barely covered. Gate on cyclomatic/cognitive complexity only.
+maxCrap = 10000.0
