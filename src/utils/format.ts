@@ -136,8 +136,10 @@ export class SqlFormat {
 
   // Treat quoted text and comments as indivisible tokens, including unfinished
   // tokens. Backslashes are ordinary characters in Pinot SQL string literals.
+  // A block comment body is any non-`*` or a `*` not followed by `/`: one way to
+  // match each character, so the pattern never backtracks (CodeQL js/polynomial-redos).
   private static sqlTokens(): RegExp {
-    return /'(?:''|[^'])*(?:'|$)|"(?:""|[^"])*(?:"|$)|`(?:``|[^`])*(?:`|$)|--[^\r\n]*|\/\*[\s\S]*?(?:\*\/|$)|\?+/g;
+    return /'(?:''|[^'])*(?:'|$)|"(?:""|[^"])*(?:"|$)|`(?:``|[^`])*(?:`|$)|--[^\r\n]*|\/\*(?:[^*]|\*(?!\/))*(?:\*\/|$)|\?+/g;
   }
 
   /** Compile the original template boundaries without reinterpreting SQL text. */
