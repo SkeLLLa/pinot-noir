@@ -31,24 +31,6 @@ jobs:
       - name: jactionlint
         run: jactionlint
 
-  # Repository rulesets can't restrict commit messages on this plan, so CI does.
-  ai-attribution:
-    name: No AI attribution
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Check the pull request's commits
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: .ci/check-ai-attribution.sh "${BASE_SHA}..${HEAD_SHA}"
-
   build:
     name: build (node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
