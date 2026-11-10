@@ -118,7 +118,7 @@ jobs:
           echo "version=${v}" >> "${GITHUB_OUTPUT}"
       # The action checks the binary's SHA-256 and Ed25519 signature for a pinned version.
       - name: Run fallow
-        uses: fallow-rs/fallow@85fa32733e951df85966842f2bb6a3f2720a940c # v3.37.0
+        uses: fallow-rs/fallow@a6956af63dd896d6106a7d28361585e0ff1c250b # v3.39.0
         with:
           version: ${{ steps.fallow.outputs.version }}
           config: fallow.toml
