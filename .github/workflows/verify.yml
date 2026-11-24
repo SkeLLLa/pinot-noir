@@ -24,7 +24,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install jactionlint (version from .mise.toml)
-        uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        uses: jdx/mise-action@236a21c3b91f5db6d4e174b348674a0f0caac06d # v5.2.9
         with:
           install_args: jactionlint
           cache: false
@@ -85,7 +85,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install cccc (version from .mise.toml)
-        uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        uses: jdx/mise-action@236a21c3b91f5db6d4e174b348674a0f0caac06d # v5.2.9
         with:
           install_args: github:moznion/cccc
           cache: false
@@ -118,7 +118,7 @@ jobs:
           echo "version=${v}" >> "${GITHUB_OUTPUT}"
       # The action checks the binary's SHA-256 and Ed25519 signature for a pinned version.
       - name: Run fallow
-        uses: fallow-rs/fallow@85fa32733e951df85966842f2bb6a3f2720a940c # v3.37.0
+        uses: fallow-rs/fallow@b6a3e048dc882bdf11c8269c73167223b9e32774 # v3.43.2
         with:
           version: ${{ steps.fallow.outputs.version }}
           config: fallow.toml
