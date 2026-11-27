@@ -85,7 +85,9 @@ Description
 
 </td><td>
 
-Coarse, protocol-agnostic category of this error. Pinot only guarantees a reliable numeric code when there's exactly one exception, otherwise falls back to this error's own `code`<!-- -->.
+Coarse, protocol-agnostic category of this error.
+
+- `TRANSPORT`<!-- -->: derived from the transport error code (and, for an invalid  response, the HTTP status code in `data.statusCode`<!-- -->). - `SQL`<!-- -->: derived from the Pinot exception code. Pinot only guarantees a  reliable numeric code when there's exactly one exception, otherwise falls  back to this error's own `code`<!-- -->. - `PARSE` and `UNKNOWN`<!-- -->: always `QUERY_ERROR`<!-- -->.
 
 
 </td></tr>

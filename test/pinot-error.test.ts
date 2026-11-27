@@ -2,6 +2,7 @@
 import * as assert from 'node:assert';
 import { describe, test } from 'node:test';
 
+import { EBrokerTransportErrorCode } from '../src/client/broker/transport/types';
 import {
   EPinotErrorCategory,
   EPinotErrorType,
@@ -93,11 +94,11 @@ void describe('PinotError construction and parsing', () => {
     assert.strictEqual(derived.code, 2180);
     const empty = new PinotError({
       message: 'failed',
-      type: EPinotErrorType.TRANSPORT,
+      type: EPinotErrorType.SQL,
       code: ERROR_CODES.BROKER_TIMEOUT_ERROR_CODE,
       exceptions: [],
     });
-    assert.strictEqual(empty.code, 1400);
+    assert.strictEqual(empty.code, 2400);
     assert.strictEqual(empty.category, EPinotErrorCategory.TIMEOUT);
   });
 
@@ -181,4 +182,118 @@ void describe('PinotError.category', async () => {
     });
     assert.strictEqual(error.category, EPinotErrorCategory.CANCELLED);
   });
+});
+
+void describe('PinotError.category by error type', async () => {
+  const cases: [
+    string,
+    ConstructorParameters<typeof PinotError>[0],
+    EPinotErrorCategory,
+  ][] = [
+    [
+      'queue limit',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT,
+        message: '',
+      },
+      EPinotErrorCategory.RESOURCE_EXHAUSTED,
+    ],
+    [
+      'timeout',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.TIMEOUT,
+        message: '',
+      },
+      EPinotErrorCategory.TIMEOUT,
+    ],
+    [
+      'connection failure',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.UNKNOWN,
+        message: '',
+      },
+      EPinotErrorCategory.UNAVAILABLE,
+    ],
+    [
+      'HTTP 429',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        data: { statusCode: 429 },
+        message: '',
+      },
+      EPinotErrorCategory.RESOURCE_EXHAUSTED,
+    ],
+    [
+      'HTTP 502',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        data: { statusCode: 502 },
+        message: '',
+      },
+      EPinotErrorCategory.UNAVAILABLE,
+    ],
+    [
+      'HTTP 503',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        data: { statusCode: 503 },
+        message: '',
+      },
+      EPinotErrorCategory.UNAVAILABLE,
+    ],
+    [
+      'HTTP 504',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        data: { statusCode: 504 },
+        message: '',
+      },
+      EPinotErrorCategory.UNAVAILABLE,
+    ],
+    [
+      'HTTP 403',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        data: { statusCode: 403 },
+        message: '',
+      },
+      EPinotErrorCategory.QUERY_ERROR,
+    ],
+    [
+      'unparsable 2xx',
+      {
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        message: '',
+      },
+      EPinotErrorCategory.QUERY_ERROR,
+    ],
+    [
+      'parse error',
+      {
+        type: EPinotErrorType.PARSE,
+        code: ERROR_CODES.BROKER_TIMEOUT_ERROR_CODE,
+        message: '',
+      },
+      EPinotErrorCategory.QUERY_ERROR,
+    ],
+    [
+      'unknown error',
+      { code: ERROR_CODES.BROKER_TIMEOUT_ERROR_CODE, message: '' },
+      EPinotErrorCategory.QUERY_ERROR,
+    ],
+  ];
+  for (const [name, args, category] of cases) {
+    await test(name, () => {
+      assert.strictEqual(new PinotError(args).category, category);
+    });
+  }
 });
