@@ -276,7 +276,7 @@ export interface IQueryResult<TRows = unknown> {
  *
  * @public
  */
-export const enum EBrokerErrorCode {
+export enum EBrokerErrorCode {
   /**
    * Unknown.
    */

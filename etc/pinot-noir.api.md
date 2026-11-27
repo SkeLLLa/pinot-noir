@@ -26,12 +26,12 @@ export class BypassParser implements IPinotValueParser {
 export const DEFAULT_RETRYABLE_ERROR_CODES: readonly number[];
 
 // @public
-export const enum EBrokerErrorCode {
+export enum EBrokerErrorCode {
     UNKNOWN = 0
 }
 
 // @public
-export const enum EBrokerTransportErrorCode {
+export enum EBrokerTransportErrorCode {
     INVALID_RESPONSE = 1,
     QUEUE_TOLERANCE_LIMIT = 3,
     TIMEOUT = 2,
