@@ -336,3 +336,5 @@ If you find this project useful, please consider [supporting Ukraine's defense](
 ## License
 
 Licensed under [MIT](./LICENSE).
+
+Third-party attributions: [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
