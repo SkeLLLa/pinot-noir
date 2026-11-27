@@ -8,6 +8,8 @@ Pinot query error codes.
 
 Mirrors Apache Pinot's `QueryErrorCode` enum.
 
+The names and numeric values are derived from Apache Pinot, Copyright The Apache Software Foundation, licensed under the Apache License, Version 2.0. See THIRD\_PARTY\_NOTICES.md.
+
 **Signature:**
 
 ```typescript

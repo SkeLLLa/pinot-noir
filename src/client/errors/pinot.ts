@@ -22,6 +22,10 @@ const PINOT_ERROR_TYPES: Partial<Record<number, EPinotErrorType>> = {
  *
  * Mirrors Apache Pinot's `QueryErrorCode` enum.
  *
+ * The names and numeric values are derived from Apache Pinot, Copyright The
+ * Apache Software Foundation, licensed under the Apache License, Version 2.0.
+ * See THIRD_PARTY_NOTICES.md.
+ *
  * @see {@link https://github.com/apache/pinot/blob/master/pinot-spi/src/main/java/org/apache/pinot/spi/exception/QueryErrorCode.java | QueryErrorCode.java}
  *
  * @public
