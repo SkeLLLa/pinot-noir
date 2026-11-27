@@ -9,7 +9,7 @@ Broker error codes.
 **Signature:**
 
 ```typescript
-export declare const enum EBrokerTransportErrorCode 
+export declare enum EBrokerTransportErrorCode 
 ```
 
 ## Enumeration Members

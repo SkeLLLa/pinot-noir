@@ -132,7 +132,7 @@ export interface IPinotBrokerTransport {
  *
  * @public
  */
-export const enum EBrokerTransportErrorCode {
+export enum EBrokerTransportErrorCode {
   /**
    * Unknown code.
    */
