@@ -28,7 +28,8 @@ void test('a zero queue tolerance permits idle requests but rejects a waiting qu
   t.mock.getter(transport.testPool, 'stats', () => ({ queued }));
   const dispatch = t.mock.method(transport.testPool, 'request', () =>
     Promise.resolve({
-      body: { json: () => Promise.resolve({}) },
+      statusCode: 200,
+      body: { text: () => Promise.resolve('{}') },
     }),
   );
   const request = {
@@ -51,7 +52,8 @@ void test('invalid queue tolerances are rejected before dispatch', async (t) => 
   t.after(() => transport.close());
   const dispatch = t.mock.method(transport.testPool, 'request', () =>
     Promise.resolve({
-      body: { json: () => Promise.resolve({}) },
+      statusCode: 200,
+      body: { text: () => Promise.resolve('{}') },
     }),
   );
   for (const queueTolerance of [NaN, Infinity, -1]) {
@@ -75,7 +77,10 @@ void test('an explicitly unlimited queue still accepts a zero tolerance', async 
   });
   t.after(() => transport.close());
   const dispatch = t.mock.method(transport.testPool, 'request', () =>
-    Promise.resolve({ body: { json: () => Promise.resolve({ ok: true }) } }),
+    Promise.resolve({
+      statusCode: 200,
+      body: { text: () => Promise.resolve('{"ok":true}') },
+    }),
   );
   assert.deepEqual(
     await transport.request({

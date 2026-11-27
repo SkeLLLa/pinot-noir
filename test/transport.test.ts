@@ -49,11 +49,12 @@ for (const authScheme of ['Basic', 'Bearer'] as const) {
           },
         });
         return Promise.resolve({
-          body: { json: () => Promise.resolve(payload) },
+          statusCode: 200,
+          body: { text: () => Promise.resolve(JSON.stringify(payload)) },
         });
       },
     );
-    assert.equal(
+    assert.deepEqual(
       await transport.request({
         ...request,
         query: { trace: 'true' },
@@ -93,7 +94,10 @@ void test('transport supplies default options and exposes the live pool stats', 
           'authorization': 'Basic secret',
         },
       });
-      return Promise.resolve({ body: { json: () => Promise.resolve(null) } });
+      return Promise.resolve({
+        statusCode: 200,
+        body: { text: () => Promise.resolve('null') },
+      });
     },
   );
   assert.deepEqual(transport.stats, transport.testPool.stats);
@@ -112,7 +116,10 @@ void test('queue cap changes take effect and fractional tolerances enforce the b
   t.after(() => transport.close());
   t.mock.getter(transport.testPool, 'stats', () => ({ queued: 2 }));
   const dispatch = t.mock.method(transport.testPool, 'request', () =>
-    Promise.resolve({ body: { json: () => Promise.resolve({}) } }),
+    Promise.resolve({
+      statusCode: 200,
+      body: { text: () => Promise.resolve('{}') },
+    }),
   );
   await transport.request({ ...request, options: { queueTolerance: 0.3 } });
   await assert.rejects(
@@ -174,46 +181,85 @@ for (const cause of [
   });
 }
 
-void test('transport preserves HTTP response errors supplied by the dispatcher', async (t) => {
-  const transport = new TestTransport({
-    brokerUrl: 'http://pinot.invalid',
-    token: 'secret',
-  });
-  t.after(() => transport.close());
-  const cause = new errors.ResponseError('rejected', 403, {
-    headers: { 'content-type': 'application/json' },
-    body: { error: 'forbidden' },
-  });
-  t.mock.method(transport.testPool, 'request', () => Promise.reject(cause));
-  await assert.rejects(transport.request(request), (error: unknown) => {
-    assert.ok(error instanceof PinotError);
-    assert.equal(
-      PinotError.parseErrorCode(error.code).errorCode,
-      EBrokerTransportErrorCode.INVALID_RESPONSE,
-    );
-    assert.deepEqual(error.data, {
-      headers: cause.headers,
-      body: cause.body,
-      statusCode: 403,
+function respond(statusCode: number, body: string) {
+  return () =>
+    Promise.resolve({
+      statusCode,
+      body: { text: () => Promise.resolve(body) },
     });
-    assert.match(error.message, /403/);
-    return true;
-  });
-});
+}
 
-for (const readable of [true, false]) {
-  void test(`transport wraps malformed JSON with ${readable ? 'readable' : 'consumed'} body`, async (t) => {
+for (const [statusCode, body] of [
+  [502, '<html>Bad Gateway</html>'],
+  [503, ''],
+  [403, '{"error":"forbidden"}'],
+  [500, 'null'],
+  [500, '{"exceptions":[]}'],
+] as const) {
+  void test(`transport rejects ${statusCode.toString()} response ${JSON.stringify(body.slice(0, 20))} without Pinot exceptions`, async (t) => {
     const transport = new TestTransport({
       brokerUrl: 'http://pinot.invalid',
       token: 'secret',
     });
     t.after(() => transport.close());
-    const parseError = new SyntaxError('bad JSON');
+    t.mock.method(transport.testPool, 'request', respond(statusCode, body));
+    await assert.rejects(transport.request(request), (error: unknown) => {
+      assert.ok(error instanceof PinotError);
+      assert.equal(error.type, EPinotErrorType.TRANSPORT);
+      assert.equal(
+        PinotError.parseErrorCode(error.code).errorCode,
+        EBrokerTransportErrorCode.INVALID_RESPONSE,
+      );
+      assert.deepEqual(error.data, { statusCode, body });
+      assert.match(error.message, new RegExp(statusCode.toString()));
+      return true;
+    });
+  });
+}
+
+void test('transport bounds the body kept in HTTP errors', async (t) => {
+  const transport = new TestTransport({
+    brokerUrl: 'http://pinot.invalid',
+    token: 'secret',
+  });
+  t.after(() => transport.close());
+  t.mock.method(transport.testPool, 'request', respond(500, 'x'.repeat(5000)));
+  await assert.rejects(transport.request(request), (error: unknown) => {
+    assert.equal(
+      (error as PinotError<{ body: string }>).data?.body.length,
+      1000,
+    );
+    return true;
+  });
+});
+
+void test('transport returns non-2xx responses carrying Pinot exceptions', async (t) => {
+  const transport = new TestTransport({
+    brokerUrl: 'http://pinot.invalid',
+    token: 'secret',
+  });
+  t.after(() => transport.close());
+  const payload = { exceptions: [{ errorCode: 150, message: 'bad sql' }] };
+  t.mock.method(
+    transport.testPool,
+    'request',
+    respond(400, JSON.stringify(payload)),
+  );
+  assert.deepEqual(await transport.request(request), payload);
+});
+
+for (const readable of [true, false]) {
+  void test(`transport wraps malformed 2xx JSON with ${readable ? 'readable' : 'unreadable'} body`, async (t) => {
+    const transport = new TestTransport({
+      brokerUrl: 'http://pinot.invalid',
+      token: 'secret',
+    });
+    t.after(() => transport.close());
     const readError = new TypeError('body consumed');
     t.mock.method(transport.testPool, 'request', () =>
       Promise.resolve({
+        statusCode: 200,
         body: {
-          json: () => Promise.reject(parseError),
           text: () =>
             readable
               ? Promise.resolve('<html>invalid</html>')
@@ -228,11 +274,15 @@ for (const readable of [true, false]) {
         PinotError.parseErrorCode(error.code).errorCode,
         EBrokerTransportErrorCode.INVALID_RESPONSE,
       );
-      assert.equal(error.cause, readable ? parseError : readError);
-      assert.deepEqual(
-        error.data,
-        readable ? { body: '<html>invalid</html>' } : undefined,
-      );
+      if (readable) {
+        assert.ok(error.cause instanceof SyntaxError);
+        assert.deepEqual(error.data, {
+          statusCode: 200,
+          body: '<html>invalid</html>',
+        });
+      } else {
+        assert.equal(error.cause, readError);
+      }
       return true;
     });
   });
