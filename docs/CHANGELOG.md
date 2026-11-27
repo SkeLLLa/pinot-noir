@@ -1,3 +1,18 @@
+## [3.7.0](https://github.com/SkeLLLa/pinot-noir/compare/v3.6.1...v3.7.0) (2026-11-27)
+
+### 📔 Docs
+
+* **errors:** attribute Pinot error codes to Apache Pinot ([4cc434c](https://github.com/SkeLLLa/pinot-noir/commit/4cc434c8d8083fab42850ac91d5f4cefc65eb7ae))
+
+### 🛠 Fixes
+
+* **transport:** keep HTTP status and body in JSON transport errors ([9469480](https://github.com/SkeLLLa/pinot-noir/commit/9469480d414e31a31b9bbc325e664da8ef577ca3))
+* **types:** make broker error code enums regular enums ([b1a46ca](https://github.com/SkeLLLa/pinot-noir/commit/b1a46cac635b0eb2384b3e2c1bc034c05c6e4be5))
+
+### 🚀 Features
+
+* **errors:** make PinotError category aware of transport errors ([fc0ee37](https://github.com/SkeLLLa/pinot-noir/commit/fc0ee37feda76666e110d9764647699b33a3ad34))
+
 ## [3.6.1](https://github.com/SkeLLLa/pinot-noir/compare/v3.6.0...v3.6.1) (2026-11-24)
 
 ### 🛠 Fixes
