@@ -4,7 +4,7 @@
 
 ## EPinotErrorCategory enum
 
-Coarse, protocol-agnostic classification of a Pinot query error.
+Coarse, protocol-agnostic classification of a Pinot error (query or transport, see [PinotError.category](./pinot-noir.pinoterror.category.md)<!-- -->).
 
 Lets consumers (gRPC, REST, CLI, ...) map a Pinot error to their own status vocabulary without hand-maintaining a copy of [ERROR\_CODES](./pinot-noir.error_codes.md)<!-- -->.
 

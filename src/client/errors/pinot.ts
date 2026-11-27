@@ -1,3 +1,5 @@
+import { EBrokerTransportErrorCode } from '../broker/transport/types';
+
 /**
  * Pinot error types
  */
@@ -61,7 +63,8 @@ export enum ERROR_CODES {
 }
 
 /**
- * Coarse, protocol-agnostic classification of a Pinot query error.
+ * Coarse, protocol-agnostic classification of a Pinot error (query or
+ * transport, see {@link PinotError.category}).
  *
  * Lets consumers (gRPC, REST, CLI, ...) map a Pinot error to their own status
  * vocabulary without hand-maintaining a copy of {@link ERROR_CODES}.
@@ -141,6 +144,22 @@ const ERROR_CATEGORIES: Partial<Record<number, EPinotErrorCategory>> = {
   [ERROR_CODES.UNKNOWN_ERROR_CODE]: EPinotErrorCategory.QUERY_ERROR,
 };
 
+enum EHttpStatus {
+  TOO_MANY_REQUESTS = 429,
+  BAD_GATEWAY = 502,
+  SERVICE_UNAVAILABLE = 503,
+  GATEWAY_TIMEOUT = 504,
+}
+
+// Transport codes with a fixed category; INVALID_RESPONSE depends on the HTTP status.
+const TRANSPORT_CATEGORIES: Partial<Record<number, EPinotErrorCategory>> = {
+  [EBrokerTransportErrorCode.QUEUE_TOLERANCE_LIMIT]:
+    EPinotErrorCategory.RESOURCE_EXHAUSTED,
+  [EBrokerTransportErrorCode.TIMEOUT]: EPinotErrorCategory.TIMEOUT,
+  // connection refused/reset and the like
+  [EBrokerTransportErrorCode.UNKNOWN]: EPinotErrorCategory.UNAVAILABLE,
+};
+
 /**
  * Categorizes a Pinot query error code into a coarse, protocol-agnostic
  * bucket. Unmapped/unknown codes default to `QUERY_ERROR`.
@@ -202,17 +221,50 @@ export class PinotError<TData = Record<string, unknown>> extends Error {
   }
 
   /**
-   * Coarse, protocol-agnostic category of this error. Pinot only guarantees a
-   * reliable numeric code when there's exactly one exception, otherwise falls
-   * back to this error's own `code`.
+   * Coarse, protocol-agnostic category of this error.
+   *
+   * - `TRANSPORT`: derived from the transport error code (and, for an invalid
+   *   response, the HTTP status code in `data.statusCode`).
+   * - `SQL`: derived from the Pinot exception code. Pinot only guarantees a
+   *   reliable numeric code when there's exactly one exception, otherwise falls
+   *   back to this error's own `code`.
+   * - `PARSE` and `UNKNOWN`: always `QUERY_ERROR`.
    */
   public get category(): EPinotErrorCategory {
-    const [exception] = this.exceptions ?? [];
-    const errorCode =
-      this.exceptions?.length === 1 && exception
-        ? exception.errorCode
-        : PinotError.parseErrorCode(this.code).errorCode;
-    return getErrorCategory(errorCode);
+    const { errorCode } = PinotError.parseErrorCode(this.code);
+    switch (this.type) {
+      case EPinotErrorType.TRANSPORT:
+        return this.transportCategory(errorCode);
+      case EPinotErrorType.SQL: {
+        const [exception] = this.exceptions ?? [];
+        return getErrorCategory(
+          this.exceptions?.length === 1 && exception
+            ? exception.errorCode
+            : errorCode,
+        );
+      }
+      default:
+        return EPinotErrorCategory.QUERY_ERROR;
+    }
+  }
+
+  private transportCategory(code: number): EPinotErrorCategory {
+    const category = TRANSPORT_CATEGORIES[code];
+    if (category !== undefined) {
+      return category;
+    }
+    // INVALID_RESPONSE: classify by HTTP status
+    const { statusCode } = (this.data ?? {}) as {
+      statusCode?: EHttpStatus;
+    };
+    if (statusCode === EHttpStatus.TOO_MANY_REQUESTS) {
+      return EPinotErrorCategory.RESOURCE_EXHAUSTED;
+    }
+    return statusCode === EHttpStatus.BAD_GATEWAY ||
+      statusCode === EHttpStatus.SERVICE_UNAVAILABLE ||
+      statusCode === EHttpStatus.GATEWAY_TIMEOUT
+      ? EPinotErrorCategory.UNAVAILABLE
+      : EPinotErrorCategory.QUERY_ERROR;
   }
 
   /**
