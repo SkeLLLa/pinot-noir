@@ -139,18 +139,6 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
             code: EBrokerTransportErrorCode.TIMEOUT,
           });
         }
-        if (err instanceof errors.ResponseError) {
-          throw new PinotError({
-            message: `Pinot transport error: Response code ${err.statusCode.toString()}`,
-            type: EPinotErrorType.TRANSPORT,
-            code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-            data: {
-              headers: err.headers,
-              body: err.body,
-              statusCode: err.statusCode,
-            },
-          });
-        }
         if (err instanceof Error) {
           throw new PinotError({
             data: { body },
@@ -168,28 +156,7 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
         });
       });
 
-    try {
-      const raw = (await response.body.json()) as TResponse;
-
-      return raw;
-    } catch (err) {
-      const text = await response.body.text().catch((textErr: unknown) => {
-        throw new PinotError({
-          message: `Pinot transport error: Can't read response body.`,
-          type: EPinotErrorType.TRANSPORT,
-          code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-          cause: textErr as Error,
-        });
-      });
-
-      throw new PinotError({
-        message: `Pinot transport error: Can't parse response body JSON.`,
-        type: EPinotErrorType.TRANSPORT,
-        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
-        cause: err as Error,
-        data: { body: text },
-      });
-    }
+    return readResponse<TResponse>(response);
   }
 
   /**
@@ -205,4 +172,53 @@ export class PinotBrokerJSONTransport implements IPinotBrokerTransport {
   get stats(): IPinotPoolStats {
     return this.pool.stats;
   }
+}
+
+const MAX_ERROR_BODY_LENGTH = 1000;
+
+function hasExceptions(response: unknown): boolean {
+  const exceptions = (response as { exceptions?: unknown } | null)?.exceptions;
+  return Array.isArray(exceptions) && exceptions.length > 0;
+}
+
+async function readResponse<TResponse>({
+  statusCode,
+  body: responseBody,
+}: Dispatcher.ResponseData): Promise<TResponse> {
+  const isSuccess = statusCode >= 200 && statusCode < 300;
+  const text = await responseBody.text().catch((err: unknown) => {
+    throw new PinotError({
+      message: `Pinot transport error: Can't read response body.`,
+      type: EPinotErrorType.TRANSPORT,
+      code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+      cause: err as Error,
+      data: { statusCode },
+    });
+  });
+  const data = { statusCode, body: text.slice(0, MAX_ERROR_BODY_LENGTH) };
+
+  try {
+    const parsed = JSON.parse(text) as TResponse;
+    // Pinot can report query exceptions with a non-2xx status; let the client raise them.
+    if (isSuccess || hasExceptions(parsed)) {
+      return parsed;
+    }
+  } catch (err) {
+    if (isSuccess) {
+      throw new PinotError({
+        message: `Pinot transport error: Can't parse response body JSON.`,
+        type: EPinotErrorType.TRANSPORT,
+        code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+        cause: err as Error,
+        data,
+      });
+    }
+  }
+
+  throw new PinotError({
+    message: `Pinot transport error: Response code ${statusCode.toString()}`,
+    type: EPinotErrorType.TRANSPORT,
+    code: EBrokerTransportErrorCode.INVALID_RESPONSE,
+    data,
+  });
 }
